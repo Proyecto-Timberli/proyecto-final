@@ -27,7 +27,12 @@ module.exports = (sequelize) => {
             allowNull: true
         },
         score: {
-            type: DataTypes.ARRAY(DataTypes.DECIMAL),
+            //type: DataTypes.ARRAY(DataTypes.DECIMAL),
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        deployLinj: {
+            type: DataTypes.STRING,
             allowNull: true
         }
     });

@@ -13,25 +13,33 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        userName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         mail: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        password: {
             type: DataTypes.STRING,
             allowNull: false
         },
         linkedin: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         github: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         stack: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
-        contraseña: {
+        image: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     });
 };
