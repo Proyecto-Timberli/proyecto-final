@@ -1,0 +1,50 @@
+.Contenedor-Principal {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+
+}
+
+#Cont-populares {
+    padding: 2px;
+    background-color: red;
+    width: 95vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.Carrusel {
+    width: 95vw;
+    height: 80vh;
+    background-color: rgb(119, 0, 255);
+}
+
+.cont-filtros {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cards-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.card {
+    background-color: aqua;
+    margin: 10px;
+    width: 70vw;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+}

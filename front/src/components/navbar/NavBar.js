@@ -1,0 +1,31 @@
+import React from 'react';
+import "../styles/navbar.css"
+import { Link } from 'react-router-dom'
+
+const Navbar = () => {
+    let loggin = true
+    return (
+
+        <div id='Navbar'>
+            <div>
+                <div>LOGO</div>
+            </div>
+            <Link to="/home">
+                Proyectos
+            </Link>
+            {loggin ?
+                <div className='botones-nav'>
+                    <Link to="/user">Perfil </Link>
+                    <button>Cerrar secion</button>
+                </div>
+                :
+                <div className='botones-nav'>
+                    <Link to="/register">Unirse!</Link>
+                    <Link to="/login">Iniciar secion</Link>
+                </div>}
+
+        </div>
+    );
+}
+
+export default Navbar;
