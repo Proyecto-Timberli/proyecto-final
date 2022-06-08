@@ -2,6 +2,10 @@ import React from "react";
 import './login.css';
 import imgLogin from '../../images/clipLogin.gif';
 import { Link } from 'react-router-dom';
+import google from '../../images/google.png';
+import linkedin from '../../images/linkedin.png';
+import github from '../../images/github.png';
+
 
 export default function Login() {
     return (
@@ -45,14 +49,20 @@ export default function Login() {
                     <div className='login-section'>
                         <h4> Or sign in with</h4>
                         <div className="login-buttons">
-                            <button className="login-social">Google</button>
-                            <button className="login-social">LinkedIn</button>
-                            <button className="login-social">GitHub</button>
+                            <a href='https://www.google.com/'>
+                                <img src={google} width="60" alt="google" className='linkGoogle'/>
+                            </a>
+                            <a href='https://www.linkedin.com/'>
+                                <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin'/>
+                            </a>
+                            <a href='https://github.com/'>
+                                <img src={github} width="60"  alt="github" className='linkGithub'/>
+                            </a>
                         </div>
                         <div className='login-register'>
                             <p className="login-text">Not a member? </p>
-                            <Link to='/register'>
-                                <p className="login-text"> Sign up </p>
+                            <Link className="login-link" to='/register'>
+                                <p className='login-text'> Sign up </p>
                             </Link>
                         </div>
                     </div>
