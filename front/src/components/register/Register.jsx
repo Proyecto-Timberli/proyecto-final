@@ -1,7 +1,7 @@
 import React from 'react'
 import './register.css'
 import imgSignUp from './signup-image.png'
-function Registro() {
+function Register() {
   return (
     <div>
         <section class="signup">
@@ -46,4 +46,4 @@ function Registro() {
   )
 }
 
-export default Registro
+export default Register
