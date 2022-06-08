@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn,User,Post} = require('./src/db.js');
+const { conn,Project,Post} = require('./src/db.js');
 const {
   PORT,
 } = process.env;
@@ -29,7 +29,9 @@ const {
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
-   })
+    //usuario= {name,mail,linkedin,github,stack,contraseña}
+
+  })
 });
 
 

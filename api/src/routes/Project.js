@@ -1,14 +1,14 @@
 const { Router } = require('express');
 const router = Router();
 const axios = require('axios');
-const {Post, User} = require('../db.js');
+const {Project, User} = require('../db.js');
 const {Op, where} = require('sequelize');
 
 
 
 router.get("/", async (req, res, next) => {
     try{
-        const allPosts = await Post.findAll({
+        const allPosts = await Project.findAll({
           include: {
             model: User,
             attributes: ["id", "name"],
@@ -30,11 +30,11 @@ router.get("/", async (req, res, next) => {
 });
 
 
-router.get("/:idPost", async (req, res, next) => {
+router.get("/:idProject", async (req, res, next) => {
     const{idPost} = req.params;
     try{
       if (idPost){{
-        const postDetail = await Recipe.findOne(
+        const postDetail = await Project.findOne(
           { where: {id: idPost},
           include: {
             model: User,
@@ -61,7 +61,7 @@ router.get("/:idPost", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   const {name, tecnology, description, repository, score, userid} = req.body;
   try{
-    const newPost= await Post.create({name, tecnology, description, repository, score})
+    const newPost= await Project.create({name, tecnology, description, repository, score})
     await newPost.addUser(userid)
     res.send(newPost)
   }
@@ -75,7 +75,7 @@ router.put("/", async (req, res, next) => {
     const {postId , postEdit} = req.body;
     try{
         if(postId){
-          postDelete= await Post.findOne(postId);
+          postDelete= await Project.findOne(postId);
           await postDelete.update(postEdit);
           await postDelete.save();
           res.send("el proyecto se elimino correctamente");
@@ -91,7 +91,7 @@ router.delete("/", async (req, res, next) => {
     const {postId} = req.body;
     try{
         if(postId){
-          postDelete= await Post.findOne(postId)
+          postDelete= await Project.findOne(postId)
           await postDelete.destroy();
           res.send("el proyecto se elimino correctamente")
         }
