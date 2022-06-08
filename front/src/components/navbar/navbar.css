@@ -1,0 +1,32 @@
+#Navbar {
+    display: flex;
+    width: 98.9vw;
+    align-items: center;
+    justify-content: space-between;
+    background: #428fbb;
+
+
+}
+
+#Navbar a,
+button {
+    text-decoration: none;
+    color: black;
+    background-color: antiquewhite;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.botones-nav {
+    margin: 20px;
+    padding: 3px;
+
+}
+
+#Navbar div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
