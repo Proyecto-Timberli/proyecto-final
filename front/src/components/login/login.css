@@ -68,6 +68,7 @@
     color: white;
     border: none;
     background-color: blue;
+    border-radius: 2px;
 }
 
 .login-register{

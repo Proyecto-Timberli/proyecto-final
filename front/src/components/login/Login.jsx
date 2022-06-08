@@ -23,7 +23,7 @@ export default function Login() {
                             <input 
                             className="login-input"
                             type='text'
-                            placeholder='Email or Username'/>
+                            placeholder='Email'/>
                         </div>
                         <div className="login-item">
                             <label></label>
@@ -50,7 +50,7 @@ export default function Login() {
                             <button className="login-social">GitHub</button>
                         </div>
                         <div className='login-register'>
-                            <p className="login-text">Not a memeber?</p>
+                            <p className="login-text">Not a member? </p>
                             <Link to='/register'>
                                 <p className="login-text"> Sign up </p>
                             </Link>
