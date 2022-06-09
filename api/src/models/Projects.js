@@ -8,7 +8,6 @@ module.exports = (sequelize) => {
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
-
         },
         name: {
             type: DataTypes.STRING,
@@ -31,7 +30,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        deployLinj: {
+        deploying: {
             type: DataTypes.STRING,
             allowNull: true
         }
