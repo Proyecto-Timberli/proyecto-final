@@ -15,7 +15,7 @@ export default function Login() {
                 <div className='login-left'>
                     <h1 className='login-title'> Welcome back! </h1>
                     <div className='login-image'>
-                        <img src={imgLogin} alt="imagen login" width="400"/>
+                        <img src={imgLogin} className='imgLogin' alt="imagen login" width="400"/>
                     </div>
                 </div>
 
@@ -24,22 +24,16 @@ export default function Login() {
                     <form method="POST" className='login-form'>
                         <div className="login-item">
                             <label></label>
-                            <input 
-                            className="login-input"
-                            type='text'
-                            placeholder='Email'/>
+                            <input className="login-input" type='text' placeholder='Email'/>
                         </div>
                         <div className="login-item">
                             <label></label>
-                            <input 
-                            className="login-input"
-                            type='password'
-                            placeholder='Password'/>
+                            <input className="login-input" type='password' placeholder='Password'/>
                         </div>
                         <div className="login-item">
-                            <label class="login-checkbox"> 
-                                <input type="checkbox"/>
-                                <span class="checkmark"></span>
+                            <label className="login-checkbox"> 
+                                <input type="checkbox" name="rememberMe" style={{display: 'unset'}} className="rememberMe"/>
+                                <span className="login-checkmark"></span>
                                 Remember me
                             </label>
                         </div>

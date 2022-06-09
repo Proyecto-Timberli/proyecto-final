@@ -24,7 +24,7 @@ export default function LandingPage () {
                     </Link>
                 </div>
                 <div className="landingImage">
-                    <img src={ imageLanding } className='imageL'alt='aca va la imagen'/>
+                    <img src={ imageLanding } className='imageL' alt='aca va la imagen'/>
                 </div>
             </div>
             
