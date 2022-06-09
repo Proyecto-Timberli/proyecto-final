@@ -18,20 +18,16 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn,Project,Post} = require('./src/db.js');
-const {
-  PORT,
-} = process.env;
+const { conn} = require('./src/db.js');
+const mokeando = require('./mokeando.js')
 
-
-
-// Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
-    //usuario= {name,mail,linkedin,github,stack,contraseña}
-
+    console.log('%s listening at 3001');
   })
+}).then(()=>{
+    mokeando()
 });
+
 
 

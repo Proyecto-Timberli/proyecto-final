@@ -8,48 +8,24 @@ const {Op, where} = require('sequelize');
 
 router.get("/", async (req, res, next) => {
     try{
-        const allPosts = await Project.findAll({
-          include: {
-            model: User,
-            attributes: ["id", "name"],
-            through:{
-              attributes: []
-            }
-          }
-        }) 
-        const allPostsCustom = allPosts.map(Post=> Post = {
-          ...Post.dataValues,
-          User:Post.dataValues.User
-        }) 
-        if (allPostsCustom.length){
-          return res.send(allPostsCustom)
+        const allProjects = await Project.findAll({
+          include: User
+        })
+        if (allProjects.length){
+          return res.send(allProjects)
         }     
     }catch(err){
         next(err);
     }
 });
 
-
-router.get("/:idProject", async (req, res, next) => {
-    const{idPost} = req.params;
+router.get("/id/:idProject", async (req, res, next) => {
+    const{idProject} = req.params;
     try{
-      if (idPost){{
-        const postDetail = await Project.findOne(
-          { where: {id: idPost},
-          include: {
-            model: User,
-            attributes: ["id", "name"],
-            through:{
-              attributes: []
-            }
-          }}
-        )
-        const postDetailCustom = {
-            ...postDetail.dataValues,
-            User:postDetail.dataValues.User
-        }
-        if (postDetail){
-          return res.send(postDetailCustom)
+      if (idProject){{
+        const projectDetail = await Project.findByPk(idProject,{include: User})
+        if (projectDetail){
+          return res.send(projectDetail)
         }     
       }}
     }catch(err){
@@ -61,9 +37,11 @@ router.get("/:idProject", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   const {name, tecnology, description, repository, score, userid} = req.body;
   try{
-    const newPost= await Project.create({name, tecnology, description, repository, score})
-    await newPost.addUser(userid)
-    res.send(newPost)
+    const newProject= await Project.create({name, tecnology, description, repository, score, deploying})
+    let user = await User.findByPk(userid)
+    await user.addProject(newProject)
+ 
+    res.send(newProject)
   }
   catch(err){
     next(err);
@@ -88,11 +66,11 @@ router.put("/", async (req, res, next) => {
 
 
 router.delete("/", async (req, res, next) => {
-    const {postId} = req.body;
+    const {projectId} = req.body;
     try{
-        if(postId){
-          postDelete= await Project.findOne(postId)
-          await postDelete.destroy();
+        if(projectId){
+          projectDelete= await Project.findByPk(projectId)
+          await projectDelete.destroy();
           res.send("el proyecto se elimino correctamente")
         }
     }
