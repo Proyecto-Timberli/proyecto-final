@@ -1,0 +1,26 @@
+.contenedor-footer{
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.p-link{
+    border-radius: 5px;
+    background-color: rebeccapurple;
+    border: 2px solid black;
+    color: white;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.part-abajo{
+    width: 50px;
+    margin: 0 auto;
+}
+.a-footer{
+    text-decoration: none;
+    
+}
+.part-arriba{
+    margin: 0 auto;
+}

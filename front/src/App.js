@@ -9,6 +9,9 @@ import User from '../src/components/user/User.js'
 import Project from '../src/components/project/Project.js'
 import NewProject from '../src/components/newProject/NewProject.js'
 import About from '../src/components/about/About.js'
+import Footer from '../src/components/footer/Footer.js'
+import Page404 from './components/Page404/Page404';
+
 function App() {
   return (
     <div className="App">
@@ -22,7 +25,9 @@ function App() {
         <Route exact path="/project/:id" element={<Project />} />
         <Route exact path="/newProject" element={<NewProject />} />
         <Route exact path="/about" element={<About />} />
+        <Route path='*' element={<Page404 />} />
       </Routes>
+      <Footer />
     </div>
 
   );
