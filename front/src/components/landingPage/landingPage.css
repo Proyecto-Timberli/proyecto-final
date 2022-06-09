@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.landingWrapper{
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../images/landingBackground.png');
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+.landingTop{
+    display: flex;
+    flex-direction: row;
+    background-color: #428fbb;
+    height: 600px;
+    margin-bottom: 120px;
+}
+
+.landingWelcome{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 5% 10% 10% 10%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+}
+
+.btn-explore, .btn-share, .btn-login {
+    padding: 12px;
+    width: 300px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
+}
+
+.btn-explore:hover {
+    background-color: rgb(156, 248, 250);
+    color:black;
+}
+.btn-share:hover {
+    background-color: rgb(101, 176, 201);
+    color:white;
+}
+.btn-login:hover {
+    background-color: rgb(25, 83, 103);
+    color:white;
+}
+
+.landingImage{
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+.imageL{
+    border-radius: 20px;
+    margin-right: 0px;
+    height: 650px;
+}
+
+.intro{
+    background-color: rgba(224, 221, 221, 0.41);
+    padding: 50px;
+}
+
+.sections{
+    display: flex;
+    flex-direction: row;
+}
+
+.section{
+    padding: 5%;
+}
+
+.text{
+    text-justify: distribute;
+}
+
+.box-one, .box-two, .box-three{
+    height: 500px;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.boxSection{
+    margin: 10%;
+}
+
+.lineLanding{
+    border-color: #428fbb;
+    width: 60%;
+    border-width: 1px;
+}
+
+.imageBox1, .imageBox2, .imageBox3 {
+    border-radius: 10px;
+    box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
+}
+
+.imageBox2{
+    margin-right: -1%;
+}
+
+.imageBox3, .imageBox1{
+    margin-bottom: 3%;
+    margin-left: -2%;
+}
