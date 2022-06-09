@@ -1,7 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import Card from "./card/Card.js"
 import "../home/home.css"
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+//import GET_PROJECTS from '../../redux/actions/actionCreators'
+
 
 const Home = () => {
+
+    // let dispatch = useDispatch()
+    // let allProjects = useSelector((state) => state.projects)
+
+    // useEffect(() => {
+
+    //     dispatch(GET_PROJECTS());
+
+    // }, [])
+
+
+    let arrayAMostrar = [1, 2, 3, 4] //  allProjects
+    let logger = true;
     return (
         <div className='Contenedor-Principal'>
             <div id="Cont-populares">
@@ -9,6 +27,10 @@ const Home = () => {
                 <div className='Carrusel'>Caja Grande</div>
             </div>
             <div>
+                <hr></hr>
+                <div>
+                    {logger ? <Link to="/newProject"> Publica tu proyecto!</Link> : <p> Para publicar, logueate</p>}
+                </div>
                 <div className='cont-filtros'>
                     <select>
                         <option> Opcion 1</option>
@@ -21,19 +43,14 @@ const Home = () => {
                         <option> Opcion 1</option>
                     </select>
                 </div>
-                <div id='cards-cont'>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
-                    <div className='card'>Caja</div>
+                <div className='cards-cont'>
+                    {/* Map para mostrar las Cards */}
+
+                    {arrayAMostrar.map(e => <Card
+                        key={e}
+                    />)}
                 </div>
+
                 <div>Paginador!</div>
             </div>
         </div>

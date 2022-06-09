@@ -9,7 +9,6 @@
 
 #Cont-populares {
     padding: 2px;
-    background-color: red;
     width: 95vw;
     height: 80vh;
     display: flex;
@@ -32,19 +31,20 @@
     align-items: center;
 }
 
-#cards-cont {
+.cards-cont {
     display: flex;
     flex-wrap: wrap;
     justify-content: center
 }
 
+/* 
 .card {
     background-color: aqua;
     margin: 10px;
-    width: 70vw;
+    width: 27vw;
     height: 60vh;
     border-radius: 10px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 
-}
+} */
