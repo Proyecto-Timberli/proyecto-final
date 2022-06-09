@@ -1,18 +1,13 @@
 const { Router } = require('express');
-
 const userRouter = require('./User.js');
-const postRouter = require('./Project.js');
+const projectRouter = require('./Project.js');
 const commentRouter = require('./Comment.js');
-
-
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 
-router.use('/User', userRouter)
-router.use('/Project', postRouter)
-router.use('/Comment', commentRouter)
+router.use('/user', userRouter)
+router.use('/project', projectRouter)
+router.use('/comment', commentRouter)
 
 
 module.exports = router;
