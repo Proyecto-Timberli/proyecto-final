@@ -9,13 +9,12 @@ import User from '../src/components/user/User.js'
 import Project from '../src/components/project/Project.js'
 import NewProject from '../src/components/newProject/NewProject.js'
 import About from '../src/components/about/About.js'
-import Modal from './components/modal/modal';
 function App() {
   return (
     <div className="App">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Modal />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/login" element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route exact path="/home" element={<Home />} />
