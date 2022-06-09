@@ -10,6 +10,7 @@ import Project from '../src/components/project/Project.js'
 import NewProject from '../src/components/newProject/NewProject.js'
 import About from '../src/components/about/About.js'
 import Footer from '../src/components/footer/Footer.js'
+
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/project/:id" element = {<Project/>} />
           <Route exact path="/newProject" element = {<NewProject/>} />
           <Route exact path="/about" element = {<About/>} />
+          
       </Routes>
       <Footer/>
     </div>
