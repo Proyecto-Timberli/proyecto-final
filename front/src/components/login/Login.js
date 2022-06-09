@@ -36,11 +36,13 @@ export default function Login() {
                             type='password'
                             placeholder='Password'/>
                         </div>
-                        <label class="login-checkbox"> 
-                            <input type="checkbox"/>
-                            <span class="checkmark"></span>
-                            Remember me
-                        </label>
+                        <div className="login-item">
+                            <label class="login-checkbox"> 
+                                <input type="checkbox"/>
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                        </div>
                         <div className='login-item'>
                             <button className='login-button'> LOG IN </button>
                         </div>
