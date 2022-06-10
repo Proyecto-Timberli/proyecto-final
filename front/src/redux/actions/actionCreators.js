@@ -63,14 +63,14 @@ export function postProject(project) {
 export function resetUserById() {
     return {
         type: RESET_USER_BY_ID,
-        payload: []
+        payload: {}
     }
 }
 
 export function resetProjectById() {
     return {
         type: RESET_PROJECT_BY_ID,
-        payload: []
+        payload: {}
     }
 }
 

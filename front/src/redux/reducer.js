@@ -6,8 +6,8 @@ import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_PROJECT_BY_ID, GET_USER_BY_ID, LOG
 
 const initialState = {
     allProject: [],
-    userById: [],
-    projectById: [],
+    userById: {},
+    projectById: {},
     logged: false,
     server_message: '',
 
