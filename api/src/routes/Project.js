@@ -7,7 +7,9 @@ const {Op, where} = require('sequelize');
 
 
 router.get("/", async (req, res, next) => {
-    try{
+  try{
+    console.log("entro a get /projects")  
+        
         const allProjects = await Project.findAll({
           include: User
         })
@@ -35,7 +37,7 @@ router.get("/id/:idProject", async (req, res, next) => {
 
 
 router.post("/", async (req, res, next) => {
-  const {name, tecnology, description, repository, score, userid} = req.body;
+  const {name, tecnology, description, repository, score, userid,deploying} = req.body;
   try{
     const newProject= await Project.create({name, tecnology, description, repository, score, deploying})
     let user = await User.findByPk(userid)

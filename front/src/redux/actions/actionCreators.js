@@ -15,7 +15,7 @@ export function sampleAction(value) {
 
 export function getAllProjects() {
     return function (dispatch) {
-        axios.get('http://localhost:3001/api/projects')
+        axios.get('http://localhost:3001/api/project')
             .then(response => {
                 dispatch({
                     type: GET_ALL_PROJECTS,
@@ -30,7 +30,7 @@ export function getAllProjects() {
 
 export function getUserById(id) {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/api/users/${id}`)
+        axios.get(`http://localhost:3001/api/users/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_USER_BY_ID,
