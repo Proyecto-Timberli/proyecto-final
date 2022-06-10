@@ -45,17 +45,20 @@ const Home = () => {
                         <option> Opcion 1</option>
                     </select>
                 </div>
-                <div className='cards-cont'>
-                    {/* Map para mostrar las Cards */}
+                {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
+                    <div className='cards-cont'>
+                        {/* Map para mostrar las Cards */}
 
-                    {arrayAMostrar.map(e => <Card
-                        description={e.description}
-                        name={e.name}
-                        id={e.id}
+                        {arrayAMostrar.map(e => <Card
+                            description={e.description}
+                            name={e.name}
+                            id={e.id}
 
-                    />)}
-                </div>
-
+                        />)}
+                    </div>
+                }
+                {/* Espacio */}
+                <br></br>
                 <div>Paginador!</div>
             </div>
         </div>

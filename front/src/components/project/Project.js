@@ -5,7 +5,7 @@ import './project.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById } from '../../redux/actions/actionCreators'
 
-import Cargando from '../cargando/Cargando';
+import Cargando from '../cargando/cargando';
 
 
 function Project() {
