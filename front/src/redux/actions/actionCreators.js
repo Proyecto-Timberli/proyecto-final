@@ -30,7 +30,7 @@ export function getAllProjects() {
 
 export function getUserById(id) {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/api/users/id/${id}`)
+        axios.get(`http://localhost:3001/api/user/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_USER_BY_ID,
@@ -63,14 +63,14 @@ export function postProject(project) {
 export function resetUserById() {
     return {
         type: RESET_USER_BY_ID,
-        payload: []
+        payload: {}
     }
 }
 
 export function resetProjectById() {
     return {
         type: RESET_PROJECT_BY_ID,
-        payload: []
+        payload: {}
     }
 }
 
