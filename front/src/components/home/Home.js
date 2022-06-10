@@ -1,24 +1,26 @@
-//import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import Card from "./card/Card.js"
 import "../home/home.css"
 import { Link } from 'react-router-dom'
-//import { useDispatch, useSelector } from "react-redux";
-//import GET_PROJECTS from '../../redux/actions/actionCreators'
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProjects } from '../../redux/actions/actionCreators'
 
 
 const Home = () => {
 
-    // let dispatch = useDispatch()
-    // let allProjects = useSelector((state) => state.projects)
-
-    // useEffect(() => {
-
-    //     dispatch(GET_PROJECTS());
-
-    // }, [])
+    let dispatch = useDispatch()
+    let allProjects = useSelector((state) => state.allProject)
 
 
-    let arrayAMostrar = [1, 2, 3, 4] //  allProjects
+
+    useEffect(() => {
+
+        dispatch(getAllProjects());
+
+    }, [])
+
+
+    let arrayAMostrar = allProjects
     let logger = true;
     return (
         <div className='Contenedor-Principal'>
@@ -47,7 +49,10 @@ const Home = () => {
                     {/* Map para mostrar las Cards */}
 
                     {arrayAMostrar.map(e => <Card
-                        key={e}
+                        description={e.description}
+                        name={e.name}
+                        id={e.id}
+
                     />)}
                 </div>
 
