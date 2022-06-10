@@ -1,5 +1,5 @@
 import React from 'react'
-import './register.css'
+//import './register.css'
 import imgSignUp from './signup-image.png'
 function Register() {
   return (
@@ -37,7 +37,7 @@ function Register() {
                     </div>
                     <div class="signup-image">
                         <figure><img src={imgSignUp} alt="sing up image"/></figure>
-                        <a href="#" class="signup-image-link">Ya soy miembro, Quiero Logearme</a>
+                        <a href="/login" class="signup-image-link">Ya soy miembro, Quiero Logearme</a>
                     </div>
                 </div>
             </div>
