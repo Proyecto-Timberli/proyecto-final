@@ -1,0 +1,128 @@
+.containerAbout{
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.headerAbout{
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    background: linear-gradient(#428fbb, white);
+    margin-bottom: 5%;
+}
+
+.textHeaderA{
+    width: 50%;
+    margin: 5% 4% 1% 4%;
+    padding: 2% 4% 1% 4%;
+    font-weight: bolder;
+    font-size: larger;
+    color: white;
+}
+.textAbout {
+    color: white;
+    font-size: larger;
+    text-justify: distribute;
+}
+
+.imageHeaderA{
+    margin-top: 3%;
+}
+
+.vision-mision-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 0% 4% 5% 4%;
+}
+
+.vision{
+    color: white;
+    font-size: larger;
+    padding: 1% 3% 3% 3%;
+    margin: 3% 10% 3% 10%;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c4e6a;
+    border-radius: 150px;
+    box-shadow: 0px 0px 20px 10px #021623;
+}
+
+.vision-text{
+    color: white;
+    text-justify: distribute;
+}
+
+.team-box {
+    margin: 10% 5% 5% 5%;
+    border-radius: 20px;
+    background-color: rgba(220, 228, 228, 0.687);
+    box-shadow: 0px 0px 10px 5px rgba(198, 202, 202, 0.87);
+}
+
+.team-title{
+    margin: 3%;
+    font-weight: bolder;
+}
+
+.team-members{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 1% 3% 5% 3%;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-member{
+    width: 23%;
+    margin: 2% 1% 1% 1%;
+    padding: 2% 0% 1% 0%;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    background-color: #87c4e882;
+    box-shadow: 0px 0px 10px 5px rgb(198, 202, 202);
+}
+
+.team-member:hover{
+    background-color: #51a2d1;
+}
+
+.memberImage{
+    border-radius: 180px;
+    height: 70%;
+    width: 70%;
+    margin-top: 1%;
+    align-self: center;
+    overflow: hidden;
+}
+
+.member-name{
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 0px;
+}
+
+.member-prof{
+    color: rgb(73, 72, 72);
+    margin: 0;
+    font-weight: bolder;
+}
+
+.member-social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 5%;
+    cursor: pointer;
+}
+
+.member-github{
+    text-decoration: none;
+    font-weight: bolder;
+    color:#1c4e6a;
+
+}
