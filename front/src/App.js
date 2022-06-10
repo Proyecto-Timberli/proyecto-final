@@ -10,7 +10,7 @@ import Project from '../src/components/project/Project.js'
 import NewProject from '../src/components/newProject/NewProject.js'
 import About from '../src/components/about/About.js'
 import Footer from '../src/components/footer/Footer.js'
-import Page404 from './components/Page404/Page404';
+import Page404 from '../src/components/Page404/Page404.js';
 
 function App() {
   return (
