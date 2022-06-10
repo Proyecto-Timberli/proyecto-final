@@ -1,13 +1,13 @@
 import React from 'react'
-import './displayUserProjetcs.css'
-import Card from '../../home/card/Card';
+import './displayUserProjects.css'
+import MiniCard from './miniCard/miniCard'
 
 const DisplayUserProjects = ({ projects }) => {
 
     function displayProjects() {
         return projects.map((p) => {
             return (
-                <Card key={p.id}/>
+                <MiniCard id={p.id} name={p.name} description={p.description}/>
             )
         })
     }
