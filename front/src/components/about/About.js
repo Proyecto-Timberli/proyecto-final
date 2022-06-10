@@ -1,6 +1,9 @@
 import React from 'react';
 import './about.css';
 import teamWork from '../../images/teamWork.gif'
+import profilePic from '../../images/profilePic.jpeg'
+import linkedIn from '../../images/logotipo-de-linkedin.png'
+import gitHub from '../../images/signo-de-github.png'
 
 export default function About() {
     return(
@@ -8,7 +11,7 @@ export default function About() {
             <div className='headerAbout'>
                 <div className='textHeaderA'>
                     <h1>Sobre Timberli</h1>
-                    <p className='textAbout'>Timberli es un proyecto que surge como idea para el trabajo final del bootcamp de desarrollo web full stack de SoyHenry.</p>
+                    <p className='textAbout'>Es un proyecto que surge como idea para el trabajo final del bootcamp de desarrollo web full stack de SoyHenry.</p>
                 </div>
                 <div className='imageHeaderA'>
                     <img src={teamWork} alt='imagen Header About' className='imagenAbout'/>
@@ -22,62 +25,84 @@ export default function About() {
                 </div>
                 <div className='vision'>
                     <h3>MISION</h3>
-                    <p className='vision-text'>Permitir que los desarrolladores den a conocer sus proyectos y a la vez conecten con otros colegas y reclutadores de la comunidad IT a través de experiencias intuitivas y participativas.</p>
+                    <p className='vision-text'>Permitir que los desarrolladores den a conocer sus proyectos y a la vez conecten con colegas y reclutadores de la comunidad IT.</p>
                 </div>
             </div>
 
             <div className='team-box'>
-                <h2>Conocé al equipo</h2>
+                <h2 className='team-title'>Conocé al equipo</h2>
                 <div className='team-members'>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Lucas Luna Clarasó</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/in/lucas-luna-claras%C3%B3-03a846203/'>Linkedin</a>
-                        <a href='https://github.com/lucaslunacl'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'>Lucas Luna Clarasó</p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/in/lucas-luna-claras%C3%B3-03a846203/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/lucaslunacl' className='member-github'><img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Andres Gomez</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/in/andres-gomez-guardamagna-32ab29234/'>Linkedin</a>
-                        <a href='https://github.com/TheAndresG'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'>Andres Gomez</p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/in/andres-gomez-guardamagna-32ab29234/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/TheAndresG' className='member-github'><img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Cristobal Herreros</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/'>Linkedin</a>
-                        <a href='https://github.com/Sapo-san'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'>Cristobal Herreros</p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/Sapo-san' className='member-github'><img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Luciano Mocchegiani</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/in/luciano-mocchegiani-268bb921a/'>Linkedin</a>
-                        <a href='https://github.com/LucianoMocchegiani'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'>Luciano Mocchegiani</p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/in/luciano-mocchegiani-268bb921a/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/LucianoMocchegiani' className='member-github'><img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Juan Pablo Rodriguez</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/in/juan-pablo-rodriguez-392a35234/'>Linkedin</a>
-                        <a href='https://github.com/'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'>Juan Pablo Rodriguez</p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/in/juan-pablo-rodriguez-392a35234/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/'className='member-github'><img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Micaela Schaberger</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/in/micaela-schaberger/'>Linkedin</a>
-                        <a href='https://github.com/mschaberger'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'>Micaela Schaberger</p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/in/micaela-schaberger/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/mschaberger' className='member-github'><img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                     <div className='team-member'>
-                        <img src='' alt='' className='memberImage'/>
-                        <h4>Roberto Vargas</h4>
-                        <p>Full stack dev.</p>
-                        <a href='https://www.linkedin.com/'>Linkedin</a>
-                        <a href='https://github.com/'>GitHub</a>
+                        <img src={profilePic} alt='' className='memberImage'/>
+                        <p className='member-name'> Roberto Vargas </p>
+                        <p className='member-prof'>Full stack dev.</p>
+                        <div className='member-social'>
+                            <a href='https://www.linkedin.com/' className='member-github'> <img src={linkedIn} width={30} alt=''/></a>
+                            <a href='https://github.com/' className='member-github'> <img src={gitHub} width={30} alt=''/></a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
