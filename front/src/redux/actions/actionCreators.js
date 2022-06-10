@@ -30,7 +30,7 @@ export function getAllProjects() {
 
 export function getUserById(id) {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/api/users/id/${id}`)
+        axios.get(`http://localhost:3001/api/user/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_USER_BY_ID,
