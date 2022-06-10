@@ -1,5 +1,5 @@
 import React from 'react'
-import './register.css'
+//import './register.css'
 import imgSignUp from './signup-image.png'
 function Register() {
   return (
