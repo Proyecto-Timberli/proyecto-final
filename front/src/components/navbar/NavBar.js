@@ -25,7 +25,7 @@ const Navbar = () => {
                     <Link to="/user">
                         <button className='btn-perfil-navBar'> Perfil </button>
                     </Link>
-                    <button onClick={cambioLogin} className='btn-logout-navBar'> Cerrar sesion </button>
+                    <button onClick={cambioLogin} className='btn-logout-navBar'> Salir </button>
                 </div>
                 :
                 <div className='botones-nav'>
