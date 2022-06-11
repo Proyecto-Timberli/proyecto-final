@@ -1,0 +1,63 @@
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    width: 100%;
+}
+
+.profileInfo {
+    padding: 1em;
+    background-color: lightgray;
+    border-radius: 1em;
+    margin: 0.5em;
+}
+
+.profilePic {
+    border-radius: 10em;
+    min-width: 15em;
+    max-height: 15em;
+    padding: 1em;
+}
+
+.profileInfoDetails {
+    color: black
+}
+.profileContents {
+    padding: 1em;
+    background-color: lightgray;
+    border-radius: 1em;
+    margin: 0.5em;
+    width: 62vw;
+    min-height: 85vh;
+}
+
+.profileContentSections {
+    width: 100%;
+    text-align: right;
+    border-bottom: 2px solid gray;
+    color: gray;
+}
+
+.profileContent-profileInfo{
+    text-align: left;
+}
+
+.profileContentSectionButton {
+    color: gray;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: xx-large;
+    border-style: none;
+    transition: 0.2s;
+}
+
+.profileContentSectionButton:hover {
+    color: rgb(76, 76, 76);
+}
+
+.profile-socialMediaLink {
+    padding: 0.5em;
+}
