@@ -2,7 +2,7 @@
  * Reducer de nuestra aplicación
  */
 
-import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_PROJECT_BY_ID, GET_USER_BY_ID, LOGGED, RESET_PROJECT_BY_ID, RESET_USER_BY_ID, SERVER_MESSAGE } from "./actions/actions.js";
+import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_PROJECT_BY_ID, GET_USER_BY_ID, LOGGED, RESET_PROJECT_BY_ID, RESET_USER_BY_ID, SERVER_MESSAGE, ORDER_PROJECTS_BY } from "./actions/actions.js";
 
 const initialState = {
     allProject: [],
@@ -62,6 +62,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 server_message: action.payload
+            }
+        }
+        case ORDER_PROJECTS_BY: {
+            return {
+                ...state,
+                allProject: action.payload
             }
         }
         default:

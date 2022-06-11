@@ -3,7 +3,7 @@
  */
 
 // imports
-import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_USER_BY_ID, GET_PROJECT_BY_ID, RESET_USER_BY_ID, RESET_PROJECT_BY_ID, LOGGED, SERVER_MESSAGE } from "./actions.js"
+import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_USER_BY_ID, GET_PROJECT_BY_ID, RESET_USER_BY_ID, RESET_PROJECT_BY_ID, LOGGED, SERVER_MESSAGE, ORDER_PROJECTS_BY} from "./actions.js"
 import axios from 'axios'
 // Creadores de acciones
 export function sampleAction(value) {
@@ -87,5 +87,14 @@ export function crearMensajeState(mensaje) {
     return {
         type: SERVER_MESSAGE,
         payload: mensaje
+    }
+}
+
+
+export function orderProjectsBy(projects) {
+
+    return {
+        type: ORDER_PROJECTS_BY,
+        payload: projects
     }
 }

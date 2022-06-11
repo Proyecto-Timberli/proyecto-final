@@ -36,6 +36,14 @@
     flex-wrap: wrap;
     justify-content: center
 }
+.home-paginado-button{
+    background-color:aqua
+
+}
+.home-paginado-button-select{
+    background-color:green
+
+}
 
 /* 
 .card {
