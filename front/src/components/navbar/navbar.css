@@ -23,6 +23,7 @@
 .verTodo-navBar{
     text-decoration: none;
     color: white;
+    transition: 0.5s;
 }
 
 .verTodo-navBar:hover{
@@ -45,6 +46,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: bolder;
     letter-spacing: 0.7px;
+    transition: 0.5s;
 }
 .btn-logout-navBar, .btn-login-navBar {
     margin-left: 15%;

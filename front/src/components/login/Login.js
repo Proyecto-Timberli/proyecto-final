@@ -10,7 +10,7 @@ import github from '../../images/github.png';
 export default function Login() {
     return (
         <div>
-            <div className='container'>
+            <div className='container-login'>
 
                 <div className='login-left'>
                     <h1 className='login-title'> Welcome back! </h1>
