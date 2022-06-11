@@ -55,7 +55,7 @@ export default function reducer(state = initialState, action) {
         case RESET_USER_BY_ID: {
             return {
                 ...state,
-                userById: action.payload
+                userById: {}
             }
         }
         case SERVER_MESSAGE: {

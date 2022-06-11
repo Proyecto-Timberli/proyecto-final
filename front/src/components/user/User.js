@@ -16,8 +16,6 @@ const User = () => {
 
     const userData = useSelector((state) => state.userById)
 
-    console.log(userData)
-
     function showSocialMediaLink(which) {
         if (which === "github" && userData.github !== "none") {
             return (<a className="profile-socialMediaLink" href={userData.github}>Github</a>)
@@ -64,7 +62,17 @@ const User = () => {
         return (<h1>Cargando...</h1>)
     }
 
-    if (userData !== []) {
+    if (askedForData && userData.id !== Number.parseInt(id)) {
+        return (
+            <div className='profileContainer'>
+                <div className='profileContents'>
+                    <h1>Usuario no encontrado.</h1>    
+                </div>
+            </div>
+        )
+    }
+
+    if (askedForData && userData.id === Number.parseInt(id)) {
         return (
             <div className='profileContainer'>
                 <div className='profileInfo'>
@@ -91,7 +99,9 @@ const User = () => {
                     </div>
                 </div>
             </div>)
-    }
+    } 
+    
+    
 }
 
 export default User

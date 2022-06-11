@@ -12,10 +12,17 @@ router.get("/id/:idUser", async (req, res, next) => {
         const user = await User.findByPk(idUser, {
             include: Project
         })
-        if (user){
-          return res.send(user)
+
+        if (!user){ 
+            res.sendStatus(404)
+            return 
         } 
+
+        return res.send(user)
+
     }catch(err){
+        console.log(err)
+        res.sendStatus(500)
         next(err);
     }
 });
