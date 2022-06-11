@@ -1,32 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 #Navbar {
     display: flex;
-    width: 98vw;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background: #428fbb;
-
-
+    background: #012A4A;
+    padding: 0.5% 1% 0.5% 3%;
+    font-family: 'Poppins', sans-serif;
 }
 
-#Navbar a,
-button {
+.logo-navBar{
+    font-size: 43px;
+    font-weight: bolder;
+    border: none;
+    background: transparent;
+    padding-left: 40%;
     text-decoration: none;
-    color: black;
-    background-color: antiquewhite;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 10px;
+    color: white;
+}
+
+.verTodo-navBar{
+    text-decoration: none;
+    color: white;
+}
+
+.verTodo-navBar:hover{
+    font-size: larger;
+    font-weight: bolder;
 }
 
 .botones-nav {
-    margin: 20px;
-    padding: 3px;
-
-}
-
-#Navbar div {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    margin: 1%;
 }
+
+.btn-perfil-navBar, .btn-register-navBar, .btn-logout-navBar, .btn-login-navBar {
+    border: none;
+    padding: 10px;
+    width: 80px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    letter-spacing: 0.7px;
+}
+.btn-logout-navBar, .btn-login-navBar {
+    margin-left: 15%;
+}
+
+.btn-perfil-navBar:hover, .btn-register-navBar:hover, .btn-logout-navBar:hover, .btn-login-navBar:hover {
+    background-color: #014F86;
+    color:white;
+    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
+}
+
