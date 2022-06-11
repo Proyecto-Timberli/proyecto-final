@@ -2,17 +2,43 @@
   /* position: absolute; */
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   border-radius: 30px;
   background: #ffffff;
   width: 72%;
+  padding: 40px;
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  justify-content: center;
+  align-items: center;
+}
+.error {
+  color: #e92b2d;
+  font-weight: 600;
+  font-size: 12px;
 }
 .containerAll {
   display: flex;
   padding-top: 50px;
+  padding-bottom: 50px;
   justify-content: center;
+}
+.inputprueba {
+  padding: 10px;
+
+  border-radius: 6px;
+  margin: 15px 0px 15px;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f6f6;
+  border-color: #1d87d7;
+  border-style: dashed;
+}
+.title {
+  color: #1d87d7;
 }
 .image {
   width: 80%;
@@ -29,6 +55,15 @@
   height: 100%;
   display: flex;
 }
+.imagePreviewDemo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.imagePreviewDemo:hover {
+  cursor: pointer;
+  opacity: 0.4;
+}
 .divImage {
   padding: 12px;
   color: lightsteelblue;
@@ -37,9 +72,22 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 .containerImagesPreview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 200px;
+  width: 200px;
+  overflow: auto;
+  border: 1px solid #666;
+  background-color: #ccc;
+  padding: 8px;
+}
+.containerImagesPreviewDemo {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -60,6 +108,9 @@
   --input-hovered-color: #4985e01f;
   position: relative;
   width: var(--width-of-input);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 /* styling of Input */
 .input {
