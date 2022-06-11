@@ -15,6 +15,12 @@
   font-weight: 600;
   font-size: 12px;
 }
+.exito{
+  text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+	color: #02a802;
+}
 .containerAll {
   display: flex;
   padding-top: 50px;

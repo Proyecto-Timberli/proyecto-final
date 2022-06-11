@@ -1,20 +1,14 @@
 import React, { useState } from 'react'
 import styles from "./NewProyect.module.css"
-import { Formik, FieldArray, Field } from 'formik'
+import { useDispatch, } from 'react-redux'
+import { Formik } from 'formik'
 import validate from './validacion'
+import { postProject } from '../../redux/actions/actionCreators'
 
 
 
 export default function NewProject() {
-    const [input, setInput] = useState({
-        name: "",
-        Fecha: "",
-        tecnologias: "",
-        descripcion: "",
-        repositorio: "",
-        deploy: "",
-        imagenF: "",
-    })
+    const dispatch = useDispatch()
     const initialValues = {
         name: "",
         Fecha: "",
@@ -27,23 +21,25 @@ export default function NewProject() {
     }
 
     const [Imagen, setImagen] = useState([]);
+    const [creacion, setCreacion] = useState(false);
 
 
     function handleInputImage(e) {
         e.preventDefault()
-        // if (input.image) {
-        //     if (!/(http|https|ftp|ftps):\/\/[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,3}(\/\S*)?/.test(input.image)) {
-        //         return
-        //     }
-        //     else if (!/.*(png|jpg|jpeg|gif)$/.test(input.image)) {
-        //         return
-        //     }
-        // }
+        console.log(e.target.value)
+        if (e.target.value) {
+            if (!/(http|https|ftp|ftps):\/\/[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,3}(\/\S*)?/.test(e.target.value)) {
+                return
+            }
+            else if (!/.*(png|jpg|jpeg|gif)$/.test(e.target.value)) {
+                return
+            }
+        }
         if (e.target.value === "") return
         setImagen([e.target.value, ...Imagen])
 
-        // if (e.target.value) return e.target.value = ""
     }
+    // if (e.target.value) return e.target.value = ""
     // function onChangeInput(e) {
     //     // console.log(e.target.files)
 
@@ -52,6 +48,8 @@ export default function NewProject() {
     //         [e.target.name]: e.target.value
     //     })
     // }
+
+
     function deletePhoto(e) {
         let indexInput = e.target.id * 1;
         setImagen(Imagen.filter((photo, index) => {
@@ -59,29 +57,24 @@ export default function NewProject() {
         }))
 
     }
-    function onSubmit(e, errors, values) {
+    function onSubmit(e, errors, values, resetForm) {
         e.preventDefault();
         if (Object.keys(errors).length > 0) { return console.log("no se hizo el despacho") }
-        console.log("se hizo el despacho")
         const NewProject = {
-            Nombre: input.name,
-            contenidoMedia: [...Imagen],
-            Fecha: input.Fecha,
-            Tecnologias: input.tecnologias,
-            Descripcion: input.descripcion,
-            Repositorio: input.repositorio,
-            Deploy: input.deploy
+            name: values.name,
+            Imagen: Imagen[0],
+            tecnology: values.tecnologias,
+            description: values.descripcion,
+            repository: values.repositorio,
+            deploying: values.deploy,
+            userid: "1",
+            score: "[0]"
         }
-        console.log(NewProject);
         setImagen("");
-        setInput({
-            name: "",
-            Fecha: "",
-            tecnologias: "",
-            descripcion: "",
-            repositorio: "",
-            deploy: "",
-        })
+        setCreacion(true);
+        setTimeout(() => { setCreacion(false); }, 3000)
+        dispatch(postProject(NewProject))
+        resetForm()
     }
 
 
@@ -92,7 +85,7 @@ export default function NewProject() {
             validate={values => validate(values, Imagen)}
 
         >
-            {({ values, handleChange, handleBlur, errors, touched }) => (
+            {({ values, handleChange, handleBlur, errors, touched, resetForm }) => (
 
                 <div className={styles.containerAll}>
                     <div className={styles.container}>
@@ -188,22 +181,27 @@ export default function NewProject() {
                                 <input
                                     className={styles.inputprueba}
                                     name="Imagen"
+                                    disabled={Imagen[0] ? true : false}
                                     placeholder="Enter the URL of the image"
                                     value={values.Imagen}
                                     onChange={e => {
                                         handleChange(e);
-                                        }}
-                                    onBlur={e => { handleBlur(e); values.Imagen = "" }}
+
+                                    }}
+                                    onBlur={e => {
+                                        handleBlur(e);
+                                        handleInputImage(e)
+                                        values.Imagen = ""
+                                    }}
                                     onKeyDown={e => {
-                                        // values.Imagen = "";
-                                        e.preventDefault()
+                                        values.Imagen = "";
                                         handleInputImage(e)
                                     }}
                                 />
 
                                 {touched.Imagen && errors.Imagen && <p className={styles.error}>{errors.Imagen}</p>}
 
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
                                 {/* <aside id="modal" className="modal">
                         <div className="content-modal">
                         <header>
@@ -214,10 +212,10 @@ export default function NewProject() {
                             </header>
                             </div>
                     </aside> */}
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
 
 
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+
 
                                 {Imagen[0] ? (
                                     <div className={styles.containerImagesPreviewDemo}>
@@ -239,7 +237,7 @@ export default function NewProject() {
                                         You currently have no photos added
                                     </div>
                                 )}
-
+        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
                                 {/*                        
                         <div id="imagen"></div>
                         {Imagen[0] ? (
@@ -260,10 +258,15 @@ export default function NewProject() {
                         You currently have no photos added
                         </div>}
                     <button onClick={e => onSubmit(e)}>Publicar</button> */}
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
-                                <button name="buttonSubmit" disabled={JSON.stringify(initialValues) === JSON.stringify(values)} onBlur={handleBlur} onClick={e => onSubmit(e, errors, values)} >Publicar</button>
+        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
+                                <button
+                                    name="buttonSubmit"
+                                    disabled={JSON.stringify(initialValues) === JSON.stringify(values)}
+                                    onBlur={handleBlur}
+                                    onClick={e => onSubmit(e, errors, values, resetForm)}
+                                >Publicar</button>
 
-
+                                {creacion && <div className={styles.exito}>Proyecto creado con exito</div>}
 
                             </form>
                         </div>
