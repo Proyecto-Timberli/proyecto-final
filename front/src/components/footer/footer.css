@@ -1,26 +1,40 @@
 .contenedor-footer{
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
-    width: 80%;
+    width: 98%;
+    position: relative;
+    bottom: 0;
     margin: 0 auto;
+    background-color: #428fbb
 }
 
 .p-link{
     border-radius: 5px;
-    background-color: rebeccapurple;
+    background-color: antiquewhite;
     border: 2px solid black;
-    color: white;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.p-link:hover{
+    background-color:rgb(25, 83, 103);;
 }
 .part-abajo{
-    width: 50px;
+    width: 100px;
     margin: 0 auto;
 }
 .a-footer{
     text-decoration: none;
+    color: black;
+    margin-left: 5px;
     
 }
 .part-arriba{
     margin: 0 auto;
+}
+
+.h1-footer{
+    color:white;
+    font-weight: bold;
+    -webkit-text-stroke: .9px black;
 }

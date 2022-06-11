@@ -4,21 +4,24 @@ import './footer.css'
 function Footer() {
     return (
         <div>
-            <div className='contenedor-footer'>
-                <div className='part-arriba'>
-                    <h1 className='h1-footer'>Proyecto Final SoyHenry</h1>
-                </div>
+            <footer>
+                <div className='contenedor-footer'>
+                    <div className='part-arriba'>
+                        <h1 className='h1-footer'>Proyecto Final SoyHenry</h1>
+                    </div>
 
-                <div className='part-abajo'>
-                    <Link className='a-footer' to='/about'>
+                    <div className='part-abajo'>
+                        <p className='p-link'>
+                            <Link className='a-footer' to='/about'>
 
-                        <p className='p-link'>  About
+                                About
+                            </Link>
                         </p>
-                    </Link>
-                </div>
+                    </div>
 
-                <p> ©Copyright - 2022</p>
-            </div>
+                    <p> ©Copyright - 2022</p>
+                </div>
+            </footer>
         </div>
     )
 }
