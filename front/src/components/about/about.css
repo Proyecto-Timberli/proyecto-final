@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .containerAbout{
     display:flex;
     flex-direction: column;
     background-color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 .headerAbout{
     display: flex;
     flex-direction: row;
-    height: 500px;
-    background: linear-gradient(#428fbb, white);
+    height: 550px;
+    background: linear-gradient(#2A6F97, white);
     margin-bottom: 5%;
 }
 
@@ -20,6 +23,7 @@
     font-size: larger;
     color: white;
 }
+
 .textAbout {
     color: white;
     font-size: larger;
@@ -44,9 +48,9 @@
     margin: 3% 10% 3% 10%;
     align-items: center;
     justify-content: center;
-    background-color: #1c4e6a;
+    background-color: #013A63;
     border-radius: 150px;
-    box-shadow: 0px 0px 20px 10px #021623;
+    box-shadow: 0px 0px 20px 5px #021623;
 }
 
 .vision-text{
@@ -55,7 +59,7 @@
 }
 
 .team-box {
-    margin: 10% 5% 5% 5%;
+    margin: 10% 5% 10% 5%;
     border-radius: 20px;
     background-color: rgba(220, 228, 228, 0.687);
     box-shadow: 0px 0px 10px 5px rgba(198, 202, 202, 0.87);
@@ -64,6 +68,9 @@
 .team-title{
     margin: 3%;
     font-weight: bolder;
+    color: #012A4A;
+    font-size: 40px;
+    padding: 2%;
 }
 
 .team-members{
@@ -84,10 +91,11 @@
     justify-content: center;
     background-color: #87c4e882;
     box-shadow: 0px 0px 10px 5px rgb(198, 202, 202);
+    transition: 0.5s;
 }
 
 .team-member:hover{
-    background-color: #51a2d1;
+    background-color: #61A5C2;
 }
 
 .memberImage{

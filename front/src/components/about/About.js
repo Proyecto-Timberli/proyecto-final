@@ -30,7 +30,7 @@ export default function About() {
             </div>
 
             <div className='team-box'>
-                <h2 className='team-title'>Conocé al equipo</h2>
+                <p className='team-title'>Conocé al equipo</p>
                 <div className='team-members'>
 
                     <div className='team-member'>
