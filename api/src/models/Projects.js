@@ -33,6 +33,10 @@ module.exports = (sequelize) => {
         deploying: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        imagen: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
 };
