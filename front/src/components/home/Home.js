@@ -1,9 +1,9 @@
-import { Fragment, useEffect,useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Card from "./card/Card.js"
 import "../home/home.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects,loggin} from '../../redux/actions/actionCreators'
+import { getAllProjects, loggin } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
 
@@ -19,25 +19,25 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     const [cardsInPag, setCardsInPag] = useState({
-        renderCards:[],
-        pag:1,
-    }); 
-    const paginado = new Paginado(9,allProjects,cardsInPag.pag,null,"Any",1)
-    const accionarPaginado=(selectPag,selectFilter)=>{
+        renderCards: [],
+        pag: 1,
+    });
+    const paginado = new Paginado(9, allProjects, cardsInPag.pag, null, "Any", 1)
+    const accionarPaginado = (selectPag, selectFilter) => {
         setCardsInPag({
-          ...cardsInPag, 
-          ...paginado.paginar(selectPag,selectFilter)
+            ...cardsInPag,
+            ...paginado.paginar(selectPag, selectFilter)
         })
     }
     useEffect(() => {
-      if (allProjects.length){
-        accionarPaginado(1)
-      }
-    },[allProjects])
+        if (allProjects.length) {
+            accionarPaginado(1)
+        }
+    }, [allProjects])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.logged)
-    
+
     //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
@@ -51,15 +51,16 @@ const Home = () => {
                     {logger ? <Link to="/newProject"> Publica tu proyecto!</Link> : <p> Para publicar, logueate</p>}
                 </div>
                 <div className='cont-filtros'>
-                    <Orders/>
+                    <Orders />
                 </div>
-                
+
                 {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
 
-                        {cardsInPag.renderCards.map(e => (!!e)&&<Card
+                        {cardsInPag.renderCards.map(e => (!!e) && <Card
                             description={e.description}
+                            key={e.id}
                             name={e.name}
                             id={e.id}
                         />)}
@@ -68,14 +69,14 @@ const Home = () => {
                 {/* Espacio */}
                 <br></br>
                 <div>Paginador!</div>
-           <div>
-              {paginado.buttons().map(button => 
-                <div key={button }>
-                  {cardsInPag.pag !== button && <button className="home-paginado-button"onClick={()=>accionarPaginado(button )}>{button }</button>}
-                  {cardsInPag.pag  === button && <button className="home-paginado-button-select"onClick={()=>accionarPaginado(button )}>{button }</button>}
+                <div>
+                    {paginado.buttons().map(button =>
+                        <div key={button}>
+                            {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
+                            {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
+                        </div>
+                    )}
                 </div>
-              )}          
-           </div>
             </div>
         </div>
     );
