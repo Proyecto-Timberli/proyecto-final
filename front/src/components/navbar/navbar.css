@@ -1,21 +1,28 @@
 #Navbar {
     display: flex;
-    width: 98vw;
     align-items: center;
     justify-content: space-between;
-    background: #428fbb;
-
-
+    background: #012A4A;
+    padding: 0.5% 1% 0.5% 3%;
 }
 
-#Navbar a,
-button {
+.logo-navBar{
+    font-size: 43px;
+    font-weight: bolder;
+    border: none;
+    background: transparent;
+    padding-left: 20%;
     text-decoration: none;
-    color: black;
-    background-color: antiquewhite;
-    margin: 2px;
-    padding: 2px;
-    border-radius: 10px;
+    color: white;
+}
+
+.verTodo-navBar{
+    text-decoration: none;
+    color: white;
+}
+
+.verTodo-navBar:hover{
+    font-size: larger;
 }
 
 .botones-nav {

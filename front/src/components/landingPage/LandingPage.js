@@ -12,12 +12,12 @@ export default function LandingPage () {
         <div className="landingWrapper">
             <div className="landingTop">
                 <div className="landingWelcome"> 
-                    <h1>EXPLORE AND SHARE <br></br> YOUR PROJECTS.</h1>
+                    <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
                     <Link to='/home'>
-                        <button className="btn-explore"> EXPLORE </button>
+                        <button className="btn-explore"> VER TODOS </button>
                     </Link>
                     <Link to='/register'>
-                        <button className="btn-share"> SHARE </button>
+                        <button className="btn-share"> COMPARTIR </button>
                     </Link>
                     <Link to='/login'>
                         <button className="btn-login"> LOG IN </button>
@@ -30,18 +30,18 @@ export default function LandingPage () {
             
             <div className="landingBody">
                 <div className='intro'>
-                    <h2>Why timberli?</h2>
+                    <p className="landing-title">¿POR QUÉ TIMBERLI?</p>
                     <div className="sections">
                         <section className="section">
-                            <h3>Explore portfolios </h3>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <h2>Explorá portfolios </h2>
+                            <p className="text">La plataforma te permite ver otros proyectos pero también podes ingresar al perfil de un usuario y ver todo su portfolio. Puedes buscar a tus desarrolladores favoritos y usarlos de inspiración!</p>
                         </section>
                         <section className="section"> 
-                            <h3>Share your work</h3>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <h2>Compartí tus trabajos</h2>
+                            <p className="text">Créate un usuario y forma parte de esta comunidad! Vas a aumentar la visualización de tus proyectos, recibir feedback y participar en la votación de los mejores proyectos semanales.</p>
                         </section>
                         <section className="section">
-                            <h3>Interact with developers</h3>
+                            <h2>Conectá con la comunidad</h2>
                             <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </section>
                     </div>
@@ -49,22 +49,22 @@ export default function LandingPage () {
                 <div className="box-one">
                     <img src={ boxOneImage } className='imageBox1' alt='aca va la imagen'/>
                     <section className="boxSection">
-                        <h2>What will you find?</h2>
+                        <h2>¿Qué vas a encontrar?</h2>
                         <hr className="lineLanding"></hr>
-                        <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p className="text">Conocé los proyectos de tus colegas y déjate llevar por la creatividad. Lo que encuentres simplemente podría sorprenderte e inspirarte.</p>
                         <Link to='/home'>
-                            <button className="btn-login"> Discover projects </button>
+                            <button className="btn-login"> Descubrí </button>
                         </Link>
                     </section>
                 </div>
 
                 <div className="box-two">
                     <section className="boxSection">
-                        <h2>It's worth it</h2>
+                        <h2>Dejá tu marca</h2>
                         <hr className="lineLanding"></hr>
-                        <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p className="text">Con tanto que explorar, proyectos reales que crear y el apoyo de la comunidad, la plataforma Timberli te permite compartir tus proyectos, obtener feedback y lograr un crecimiento real.</p>
                         <Link to='/register'>
-                            <button className="btn-login"> Leave your mark </button>
+                            <button className="btn-login"> Forma parte </button>
                         </Link>
                     </section>
                     <img src={ boxTwoImage } className='imageBox2' alt='aca va la imagen'/>
@@ -73,11 +73,11 @@ export default function LandingPage () {
                 <div className="box-three">
                     <img src={ boxThreeImage } className='imageBox3' alt='aca va la imagen'/>
                     <section className="boxSection"> 
-                        <h2>About us?</h2>
+                        <h2>Sobre Timberli</h2>
                         <hr className="lineLanding"></hr>
-                        <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p className="text">Es la plataforma donde los usuarios vienen para mostrar sus ideas innovadoras, encontrar inspiración, feedback constructivo  y conectar con la comunidad. <br></br> ¿Querés saber más?</p>
                         <Link to='/about'>
-                            <button className="btn-login"> Learn more </button>
+                            <button className="btn-login"> Conocenos </button>
                         </Link>
                     </section>
                 </div>

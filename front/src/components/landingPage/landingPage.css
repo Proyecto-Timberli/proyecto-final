@@ -11,7 +11,7 @@
 .landingTop{
     display: flex;
     flex-direction: row;
-    background-color: #428fbb;
+    background-color: #013A63;
     height: 600px;
     margin-bottom: 120px;
 }
@@ -20,10 +20,11 @@
     display: flex;
     flex-direction: column;
     color: white;
-    margin: 5% 10% 10% 10%;
+    margin: 5% 4% 10% 8%;
     padding: 20px;
     align-items: center;
     justify-content: center;
+    text-align: left;
     font-size: larger;
 }
 
@@ -31,8 +32,8 @@
     padding: 12px;
     width: 300px;
     border: none;
-    border-radius: 4px;
-    background-color: white;
+    border-radius: 5px;
+    background-color: rgb(235, 230, 230);
     font-weight: bolder;
     letter-spacing: 1px;
     cursor: pointer;
@@ -40,18 +41,12 @@
     box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
 }
 
-.btn-explore:hover {
-    background-color: rgb(156, 248, 250);
-    color:black;
-}
-.btn-share:hover {
-    background-color: rgb(101, 176, 201);
+.btn-explore:hover, .btn-share:hover, .btn-login:hover {
+    background-color: #014F86;
     color:white;
+    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
 }
-.btn-login:hover {
-    background-color: rgb(25, 83, 103);
-    color:white;
-}
+
 
 .landingImage{
     align-self: flex-start;
@@ -59,38 +54,52 @@
 }
 
 .imageL{
-    border-radius: 20px;
-    margin-right: 0px;
+    margin: 1% -12% 0% 0%;
     height: 650px;
+    overflow: hidden;
 }
 
 .intro{
-    background-color: rgba(224, 221, 221, 0.41);
-    padding: 50px;
+    background-color: rgba(224, 221, 221, 0.738);
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-title{
+    font-size: 30px;
+    font-weight: bolder;
+    padding: 2% 0% 0% 0%;
+    color: #01497C;
+    letter-spacing: 1px;
 }
 
 .sections{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .section{
-    padding: 5%;
+    padding: 0% 5% 3% 5%;
 }
 
 .text{
     text-justify: distribute;
+    font-weight: bolder;
+    color: #012A4A;
 }
 
 .box-one, .box-two, .box-three{
     height: 500px;
-    margin-top: 5%;
+    margin: 10% 0% 10% 0%;
     display: flex;
     flex-direction: row;
 }
 
 .boxSection{
-    margin: 10%;
+    margin: 6% 11% 5% 11%;
 }
 
 .lineLanding{
@@ -104,11 +113,7 @@
     box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
 }
 
-.imageBox2{
-    margin-right: -1%;
-}
 
 .imageBox3, .imageBox1{
     margin-bottom: 3%;
-    margin-left: -2%;
 }
