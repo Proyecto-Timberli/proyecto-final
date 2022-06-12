@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-.contenedor-footer{
+.contenedor-footer {
     border-top: 1px solid antiquewhite;
     width: 100%;
     position: relative;
@@ -9,35 +9,49 @@
     padding-bottom: 1px;
 }
 
-.p-link{
-    border-radius: 5px;
+.p-link {
+
     background-color: antiquewhite;
-    border: 2px solid #013A63;
-    padding: 10px 15px 10px 15px;
+    border: none;
+    padding: 10px;
+    width: 80px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: 0.4s;
+
+    letter-spacing: 0.7px;
+    transition: 0.5s;
 }
 
-.p-link:hover{
-    background-color: #a9d6e5cb;
+.p-link:hover {
+    background-color: #014F86;
     color: white;
+    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
 }
 
-.part-abajo{
+.part-abajo {
     width: 100px;
     margin: 0 auto;
 }
-.a-footer{
+
+.a-footer {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
     text-decoration: none;
     color: black;
     margin-left: 5px;
 }
-.part-arriba{
+
+.a-footer :hover {
+    color: white;
+
+}
+
+.part-arriba {
     margin: 10px;
 }
 
-.h1-footer{
-    color:white;
+.h1-footer {
+    color: white;
     font-weight: bold;
     -webkit-text-stroke: .9px black;
 }
