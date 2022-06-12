@@ -4,7 +4,7 @@ import { useDispatch, } from 'react-redux'
 import { Formik } from 'formik'
 import validate from './validacion'
 import { postProject } from '../../redux/actions/actionCreators'
-
+import imagen from "../../images/plataforma.png"
 
 export default function NewProject() {
     const dispatch = useDispatch()
@@ -61,14 +61,14 @@ export default function NewProject() {
         if (Object.keys(errors).length > 0) { return console.log("no se hizo el despacho") }
         const NewProject = {
             name: values.name,
-            Imagen: Imagen[0],
+            imagen: [Imagen[0]],
             tecnology: values.tecnologias,
             description: values.descripcion,
-            repository: values.repositorio,
-            deploying: values.deploy,
+            repository: values.repositorio||"",
+            deploying: values.deploy||"",
             userid: "1",
-            score: "[0]"
-        }
+            score: [0]
+        }   
         setImagen("");
         setCreacion(true);
         setTimeout(() => { setCreacion(false); }, 3000)
@@ -261,7 +261,7 @@ export default function NewProject() {
                             </form>
                         </div>
                         <div>
-                            <img src="https://cdn-icons.flaticon.com/png/512/3541/premium/3541461.png?token=exp=1654720622~hmac=48310e00e66c357d1492959ed0fc25d3"
+                            <img src={imagen}
                                 alt="foto"
                                 className={styles.image}></img>
                         </div>

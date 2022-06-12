@@ -22,16 +22,16 @@ export default function validate(values, stateImage) {
         errores.tecnologias = " solo puede contener letras, numeros, espacios, puntos y comas"
     }
     
-    if (!values.repositorio) {
-            errores.repositorio = "Por favor ingresa un link al repositorio"
-        } else if (!expresionForUrl.test(values.repositorio)) {
-            errores.repositorio = "Por favor ingresa un link valido"
-        }
-    if (!values.deploy) {
-        errores.deploy = "Por favor ingresa un link al deploy"
-    } else if (!expresionForUrl.test(values.deploy)) {
-        errores.deploy = "Por favor ingresa un link valido"
-    }
+    // if (!values.repositorio) {
+    //         errores.repositorio = "Por favor ingresa un link al repositorio"
+    //     } else if (!expresionForUrl.test(values.repositorio)) {
+    //         errores.repositorio = "Por favor ingresa un link valido"
+    //     }
+    // if (!values.deploy) {
+    //     errores.deploy = "Por favor ingresa un link al deploy"
+    // } else if (!expresionForUrl.test(values.deploy)) {
+    //     errores.deploy = "Por favor ingresa un link valido"
+    // }
     if (!values.Imagen[0] && !stateImage[0]) {
         errores.Imagen = "Por favor ingresa una imagen"
     }
