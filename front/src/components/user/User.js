@@ -1,7 +1,7 @@
 import { useParams } from 'react-router'
 import { useState } from 'react'
 import React from 'react'
-import{BsGithub,BsLinkedin} from  "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { getUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
@@ -19,38 +19,38 @@ const User = () => {
 
     function showSocialMediaLink(which) {
         if (which === "github" && userData.github !== "none") {
-            return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub/></a>)
+            return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
         }
         if (which === "linkedIn" && userData.linkedin !== "none") {
-            return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin/></a>)
+            return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
         }
         return null
     }
-    
+
     function showUserDescription() {
         if (userData !== {} && userData.description) {
             return (<>
-            <h3>Sobre mi:</h3>
-            {userData.description.split("\n\n").map((e) => { return (<p className='p-profile'>{e}</p>) })}
+                <h3>Sobre mi:</h3>
+                {userData.description.split("\n\n").map((e) => { return (<p key={e} className='p-profile'>{e}</p>) })}
             </>)
         } else {
             return (<>
-            <h3>Sobre mi:</h3>
-            <p className='p-profile'>Este usuario no tiene descripción.</p>
+                <h3>Sobre mi:</h3>
+                <p className='p-profile'>Este usuario no tiene descripción.</p>
             </>)
-        }  
+        }
     }
 
     function showUserStack() {
         if (userData.stack !== "none") {
             return (<>
-            <h3>Stack de tecnologías:</h3>
-           <p className="p-stack"> {userData.stack}</p>
+                <h3>Stack de tecnologías:</h3>
+                <p className="p-stack"> {userData.stack}</p>
             </>)
         } else {
             return (<>
-            <h3>Stack de tecnologías:</h3>
-            <p className="p-stack">Este usuario no ha indicado su stack.</p>
+                <h3>Stack de tecnologías:</h3>
+                <p className="p-stack">Este usuario no ha indicado su stack.</p>
             </>)
         }
     }
@@ -81,7 +81,7 @@ const User = () => {
         return (
             <div className='profileContainer'>
                 <div className='profileContents'>
-                    <h1>Usuario no encontrado.</h1>    
+                    <h1>Usuario no encontrado.</h1>
                 </div>
             </div>
         )
@@ -91,7 +91,7 @@ const User = () => {
         return (
             <div className='profileContainer'>
                 <div className='profileInfo'>
-                    <img src={userData.image}  className='profilePic' alt="profilepic" />
+                    <img src={userData.image} className='profilePic' alt="profilepic" />
                     <h2 className='profile-name'>{userData.name}</h2>
                     <div className='profileInfoDetails'>
                         <p>@{userData.userName}</p>
@@ -114,9 +114,9 @@ const User = () => {
                     </div>
                 </div>
             </div>)
-    } 
-    
-    
+    }
+
+
 }
 
 export default User
