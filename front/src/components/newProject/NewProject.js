@@ -190,7 +190,7 @@ export default function NewProject() {
 
                                 {touched.Imagen && errors.Imagen && <p className={styles.error}>{errors.Imagen}</p>}
 
-        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
                                 {/* <aside id="modal" className="modal">
                         <div className="content-modal">
                         <header>
@@ -201,7 +201,7 @@ export default function NewProject() {
                             </header>
                             </div>
                     </aside> */}
-        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
 
 
 
@@ -226,7 +226,7 @@ export default function NewProject() {
                                         You currently have no photos added
                                     </div>
                                 )}
-        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
                                 {/*                        
                         <div id="imagen"></div>
                         {Imagen[0] ? (
@@ -247,7 +247,7 @@ export default function NewProject() {
                         You currently have no photos added
                         </div>}
                     <button onClick={e => onSubmit(e)}>Publicar</button> */}
-        {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
+                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
                                 <button
                                     className={styles.btnProyecto}
                                     name="buttonSubmit"
