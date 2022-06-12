@@ -13,7 +13,6 @@ function Footer() {
                     <div className='part-abajo'>
                         <p className='p-link'>
                             <Link className='a-footer' to='/about'>
-
                                 About
                             </Link>
                         </p>
