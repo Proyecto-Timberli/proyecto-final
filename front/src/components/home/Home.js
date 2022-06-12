@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects, loggin } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
+import Group11 from '../../images/Group 11.png';
+import Group10 from '../../images/Group 10.jpg';
+import landingimage from '../../images/landingImage.jpeg';
 
 
 const Home = () => {
@@ -42,8 +45,47 @@ const Home = () => {
     return (
         <div className='Contenedor-Principal'>
             <div id="Cont-populares">
-                <p>Proyectos Populares!</p>
-                <div className='Carrusel'>Caja Grande</div>
+                <div className="sheetSlider  sh-default  sh-auto " >
+                    <input id="s1" type="radio" name="slide1" checked />
+                    <input id="s2" type="radio" name="slide1" />
+                    <input id="s3" type="radio" name="slide1" />
+                    <div className="sh__content">
+                        <div className="sh__item">
+                            <img src={Group10} alt="imgText" />
+                            <div className="sh__meta">
+                                <h4>Timberli!</h4>
+                                <span>Proyecto final</span>
+                            </div>
+                        </div>
+                        <div className="sh__item">
+                            <img src={landingimage} />
+                            <div className="sh__meta">
+                                <h4>Timberli!</h4>
+                                <span>Proyecto final</span>
+                            </div>
+                        </div>
+                        <div className="sh__item">
+                            <img src={Group11} alt="imgText" />
+
+                            <div className="sh__meta">
+                                <h4>Timberli!</h4>
+                                <span>Proyecto final</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="sh__btns">
+                        <label for="s1"></label>
+                        <label for="s2"></label>
+                        <label for="s3"></label>
+                        <label for="s4"></label>
+                    </div>
+                    <div className="sh__arrows">
+                        <label for="s1"></label>
+                        <label for="s2"></label>
+                        <label for="s3"></label>
+                    </div>
+                    <button class="sh-control"></button>
+                </div>
             </div>
             <div>
                 <hr></hr>
@@ -73,7 +115,7 @@ const Home = () => {
                 <div>Paginador!</div>
                 <div>
                     {paginado.buttons().map(button =>
-                        <div key={button}>
+                        <div className="container-paginado" key={button}>
                             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
                             {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
                         </div>
