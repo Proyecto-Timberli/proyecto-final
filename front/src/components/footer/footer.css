@@ -1,24 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .contenedor-footer{
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 98%;
+    border-top: 1px solid antiquewhite;
+    width: 100%;
     position: relative;
-    bottom: 0;
-    margin: 0 auto;
-    background-color: #428fbb
+    background-color: #428fbb;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 1px;
 }
 
 .p-link{
     border-radius: 5px;
     background-color: antiquewhite;
-    border: 2px solid black;
-    padding-left: 15px;
-    padding-right: 15px;
+    border: 2px solid #013A63;
+    padding: 10px 15px 10px 15px;
+    cursor: pointer;
+    transition: 0.4s;
 }
 
 .p-link:hover{
-    background-color:rgb(25, 83, 103);;
+    background-color: #a9d6e5cb;
+    color: white;
 }
+
 .part-abajo{
     width: 100px;
     margin: 0 auto;
@@ -27,10 +31,9 @@
     text-decoration: none;
     color: black;
     margin-left: 5px;
-    
 }
 .part-arriba{
-    margin: 0 auto;
+    margin: 10px;
 }
 
 .h1-footer{

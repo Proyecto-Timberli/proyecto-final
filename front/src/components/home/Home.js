@@ -66,7 +66,6 @@ const Home = () => {
                         </div>
                         <div className="sh__item">
                             <img src={Group11} alt="imgText" />
-
                             <div className="sh__meta">
                                 <h4>Timberli!</h4>
                                 <span>Proyecto final</span>
@@ -89,8 +88,8 @@ const Home = () => {
             </div>
             <div>
                 <hr></hr>
-                <div>
-                    {logger ? <Link to="/newProject"> Publica tu proyecto!</Link> : <p> Para publicar, logueate</p>}
+                <div className='home-publica-si-logged'>
+                    {logger ? <Link to="/newProject" className='home-publicar-link'> Publica tu proyecto!</Link> : <p className='home-publicar'> Para publicar, logueate</p>}
                 </div>
                 <div className='cont-filtros'>
                     <Orders />
@@ -112,7 +111,6 @@ const Home = () => {
                 }
                 {/* Espacio */}
                 <br></br>
-                <div>Paginador!</div>
                 <div>
                     {paginado.buttons().map(button =>
                         <div className="container-paginado" key={button}>
