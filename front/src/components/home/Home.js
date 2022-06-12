@@ -73,17 +73,17 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="sh__btns">
-                        <label for="s1"></label>
-                        <label for="s2"></label>
-                        <label for="s3"></label>
-                        <label for="s4"></label>
+                        <label htmlFor="s1"></label>
+                        <label htmlFor="s2"></label>
+                        <label htmlFor="s3"></label>
+                        <label htmlFor="s4"></label>
                     </div>
                     <div className="sh__arrows">
-                        <label for="s1"></label>
-                        <label for="s2"></label>
-                        <label for="s3"></label>
+                        <label htmlFor="s1"></label>
+                        <label htmlFor="s2"></label>
+                        <label htmlFor="s3"></label>
                     </div>
-                    <button class="sh-control"></button>
+                    <button className="sh-control"></button>
                 </div>
             </div>
             <div>
@@ -105,7 +105,7 @@ const Home = () => {
                             name={e.name}
                             id={e.id}
                             user={e.user.userName}
-                            imagen = {e.imagen}
+                            imagen={e.imagen}
                         />)}
                     </div>
                 }
@@ -120,7 +120,7 @@ const Home = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
