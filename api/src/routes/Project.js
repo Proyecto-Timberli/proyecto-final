@@ -37,9 +37,9 @@ router.get("/id/:idProject", async (req, res, next) => {
 
 
 router.post("/", async (req, res, next) => {
-  const {name, tecnology, description, repository, score, userid,deploying} = req.body;
+  const {name, tecnology, description, repository, score, userid, deploying, imagen} = req.body;
   try{
-    const newProject= await Project.create({name, tecnology, description, repository, score, deploying})
+    const newProject= await Project.create({name, tecnology, description, repository, score, deploying, imagen})
     let user = await User.findByPk(userid)
     await user.addProject(newProject)
  

@@ -26,8 +26,7 @@ module.exports = (sequelize) => {
             allowNull: true
         },
         score: {
-            //type: DataTypes.ARRAY(DataTypes.DECIMAL),
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true
         },
         deploying: {
@@ -35,7 +34,7 @@ module.exports = (sequelize) => {
             allowNull: true
         },
         imagen: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: true
         }
     });

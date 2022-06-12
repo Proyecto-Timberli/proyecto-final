@@ -147,57 +147,105 @@ const mokeando = async ()=>{
         name: "Henry Food",
         tecnology: "React, Redux, Express.js",
         description: "Proyecto Henry Foods para mostrar como ejemplo en clases",
-        repository: "none",
-        score: "[1,2,3]",
-        deploying: "none"
+        repository: "https://github.com/LucianoMocchegiani/PI_Food",
+        score: [5,3,3],
+        deploying: "https://client-food-project.herokuapp.com/",
+        imagen:["https://i.postimg.cc/rpLvYMnK/Captura-de-pantalla-de-2022-06-11-19-45-04.png",
+          "https://i.postimg.cc/HsqKVTCB/Captura-de-pantalla-de-2022-06-11-19-45-06.png",
+          "https://i.postimg.cc/nVwNfvS8/Captura-de-pantalla-de-2022-06-11-19-46-05.png",
+          "https://i.postimg.cc/sx18ZXX0/Captura-de-pantalla-de-2022-06-11-19-46-33.png",
+          "https://i.postimg.cc/8PJ9pjx7/Captura-de-pantalla-de-2022-06-11-19-46-52.png",
+          "https://i.postimg.cc/VkXht2f1/Captura-de-pantalla-de-2022-06-11-19-47-28.png",
+          "https://i.postimg.cc/hvwY8BQ4/Captura-de-pantalla-de-2022-06-11-19-48-17.png"
+        ]
       },
       {
         name: "E-commerce genérico",
         tecnology: "React, Redux, Express.js",
         description: "E-commerce genérico, clon de mercado libre :)",
-        repository: "none",
-        score: "[1,1,2]",
-        deploying: "none"
+        repository: "https://mercadolibre.com/",
+        score: [4,1,2],
+        deploying: "none",
+        imagen:["https://i.postimg.cc/qv4kzPyV/Captura-de-pantalla-de-2022-06-11-20-10-50.png",
+         "https://i.postimg.cc/HLtdwB0c/Captura-de-pantalla-de-2022-06-11-20-11-10.png",
+         "https://i.postimg.cc/xdFYpq7n/Captura-de-pantalla-de-2022-06-11-20-11-16.png",
+         "https://i.postimg.cc/RVcSCS3L/Captura-de-pantalla-de-2022-06-11-20-11-23.png",
+         "https://i.postimg.cc/sfmGj4t2/Captura-de-pantalla-de-2022-06-11-20-11-35.png",
+         "https://i.postimg.cc/B6cL1TbM/Captura-de-pantalla-de-2022-06-11-20-12-08.png",
+         "https://i.postimg.cc/CMnMtHSt/Captura-de-pantalla-de-2022-06-11-20-11-56.png"
+        ]
       },
       {
         name: "E-commerce genérico 2",
         tecnology: "Ruby on Rails",
         description: "E-commerce genérico, clon de Amazon",
         repository: "none",
-        score: "[1,2,3]",
-        deploying: "none"
+        score: [4,4,5],
+        deploying: "https://www.amazon.com/",
+        imagen:["https://i.postimg.cc/J49rMy4n/Captura-de-pantalla-de-2022-06-11-20-12-58.png",
+         "https://i.postimg.cc/nh4Jx0PR/Captura-de-pantalla-de-2022-06-11-20-12-37.png",
+         "https://i.postimg.cc/wxw38Tmy/Captura-de-pantalla-de-2022-06-11-20-13-06.png",
+         "https://i.postimg.cc/FKbsP9vK/Captura-de-pantalla-de-2022-06-11-20-13-13.png",
+         "https://i.postimg.cc/cCxK7v8Z/Captura-de-pantalla-de-2022-06-11-20-13-17.png"
+        ]
       },
       {
         name: "ProfileLibrary",
         tecnology: "React, Redux, Express.js",
         description: "Red Social genérica, clon de Facebook/Linked-in",
         repository: "none",
-        score: "[1,2,3]",
-        deploying: "none"
+        score: [5,5,3],
+        deploying: "https://www.facebook.com/",
+        imagen:["https://i.postimg.cc/6517R56J/Captura-de-pantalla-de-2022-06-11-20-10-08.png",
+         "https://i.postimg.cc/2yS6bgPS/Captura-de-pantalla-de-2022-06-11-20-09-37.png",
+         "https://i.postimg.cc/Z5HJ3wx9/Captura-de-pantalla-de-2022-06-11-20-09-21.png",
+         "https://i.postimg.cc/0NNPC7VV/Captura-de-pantalla-de-2022-06-11-20-09-15.png",
+         "https://i.postimg.cc/k5C7RkSP/Captura-de-pantalla-de-2022-06-11-20-09-13.png"
+        ]
       },
       {
         name: "React project",
         tecnology: "React",
         description: "Proyecto creado con create-react-app",
         repository: "none",
-        score: "[1,2,3]",
-        deploying: "none"
+        score: [4,3,3],
+        deploying: "https://es.reactjs.org/",
+        imagen:["https://i.postimg.cc/sgQMJd1B/Captura-de-pantalla-de-2022-06-11-20-15-37.png",
+         "https://i.postimg.cc/jdjwLJb4/Captura-de-pantalla-de-2022-06-11-20-15-40.png",
+         "https://i.postimg.cc/xCR8d9pZ/Captura-de-pantalla-de-2022-06-11-20-15-44.png",
+         "https://i.postimg.cc/26m3m1Gv/Captura-de-pantalla-de-2022-06-11-20-15-47.png",
+         "https://i.postimg.cc/Jhjt9NNM/Captura-de-pantalla-de-2022-06-11-20-15-50.png"
+        ]
       },
       {
         name: "Hello World.js",
         tecnology: "React, Redux, Express.js",
         description: "Proyecto para aprender a programar con Javascript",
         repository: "none",
-        score: "[1,2,3]",
-        deploying: "none"
+        score: [1,2,3],
+        deploying: "https://www.soyhenry.com/",
+        imagen:["https://i.postimg.cc/VkWkgfmk/Captura-de-pantalla-de-2022-06-11-20-14-20.png",
+         "https://i.postimg.cc/Bn0v2LWz/Captura-de-pantalla-de-2022-06-11-20-14-22.png",
+         "https://i.postimg.cc/g0ckBC2q/Captura-de-pantalla-de-2022-06-11-20-14-31.png",
+         "https://i.postimg.cc/zvxyxqnh/Captura-de-pantalla-de-2022-06-11-20-14-35.png",
+         "https://i.postimg.cc/FRR5jms8/Captura-de-pantalla-de-2022-06-11-20-14-50.png",
+         "https://i.postimg.cc/FHM7WWJT/Captura-de-pantalla-de-2022-06-11-20-14-55.png",
+         "https://i.postimg.cc/Pxrh2YK6/Captura-de-pantalla-de-2022-06-11-20-14-59.png"
+        ]
       },
       {
         name: "BlueBird",
         tecnology: "Ruby on Rails",
         description: "Clon de twitter pero mejor (?)",
         repository: "none",
-        score: "[1,2,3]",
-        deploying: "none"
+        score: [3,3,3],
+        deploying: "https://twitter.com/",
+        imagen:["https://i.postimg.cc/HkPtV25H/Captura-de-pantalla-de-2022-06-11-19-55-33.png",
+         "https://i.postimg.cc/hvXnqnkT/Captura-de-pantalla-de-2022-06-11-19-56-04.png",
+         "https://i.postimg.cc/Yqj0pK6X/Captura-de-pantalla-de-2022-06-11-19-56-29.png",
+         "https://i.postimg.cc/Bb7vxM0c/Captura-de-pantalla-de-2022-06-11-19-57-05.png",
+         "https://i.postimg.cc/C1mMgmzT/Captura-de-pantalla-de-2022-06-11-19-56-48.png"
+        ]
       }
     ]
     for (let i = 0; i < users.length; i++) {
