@@ -8,9 +8,13 @@
     background: #012A4A;
     padding: 0.5% 1% 0.5% 3%;
     font-family: 'Poppins', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+
 }
 
-.logo-navBar{
+.logo-navBar {
     font-size: 43px;
     font-weight: bolder;
     border: none;
@@ -20,13 +24,13 @@
     color: white;
 }
 
-.verTodo-navBar{
+.verTodo-navBar {
     text-decoration: none;
     color: white;
     transition: 0.5s;
 }
 
-.verTodo-navBar:hover{
+.verTodo-navBar:hover {
     font-size: larger;
     font-weight: bolder;
 }
@@ -37,7 +41,10 @@
     margin: 1%;
 }
 
-.btn-perfil-navBar, .btn-register-navBar, .btn-logout-navBar, .btn-login-navBar {
+.btn-perfil-navBar,
+.btn-register-navBar,
+.btn-logout-navBar,
+.btn-login-navBar {
     border: none;
     padding: 10px;
     width: 80px;
@@ -48,13 +55,17 @@
     letter-spacing: 0.7px;
     transition: 0.5s;
 }
-.btn-logout-navBar, .btn-login-navBar {
+
+.btn-logout-navBar,
+.btn-login-navBar {
     margin-left: 15%;
 }
 
-.btn-perfil-navBar:hover, .btn-register-navBar:hover, .btn-logout-navBar:hover, .btn-login-navBar:hover {
+.btn-perfil-navBar:hover,
+.btn-register-navBar:hover,
+.btn-logout-navBar:hover,
+.btn-login-navBar:hover {
     background-color: #014F86;
-    color:white;
+    color: white;
     box-shadow: 0 0 5px 3px rgb(235, 230, 230);
 }
-

@@ -9,20 +9,15 @@
 
 #Cont-populares {
     padding: 2px;
-    width: 95vw;
-    height: 80vh;
+    width: 98vw;
+    height: 82vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    margin: 5px;
+    margin: 0;
 }
 
-.Carrusel {
-    width: 95vw;
-    height: 80vh;
-    background-color: rgb(119, 0, 255);
-}
 
 .cont-filtros {
     display: flex;
@@ -36,13 +31,98 @@
     flex-wrap: wrap;
     justify-content: center
 }
-.home-paginado-button{
-    background-color:aqua
+
+.home-paginado-button {
+    padding: 12px;
+    width: 90%;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(235, 230, 230);
+    font-weight: bolder;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
+    transition: 0.6s;
+
 
 }
-.home-paginado-button-select{
-    background-color:green
 
+.home-paginado-button-select {
+    padding: 12px;
+    width: 90%;
+    border: none;
+    border-radius: 50px;
+    background-color: #014F86;
+    color: white;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
+    transition: 0.6s;
+
+}
+
+.container-paginado {
+    display: inline-block;
+    padding: 1px;
+    margin: 1px;
+    top: 15px;
+
+    padding: 8px 8pxpx;
+
+}
+
+.home-paginado-button:hover {
+    background-color: #014F86;
+    color: white;
+    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
+
+}
+
+div input {
+    border-style: solid;
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+    padding: 9px 32px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    outline: 0;
+    transition: border .4s;
+    cursor: pointer;
+}
+
+div input:hover {
+    border: 1px solid #1127ec;
+}
+
+div select {
+    border-style: solid;
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+    padding: 9px 32px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    outline: 0;
+    transition: border .4s;
+    cursor: pointer;
+}
+
+div select:hover {
+    border: 1px solid #1127ec;
 }
 
 /* 
