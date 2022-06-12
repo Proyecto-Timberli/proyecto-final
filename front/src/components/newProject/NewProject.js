@@ -6,7 +6,6 @@ import validate from './validacion'
 import { postProject } from '../../redux/actions/actionCreators'
 
 
-
 export default function NewProject() {
     const dispatch = useDispatch()
     const initialValues = {
@@ -91,12 +90,11 @@ export default function NewProject() {
                     <div className={styles.container}>
                         <div >
                             <form onSubmit={e => e.preventDefault()} className={styles.container_I} >
-                                <h1 className={styles.title}>Tell us about your website</h1>
+                                <h1 className={styles.title}>Comparti tu proyecto</h1>
                                 <label>
                                     <div className={styles.form}>
-                                        <p>website name*</p>
                                         <input
-                                            placeholder='Enter the name of your website'
+                                            placeholder='Nombre de tu website'
                                             name="name"
                                             value={values.name}
                                             onChange={handleChange}
@@ -111,12 +109,9 @@ export default function NewProject() {
 
                                 <label>
                                     <div className={styles.form}>
-
-                                        <p>description*</p>
                                         <textarea
-
                                             className={styles.input}
-                                            placeholder='description'
+                                            placeholder='Ingresa una descripcion'
                                             name="descripcion"
                                             value={values.descripcion}
                                             onChange={handleChange}
@@ -130,10 +125,8 @@ export default function NewProject() {
 
                                 <label>
                                     <div className={styles.form}>
-                                        <p>technologies*</p>
-
                                         <input
-                                            placeholder='technologies used'
+                                            placeholder='Tecnologias utilizadas'
                                             name="tecnologias"
                                             value={values.tecnologias}
                                             className={styles.input}
@@ -147,10 +140,8 @@ export default function NewProject() {
 
                                 <label>
                                     <div className={styles.form}>
-
-                                        <p>repository</p>
                                         <input
-                                            placeholder='repository url'
+                                            placeholder='URL del repositorio'
                                             name="repositorio"
                                             value={values.repositorio}
                                             onChange={handleChange}
@@ -164,10 +155,8 @@ export default function NewProject() {
                                 {touched.repositorio && errors.repositorio && <p className={styles.error}>{errors.repositorio}</p>}
                                 <label>
                                     <div className={styles.form}>
-
-                                        <p>deploy</p>
                                         <input
-                                            placeholder='deploy url'
+                                            placeholder='URL del deploy'
                                             name="deploy"
                                             value={values.deploy}
                                             className={styles.input}
@@ -182,7 +171,7 @@ export default function NewProject() {
                                     className={styles.inputprueba}
                                     name="Imagen"
                                     disabled={Imagen[0] ? true : false}
-                                    placeholder="Enter the URL of the image"
+                                    placeholder="URL de la imagen"
                                     value={values.Imagen}
                                     onChange={e => {
                                         handleChange(e);
@@ -260,6 +249,7 @@ export default function NewProject() {
                     <button onClick={e => onSubmit(e)}>Publicar</button> */}
         {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
                                 <button
+                                    className={styles.btnProyecto}
                                     name="buttonSubmit"
                                     disabled={JSON.stringify(initialValues) === JSON.stringify(values)}
                                     onBlur={handleBlur}

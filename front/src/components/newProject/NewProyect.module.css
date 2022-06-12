@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .container {
   /* position: absolute; */
   display: flex;
   flex-direction: row;
   border-radius: 30px;
   background: #ffffff;
+  font-family: 'Poppins', sans-serif;
   width: 72%;
   padding: 40px;
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
@@ -109,9 +112,10 @@
 .form {
   --width-of-input: 200px;
   --border-height: 1px;
-  --border-before-color: rgba(221, 221, 221, 0.39);
+  --border-before-color: #A9D6E5;
   --border-after-color: #5891ff;
   --input-hovered-color: #4985e01f;
+  font-family: 'Poppins', sans-serif;
   position: relative;
   width: var(--width-of-input);
   display: flex;
@@ -128,6 +132,7 @@
   padding-inline: 0.5em;
   padding-block: 0.7em;
   border: none;
+  font-family: 'Poppins', sans-serif;
   border-bottom: var(--border-height) solid var(--border-before-color);
 }
 /* styling of animated border */
@@ -151,4 +156,24 @@
 /* here is code of animated border */
 .input:focus ~ .input_border {
   width: 100%;
+}
+
+.btnProyecto{
+  width: 250px;
+  padding: 10px;
+  border: none;
+  background-color: #61A5C2;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+  font-family: inherit;
+}
+
+.btnProyecto:hover {
+  border: none;
+  background-color: #2A6F97;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
 }
