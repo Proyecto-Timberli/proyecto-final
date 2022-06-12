@@ -37,7 +37,7 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.logged)
-
+    console.log(allProjects[1])
     //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
@@ -63,6 +63,8 @@ const Home = () => {
                             key={e.id}
                             name={e.name}
                             id={e.id}
+                            user={e.user.userName}
+                            imagen = {e.imagen}
                         />)}
                     </div>
                 }
