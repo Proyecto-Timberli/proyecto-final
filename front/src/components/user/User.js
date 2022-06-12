@@ -76,7 +76,17 @@ const User = () => {
         return (<h1>Cargando...</h1>)
     }
 
-    if (userData !== []) {
+    if (askedForData && userData.id !== Number.parseInt(id)) {
+        return (
+            <div className='profileContainer'>
+                <div className='profileContents'>
+                    <h1>Usuario no encontrado.</h1>    
+                </div>
+            </div>
+        )
+    }
+
+    if (askedForData && userData.id === Number.parseInt(id)) {
         return (
             <div className='profileContainer'>
                 <div className='profileInfo'>
@@ -103,7 +113,9 @@ const User = () => {
                     </div>
                 </div>
             </div>)
-    }
+    } 
+    
+    
 }
 
 export default User

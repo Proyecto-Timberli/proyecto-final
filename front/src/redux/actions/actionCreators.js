@@ -3,7 +3,16 @@
  */
 
 // imports
-import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_USER_BY_ID, GET_PROJECT_BY_ID, RESET_USER_BY_ID, RESET_PROJECT_BY_ID, LOGGED, SERVER_MESSAGE, ORDER_PROJECTS_BY} from "./actions.js"
+import { SAMPLE_ACTION,
+    GET_ALL_PROJECTS,
+    GET_USER_BY_ID,
+    GET_PROJECT_BY_ID,
+    RESET_USER_BY_ID,
+    RESET_PROJECT_BY_ID,
+    LOGGED, SERVER_MESSAGE,
+    ORDER_PROJECTS_BY
+} from "./actions.js"
+
 import axios from 'axios'
 // Creadores de acciones
 export function sampleAction(value) {
@@ -36,6 +45,14 @@ export function getUserById(id) {
                     type: GET_USER_BY_ID,
                     payload: res.data
                 })
+            }).catch((err) => {
+                
+                if (err.response.status === 404) {
+                    dispatch({
+                        type: RESET_USER_BY_ID
+                    })
+                }
+
             })
     }
 }
