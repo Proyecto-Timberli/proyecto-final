@@ -4,7 +4,7 @@
     border-top: 1px solid antiquewhite;
     width: 100%;
     position: relative;
-    background-color: #428fbb;
+    background-color: #012A4A;
     font-family: 'Poppins', sans-serif;
     padding-bottom: 1px;
 }
@@ -37,7 +37,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: bolder;
     text-decoration: none;
-    color: black;
+    color: black;   
     margin-left: 5px;
 }
 
@@ -52,6 +52,4 @@
 
 .h1-footer {
     color: white;
-    font-weight: bold;
-    -webkit-text-stroke: .9px black;
 }

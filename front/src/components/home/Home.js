@@ -6,9 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects, loggin } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
-import Group11 from '../../images/Group 11.png';
-import Group10 from '../../images/Group 10.jpg';
-import landingimage from '../../images/landingImage.jpeg';
 
 
 const Home = () => {
@@ -42,30 +39,37 @@ const Home = () => {
     let logger = useSelector((state) => state.logged)
     console.log(allProjects[1])
     //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+   
+    //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
+            {/* {(Object.keys(allProjects).length)&&
             <div id="Cont-populares">
-                <div className="sheetSlider  sh-default  sh-auto " >
-                    <input id="s1" type="radio" name="slide1" checked />
+                <div className="sheetSlider  sh-default " >
+                    <input id="s1" type="radio" name="slide1" />
                     <input id="s2" type="radio" name="slide1" />
                     <input id="s3" type="radio" name="slide1" />
+
+
                     <div className="sh__content">
                         <div className="sh__item">
-                            <img src={Group10} alt="imgText" />
+                            <img src={allProjects[0].imagen[0]} alt="imgText" />
                             <div className="sh__meta">
                                 <h4>Timberli!</h4>
                                 <span>Proyecto final</span>
                             </div>
                         </div>
                         <div className="sh__item">
-                            <img src={landingimage} />
+                            <img src={allProjects[5].imagen[0]} />
                             <div className="sh__meta">
                                 <h4>Timberli!</h4>
                                 <span>Proyecto final</span>
                             </div>
                         </div>
                         <div className="sh__item">
-                            <img src={Group11} alt="imgText" />
+                            <img src={allProjects[1].imagen[0]} alt="imgText" />
                             <div className="sh__meta">
                                 <h4>Timberli!</h4>
                                 <span>Proyecto final</span>
@@ -76,7 +80,7 @@ const Home = () => {
                         <label htmlFor="s1"></label>
                         <label htmlFor="s2"></label>
                         <label htmlFor="s3"></label>
-                        <label htmlFor="s4"></label>
+
                     </div>
                     <div className="sh__arrows">
                         <label htmlFor="s1"></label>
@@ -85,7 +89,7 @@ const Home = () => {
                     </div>
                     <button className="sh-control"></button>
                 </div>
-            </div>
+            </div>} */}
             <div>
                 <hr></hr>
                 <div className='home-publica-si-logged'>

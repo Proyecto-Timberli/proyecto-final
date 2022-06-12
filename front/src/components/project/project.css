@@ -32,6 +32,7 @@
 .cont-img-detalle {
     background-color: rgba(224, 221, 221, 0.738);
     width: 75%;
+    height: 500px;
     margin: 1rem;
     padding: .2rem;
     border-radius: 5px;
