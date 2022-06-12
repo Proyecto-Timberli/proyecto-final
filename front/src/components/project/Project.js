@@ -1,24 +1,45 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState} from 'react'
 import imagen from './signup-image.png'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById } from '../../redux/actions/actionCreators'
+import Paginado from './paginado-imagenes.js'
 
 import Cargando from '../cargando/cargando';
 
 
+
+
 function Project() {
-
+    ////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
     const { id } = useParams();
-
     let dispatch = useDispatch()
     let project = useSelector((state) => state.projectById)
-
-
     useEffect(() => {
         dispatch(getProjectById(id))
     }, [])
+    ////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////paginado imagenes/////////////////////////////////////
+    const [cardsInPag, setCardsInPag] = useState({
+        renderCards: [],
+        pag: 1,
+    });
+    const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
+    const accionarPaginado = (selectPag, selectFilter) => {
+        setCardsInPag({
+            ...cardsInPag,
+            ...paginado.paginar(selectPag, selectFilter)
+        })
+    } 
+    useEffect(() => {
+        if (Object.keys(project).length && project.imagen.length){
+            accionarPaginado(1)       
+        }
+    }, [project])
+    ////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     console.log(project.user);
     //     name: 'Henry Food', 
@@ -35,61 +56,68 @@ function Project() {
     // tecnology: "React, Redux, Express.js"
     // updatedAt: "2022-06-10T18:22:03.095Z"
     // user: { id: 1, name: 'Luciano', userName: 'luciano', mail: 'luciano@mail.com', password: 'password', … }
-    // userId: 1
-    if (Object.keys(project).length === 0) return <Cargando />
+    // userId: 
+    if (!Object.keys(project).length) return <Cargando />
+   
     return (
-        <div>
-            <div className='card-container'>
-                <h2 className='tituloDetalle'>{project.name}</h2>
+       
+        <React.Fragment>
+            <div className='detail-container'>
+                <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
-                    <div className='cont-img-detalle'>
-                        {/* IMAGEN */}
-                        <img className='card-img-detalle' src={imagen}></img>
-                    </div>
-                    {/*  */}
-                    <div className='cont-info'>
-                        {/*Usuario*/}
+                <div className='cont-info'>              
+                        <div>
+                            <h3>Puntuacion:</h3>
+                            <div className='info-detalle' >{(project.score[0]|project.score[1]|project.score[2])}</div>
+                        </div>
                         <div >
                             <h3>Usuario:</h3>
                             <div className='info-detalle' >{project.user.name}</div>
-                        </div>
-                        {/* Deploy */}
-
+                        </div>                          
+                    </div>
+                
+                    <div className='cont-img-detalle'>
+                        {cardsInPag.renderCards.map(image => (!!image)&&
+                           <img className='card-img-detalle' src={image}></img> )}
+                        <div className="project-paginado-button-container">
+                            {paginado.buttons().map(button =>
+                            <div key={button}>
+                              {cardsInPag.pag !== button && <button className="project-paginado-button" onClick={() => accionarPaginado(button)}></button>}
+                              {cardsInPag.pag === button && <button className="project-paginado-button-select" onClick={() => accionarPaginado(button)}></button>}
+                            </div>
+                            )}
+                        </div> 
+                    </div>
+                    <div className='cont-info'>              
                         <div >
                             <h3>Deploy:</h3>
-                            {project.deploying === "none" ? <div className='info-detalle'>Sin Deploy</div> : <div className='info-detalle' ><a href={project.deploying}> Link Deploy</a></div>}
+                            {project.deploying === "none" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a href={project.deploying}> Link Deploy</a></div>}
 
                         </div>
                         {/* GitHub */}
                         <div>
                             <h3>GitHub:</h3>
-                            {project.user.github === "none" ? <div className='info-detalle'>Sin GitHub</div> : <div className='info-detalle' ><a href={project.deploying}> Link Deploy</a></div>}
-                        </div>
-
-                        {/* Linkedin */}
-                        <div>
-                            <h3>Linkedin:</h3>
-                            {project.user.linkedin === "none" ? <div className='info-detalle'>Sin Linkedin</div> : <div className='info-detalle' ><a href={project.user.linkedin}> Link Deploy</a></div>}
-                        </div>
+                            {project.repository === "none" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a href={project.repository}> Link GitHub</a></div>}
+                        </div>                             
 
                     </div>
                 </div>
                 {/*DESCRIPTION */}
                 <div>
                     <div className='desc-detalle'>
-                        <h3>Descripcion:</h3>
+                        <h3 >Descripcion:</h3>
                         <div>
-                            {project.description}
+                          <p className ="text">{project.description}</p>
                         </div>
                         <h3>Tecnologias:</h3>
                         <div>
-                            {project.tecnology}
+                          <p className ="text">{project.tecnology}</p> 
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 
