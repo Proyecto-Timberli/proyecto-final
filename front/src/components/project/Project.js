@@ -5,7 +5,6 @@ import './project.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
-
 import Cargando from '../cargando/cargando';
 
 
@@ -42,21 +41,7 @@ function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     console.log(project.user);
-    //     name: 'Henry Food', 
-    //tecnology: 'React, Redux, Express.js', 
-    //description: 'Proyecto Henry Foods para mostrar como ejemplo en clases', 
-    //repository: 'none',
-    // createdAt: "2022-06-10T18:22:03.038Z"
-    // deploying: "none"
-    // description: "Proyecto Henry Foods para mostrar como ejemplo en clases"
-    // id: 1
-    // name: "Henry Food"
-    // repository: "none"
-    // score: "[1,2,3]"
-    // tecnology: "React, Redux, Express.js"
-    // updatedAt: "2022-06-10T18:22:03.095Z"
-    // user: { id: 1, name: 'Luciano', userName: 'luciano', mail: 'luciano@mail.com', password: 'password', … }
-    // userId: 
+
     if (!Object.keys(project).length) return <Cargando />
 
     return (
