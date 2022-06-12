@@ -22,7 +22,7 @@ const Navbar = () => {
             </Link>
             {logged ?
                 <div className='botones-nav'>
-                    <Link to="/user">
+                    <Link to="/user/1">
                         <button className='btn-perfil-navBar'> Perfil </button>
                     </Link>
                     <button onClick={cambioLogin} className='btn-logout-navBar'> Salir </button>
