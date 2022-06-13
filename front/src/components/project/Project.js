@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjectById } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../cargando/cargando';
-
+import Page404 from '../Page404/Page404';
 
 
 
@@ -25,6 +25,8 @@ function Project() {
         renderCards: [],
         pag: 1,
     });
+
+
     const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
     const accionarPaginado = (selectPag, selectFilter) => {
         setCardsInPag({
@@ -42,7 +44,17 @@ function Project() {
 
     console.log(project.user);
 
-    if (!Object.keys(project).length) return <Cargando />
+    const [loading, setLoading] = useState(true);
+
+    
+    if (!Object.keys(project).length) {
+        if (loading) {
+            setTimeout(() => { setLoading(false) }, 5000)
+            return <Cargando />
+        }
+        return <Page404 />
+
+    }
 
     return (
 
