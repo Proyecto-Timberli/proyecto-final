@@ -88,13 +88,13 @@ function Project() {
                     <div className='cont-info'>
                         <div >
                             <h3>Deploy:</h3>
-                            {project.deploying === "none" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a href={project.deploying}> Link Deploy</a></div>}
+                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a href={project.deploying}> Link Deploy</a></div>}
 
                         </div>
                         {/* GitHub */}
                         <div>
                             <h3>GitHub:</h3>
-                            {project.repository === "none" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a href={project.repository}> Link GitHub</a></div>}
+                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a href={project.repository}> Link GitHub</a></div>}
                         </div>
 
                     </div>
