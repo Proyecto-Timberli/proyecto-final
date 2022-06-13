@@ -28,6 +28,8 @@
 .MiniCard-info {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 .MiniCard-title {
