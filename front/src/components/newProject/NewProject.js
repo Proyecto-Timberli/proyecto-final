@@ -22,7 +22,7 @@ export default function NewProject() {
 
     const [Imagen, setImagen] = useState([]);
     const [creacion, setCreacion] = useState(false);
-
+    const[errorSubmit, setErrorSubmit] = useState(false);
 
     function handleInputImage(e) {
         e.preventDefault()
@@ -59,7 +59,11 @@ export default function NewProject() {
     }
     function onSubmit(e, errors, values, resetForm) {
         e.preventDefault();
-        if (Object.keys(errors).length > 0) { return console.log("no se hizo el despacho") }
+        if (Object.keys(errors).length > 0|| JSON.stringify(values) === JSON.stringify(initialValues)) {
+            setErrorSubmit(true)
+            return 
+        }
+        setErrorSubmit(false)
         const NewProject = {
             name: values.name,
             imagen: [Imagen[0]],
@@ -255,13 +259,13 @@ export default function NewProject() {
                                     <button
                                         className={styles.btnProyecto}
                                         name="buttonSubmit"
-                                        disabled={JSON.stringify(initialValues) === JSON.stringify(values)}
+                                        // disabled={JSON.stringify(initialValues) === JSON.stringify(values)}
                                         onBlur={handleBlur}
                                         onClick={e => onSubmit(e, errors, values, resetForm)}
                                     >Publicar</button>
 
                                     {creacion && <div className={styles.exito}>Proyecto creado con exito</div>}
-
+                                    {errorSubmit && <div className={styles.error}>Completa de forma correcta los campos</div>}
                                 </form>
                             </div>
                             <div>
