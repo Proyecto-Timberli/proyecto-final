@@ -7,8 +7,8 @@ import { getProjectById } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../cargando/cargando';
 import Page404 from '../Page404/Page404';
-
 import { scroll } from "../../functions";
+
 
 
 function Project() {
@@ -44,7 +44,6 @@ function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    console.log(project.user);
 
     const [loading, setLoading] = useState(true);
 
