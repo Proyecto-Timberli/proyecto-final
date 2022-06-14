@@ -82,7 +82,7 @@ export default function About() {
                     </div>
 
                     <div className='team-member'>
-                        <img src={juanImg || profilePic} alt='' className='memberImage' />
+                        <img src={juanImg || profilePic} style={{height:'195px'}} alt='' className='memberImage' />
                         <p className='member-name'>Juan Pablo Rodriguez</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
