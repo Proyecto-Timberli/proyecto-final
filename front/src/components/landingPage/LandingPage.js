@@ -5,15 +5,13 @@ import imageLanding from '../../images/landingImageW.png';
 import boxOneImage from '../../images/Clip_brainstorm_by_Icons8.gif';
 import boxTwoImage from '../../images/landingImage.jpeg';
 import boxThreeImage from '../../images/developers-gif-showcase.gif';
-import { scroll } from "../../functions";
 
 
-export default function LandingPage() {
-    scroll()
-    return (
+export default function LandingPage () {
+    return(
         <div className="landingWrapper">
             <div className="landingTop">
-                <div className="landingWelcome">
+                <div className="landingWelcome"> 
                     <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
                     <Link to='/home'>
                         <button className="btn-explore"> VER TODOS </button>
@@ -26,10 +24,10 @@ export default function LandingPage() {
                     </Link>
                 </div>
                 <div className="landingImage">
-                    <img src={imageLanding} className='imageL' alt='aca va la imagen' />
+                    <img src={ imageLanding } className='imageL' alt='aca va la imagen'/>
                 </div>
             </div>
-
+            
             <div className="landingBody">
                 <div className='intro'>
                     <p className="landing-title">¿POR QUÉ TIMBERLI?</p>
@@ -38,7 +36,7 @@ export default function LandingPage() {
                             <h2>Explorá portfolios </h2>
                             <p className="text">La plataforma te permite ver otros proyectos pero también podes ingresar al perfil de un usuario y ver todo su portfolio. Puedes buscar a tus desarrolladores favoritos y usarlos de inspiración!</p>
                         </section>
-                        <section className="section">
+                        <section className="section"> 
                             <h2>Compartí tus trabajos</h2>
                             <p className="text">Créate un usuario y forma parte de esta comunidad! Vas a aumentar la visualización de tus proyectos, recibir feedback y participar en la votación de los mejores proyectos semanales.</p>
                         </section>
@@ -49,7 +47,7 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div className="box-one">
-                    <img src={boxOneImage} className='imageBox1' alt='aca va la imagen' />
+                    <img src={ boxOneImage } className='imageBox1' alt='aca va la imagen'/>
                     <section className="boxSection">
                         <h2>¿Qué vas a encontrar?</h2>
                         <hr className="lineLanding"></hr>
@@ -69,12 +67,12 @@ export default function LandingPage() {
                             <button className="btn-login"> Forma parte </button>
                         </Link>
                     </section>
-                    <img src={boxTwoImage} className='imageBox2' alt='aca va la imagen' />
+                    <img src={ boxTwoImage } className='imageBox2' alt='aca va la imagen'/>
                 </div>
 
                 <div className="box-three">
-                    <img src={boxThreeImage} className='imageBox3' alt='aca va la imagen' />
-                    <section className="boxSection">
+                    <img src={ boxThreeImage } className='imageBox3' alt='aca va la imagen'/>
+                    <section className="boxSection"> 
                         <h2>Sobre Timberli</h2>
                         <hr className="lineLanding"></hr>
                         <p className="text">Es la plataforma donde los usuarios vienen para mostrar sus ideas innovadoras, encontrar inspiración, feedback constructivo  y conectar con la comunidad. <br></br> ¿Querés saber más?</p>

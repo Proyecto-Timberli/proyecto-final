@@ -5,10 +5,8 @@ import { Formik } from 'formik'
 import validate from './validacion'
 import { postProject } from '../../redux/actions/actionCreators'
 import imagen from "../../images/plataforma.png"
-import { scroll } from "../../functions";
 
 export default function NewProject() {
-    scroll()
     const dispatch = useDispatch()
     const logged = useSelector((state) => state.logged)
     const initialValues = {
@@ -24,7 +22,7 @@ export default function NewProject() {
 
     const [Imagen, setImagen] = useState([]);
     const [creacion, setCreacion] = useState(false);
-    const [errorSubmit, setErrorSubmit] = useState(false);
+    const[errorSubmit, setErrorSubmit] = useState(false);
 
     function handleInputImage(e) {
         e.preventDefault()
@@ -61,9 +59,9 @@ export default function NewProject() {
     }
     function onSubmit(e, errors, values, resetForm) {
         e.preventDefault();
-        if (Object.keys(errors).length > 0 || JSON.stringify(values) === JSON.stringify(initialValues)) {
+        if (Object.keys(errors).length > 0|| JSON.stringify(values) === JSON.stringify(initialValues)) {
             setErrorSubmit(true)
-            return
+            return 
         }
         setErrorSubmit(false)
         const NewProject = {
@@ -87,7 +85,7 @@ export default function NewProject() {
 
     return (<>
         {!logged ? <div className={styles.containerAllDiv}>
-            <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
+        <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
         </div> :
             <Formik
                 initialValues={initialValues}

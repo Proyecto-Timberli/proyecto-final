@@ -10,23 +10,22 @@
 }
 
 .p-link {
+
     background-color: antiquewhite;
     border: none;
     padding: 10px;
     width: 80px;
     border-radius: 4px;
     cursor: pointer;
+
     letter-spacing: 0.7px;
     transition: 0.5s;
 }
 
 .p-link:hover {
     background-color: #014F86;
-    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
-}
-
-.p-link:hover p {
     color: white;
+    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
 }
 
 .part-abajo {
@@ -34,20 +33,18 @@
     margin: 0 auto;
 }
 
-.part-abajo a {
-    text-decoration: none;
-}
-
 .a-footer {
     font-family: 'Poppins', sans-serif;
     font-weight: bolder;
     text-decoration: none;
-    color: black;
-    margin: 0;
-
+    color: black;   
+    margin-left: 5px;
 }
 
+.a-footer :hover {
+    color: white;
 
+}
 
 .part-arriba {
     margin: 10px;
