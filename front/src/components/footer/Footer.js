@@ -11,11 +11,11 @@ function Footer() {
                     </div>
 
                     <div className='part-abajo'>
-                        <p className='p-link'>
-                            <Link className='a-footer' to='/about'>
-                                About
-                            </Link>
-                        </p>
+                        <Link to='/about'>
+                            <div className='p-link'>
+                                <p className='a-footer'>About</p>
+                            </div>
+                        </Link>
                     </div>
 
                     <p> ©Copyright - 2022</p>

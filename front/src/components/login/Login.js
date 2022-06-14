@@ -5,16 +5,18 @@ import { Link } from 'react-router-dom';
 import google from '../../images/google.png';
 import linkedin from '../../images/linkedin.png';
 import github from '../../images/github.png';
+import { scroll } from "../../functions";
 
 
 export default function Login() {
+    scroll()
     return (
         <div className='container-login'>
 
             <div className='login-left'>
                 <h1 className='login-title'> Welcome back! </h1>
                 <div className='login-image'>
-                    <img src={imgLogin} className='imgLogin' alt="imagen login" width="400"/>
+                    <img src={imgLogin} className='imgLogin' alt="imagen login" width="400" />
                 </div>
             </div>
 
@@ -23,15 +25,15 @@ export default function Login() {
                 <form method="POST" className='login-form'>
                     <div className="login-item">
                         <label></label>
-                        <input className="login-input" type='text' placeholder='Email'/>
+                        <input className="login-input" type='text' placeholder='Email' />
                     </div>
                     <div className="login-item">
                         <label></label>
-                        <input className="login-input" type='password' placeholder='Password'/>
+                        <input className="login-input" type='password' placeholder='Password' />
                     </div>
                     <div className="login-item">
-                        <label className="login-checkbox"> 
-                            <input type="checkbox" name="rememberMe" style={{display: 'unset'}} className="rememberMe"/>
+                        <label className="login-checkbox">
+                            <input type="checkbox" name="rememberMe" style={{ display: 'unset' }} className="rememberMe" />
                             <span className="login-checkmark"></span>
                             Remember me
                         </label>
@@ -45,13 +47,13 @@ export default function Login() {
                     <h4> Or sign in with</h4>
                     <div className="login-buttons">
                         <a href='https://www.google.com/'>
-                            <img src={google} width="60" alt="google" className='linkGoogle'/>
+                            <img src={google} width="60" alt="google" className='linkGoogle' />
                         </a>
                         <a href='https://www.linkedin.com/'>
-                            <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin'/>
+                            <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
                         </a>
                         <a href='https://github.com/'>
-                            <img src={github} width="60"  alt="github" className='linkGithub'/>
+                            <img src={github} width="60" alt="github" className='linkGithub' />
                         </a>
                     </div>
                     <div className='login-register'>
@@ -63,7 +65,7 @@ export default function Login() {
                 </div>
 
             </div>
-            
+
         </div>
     )
 };
