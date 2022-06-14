@@ -4,7 +4,13 @@ import teamWork from '../../images/teamWork.gif'
 import profilePic from '../../images/profilePic.jpeg'
 import linkedIn from '../../images/logotipo-de-linkedin.png'
 import gitHub from '../../images/signo-de-github.png'
-import { scroll } from "../../functions";
+import { scroll } from "../../functions"
+import lucianoImg from "./images/luciano-ab.jpg"
+import lucasImg from "./images/lucas-ab.jpg"
+import cristobalImg from "./images/cristobal-ab.png"
+import andresImg from "./images/andres-ab.jpg"
+import juanImg from "./images/juan-ab.png"
+
 
 export default function About() {
     scroll()
@@ -36,7 +42,7 @@ export default function About() {
                 <div className='team-members'>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={lucasImg || profilePic} alt='' className='memberImage' />
                         <p className='member-name'>Lucas Luna Clarasó</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
@@ -46,7 +52,7 @@ export default function About() {
                     </div>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={andresImg || profilePic} alt='' className='memberImage' />
                         <p className='member-name'>Andres Gomez</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
@@ -56,7 +62,7 @@ export default function About() {
                     </div>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={cristobalImg || profilePic} alt='' className='memberImage' />
                         <p className='member-name'>Cristobal Herreros</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
@@ -66,7 +72,7 @@ export default function About() {
                     </div>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={lucianoImg || profilePic} alt='' className='memberImage' />
                         <p className='member-name'>Luciano Mocchegiani</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
@@ -76,7 +82,7 @@ export default function About() {
                     </div>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={juanImg || profilePic} alt='' className='memberImage' />
                         <p className='member-name'>Juan Pablo Rodriguez</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
