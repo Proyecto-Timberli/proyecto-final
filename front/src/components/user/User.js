@@ -6,8 +6,10 @@ import { getUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
 import './User.css'
+import { scroll } from "../../functions";
 
 const User = () => {
+    scroll()
     // se usa para la request al back
     const { id } = useParams()
     const dispatcher = useDispatch()

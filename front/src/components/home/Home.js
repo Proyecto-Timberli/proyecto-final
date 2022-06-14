@@ -7,8 +7,10 @@ import { getAllProjects, loggin } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
 
+import { scroll } from "../../functions";
 
 const Home = () => {
+    scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
@@ -40,56 +42,11 @@ const Home = () => {
     console.log(allProjects[1])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
-   
+
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
-            {/* {(Object.keys(allProjects).length)&&
-            <div id="Cont-populares">
-                <div className="sheetSlider  sh-default " >
-                    <input id="s1" type="radio" name="slide1" />
-                    <input id="s2" type="radio" name="slide1" />
-                    <input id="s3" type="radio" name="slide1" />
-
-
-                    <div className="sh__content">
-                        <div className="sh__item">
-                            <img src={allProjects[0].imagen[0]} alt="imgText" />
-                            <div className="sh__meta">
-                                <h4>Timberli!</h4>
-                                <span>Proyecto final</span>
-                            </div>
-                        </div>
-                        <div className="sh__item">
-                            <img src={allProjects[5].imagen[0]} />
-                            <div className="sh__meta">
-                                <h4>Timberli!</h4>
-                                <span>Proyecto final</span>
-                            </div>
-                        </div>
-                        <div className="sh__item">
-                            <img src={allProjects[1].imagen[0]} alt="imgText" />
-                            <div className="sh__meta">
-                                <h4>Timberli!</h4>
-                                <span>Proyecto final</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="sh__btns">
-                        <label htmlFor="s1"></label>
-                        <label htmlFor="s2"></label>
-                        <label htmlFor="s3"></label>
-
-                    </div>
-                    <div className="sh__arrows">
-                        <label htmlFor="s1"></label>
-                        <label htmlFor="s2"></label>
-                        <label htmlFor="s3"></label>
-                    </div>
-                    <button className="sh-control"></button>
-                </div>
-            </div>} */}
             <div>
                 <hr></hr>
                 <div className='home-publica-si-logged'>

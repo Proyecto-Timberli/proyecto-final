@@ -1,8 +1,10 @@
 import React from 'react'
 import './register.css'
 import imgSignUp from './signup-image.png'
+import { scroll } from "../../functions";
 
 function Register() {
+    scroll()
     return (
         <div>
             <section className="signup">
