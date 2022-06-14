@@ -8,9 +8,11 @@ import Paginado from './paginado-imagenes.js'
 import Cargando from '../cargando/cargando';
 import Page404 from '../Page404/Page404';
 
+import { scroll } from "../../functions";
 
 
 function Project() {
+    scroll()
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
     const { id } = useParams();
@@ -46,7 +48,7 @@ function Project() {
 
     const [loading, setLoading] = useState(true);
 
-    
+
     if (!Object.keys(project).length) {
         if (loading) {
             setTimeout(() => { setLoading(false) }, 5000)
