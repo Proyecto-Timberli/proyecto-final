@@ -1,6 +1,7 @@
-import React from "react";
+import React  from "react";
 import './landingPage.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 import imageLanding from '../../images/landingImageW.png';
 import boxOneImage from '../../images/Clip_brainstorm_by_Icons8.gif';
 import boxTwoImage from '../../images/landingImage.jpeg';
@@ -10,25 +11,38 @@ import { scroll } from "../../functions";
 
 export default function LandingPage() {
     scroll()
+    const logged = useSelector((state) => state.logged);
+
     return (
         <div className="landingWrapper">
-            <div className="landingTop">
-                <div className="landingWelcome">
-                    <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
-                    <Link to='/home'>
-                        <button className="btn-explore"> VER TODOS </button>
-                    </Link>
-                    <Link to='/register'>
-                        <button className="btn-share"> COMPARTIR </button>
-                    </Link>
-                    <Link to='/login'>
-                        <button className="btn-login"> LOG IN </button>
-                    </Link>
+                <div className="landingTop">
+                    {logged ?
+                    <div className="landingWelcome">
+                        <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
+                        <Link to='/home'>
+                            <button className="btn-explore"> VER TODOS </button>
+                        </Link>
+                    </div>
+                    :
+                    <div className="landingWelcome">
+                        <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
+                        <Link to='/home'>
+                            <button className="btn-explore"> VER TODOS </button>
+                        </Link>
+                        <Link to='/register'>
+                            <button className="btn-share"> COMPARTIR </button>
+                        </Link>
+                        <Link to='/login'>
+                            <button className="btn-login"> LOG IN </button>
+                        </Link>
+                    </div>
+                    }
+                    <div className="landingImage">
+                        <img src={imageLanding} className='imageL' alt='aca va la imagen' />
+                    </div>
+                
                 </div>
-                <div className="landingImage">
-                    <img src={imageLanding} className='imageL' alt='aca va la imagen' />
-                </div>
-            </div>
+                
 
             <div className="landingBody">
                 <div className='intro'>
@@ -36,7 +50,7 @@ export default function LandingPage() {
                     <div className="sections">
                         <section className="section">
                             <h2>Explorá portfolios </h2>
-                            <p className="text">La plataforma te permite ver otros proyectos pero también podes ingresar al perfil de un usuario y ver todo su portfolio. Puedes buscar a tus desarrolladores favoritos y usarlos de inspiración!</p>
+                            <p className="text">La plataforma te permite ver otros proyectos y también podes ingresar al perfil de un usuario y ver todo su portfolio. Puedes buscar a tus desarrolladores favoritos y usarlos de inspiración!</p>
                         </section>
                         <section className="section">
                             <h2>Compartí tus trabajos</h2>
@@ -44,7 +58,7 @@ export default function LandingPage() {
                         </section>
                         <section className="section">
                             <h2>Conectá con la comunidad</h2>
-                            <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p className="text">Recibi feedback de personas del rubro y puntuación para todos tus proyectos. Se califica el diseño, funcionalidad y originalidad.</p>
                         </section>
                     </div>
                 </div>
