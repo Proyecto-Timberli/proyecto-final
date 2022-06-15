@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .contenedor-footer {
-    border-top: 1px solid antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     position: relative;
     background-color: #012A4A;
@@ -9,50 +12,67 @@
     padding-bottom: 1px;
 }
 
-.p-link {
-    background-color: antiquewhite;
-    border: none;
-    padding: 10px;
-    width: 80px;
-    border-radius: 4px;
-    cursor: pointer;
-    letter-spacing: 0.7px;
-    transition: 0.5s;
+.part-arriba{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px;
 }
 
-.p-link:hover {
-    background-color: #014F86;
-    box-shadow: 0 0 5px 3px rgb(235, 230, 230);
-}
-
-.p-link:hover p {
-    color: white;
-}
-
-.part-abajo {
-    width: 100px;
-    margin: 0 auto;
-}
-
-.part-abajo a {
-    text-decoration: none;
-}
-
-.a-footer {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    text-decoration: none;
-    color: black;
-    margin: 0;
-
-}
-
-
-
-.part-arriba {
-    margin: 10px;
+.footer-left{
+    margin-left: 80px;
+    margin-top: 10px;
 }
 
 .h1-footer {
     color: white;
+    font-size: 35px;
+}
+
+.footer-socials{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.footer-social{
+    padding: 0px 8px 0px 8px;
+    color: rgba(255, 255, 255, 0.69);
+    cursor: pointer;
+    font-size: larger;
+}
+.footer-social:hover{
+    color: white;
+}
+
+
+.footer-right{
+    margin-right: 130px;
+    margin-top: 80px;
+}
+
+.p-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.p-link:hover {
+    letter-spacing: 2px;
+}
+
+.a-footer {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
+    margin: 0;
+}
+
+
+.part-abajo {
+    margin: 0;
+    color: rgb(141, 137, 137);
+    font-size: smaller;
 }

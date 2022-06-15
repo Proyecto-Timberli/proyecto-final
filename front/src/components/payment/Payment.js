@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { scroll } from "../../functions"
 import "./payment.css";
 
 
 export default function Payment() {
-    
+    scroll()
     return (
         <div className="card-payment">
             <form className="form-payment">
