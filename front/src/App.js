@@ -11,6 +11,7 @@ import NewProject from '../src/components/newProject/NewProject.js'
 import About from '../src/components/about/About.js'
 import Footer from '../src/components/footer/Footer.js'
 import Page404 from '../src/components/Page404/Page404.js';
+import Payment from './components/payment/Payment';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/project/:id" element={<Project />} />
         <Route exact path="/newProject" element={<NewProject />} />
         <Route exact path="/about" element={<About />} />
+        <Route exact path="/payment" element={<Payment />} />
         <Route path='*' element={<Page404 />} />
       </Routes>
       <Footer />
