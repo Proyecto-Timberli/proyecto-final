@@ -1,12 +1,7 @@
-/**
- * Aquí van los creadores de acciones
- */
-
-// imports
 import { SAMPLE_ACTION,
-    GET_ALL_PROJECTS,
     GET_USER_BY_ID,
     GET_PROJECT_BY_ID,
+    GET_ALL_PROJECTS,
     RESET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
     LOGGED, SERVER_MESSAGE,
@@ -14,7 +9,9 @@ import { SAMPLE_ACTION,
 } from "./actions.js"
 
 import axios from 'axios'
-// Creadores de acciones
+
+const {REACT_APP_API} = process.env
+
 export function sampleAction(value) {
     return {
         type: SAMPLE_ACTION,
@@ -24,7 +21,7 @@ export function sampleAction(value) {
 
 export function getAllProjects() {
     return function (dispatch) {
-        axios.get('http://localhost:3001/api/project')
+        axios.get(REACT_APP_API+'/api/project')
             .then(response => {
                 dispatch({
                     type: GET_ALL_PROJECTS,
@@ -39,7 +36,7 @@ export function getAllProjects() {
 
 export function getUserById(id) {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/api/user/id/${id}`)
+        axios.get(REACT_APP_API+`/api/user/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_USER_BY_ID,
@@ -59,7 +56,7 @@ export function getUserById(id) {
 
 export function getProjectById(id) {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/api/project/id/${id}`)
+        axios.get(REACT_APP_API+`/api/project/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_PROJECT_BY_ID,
@@ -71,7 +68,7 @@ export function getProjectById(id) {
 
 export function postProject(project) {
     return function () {
-        axios.post('http://localhost:3001/api/project', project)
+        axios.post(REACT_APP_API+'/api/project', project)
             .then(response => response.data)
             .catch(error => console.error(error))
     }
