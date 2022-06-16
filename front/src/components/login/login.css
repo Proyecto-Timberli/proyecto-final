@@ -98,3 +98,7 @@
 .login-link{
     margin-left: 5px;
 }
+
+.login-formError {
+    color: red
+}

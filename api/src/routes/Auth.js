@@ -2,7 +2,7 @@ const axios = require('axios');
 const { Router } = require('express');
 const { User } = require('../db.js');
 const bcrypt = require('bcrypt')
-
+const jwt = require('jsonwebtoken')
 
 const router = Router();
 
@@ -46,24 +46,37 @@ router.post("/register", (req, res, next) => {
         })
 })
 
-router.post("/login", (req, res, next) => {
+router.post("/login", (req, res, next) => {  
+
     User.findOne({
         where: {
             mail: req.body.email
         }
     }).then(user => {
-            if (user) {
+            if (user) {   
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    let token = jwt.sign(user.dataValues, process.env.JWT_SECRET_KEY, {
+                    let token = jwt.sign({ id: user.dataValues.id, email: user.dataValues.mail }, process.env.JWT_SECRET_KEY, {
                         expiresIn: 1440
                     })
-                    res.send(token)
+                    res.send({
+                        status: "success",
+                        token: token
+                    })
+
+                } else {
+                    res.status(400).send({
+                        status: "error",
+                        error: 'Usuario o Contraseña Incorrecta' 
+                    })
                 }
             } else {
-                res.status(400).json({ error: 'User does not exist' })
+                res.status(400).send({
+                    status: "error",
+                    error: 'Usuario o Contraseña Incorrecta'
+                })
             }
         }).catch(err => {
-            res.status(400).json({ error: err })
+            res.status(400).json({ status: "error", error: err.message })
         })
 })
 
