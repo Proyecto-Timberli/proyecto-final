@@ -72,6 +72,7 @@
     color: black;
     font-weight: bold;
     transition: 0.4s ease;
+    text-decoration: none;
 }
 
 /*Image*/
@@ -95,12 +96,6 @@
 
 .card-home:hover:before {
     opacity: 1;
-}
-
-.card-home:hover .card-info-home {
-    opacity: 1;
-    transform: translateY(1%);
-    margin: 0 auto;
 }
 
 .card-button-home:hover {
