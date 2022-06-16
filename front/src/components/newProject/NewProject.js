@@ -70,7 +70,7 @@ export default function NewProject() {
         setImagen("");
     }
 
-
+ 
     return (<>
         {!logged ? <div className={styles.containerAllDiv}>
             <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
