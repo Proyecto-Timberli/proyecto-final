@@ -3,7 +3,7 @@ import styles from "./NewProyect.module.css"
 import { useDispatch, useSelector, } from 'react-redux'
 import { Formik } from 'formik'
 import validate from './validacion'
-import { postProject } from '../../redux/actions/actionCreators'
+import postProject from './functionForPost/PostProject'
 import imagen from "../../images/plataforma.png"
 import { scroll } from "../../functions";
 
@@ -28,28 +28,14 @@ export default function NewProject() {
 
     function handleInputImage(e) {
         e.preventDefault()
-        console.log(e.target.value)
-        if (e.target.value) {
-            if (!/(http|https|ftp|ftps):\/\/[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,3}(\/\S*)?/.test(e.target.value)) {
-                return
-            }
-            else if (!/.*(png|jpg|jpeg|gif)$/.test(e.target.value)) {
-                return
-            }
-        }
+
+      
         if (e.target.value === "") return
-        setImagen([e.target.value, ...Imagen])
+        setImagen([e.target.files[0], ...Imagen])
+     
+
 
     }
-    // if (e.target.value) return e.target.value = ""
-    // function onChangeInput(e) {
-    //     // console.log(e.target.files)
-
-    //     setInput({
-    //         ...input,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
 
 
     function deletePhoto(e) {
@@ -59,7 +45,7 @@ export default function NewProject() {
         }))
 
     }
-    function onSubmit(e, errors, values, resetForm) {
+    async function onSubmit(e, errors, values, resetForm) {
         e.preventDefault();
         if (Object.keys(errors).length > 0 || JSON.stringify(values) === JSON.stringify(initialValues)) {
             setErrorSubmit(true)
@@ -68,7 +54,7 @@ export default function NewProject() {
         setErrorSubmit(false)
         const NewProject = {
             name: values.name,
-            imagen: [Imagen[0]],
+            imagen: Imagen,
             tecnology: values.tecnologias,
             description: values.descripcion,
             repository: values.repositorio || "",
@@ -76,13 +62,13 @@ export default function NewProject() {
             userid: "1",
             score: [0]
         }
-        setImagen("");
+      
         setCreacion(true);
         setTimeout(() => { setCreacion(false); }, 3000)
-        dispatch(postProject(NewProject))
+        postProject(NewProject)
         resetForm()
+        setImagen("");
     }
-
 
 
     return (<>
@@ -177,7 +163,7 @@ export default function NewProject() {
                                         </div>
                                     </label>
                                     {touched.deploy && errors.deploy && <p className={styles.error}>{errors.deploy}</p>}
-                                    <input
+                                    {/* <input
                                         className={styles.inputprueba}
                                         name="Imagen"
                                         disabled={Imagen[0] ? true : false}
@@ -196,27 +182,25 @@ export default function NewProject() {
                                             values.Imagen = "";
                                             handleInputImage(e)
                                         }}
-                                    />
+                                    /> */}
 
+
+                                    {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+                                    <aside id="modal" className={styles.files}>
+                                        <div >
+                                            <label htmlFor="input_images">
+                                                upload photos of your project
+                                                <input hidden accept='image/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
+                                            </label>
+                                        </div>
+                                    </aside>
                                     {touched.Imagen && errors.Imagen && <p className={styles.error}>{errors.Imagen}</p>}
-
-                                    {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
-                                    {/* <aside id="modal" className="modal">
-                        <div className="content-modal">
-                        <header>
-                                <label htmlFor="input_images">
-                                    upload photos of your project
-                                    <input id="input_images" className={styles.inputImages} type="file" name="imagen" onChange={changeImagen} multiple hidden />
-                                </label>
-                            </header>
-                            </div>
-                    </aside> */}
                                     {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
 
 
 
 
-                                    {Imagen[0] ? (
+                                    {/* {Imagen[0] ? (
                                         <div className={styles.containerImagesPreviewDemo}>
                                             {Imagen.map((photo, index) => {
                                                 return (
@@ -235,28 +219,28 @@ export default function NewProject() {
                                         <div className={styles.divImage}>
                                             You currently have no photos added
                                         </div>
-                                    )}
+                                    )} */}
                                     {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
-                                    {/*                        
-                        <div id="imagen"></div>
-                        {Imagen[0] ? (
-                            <div className={styles.containerImagesPreview} >
-                            {Imagen.map((e, index) => {
-                                return (
-                                    <img
-                                        className={styles.imagePreview}
-                                            key={index}
-                                            src={URL.createObjectURL(e)}
-                                            id={index}
-                                            alt=""
-                                            onClick={e => deletePhoto(e)} />
-                                            )
-                                })}
-                            </div>
-                        ) : <div className={styles.divImage}>
-                        You currently have no photos added
-                        </div>}
-                    <button onClick={e => onSubmit(e)}>Publicar</button> */}
+
+                                    <div id="imagen"></div>
+                                    {Imagen[0] ? (
+                                        <div className={styles.containerImagesPreview} >
+                                            {Imagen.map((e, index) => {
+                                                return (
+                                                    <img
+                                                        className={styles.imagePreview}
+                                                        key={index}
+                                                        src={URL.createObjectURL(e)}
+                                                        id={index}
+                                                        alt=""
+                                                        onClick={e => deletePhoto(e)} />
+                                                )
+                                            })}
+                                        </div>
+                                    ) : <div className={styles.divImage}>
+                                        You currently have no photos added
+                                    </div>}
+
                                     {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
                                     <button
                                         className={styles.btnProyecto}

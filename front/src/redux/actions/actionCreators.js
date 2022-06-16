@@ -69,13 +69,6 @@ export function getProjectById(id) {
     }
 }
 
-export function postProject(project) {
-    return function () {
-        axios.post('http://localhost:3001/api/project', project)
-            .then(response => response.data)
-            .catch(error => console.error(error))
-    }
-}
 
 export function resetUserById() {
     return {
