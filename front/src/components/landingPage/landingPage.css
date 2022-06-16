@@ -6,6 +6,7 @@
     background-image: url('../../images/landingBackground.png');
     background-size: cover;
     font-family: 'Poppins', sans-serif;
+    overflow: hidden;
 }
 
 .landingTop{
@@ -20,7 +21,7 @@
     display: flex;
     flex-direction: column;
     color: white;
-    margin: 5% 4% 10% 8%;
+    margin: 5% 4% 10% 5%;
     padding: 20px;
     align-items: center;
     justify-content: center;
@@ -50,14 +51,15 @@
 
 
 .landingImage{
-    align-self: flex-start;
-    justify-self: flex-start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 8%;
 }
 
 .imageL{
-    margin: 1% -12% 0% 0%;
+    padding-top: 2%;
     height: 650px;
-    overflow: hidden;
 }
 
 .intro{
@@ -84,12 +86,14 @@
 
 .section{
     padding: 0% 5% 3% 5%;
+    width: 350px;
 }
 
 .text{
     text-justify: distribute;
     font-weight: bolder;
     color: #012A4A;
+    width: 350px;
 }
 
 .box-one, .box-two, .box-three{
@@ -100,7 +104,11 @@
 }
 
 .boxSection{
-    margin: 6% 11% 5% 11%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8% 18% 10% 18%;
 }
 
 .lineLanding{

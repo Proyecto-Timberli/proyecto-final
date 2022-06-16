@@ -70,7 +70,9 @@ function Project() {
                         </div>
                         <div >
                             <h3>Usuario:</h3>
-                            <div className='info-detalle' >{project.user.name}</div>
+                            <Link to={"/user/" + project.userId} style={{'text-decoration':'none'}}>
+                                <div className='info-detalle' >{project.user.name}</div>
+                            </Link>
                         </div>
                     </div>
 
