@@ -1,0 +1,52 @@
+.arriba-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.icono-admin{
+    font-size: 1.5rem;
+    margin: 2px;
+}
+
+/* =============================BOX FEATURES==================================== */
+
+.features-cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    padding: 15px;
+}
+
+.feature-box{
+    display: flex;
+    flex-direction: column;
+    background-color: #012A4A;
+    border: 2px solid white;
+    border-radius: 11px;
+    width: 32%;
+    height: 150px;
+
+    
+}
+
+.icon-feature-admin{
+    margin: 0 auto;
+    font-size: 2.5rem;
+    color: white;
+    float: left;
+}
+
+.title-feature-admin{
+    color: white;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    text-shadow:  1px 2px 3px rgb(0, 0, 0);
+    margin: 25px;
+}
