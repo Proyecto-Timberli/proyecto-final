@@ -102,7 +102,7 @@
 
 }
 
-div input {
+.div-input {
     width: 100%;
     position: relative;
     flex-grow: 1;
@@ -121,7 +121,7 @@ div input {
     cursor: pointer;
 }
 
-div input:hover {
+.div-input:hover {
     border: 1px solid #012A4A;
     border-radius: 6px;
 }

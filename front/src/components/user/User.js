@@ -20,10 +20,10 @@ const User = () => {
     const userData = useSelector((state) => state.userById)
 
     function showSocialMediaLink(which) {
-        if (which === "github" && userData.github !== "none") {
+        if (which === "github" && (userData.github !== "none" && userData.github !== null )) {
             return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
         }
-        if (which === "linkedIn" && userData.linkedin !== "none") {
+        if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null )) {
             return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
         }
         return null

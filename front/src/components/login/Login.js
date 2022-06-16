@@ -1,7 +1,8 @@
 import React from "react";
 import './login.css';
 import imgLogin from '../../images/clipLogin.gif';
-import { Link } from 'react-router-dom';
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import google from '../../images/google.png';
 import linkedin from '../../images/linkedin.png';
 import github from '../../images/github.png';
@@ -9,8 +10,26 @@ import { scroll } from "../../functions";
 
 
 export default function Login() {
+    const [comingFromRegister, setComingFromRegister] = useState(false)
+
+    const location = useLocation()
+
+    if (!comingFromRegister && location.state && location.state.registerSuccess) {
+        setComingFromRegister(true)
+    }
+
+    function showFromRegisterMessage() {
+        if (comingFromRegister) {
+            return <div>
+            <h2>Registro exitoso, ahora puedes iniciar sesión :)</h2>
+        </div>
+        }
+    }
+
+
     scroll()
-    return (
+    return (<>
+        {showFromRegisterMessage()}
         <div className='container-login'>
 
             <div className='login-left'>
@@ -67,6 +86,6 @@ export default function Login() {
             </div>
 
         </div>
-    )
+        </>)
 };
 

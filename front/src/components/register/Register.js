@@ -4,11 +4,14 @@ import imgSignUp from './signup-image.png'
 import validateForm from './validation.js'
 
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
-import { scroll } from "../../functions";
+//import { scroll } from "../../functions";
 import axios from 'axios'
 
 function Register() {
+
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         name: "",
@@ -18,11 +21,25 @@ function Register() {
         tos: false
     })
 
-    function registerUser() {
-        // intentamos validar
-        let errors = validateForm(formData)
-        console.log(errors)
+    const [formErrors, setFormErrors] = useState({
+        name: "",
+        email: "",
+        password: "",
+        repeat_password: "",
+        tos: ""
+    })
 
+    async function registerUser() {
+        let errors = validateForm(formData)
+
+        if (Object.keys(errors).length === 0) {
+            let { data } = await axios.post("http://localhost:3001/api/auth/register", formData)
+            if (data.status === "success") {
+                navigate("/login", { state: { registerSuccess: true}})
+            }
+        } else {
+            setFormErrors(errors)
+        }
     }
 
     //scroll()
@@ -35,18 +52,16 @@ function Register() {
                             <h1 className="form-title">Sign up</h1>
                             <form method="POST" className="register-form" id="register-form">
                                 <div className="form-group">
-                                    <label htmlFor="name"><i className="zmdi zmdi-account material-icons-name"></i></label>
                                     <input type="text"
                                     className="register-input" 
                                     placeholder=" Nombre"
                                     value={formData.name}
                                     onChange={(e) => {
-                                        
                                         setFormData({...formData, name: e.target.value})
                                     }}/>
+                                    <label className='formErrors-label'>{formErrors.name}</label>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="email"><i className="zmdi zmdi-email"></i></label>
                                     <input type="email"
                                     className="register-input"
                                     placeholder="Email"
@@ -54,9 +69,9 @@ function Register() {
                                     onChange={(e) => {
                                         setFormData({...formData, email: e.target.value})
                                     }}/>
+                                    <label className='formErrors-label'>{formErrors.email}</label>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="pass"><i className="zmdi zmdi-lock"></i></label>
                                     <input type="password"
                                     className="register-input"
                                     placeholder="Password"
@@ -64,9 +79,9 @@ function Register() {
                                     onChange={(e) => {
                                         setFormData({...formData, password: e.target.value})
                                     }}/>
+                                    <label className='formErrors-label' >{formErrors.password}</label>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="re-pass"><i className="zmdi zmdi-lock-outline"></i></label>
                                     <input type="password"
                                     className="register-input"
                                     placeholder="Repite tu password"
@@ -74,6 +89,7 @@ function Register() {
                                     onChange={(e) => {
                                         setFormData({...formData, repeat_password: e.target.value})
                                     }} />
+                                    <label className='formErrors-label' >{formErrors.repeat_password}</label>
                                 </div>
                                 <div className="form-group">
                                     <input type="checkbox"
@@ -85,6 +101,7 @@ function Register() {
                                         setFormData({...formData, tos: !formData.tos})
                                     }}/>
                                     <label htmlFor="agree-term" className="label-agree-term"><span><span></span></span>Acepto todos los   <a href="#" className="term-service">términos y condiciones</a></label>
+                                    <label className='formErrors-label' >{formErrors.tos}</label>
                                 </div>
                                 <div className="form-button">
                                     <input type="submit"
@@ -110,4 +127,4 @@ function Register() {
     )
 }
 
-export default Register
+export default Register;
