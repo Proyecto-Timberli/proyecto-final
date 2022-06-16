@@ -21,7 +21,10 @@ const server = require('./src/app.js');
 const { conn} = require('./src/db.js');
 const mokeando = require('./mokeando.js')
 
-conn.sync({ force: true }).then(() => {
+//const config =  { force: true }
+const config = {}
+
+conn.sync(config).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001');
   })

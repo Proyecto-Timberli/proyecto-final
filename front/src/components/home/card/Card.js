@@ -4,10 +4,10 @@ import defaultImg from './signup-image.png'
 import linkedin from '../../../images/linkedin.png';
 import github from '../../../images/github.png';
 import { Link } from 'react-router-dom';
-function Card({ id, name, description, user, imagen, userId, score }) {
-    const sum = score.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
-    const promedio = sum/score.length
-    
+
+
+function Card({ id, name, description, user, imagen }) {
+
     return (
         <div key={id} >
             <div className="card-home">
@@ -16,13 +16,11 @@ function Card({ id, name, description, user, imagen, userId, score }) {
                 </Link>
                 <div className="card-img" >
                     {
-                        imagen.length > 0 ? 
-                        
-                        <img className='img-project-card' src={imagen[0]}></img>
-                        
-                        
-                        :
-                        <img src={defaultImg[0]}></img>
+                        imagen.length > 0 ?
+
+                            <img className='img-project-card' src={imagen[0]}></img>
+                            :
+                            <img src={defaultImg[0]}></img>
 
                     }
 

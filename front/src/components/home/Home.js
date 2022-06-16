@@ -64,7 +64,7 @@ const Home = () => {
                             key={e.id}
                             name={e.name}
                             id={e.id}
-                            user={e.user.userName}
+                            user={e.user.name}
                             imagen={e.imagen}
                             userId={e.userId}
                             score={e.score}
