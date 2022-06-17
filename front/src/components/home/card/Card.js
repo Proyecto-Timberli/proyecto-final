@@ -34,14 +34,14 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
                         <p className="text-title-card">{name}</p>
                     </Link>
                     <p className="text-body-card">{description}</p>
+                    <div>
 
+                        <p className='text-score-card'>Puntaje diseño: {scoreStyle && (scoreStyle.reduce((e, a) => e + a) / scoreStyle.length)}</p>
+                        <p className='text-score-card'>Puntaje funcional: {scoreFunctionality && (scoreFunctionality.reduce((e, a) => e + a) / scoreFunctionality.length)}</p>
+                        <p className='text-score-card'>Puntaje originalidad: {scoreOriginality && (scoreOriginality.reduce((e, a) => e + a) / scoreOriginality.length)}</p>
+                    </div>
 
-
-                    <p className='text-score-card'>Puntaje diseño: {scoreStyle && (scoreStyle.reduce((e, a) => e + a) / scoreStyle.length)}</p>
-                    <p className='text-score-card'>Puntaje funcional: {scoreFunctionality && (scoreFunctionality.reduce((e, a) => e + a) / scoreFunctionality.length)}</p>
-                    <p className='text-score-card'>Puntaje originalidad: {scoreOriginality && (scoreOriginality.reduce((e, a) => e + a) / scoreOriginality.length)}</p>
-
-                    <p className='text-score-card'>Puntaje total: {score && score}</p>
+                    <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
                 </div>
 
             </div>

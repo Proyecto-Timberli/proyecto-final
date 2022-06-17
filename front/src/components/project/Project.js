@@ -66,7 +66,7 @@ function Project() {
                     <div className='cont-info'>
                         <div>
                             <h3>Puntuacion:</h3>
-                            <div className='info-detalle' >{(project.score[0] | project.score[1] | project.score[2])}</div>
+                            <div className='info-detalle' >{project.scoreStyle} |  {project.scoreFunctionality}  | {project.scoreOriginality}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
