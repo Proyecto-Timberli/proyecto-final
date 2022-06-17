@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
         userType:{
             type: DataTypes.STRING,
             allowNull: false,
-            default: 'user'
+            defaultValue: 'user'
         }
     });
 };
