@@ -58,6 +58,7 @@ router.post("/login", (req, res, next) => {
                 let token = jwt.sign({ id: user.dataValues.id, email: user.dataValues.mail }, process.env.JWT_SECRET_KEY, {
                     expiresIn: 1440
                 })
+
                 res.send({
                     status: "success",
                     token: token
@@ -77,6 +78,7 @@ router.post("/login", (req, res, next) => {
         }
     }).catch(err => {
         res.status(400).json({ status: "error", error: err.message })
+        console.log(err)
     })
 })
 
