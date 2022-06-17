@@ -66,6 +66,8 @@ const Home = () => {
                             id={e.id}
                             user={e.user.userName}
                             imagen={e.imagen}
+                            userId={e.userId}
+                            score={e.score}
                         />)}
                     </div>
                 }

@@ -90,6 +90,12 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.files{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .containerImagesPreview {
   display: flex;
   flex-direction: row;

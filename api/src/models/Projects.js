@@ -36,6 +36,11 @@ module.exports = (sequelize) => {
         imagen: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: true
+        },
+        state:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: 'Aceptado'
         }
     });
 };

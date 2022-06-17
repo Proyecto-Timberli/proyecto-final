@@ -29,12 +29,17 @@ const Navbar = () => {
                 </div>
                 :
                 <div className='botones-nav'>
+                    <Link to="/admin"> 
+                        <button className='btn-register-navBar'> Admin </button>
+                    </Link>
+
                     <Link to="/register"> 
                         <button className='btn-register-navBar'> Unirse </button>
                     </Link>
                     <Link to="/login"> 
                         <button onClick={cambioLogin} className='btn-login-navBar'> Login </button>
                     </Link>
+                    
                 </div>}
 
         </div>
