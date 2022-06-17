@@ -58,7 +58,7 @@ router.put("/", async (req, res, next) => {
           const projectUpdate= await Project.findByPk(projectId);
           await projectUpdate.update(projectEdit);
           await projectUpdate.save();
-          res.send("el proyecto se modifico "+projectUpdate.name+" correctamente");
+          res.send("el proyecto "+projectUpdate.name+" se modifico correctamente");
         }
     }
     catch(err){
