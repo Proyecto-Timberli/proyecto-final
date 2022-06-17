@@ -58,9 +58,8 @@ const Home = () => {
                 {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
-
                         {cardsInPag.renderCards.map(e => (!!e) && <Card
-                            description={e.shortDescription}
+                            description={e.description}
                             key={e.id}
                             name={e.name}
                             id={e.id}
