@@ -125,5 +125,6 @@
 }
 
 .text-score-card {
-    padding-bottom: 5%;
+    padding-bottom: 0;
+    margin: 0%;
 }

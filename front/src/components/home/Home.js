@@ -41,7 +41,7 @@ const Home = () => {
     let logger = useSelector((state) => state.logged)
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
-
+    console.log(allProjects);
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     return (
@@ -66,7 +66,11 @@ const Home = () => {
                             user={e.user.name}
                             imagen={e.imagen}
                             userId={e.userId}
-                            score={e.score}
+                            scoreFunctionality={e.scoreFunctionality}
+                            scoreOriginality={e.scoreOriginality}
+                            scoreStyle={e.scoreStyle}
+
+                            score={e.scoreAverage}
                         />)}
                     </div>
                 }
