@@ -10,7 +10,9 @@ import { SAMPLE_ACTION,
     RESET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
     LOGGED, SERVER_MESSAGE,
-    ORDER_PROJECTS_BY
+    ORDER_PROJECTS_BY,
+    GET_ALL_USERS
+
 } from "./actions.js"
 
 import axios from 'axios'
@@ -34,7 +36,18 @@ export function getAllProjects() {
     }
 }
 
-
+export function getAllUsers(){
+    return function(dispatch){
+        axios.get('http://localhost:3001/api/user')
+        .then(response => {
+            dispatch({
+                type: GET_ALL_USERS,
+                payload: response.data
+            })
+        })
+       
+    }
+}
 
 
 export function getUserById(id) {

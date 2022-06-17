@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './listado.css'
-import { MdWork,MdDoneOutline,MdClear } from "react-icons/md";
+import { MdWork, MdDoneOutline, MdClear } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects } from '../../../redux/actions/actionCreators'
 import Paginado from '../../home/Paginado.js'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 function ListadoProjects() {
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
-    const[estado, setEstado] = useState('Aceptado')
+    const [estado, setEstado] = useState('Aceptado')
     useEffect(() => {
         dispatch(getAllProjects());
     }, [])
@@ -33,11 +33,11 @@ function ListadoProjects() {
         }
     }, [allProjects])
 
-    function cambiarEstado(e){
+    function cambiarEstado(e) {
 
-        if(estado == 'Aceptado'){
+        if (estado == 'Aceptado') {
             setEstado('Pendiente')
-        }else if(estado == 'Pendiente'){
+        } else if (estado == 'Pendiente') {
             setEstado('Aceptado')
         }
     }
@@ -50,34 +50,34 @@ function ListadoProjects() {
                 <h1>Listado de Proyectos</h1>
             </div>
 
-                {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
-            <div className='contenedor-listado-project'>
-                {
-                    cardsInPag.renderCards.map(p =>( (!!p) &&
-                        <div className='project-card-admin' key={p.id}>
-                            <li  key={p.id}> <Link to={"/project/" + p.id}>{p.name}</Link> </li>
-                            <div className='content-project-state'>
-                                <p className='state-project'>{estado}</p>
-                                {
-                                    estado === 'Aceptado' ? 
-                                    <MdClear className='decline-project' onClick={(e) => cambiarEstado(e)}/> :
-                                    <MdDoneOutline className='accept-project'  onClick={(e) => cambiarEstado(e)}/>
-                                }
+            {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
+                <div className='contenedor-listado-project'>
+                    {
+                        cardsInPag.renderCards.map(p => ((!!p) &&
+                            <div className='project-card-admin' key={p.id}>
+                                <li key={p.id}> <Link to={"/project/" + p.id}>{p.name}</Link> </li>
+                                <div className='content-project-state'>
+                                    <p className='state-project'>{estado}</p>
+                                    {
+                                        estado === 'Aceptado' ?
+                                            <MdClear className='decline-project' onClick={(e) => cambiarEstado(e)} /> :
+                                            <MdDoneOutline className='accept-project' onClick={(e) => cambiarEstado(e)} />
+                                    }
+                                </div>
+
                             </div>
-                            
-                        </div>
-                    ))
-                }
-            </div>
-}
-            <div>
-                    {paginado.buttons().map(button =>
-                        <div className="container-paginado" key={button}>
-                            {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
-                            {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
-                        </div>
-                    )}
+                        ))
+                    }
                 </div>
+            }
+            <div>
+                {paginado.buttons().map(button =>
+                    <div className="container-paginado" key={button}>
+                        {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
+                        {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

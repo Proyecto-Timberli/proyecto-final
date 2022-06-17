@@ -6,6 +6,17 @@ const {Project, User} = require('../db.js');
 
 const router = Router();
 
+router.get('/', async(req, res, next)=>{
+    try {
+        const allUsers = await User.findAll();
+        return res.send(allUsers)
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+})
+
+
 router.get("/id/:idUser", async (req, res, next) => {
     const{idUser}=req.params
     try{

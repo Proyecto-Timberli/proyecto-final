@@ -2,7 +2,7 @@
  * Reducer de nuestra aplicación
  */
 
-import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_PROJECT_BY_ID, GET_USER_BY_ID, LOGGED, RESET_PROJECT_BY_ID, RESET_USER_BY_ID, SERVER_MESSAGE, ORDER_PROJECTS_BY } from "./actions/actions.js";
+import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_PROJECT_BY_ID, GET_USER_BY_ID, LOGGED, RESET_PROJECT_BY_ID, RESET_USER_BY_ID, SERVER_MESSAGE, ORDER_PROJECTS_BY, GET_ALL_USERS } from "./actions/actions.js";
 
 const initialState = {
     allProject: [],
@@ -10,7 +10,7 @@ const initialState = {
     projectById: {},
     logged: false,
     server_message: '',
-
+    allUsers: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -35,6 +35,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 userById: action.payload
+            }
+        }
+        case GET_ALL_USERS: {
+            return{
+                ...state,
+                allUsers: action.payload
             }
         }
         case LOGGED: {
