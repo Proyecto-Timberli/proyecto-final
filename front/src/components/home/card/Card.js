@@ -3,9 +3,13 @@ import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 function Card({ id, name, description, userName, imagen, userId, score }) {
-    const arrNumber = score.map((n) => Number(n))
-    const sum = arrNumber.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
-    const promedio = (sum/score.length).toFixed(2);
+
+    if (score.length){
+        const arrNumber = score.map((n) => Number(n))
+        const sum = arrNumber.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
+        const promedio = (sum/score.length).toFixed(2);
+    }
+   
 
     
     return (
