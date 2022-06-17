@@ -1,5 +1,6 @@
 import React from 'react'
 import { RiAdminFill } from "react-icons/ri";
+import {Link} from 'react-router-dom'
 import { MdSupervisedUserCircle,MdPaid,MdNotificationImportant,MdWork,MdRemoveCircle,MdInsertChart } from "react-icons/md";
 import './home-admin.css'
 function Home() {
@@ -17,7 +18,9 @@ function Home() {
             </div>
             <div className='feature-box'>
             <MdWork className='icon-feature-admin'/>
+              <Link className='link-home-admin' to='/listadoProjects'  >
                 <h5 className='title-feature-admin'>Ver Listado de Proyectos</h5>
+                </Link>
             </div>
             <div className='feature-box'>
             <MdPaid className='icon-feature-admin'/>
