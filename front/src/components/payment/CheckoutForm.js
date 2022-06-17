@@ -18,7 +18,7 @@ export default function CheckoutForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+        setCompraConcretada("")
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
@@ -32,7 +32,7 @@ export default function CheckoutForm() {
         const { id } = paymentMethod;
         console.log(paymentMethod)
         setError("")
-        
+
         //FUNCION QUE MANDA NUESTROS DATOS PARA EL BACKEND(sendCheckoutForm)
         const { data } = await sendCheckoutForm(id, amount)
         //ACA SI EXISTE DATA.CODE QUIERE DECIR QUE HAY UN MENSAJE DE ERROR Y SE MUESTRA
@@ -59,29 +59,31 @@ export default function CheckoutForm() {
                     alt="donation"
                     className="donation-image"
                 />
+                <h5 className="form-payment-title">Selecciona el monto a donar en dolares!</h5>
+                <p className="form-payment-subtitle">(Tu tarjeta convierte los dolares a tu moneda local!)</p>
                 <div className='opciones-payment'>
-                        <div className="form-check-payment">
-                            <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)}/>
-                            <label className="form-label-payment">
-                                u$d 1
-                            </label>
-                        </div>
+                    <div className="form-check-payment">
+                        <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                        <label className="form-label-payment">
+                            $1
+                        </label>
+                    </div>
 
-                        <div className="form-check-payment">
-                            <input className="form-check-input" type="radio" value='500' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)}/>
-                            <label className="form-label-payment" >
-                                u$d 5
-                            </label>
-                        </div>
+                    <div className="form-check-payment">
+                        <input className="form-check-input" type="radio" value='500' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                        <label className="form-label-payment" >
+                            $5
+                        </label>
+                    </div>
 
-                        <div className="form-check-payment">
-                            <input className="form-check-input" type="radio"  value='1000' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)}/>
-                            <label className="form-label-payment" >
-                                u$d 10
-                            </label>
-                        </div>
+                    <div className="form-check-payment">
+                        <input className="form-check-input" type="radio" value='1000' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                        <label className="form-label-payment" >
+                            $10
+                        </label>
+                    </div>
                 </div>
-                <CardElement className="card-element-payment"/>
+                <CardElement className="card-element-payment" />
                 {error && <div >{error}</div>}
                 <button className="btn-payment" type="submit"> CONTRIBUIR </button>
                 {compraConcretada && <div >{compraConcretada}</div>}
