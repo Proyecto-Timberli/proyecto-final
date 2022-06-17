@@ -8,6 +8,8 @@ import linkedin from '../../images/linkedin.png';
 import github from '../../images/github.png'; */
 import { scroll } from "../../functions";
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { setLoggedUserId } from "../../redux/actions/actionCreators";
 
 export default function Login() {
 
@@ -15,6 +17,9 @@ export default function Login() {
         email: "",
         password: ""
     })
+
+    const dispatch = useDispatch()
+
 
     const [formErrors, setFormErrors] = useState({ error: ""})
 
@@ -45,6 +50,7 @@ export default function Login() {
             if (response.data.status === "success") {
                 console.log(response.data)
                 localStorage.setItem('usertoken', response.data.token)
+                dispatch(setLoggedUserId(response.data.id))
                 return navigate('/home')
             }
         })

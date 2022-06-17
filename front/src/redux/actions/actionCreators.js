@@ -4,10 +4,12 @@ import { SAMPLE_ACTION,
     GET_ALL_PROJECTS,
     RESET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
-    LOGGED, SERVER_MESSAGE,
+    SERVER_MESSAGE,
     ORDER_PROJECTS_BY,
     ADMIN_SUSPEND_USER,
-    ADMIN_SUSPEND_PROJECT
+    ADMIN_SUSPEND_PROJECT,
+    LOGIN,
+    LOGGED_USER_ID
 } from "./actions.js"
 
 import axios from 'axios'
@@ -90,13 +92,6 @@ export function resetProjectById() {
     }
 }
 
-export function loggin() {
-    return {
-        type: LOGGED,
-    }
-}
-
-
 
 export function crearMensajeState(mensaje) {
 
@@ -137,5 +132,12 @@ export function adminSupendProject(id,state) {
                     payload: res.data
                 })
             })
+    }
+}
+
+export function setLoggedUserId(payload) {
+    return {
+        type: LOGGED_USER_ID,
+        payload: payload
     }
 }

@@ -2,15 +2,25 @@
  * Reducer de nuestra aplicación
  */
 
-import { SAMPLE_ACTION, GET_ALL_PROJECTS, GET_PROJECT_BY_ID, GET_USER_BY_ID, LOGGED, RESET_PROJECT_BY_ID, RESET_USER_BY_ID, SERVER_MESSAGE, ORDER_PROJECTS_BY } from "./actions/actions.js";
+import { SAMPLE_ACTION,
+    GET_ALL_PROJECTS,
+    GET_PROJECT_BY_ID,
+    GET_USER_BY_ID, 
+    LOGIN,
+    RESET_PROJECT_BY_ID,
+    RESET_USER_BY_ID,
+    SERVER_MESSAGE,
+    ORDER_PROJECTS_BY,
+    LOGGED_USER_ID
+} from "./actions/actions.js";
 
 const initialState = {
     allProject: [],
     userById: {},
     projectById: {},
-    logged: false,
+    login: null,
     server_message: '',
-
+    loggedUserId: null
 }
 
 export default function reducer(state = initialState, action) {
@@ -37,15 +47,6 @@ export default function reducer(state = initialState, action) {
                 userById: action.payload
             }
         }
-        case LOGGED: {
-            return state.logged ? {
-                ...state,
-                logged: false
-            } : {
-                ...state,
-                logged: true
-            }
-        }
         case RESET_PROJECT_BY_ID: {
             return {
                 ...state,
@@ -70,6 +71,11 @@ export default function reducer(state = initialState, action) {
                 allProject: action.payload
             }
         }
+        case LOGGED_USER_ID:
+            return {
+                ...state,
+                loggedUserId: action.payload
+            }
         default:
             return state
     }
