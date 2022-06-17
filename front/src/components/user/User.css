@@ -11,13 +11,15 @@
 
 .profileInfo {
     padding: 1em;
-    background: linear-gradient(to bottom,  #012A4A,#014F86);
+    background: linear-gradient(to bottom, #012A4A, #014F86);
     border-radius: 1em;
     margin: 0.5em;
 }
-.profile-name{
+
+.profile-name {
     color: white;
 }
+
 .profilePic {
     border-radius: 10em;
     min-width: 15em;
@@ -28,9 +30,10 @@
 .profileInfoDetails {
     color: white
 }
+
 .profileContents {
     padding: 1em;
-    background: linear-gradient(to bottom,  #044475,#014F86);
+    background: linear-gradient(to bottom, #044475, #014F86);
 
     border-radius: 1em;
     margin: 0.5em;
@@ -45,7 +48,7 @@
     color: white;
 }
 
-.profileContent-profileInfo{
+.profileContent-profileInfo {
     text-align: left;
 }
 
@@ -55,10 +58,12 @@
     font-size: xx-large;
     border-style: none;
     transition: 0.2s;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .profileContentSectionButton:hover {
     color: rgb(101, 97, 140);
+    cursor: pointer;
 }
 
 .profile-socialMediaLink {
@@ -68,9 +73,12 @@
     font-size: 1.5rem;
     transition: all .3s ease-in-out;
 }
-.profile-socialMediaLink:hover{
+
+.profile-socialMediaLink:hover {
     color: black;
-} 
-.p-profile, .p-stack{
+}
+
+.p-profile,
+.p-stack {
     color: white;
 }

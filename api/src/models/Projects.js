@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
+        shortDescription: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
         description: {
             type: DataTypes.TEXT,
             allowNull: true
@@ -37,10 +41,13 @@ module.exports = (sequelize) => {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: true
         },
-        state:{
+        state: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: 'Aceptado'
+        },
+        projectType: {
+            type: DataTypes.STRING
         }
     });
 };

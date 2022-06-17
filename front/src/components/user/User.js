@@ -21,10 +21,10 @@ const User = () => {
 
     function showSocialMediaLink(which) {
         if (which === "github" && userData.github !== "none") {
-            return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
+            return (<a className="profile-socialMediaLink" target="_blank" href={userData.github}><BsGithub /></a>)
         }
         if (which === "linkedIn" && userData.linkedin !== "none") {
-            return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
+            return (<a className="profile-socialMediaLink" target="_blank" href={userData.linkedin}><BsLinkedin /></a>)
         }
         return null
     }
@@ -96,7 +96,7 @@ const User = () => {
                     <img src={userData.image} className='profilePic' alt="profilepic" />
                     <h2 className='profile-name'>{userData.name}</h2>
                     <div className='profileInfoDetails'>
-                        <p>@{userData.userName}</p>
+                        <p>{userData.rol}</p>
                         {showSocialMediaLink("linkedIn")}
                         {showSocialMediaLink("github")}
                     </div>
