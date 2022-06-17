@@ -119,7 +119,7 @@ export function orderProjectsBy(projects) {
 
 export function adminSupendUser(id,userType) {
     return function (dispatch) {
-        axios.put(`http://localhost:3001/api/admin`,{id,userType})
+        axios.put(REACT_APP_API+`/api/admin`,{id,userType})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_USER,
@@ -130,7 +130,7 @@ export function adminSupendUser(id,userType) {
 }
 export function adminSupendProject(id,state) {
     return function (dispatch) {
-        axios.put(`http://localhost:3001/api/admin/`,{id,state})
+        axios.put(REACT_APP_API+`/api/admin/`,{id,state})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_PROJECT,
