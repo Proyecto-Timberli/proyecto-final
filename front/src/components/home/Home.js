@@ -59,7 +59,7 @@ const Home = () => {
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
 
-                        {cardsInPag.renderCards.map(e => (!!e) && <Card
+                        {!!cardsInPag.renderCards&&cardsInPag.renderCards.map(e => (!!e) && <Card
                             description={e.description}
                             key={e.id}
                             name={e.name}
