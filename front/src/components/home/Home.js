@@ -60,11 +60,11 @@ const Home = () => {
                         {/* Map para mostrar las Cards */}
 
                         {cardsInPag.renderCards.map(e => (!!e) && <Card
-                            description={e.description}
+                            description={e.shortDescription}
                             key={e.id}
                             name={e.name}
                             id={e.id}
-                            user={e.user.userName}
+                            user={e.user.name}
                             imagen={e.imagen}
                             userId={e.userId}
                             score={e.score}
