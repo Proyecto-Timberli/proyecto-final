@@ -52,13 +52,13 @@ router.post("/", async (req, res, next) => {
 
 
 router.put("/", async (req, res, next) => {
-    const {postId , postEdit} = req.body;
+    const {projectId , projectEdit} = req.body;
     try{
-        if(postId){
-          postDelete= await Project.findOne(postId);
-          await postDelete.update(postEdit);
-          await postDelete.save();
-          res.send("el proyecto se elimino correctamente");
+        if(projectId && projectEdit){
+          const projectUpdate= await Project.findByPk(projectId);
+          await projectUpdate.update(projectEdit);
+          await projectUpdate.save();
+          res.send("el proyecto se modifico "+projectUpdate.name+" correctamente");
         }
     }
     catch(err){
@@ -71,9 +71,10 @@ router.delete("/", async (req, res, next) => {
     const {projectId} = req.body;
     try{
         if(projectId){
-          projectDelete= await Project.findByPk(projectId)
+          const projectDelete= await Project.findByPk(projectId)
+          const name = projectDelete.name
           await projectDelete.destroy();
-          res.send("el proyecto se elimino correctamente")
+          res.send("el proyecto "+name+" se elimino correctamente")
         }
     }
     catch(err){

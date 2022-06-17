@@ -10,7 +10,9 @@ import { SAMPLE_ACTION,
     RESET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
     LOGGED, SERVER_MESSAGE,
-    ORDER_PROJECTS_BY
+    ORDER_PROJECTS_BY,
+    ADMIN_SUSPEND_USER,
+    ADMIN_SUSPEND_PROJECT
 } from "./actions.js"
 
 import axios from 'axios'
@@ -113,5 +115,30 @@ export function orderProjectsBy(projects) {
     return {
         type: ORDER_PROJECTS_BY,
         payload: projects
+    }
+}
+
+
+
+export function adminSupendUser(id,userType) {
+    return function (dispatch) {
+        axios.put(`http://localhost:3001/api/admin`,{id,userType})
+            .then(res => {
+                dispatch({
+                    type: ADMIN_SUSPEND_USER,
+                    payload: res.data
+                })
+            })
+    }
+}
+export function adminSupendProject(id,state) {
+    return function (dispatch) {
+        axios.put(`http://localhost:3001/api/admin/`,{id,state})
+            .then(res => {
+                dispatch({
+                    type: ADMIN_SUSPEND_PROJECT,
+                    payload: res.data
+                })
+            })
     }
 }

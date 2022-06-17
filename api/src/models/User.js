@@ -45,5 +45,10 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
             allowNull: true
         },
+        userType:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            default: 'user'
+        }
     });
 };
