@@ -8,6 +8,7 @@ import Paginado from '../../home/Paginado.js'
 import { Link } from 'react-router-dom'
 
 
+
 function ListadoUsers() {
     let dispatch = useDispatch()
     let allUsers = useSelector((state) => state.allUsers)
@@ -69,7 +70,7 @@ function ListadoUsers() {
                                 {
                                     desplegar === 1 ?
                                         <div className='user-desplegable-admin'>
-                                            <div className='button-desplegable'><button>ROL</button></div>
+                                            <div className='button-desplegable'><button>{u.useType}</button></div>
                                             <div className='button-desplegable'><button>REPORTES</button></div>
                                             <div className='button-desplegable'><button>PROYECTOS</button></div>
                                             <div className='button-desplegable'><button>BORRAR</button></div>
