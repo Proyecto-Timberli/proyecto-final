@@ -70,7 +70,7 @@ function ListadoUsers() {
                                 {
                                     desplegar === 1 ?
                                         <div className='user-desplegable-admin'>
-                                            <div className='button-desplegable'><button>{u.useType}</button></div>
+                                            <div className='button-desplegable'><button>{u.userType}</button></div>
                                             <div className='button-desplegable'><button>REPORTES</button></div>
                                             <div className='button-desplegable'><button>PROYECTOS</button></div>
                                             <div className='button-desplegable'><button>BORRAR</button></div>
