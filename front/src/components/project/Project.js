@@ -107,11 +107,11 @@ function Project() {
                     <div className='desc-detalle'>
                         <h3 >Descripcion:</h3>
                         <div>
-                            <p className="text">{project.description}</p>
+                            <p className="text2">{project.description}</p>
                         </div>
                         <h3>Tecnologias:</h3>
                         <div>
-                            <p className="text">{project.tecnology}</p>
+                            <p className="text2">{project.tecnology}</p>
                         </div>
                     </div>
                 </div>
