@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { scroll } from "../../functions"
 import "./payment.css";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe,useElements } from "@stripe/react-stripe-js";
+import { Elements} from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
 
-
-const stripePromise = loadStripe("pk_test_51LAdBzAvcNaaCapmSYP4qmvIjWV8YoVrTxca5HagFQgrPgMyGnafEo8OMqiHJzDfD0M1dNCmyDiTxFJmYvno5OAM00UhfKjAkA");
-
+const stripePromise = loadStripe("pk_test_51LAw3jAfelRzCSD4dKW2R2z0c8chiNwxDHaZcKYqzD0HyctRV5liikAohfqVdIkQtY24J7CGBAbI63bPLmV95VjT00gsBrWflF");
+//El string del loadStripe se supone que es una variable de entorno pero no puedo lograr que funcione 
 
 
 
@@ -14,35 +14,9 @@ const stripePromise = loadStripe("pk_test_51LAdBzAvcNaaCapmSYP4qmvIjWV8YoVrTxca5
 export default function Payment() {
     scroll()
 
-    const stripe = useStripe();
-    const elements = useElements();
-
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement),
-        })
-    }
-
-
     return (
         <Elements stripe={stripePromise}>
-
-            <div className="card-payment">
-                <form className="form-payment" onSubmit={handleSubmit}>
-                    <img
-                        src="https://thancguide.org/wp-content/uploads/2021/04/help-others-Artboard-10@3x.png"
-                        alt="donation"
-                        className="donation-image"
-                    />
-
-                    <h3 className="price-payment">$10</h3>
-                    <CardElement />
-                    <button className="btn-payment" type="submit"> CONTRIBUIR </button>
-                </form>
-            </div>
+            <CheckoutForm/>
         </Elements>
     );
 };
