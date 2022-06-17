@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import './listadoU.css'
-import { MdManageAccounts, MdKeyboardArrowDown } from "react-icons/md";
+import { MdPersonOff, MdKeyboardArrowDown } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from '../../../redux/actions/actionCreators'
-import Modal from './modalUser/modal.js'
 import Paginado from '../../home/Paginado.js'
-
 import { Link } from 'react-router-dom'
 
-
-
-function ListadoUsers() {
+import './listadoS.css'
+function ListadoS() {
     let dispatch = useDispatch()
     let allUsers = useSelector((state) => state.allUsers)
     useEffect(() => {
         dispatch(getAllUsers());
     }, [])
-
-    const [desplegar, setDesplegar] = useState(0)
-    const [modal, setModal] = useState(0)
     const [cardsInPag, setCardsInPag] = useState({
         renderCards: [],
         pag: 1,
@@ -35,36 +28,15 @@ function ListadoUsers() {
             accionarPaginado(1)
         }
     }, [allUsers])
+  return (
+   
 
-    function cambiarEstado(e) {
-        e.preventDefault()
-        if (desplegar === 0) {
-            setDesplegar(1)
-        } else if (desplegar === 1) {
-            setDesplegar(0)
-
-        }
-    }
-
-    function cambiarEstadoModal(e){
-        e.preventDefault()
-        if(modal=== 0){
-            setModal(1)
-        }
-        else if (modal === 1){
-            setModal(0)
-        }
-    }
-
-
-    return (
-        <div>
-            <div className='arriba-contenedor-users'>
-                <MdManageAccounts className='icono-title-users' />
-                <h1>Listado de Usuarios</h1>
+    <div>
+        <div className='arriba-contenedor-suspendidos'>
+                <MdPersonOff className='icono-title-suspendidos' />
+                <h1>Listado de Usuarios Suspendidos</h1>
             </div>
-
-            {(Object.keys(allUsers).length === 0) ?
+            {(Object.keys(allUsers.userType==='suspended').length === 0) ?
                 <div>NO HAY USUARIOS</div>
                 :
                 <div className="contenedor-listado-user">
@@ -74,46 +46,26 @@ function ListadoUsers() {
                                 <div className='user-card-admin' key={u.id}>
                                     <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
                                     <div className='content-project-state'>
-                                        <MdKeyboardArrowDown onClick={(e) => cambiarEstado(e)} />
+                                        <MdKeyboardArrowDown  />
                                     </div>
 
                                 </div>
-                                {
+                                {/* {
                                     desplegar === 1 ?
                                         <div className='user-desplegable-admin'>
-                                            <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModal(e)}>CAMBIAR ROL</button></div>
+                                            <div className='button-desplegable'><button >CAMBIAR ROL</button></div>
                                             <div className='button-desplegable'><button>REPORTES</button></div>
                                             <div className='button-desplegable'><button>PROYECTOS</button></div>
                                             <div className='button-desplegable'><button>BORRAR</button></div>
 
                                         </div>
                                         : null
-                                }
+                                } */}
 
                             </div>
                         ))
                     }
                 </div>
-            }
-            {
-                modal === 1 ?
-                    <div className='modal'>
-
-                        <div className='modal-contenido'>
-                            <h1>Cambiar Rol</h1>
-                            <form>
-                                <select>
-                                    <option>Admin</option>
-                                    <option>Suspended</option>
-                                    <option>User</option>
-                                    <option>Premium</option>
-
-                                </select>
-                            </form>
-
-                            <button onClick={(e) => cambiarEstadoModal(e)}>Guardar!</button>
-                        </div>
-                    </div>: null
             }
             <div>
                 {paginado.buttons().map(button =>
@@ -124,8 +76,8 @@ function ListadoUsers() {
                 )}
             </div>
 
-        </div>
-    )
+    </div>
+  )
 }
 
-export default ListadoUsers
+export default ListadoS
