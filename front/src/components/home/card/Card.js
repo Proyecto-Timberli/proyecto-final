@@ -23,7 +23,7 @@ function Card({ id, name, description, userName, imagen, userId, score }) {
 
                 <div className="card-info-home">
                     <Link to={"/user/" + userId} className="username-card">
-                        <div className="card-user">{userName.toUpperCase()}</div>
+                        <div className="card-user">{userName&&userName.toUpperCase()}</div>
                     </Link>
                     <Link to={"/project/" + id} className="title-card">
                         <p className="text-title-card">{name}</p>
