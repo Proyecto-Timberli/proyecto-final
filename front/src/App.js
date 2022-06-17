@@ -11,7 +11,9 @@ import NewProject from '../src/components/newProject/NewProject.js'
 import About from '../src/components/about/About.js'
 import Footer from '../src/components/footer/Footer.js'
 import Page404 from '../src/components/Page404/Page404.js';
-
+import Payment from '../src/components/payment/Payment';
+import PaAdmin from '../src/components/panelAdmin/Home/Home.js';
+import ListadoProjects from '../src/components/panelAdmin/ListadoProjects/ListadoProjects.js'
 function App() {
   return (
     <div className="App">
@@ -25,6 +27,10 @@ function App() {
         <Route exact path="/project/:id" element={<Project />} />
         <Route exact path="/newProject" element={<NewProject />} />
         <Route exact path="/about" element={<About />} />
+        <Route exact path="/payment" element={<Payment />} />
+        <Route exact path="/admin" element={<PaAdmin />} />
+        <Route exact path="/listadoProjects" element={<ListadoProjects />} />
+
         <Route path='*' element={<Page404 />} />
       </Routes>
       <Footer />

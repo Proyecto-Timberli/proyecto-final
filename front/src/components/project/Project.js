@@ -12,7 +12,6 @@ import { scroll } from "../../functions";
 
 
 function Project() {
-    scroll()
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
     const { id } = useParams();
@@ -20,6 +19,7 @@ function Project() {
     let project = useSelector((state) => state.projectById)
     useEffect(() => {
         dispatch(getProjectById(id))
+        scroll()
     }, [])
     ////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////paginado imagenes/////////////////////////////////////
@@ -70,7 +70,9 @@ function Project() {
                         </div>
                         <div >
                             <h3>Usuario:</h3>
-                            <div className='info-detalle' >{project.user.name}</div>
+                            <Link to={"/user/" + project.userId} style={{'text-decoration':'none'}}>
+                                <div className='info-detalle' >{project.user.name}</div>
+                            </Link>
                         </div>
                     </div>
 
@@ -95,7 +97,7 @@ function Project() {
                         {/* GitHub */}
                         <div>
                             <h3>GitHub:</h3>
-                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a href={project.repository}> Link GitHub</a></div>}
+                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a href={project.repository}> Link GitHub</a></div>}
                         </div>
 
                     </div>
