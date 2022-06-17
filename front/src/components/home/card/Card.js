@@ -2,10 +2,15 @@ import React from 'react'
 import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
-function Card({ id, name, description, userName, imagen, userId, score }) {
-    const arrNumber = score.map((n) => Number(n))
-    const sum = arrNumber.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
-    const promedio = (sum/score.length).toFixed(2);
+function Card({ id, name, description, imagen, userId, score, user}) {
+    // const promedio = 1
+    // if (score.length){
+        const arrNumber = score.map((n) => Number(n))
+        const sum = arrNumber.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
+        const promedio = (sum/score.length).toFixed(2);
+        
+    // }
+   
 
     
     return (
@@ -23,13 +28,13 @@ function Card({ id, name, description, userName, imagen, userId, score }) {
 
                 <div className="card-info-home">
                     <Link to={"/user/" + userId} className="username-card">
-                        <div className="card-user">{userName&&userName.toUpperCase()}</div>
+                        <div className="card-user">{user&&user.toUpperCase()}</div>
                     </Link>
                     <Link to={"/project/" + id} className="title-card">
                         <p className="text-title-card">{name}</p>
                     </Link>
                     <p className="text-body-card">{description}</p>
-                    <p className='text-score-card'>Puntaje total: {promedio}</p>
+                    <p className='text-score-card'>Puntaje total: {promedio&&promedio}</p>
                 </div>
 
             </div>
