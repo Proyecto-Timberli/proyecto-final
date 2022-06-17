@@ -6,6 +6,7 @@ function Card({ id, name, description, user, imagen, userId, score }) {
     const arrNumber = score.map((n) => Number(n))
     const sum = arrNumber.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
     const promedio = (sum/score.length).toFixed(2);
+
     
     return (
         <div key={id} >
@@ -16,6 +17,7 @@ function Card({ id, name, description, user, imagen, userId, score }) {
                         <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
                         :
                         <img src={defaultImg[0]} alt='imagen proyecto'></img>
+
                     }
                 </div>
 
