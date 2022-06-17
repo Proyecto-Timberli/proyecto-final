@@ -10,6 +10,17 @@ const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 
 const stripe = new Stripe(STRIPE_SECRET_KEY)
 
+router.get('/', async(req, res, next)=>{
+    try {
+        const allUsers = await User.findAll();
+        return res.send(allUsers)
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+})
+
+
 router.get("/id/:idUser", async (req, res, next) => {
     const { idUser } = req.params
     try {

@@ -14,7 +14,10 @@ function Home() {
         <div className='features-cont'>
             <div className='feature-box'>
                 <MdSupervisedUserCircle className='icon-feature-admin'/>
+                <Link className='link-home-admin'to='/listadoUsers'>
+                
                 <h5 className='title-feature-admin'>Ver Listado de Users</h5>
+                </Link>
             </div>
             <div className='feature-box'>
             <MdWork className='icon-feature-admin'/>
