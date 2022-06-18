@@ -15,6 +15,7 @@ import Payment from '../src/components/payment/Payment';
 import PaAdmin from '../src/components/panelAdmin/Home/Home.js';
 import ListadoProjects from '../src/components/panelAdmin/ListadoProjects/ListadoProjects.js'
 import ListadoUsers from '../src/components/panelAdmin/ListadoUsers/ListadoUsers.js'
+import Stats from './components/panelAdmin/Stats/stats';
 function App() {
   return (
     <div className="App">
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/admin" element={<PaAdmin />} />
+        <Route exact path="/admin/stats" element={<Stats />} />
         <Route exact path="/listadoProjects" element={<ListadoProjects />} />
         <Route exact path="/ListadoUsers" element={<ListadoUsers />} />
         <Route path='*' element={<Page404 />} />

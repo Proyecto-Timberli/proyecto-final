@@ -78,6 +78,7 @@ function ListadoProjects() {
                     </div>
                 )}
             </div>
+            <Link to="/admin" >Volver al Panel</Link>
         </div>
     )
 }
