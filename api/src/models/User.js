@@ -35,7 +35,8 @@ module.exports = (sequelize) => {
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            defaultValue: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg"
         },
         description: {
             type: DataTypes.TEXT,
@@ -46,10 +47,10 @@ module.exports = (sequelize) => {
             allowNull: false,
             defaultValue: 'user'
         },
-        rol: {
+        short_description: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'Nada'
+            defaultValue: ''
         }
     });
 };

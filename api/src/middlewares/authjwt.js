@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 
 const verifyToken = async (req, res, next) => {
   /** 
-   * Middleware verifica siexiste token de usuario de la aplicación
+   * Middleware verifica si existe token de usuario de la aplicación
+   * y asigna el id del usuario a la request
    * 
    * ojo: solo verifica que tenga token, no que tipo de usuario es
    */

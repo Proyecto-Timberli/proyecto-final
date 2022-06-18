@@ -1,12 +1,17 @@
+import React, { useState }  from 'react'
 import { useParams } from 'react-router'
-import { useState } from 'react'
-import React from 'react'
-import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { getUserById, resetUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
-import DisplayUserProjects from './displayUserProjects/displayUserProjects'
-import './User.css'
+
+
+import { showLoadingInfo,
+    showUserNotFound,
+    showSelectedProfileSection,
+    showSocialMediaLink
+} from './user-helper';
+
+import { getUserById } from '../../redux/actions/actionCreators'
 import { scroll } from "../../functions";
+import './User.css'
 
 const User = () => {
     scroll()
@@ -24,56 +29,7 @@ const User = () => {
 
     const userData = useSelector((state) => state.userById)
 
-    function showSocialMediaLink(which) {
-        if (which === "github" && (userData.github !== "none" && userData.github !== null )) {
-            return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
-        }
-        if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null )) {
-            return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
-        }
-        return null
-    }
-
-    function showUserDescription() {
-        if (userData !== {} && userData.description) {
-            return (<>
-                <h3>Sobre mi:</h3>
-                {userData.description.split("\n\n").map((e) => { return (<p key={e} className='p-profile'>{e}</p>) })}
-            </>)
-        } else {
-            return (<>
-                <h3>Sobre mi:</h3>
-                <p className='p-profile'>Este usuario no tiene descripción.</p>
-            </>)
-        }
-    }
-
-    function showUserStack() {
-        if (userData.stack !== "none") {
-            return (<>
-                <h3>Stack de tecnologías:</h3>
-                <p className="p-stack"> {userData.stack}</p>
-            </>)
-        } else {
-            return (<>
-                <h3>Stack de tecnologías:</h3>
-                <p className="p-stack">Este usuario no ha indicado su stack.</p>
-            </>)
-        }
-    }
-
-    function showSelectedProfileSection() {
-        if (selectedSection === "about") {
-            return (
-                <div className='profileContent-profileInfo'>
-                    {showUserDescription()}
-                    {showUserStack()}
-                </div>
-            )
-        } else if (selectedSection === "projects") {
-            return (<DisplayUserProjects projects={userData.projects} />)
-        }
-    }
+    
 
     /** 
      * Lógica del componente
@@ -88,37 +44,28 @@ const User = () => {
     if (askedForData) {
         // Si hubo 404
         if (userData.err === "not found") {
-            return (
-                <div className='profileContainer'>
-                    <div className='profileContents'>
-                        <h1>Usuario no encontrado.</h1>
-                    </div>
-                </div>
-                )
+            return showUserNotFound()
         }
 
         // si no hay user, esta cargando aun
         if (userData === {}) {
-            return (
-                <div className='profileContainer'>
-                    <div className='profileContents'>
-                        <h1>Cargando...</h1>
-                    </div>
-                </div>
-                )
+            return showLoadingInfo()
         }
 
         // si los datos y el param son los mismos, mostrar usuario
         if (userData.id === Number.parseInt(paramsId)) {
+            console.log(userData)
             return (
                 <div className='profileContainer'>
                     <div className='profileInfo'>
-                        <img src={userData.image} className='profilePic' alt="profilepic" />
+                        <div className='user-profilePicContainer'>
+                            <img src={userData.image} className='profilePic' alt="profilepic" />
+                        </div>
                         <h2 className='profile-name'>{userData.name}</h2>
                         <div className='profileInfoDetails'>
-                            <p>{userData.rol}</p>
-                            {showSocialMediaLink("linkedIn")}
-                            {showSocialMediaLink("github")}
+                            <p>{userData.short_description}</p>
+                            {showSocialMediaLink("linkedIn", userData)}
+                            {showSocialMediaLink("github", userData) }
                         </div>
                     </div>
                     <div className='profileContents'>
@@ -132,7 +79,7 @@ const User = () => {
                             }} className='profileContentSectionButton'>Proyectos</button></h2>
                         </div>
                         <div className='profileContentContainer'>
-                            {showSelectedProfileSection()}
+                            {showSelectedProfileSection(selectedSection, userData)}
                         </div>
                     </div>
                 </div>)
@@ -143,33 +90,19 @@ const User = () => {
 
         if (userData.id !== Number.parseInt(paramsId)) {
             getUserById(paramsId)(dispatcher)
-            return (
-                <div className='profileContainer'>
-                    <div className='profileContents'>
-                        <h1>Cargando...</h1>
-                    </div>
-                </div>
-                )
+            return showLoadingInfo()
         }
     } 
     
-    
-    
+
     // si no tengo datos, pido datos
-    // recuerdar que ya los pedi
+    // y anotar que ya los pedi
     if (!askedForData) {
         getUserById(paramsId)(dispatcher)
         setAskedForData(true)
-        return (
-            <div className='profileContainer'>
-                <div className='profileContents'>
-                    <h1>Cargando...</h1>
-                </div>
-            </div>)
+        return showLoadingInfo()
     }
-
-
 }
 
 
-export default User
+export default User;

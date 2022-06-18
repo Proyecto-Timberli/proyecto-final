@@ -6,6 +6,7 @@ const { Project, User } = require('../db.js');
 const Stripe = require("stripe")
 const router = Router();
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
+const { verifyToken } = require('../middlewares/authjwt')
 
 
 const stripe = new Stripe(STRIPE_SECRET_KEY)
@@ -69,19 +70,24 @@ router.post("/donation", async (req, res, next) => {
     }
 })
 
-router.put("/", async (req, res, next) => {
+router.put("/", [ verifyToken ], async (req, res, next) => {
     const { userId, userEdit } = req.body;
     try {
         if (userId && userEdit) {
             const userUpdate = await User.findByPk(userId);
             await userUpdate.update(userEdit);
             await userUpdate.save();
-            res.send("su usuario se modifico correctamente ");
+            res.send({
+                status: "success",
+                msg: "Información de usuario modificada correctamente"
+            });
         }
     }
     catch (err) {
-
-        next(err);
+        res.status(500).send({
+            status: "error",
+            msg: err
+        });
     }
 })
 
