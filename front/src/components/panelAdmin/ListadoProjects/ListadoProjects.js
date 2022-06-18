@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom'
 function ListadoProjects() {
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
-    const [estado, setEstado] = useState('Aceptado')
+
+    const [estado, setEstado] = useState(0)
+
     useEffect(() => {
         dispatch(getAllProjects());
 
@@ -34,14 +36,17 @@ function ListadoProjects() {
         }
     }, [allProjects])
 
-    function cambiarEstado(id, state) {
+    async function  cambiarEstado(id, state) {
             
         if (state == 'Aceptado') {
-            dispatch(adminSupendProject(id, 'Pendiente' ))
+        
+           await dispatch(adminSupendProject(id, 'Pendiente' ))
             
         } else if (state == 'Pendiente') {
-            dispatch(adminSupendProject(id, 'Aceptado' ))
+            await dispatch(adminSupendProject(id, 'Aceptado' ))
         }       
+       
+        await dispatch(getAllProjects());
         
     }
 
