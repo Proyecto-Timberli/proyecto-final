@@ -66,7 +66,8 @@ function Project() {
                     <div className='cont-info'>
                         <div>
                             <h3>Puntuacion:</h3>
-                            <div className='info-detalle' >{project.scoreStyle} |  {project.scoreFunctionality}  | {project.scoreOriginality}</div>
+                            {console.log(project.scoreStyle)}
+                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
