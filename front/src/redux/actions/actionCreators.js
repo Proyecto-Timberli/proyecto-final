@@ -144,9 +144,9 @@ export function adminSupendUser(userId,userType) {
 }
 
 
-export function adminSupendProject(id,state) {
+export function adminSupendProject(projectId,state) {
     return function (dispatch) {
-        axios.put(REACT_APP_API+'/api/admin/',{id,state})
+        axios.put(REACT_APP_API+'/api/admin/project',{projectId,state})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_PROJECT,

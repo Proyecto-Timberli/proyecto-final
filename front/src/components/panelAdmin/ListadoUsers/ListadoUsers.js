@@ -14,9 +14,7 @@ import { Link } from 'react-router-dom'
 function ListadoUsers() {
     let dispatch = useDispatch()
     let allUsers = useSelector((state) => state.allUsers)
-    useEffect(() => {
-        dispatch(getAllUsers());
-    }, [])
+    
 
     const [desplegar, setDesplegar] = useState(0)
     const [modal, setModal] = useState(0)
@@ -69,11 +67,24 @@ function ListadoUsers() {
             projects:[]
         })
     }
+   
     function guardarCambios(userId, userType){
       
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
+        dispatch(getAllUsers());
+
     }
+
+    function resetEstadoRol(){
+        setModal(0)
+        
+    }
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, [])
+
 
     return (
         <div>
@@ -81,7 +92,7 @@ function ListadoUsers() {
                 <MdManageAccounts className='icono-title-users' />
                 <h1>Listado de Usuarios</h1>
             </div>
-
+            <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
             {(Object.keys(allUsers).length === 0) ?
                 <div>NO HAY USUARIOS</div>
                 :
@@ -92,6 +103,7 @@ function ListadoUsers() {
                                 <div className='user-card-admin' key={u.id}>
                                     <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
                                     <div className='content-project-state'>
+                                        {u.userType.toUpperCase()}
                                         <MdKeyboardArrowDown onClick={(e) => cambiarEstado(u.id)} />
                                     </div>
 
@@ -118,6 +130,7 @@ function ListadoUsers() {
                     <ModalUser 
                     estado = {guardarCambios}
                     id= {modal}
+                    reset= {resetEstadoRol}
                     />
                     : null
             }

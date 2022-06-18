@@ -56,8 +56,14 @@ function ListadoS() {
       
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
+        dispatch(getAllUsers());
+
     }
 
+    function resetEstadoRol(){
+        setModal(0)
+        
+    }
 
     
     return (
@@ -68,6 +74,8 @@ function ListadoS() {
                 <MdPersonOff className='icono-title-suspendidos' />
                 <h1>Listado de Usuarios Suspendidos</h1>
             </div>
+            <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
+
             {(Object.keys(allUsers).length === 0) ?
                 <div>NO HAY USUARIOS</div>
                 :
@@ -107,6 +115,7 @@ function ListadoS() {
                     <ModalSuspendidos
                     estado = {guardarCambios}
                     id= {modal}
+                    reset= {resetEstadoRol}
                     />
                     : null
             }
