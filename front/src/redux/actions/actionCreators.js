@@ -124,9 +124,10 @@ export function orderProjectsBy(projects) {
 
 
 
-export function adminSupendUser(id,userType) {
+export function adminSupendUser(userId,userType) {
     return function (dispatch) {
-        axios.put(REACT_APP_API+`/api/admin`,{id,userType})
+
+        axios.put(REACT_APP_API+'/api/admin/user',{userId,userType})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_USER,
@@ -134,7 +135,10 @@ export function adminSupendUser(id,userType) {
                 })
             })
     }
+    
 }
+
+
 export function adminSupendProject(id,state) {
     return function (dispatch) {
         axios.put(REACT_APP_API+`/api/admin/`,{id,state})

@@ -12,6 +12,8 @@ const mokeando = async () => {
     {
       name: "Tommy Shelby",
       userName: "Tshelby22",
+      userType: "suspended",
+
       mail: "Tshelby@mail.com",
       password: "password",
       image: "https://static.wikia.nocookie.net/peaky-blinders/images/8/8e/Tommys3.jpg/revision/latest?cb=20190715140230",
@@ -85,6 +87,7 @@ const mokeando = async () => {
     {
       name: "Roberto",
 /*       userName: "RRobert", */
+      userType: "suspended",
       mail: "roberto123@hotmail.com",
       password: "papasword",
       linkedin: "https://www.linkedin.com/",
@@ -96,6 +99,7 @@ const mokeando = async () => {
       name: "Anita",
       userType: "suspended",
       userName: "An1",
+      
       mail: "an1t4@gmail.com",
       password: "simplePassword",
       linkedin: "none",
@@ -107,6 +111,7 @@ const mokeando = async () => {
     {
       name: "Julio",
 /*       userName: "JuliusCaesar", */
+      userType: "suspended",
       mail: "juliuscaesar@romanempire.com",
       password: "brutusiwillhavemyrevenge",
       linkedin: "https://www.linkedin.com/",
@@ -117,7 +122,7 @@ const mokeando = async () => {
     },
     {
       name: "Alejandro",
-/*       userName: "AlexanderTheGreat", */
+      userType: "suspended",
       mail: "alexander33@gmail.com",
       password: "simplepassword",
       linkedin: "none",
@@ -127,7 +132,7 @@ const mokeando = async () => {
     },
     {
       name: "Cleopatra",
-/*       userName: "c1eopatra", */
+      userType: "suspended",
       mail: "queenofegypt@hotmail.com",
       password: "milk-baths",
       linkedin: "none",

@@ -1,0 +1,9 @@
+.arriba-contenedor-suspendidos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.icono-title-suspendidos{
+    font-size: 3rem;
+}
