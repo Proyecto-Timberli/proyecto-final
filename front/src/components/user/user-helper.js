@@ -4,6 +4,7 @@
 
 // ** Imports **
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
+import DisplayUserSettings from './displayUserSettings/displayUserSettings'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 // ** Funciones **
@@ -63,8 +64,14 @@ export function showSelectedProfileSection(selectedSection, userData) {
                 {showUserStack(userData.stack)}
             </div>
         )
-    } else if (selectedSection === "projects") {
+    }
+    
+    if (selectedSection === "projects") {
         return (<DisplayUserProjects projects={userData.projects} />)
+    }
+
+    if (selectedSection === "settings") {
+        return (<DisplayUserSettings userData={userData}/>)
     }
 }
 

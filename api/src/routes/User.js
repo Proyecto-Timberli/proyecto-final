@@ -72,6 +72,21 @@ router.post("/donation", async (req, res, next) => {
 
 router.put("/", [ verifyToken ], async (req, res, next) => {
     const { userId, userEdit } = req.body;
+
+    // Verificar que usuario X no pueda modificar datos de usuario Y
+    // ...a menos que sea admin
+    if (userId && userId !== req.user_id) {
+        /*
+        if (req.admin === true)
+            no mandar el error que sigue a continuación    
+        */
+
+        res.status(401).send({
+            status: "error",
+            msg: "No tienes autorización para realizar esta acción"
+        })
+    }
+
     try {
         if (userId && userEdit) {
             const userUpdate = await User.findByPk(userId);
@@ -84,7 +99,7 @@ router.put("/", [ verifyToken ], async (req, res, next) => {
         }
     }
     catch (err) {
-        res.status(500).send({
+        res.status(400).send({
             status: "error",
             msg: err
         });

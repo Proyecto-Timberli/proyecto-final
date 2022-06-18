@@ -15,9 +15,9 @@ import './User.css'
 
 const User = () => {
     scroll()
+
     // se usa para la request al back
     const { id } = useParams()
-
     const [paramsId, setParamsId] = useState(id)
 
     
@@ -29,7 +29,71 @@ const User = () => {
 
     const userData = useSelector((state) => state.userById)
 
+    function elemToButton (elem) {
+        return <button onClick={(e) => {
+            e.preventDefault()
+            setSelectedSection(elem.state)
+        }} className='profileContentSectionButton'>{elem.title}</button>
+    }
     
+    function showProfileSectionLinks() {
+        let anyUserProfile = [
+            {
+                title: "Perfil",
+                state: "about"
+            },
+            {
+                title: "Proyectos",
+                state: "projects"
+            }
+        ]
+
+        let myUserProfile = [
+            {
+                title: "Perfil",
+                state: "about"
+            },
+            {
+                title: "Proyectos",
+                state: "projects"
+            },
+            {
+                title: "Configuración",
+                state: "settings"
+            }
+        ]
+
+        if (userData.id === Number.parseInt(localStorage.getItem("userid"))) {
+            return <div className='profileContentSections'>{myUserProfile.map(elemToButton)}</div>
+        } else {
+            return <div className='profileContentSections'>{anyUserProfile.map(elemToButton)}</div>
+        }
+
+        return 
+    }
+
+    function showLoadedProfile() {
+        return (
+            <div className='profileContainer'>
+                <div className='profileInfo'>
+                    <div className='user-profilePicContainer'>
+                        <img src={userData.image} className='profilePic' alt="profilepic" />
+                    </div>
+                    <h2 className='profile-name'>{userData.name}</h2>
+                    <div className='profileInfoDetails'>
+                        <p>{userData.short_description}</p>
+                        {showSocialMediaLink("linkedIn", userData)}
+                        {showSocialMediaLink("github", userData) }
+                    </div>
+                </div>
+                <div className='profileContents'>
+                    {showProfileSectionLinks()}
+                    <div className='profileContentContainer'>
+                        {showSelectedProfileSection(selectedSection, userData)}
+                    </div>
+                </div>
+            </div>)
+    }
 
     /** 
      * Lógica del componente
@@ -54,35 +118,7 @@ const User = () => {
 
         // si los datos y el param son los mismos, mostrar usuario
         if (userData.id === Number.parseInt(paramsId)) {
-            console.log(userData)
-            return (
-                <div className='profileContainer'>
-                    <div className='profileInfo'>
-                        <div className='user-profilePicContainer'>
-                            <img src={userData.image} className='profilePic' alt="profilepic" />
-                        </div>
-                        <h2 className='profile-name'>{userData.name}</h2>
-                        <div className='profileInfoDetails'>
-                            <p>{userData.short_description}</p>
-                            {showSocialMediaLink("linkedIn", userData)}
-                            {showSocialMediaLink("github", userData) }
-                        </div>
-                    </div>
-                    <div className='profileContents'>
-                        <div className='profileContentSections'>
-                            <h2><button onClick={(e) => {
-                                e.preventDefault()
-                                setSelectedSection("about")
-                            }} className='profileContentSectionButton'>Perfil</button> | <button onClick={(e) => {
-                                e.preventDefault()
-                                setSelectedSection("projects")
-                            }} className='profileContentSectionButton'>Proyectos</button></h2>
-                        </div>
-                        <div className='profileContentContainer'>
-                            {showSelectedProfileSection(selectedSection, userData)}
-                        </div>
-                    </div>
-                </div>)
+            return showLoadedProfile()
         }
 
         // y el id de usuario no es el midmo que el de la pagina...
@@ -94,7 +130,6 @@ const User = () => {
         }
     } 
     
-
     // si no tengo datos, pido datos
     // y anotar que ya los pedi
     if (!askedForData) {
