@@ -3,7 +3,7 @@ import './listadoU.css'
 import { MdManageAccounts, MdKeyboardArrowDown } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from '../../../redux/actions/actionCreators'
-import Modal from './modalUser/modal.js'
+import ModalUser from './modalUser/ModalUser.js'
 import Paginado from '../../home/Paginado.js'
 
 import { Link } from 'react-router-dom'
@@ -46,12 +46,12 @@ function ListadoUsers() {
         }
     }
 
-    function cambiarEstadoModal(e){
+    function cambiarEstadoModal(e) {
         e.preventDefault()
-        if(modal=== 0){
+        if (modal === 0) {
             setModal(1)
         }
-        else if (modal === 1){
+        else if (modal === 1) {
             setModal(0)
         }
     }
@@ -97,23 +97,10 @@ function ListadoUsers() {
             }
             {
                 modal === 1 ?
-                    <div className='modal'>
-
-                        <div className='modal-contenido'>
-                            <h1>Cambiar Rol</h1>
-                            <form>
-                                <select>
-                                    <option>Admin</option>
-                                    <option>Suspended</option>
-                                    <option>User</option>
-                                    <option>Premium</option>
-
-                                </select>
-                            </form>
-
-                            <button onClick={(e) => cambiarEstadoModal(e)}>Guardar!</button>
-                        </div>
-                    </div>: null
+                    <ModalUser 
+                    estado = {cambiarEstadoModal}
+                    />
+                    : null
             }
             <div>
                 {paginado.buttons().map(button =>
