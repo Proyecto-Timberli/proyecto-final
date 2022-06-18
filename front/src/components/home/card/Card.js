@@ -35,7 +35,7 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
                     </Link>
                     <p className="text-body-card">{description}</p>
                     <div>
-                        {console.log(scoreStyle)}
+
                         <p className='text-score-card'>Puntaje diseño: {scoreStyle && (scoreStyle.reduce((e, a) => Number(e) + Number(a)) / scoreStyle.length).toFixed(2)}</p>
                         <p className='text-score-card'>Puntaje funcional: {scoreFunctionality && (scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / scoreFunctionality.length).toFixed(2)}</p>
                         <p className='text-score-card'>Puntaje originalidad: {scoreOriginality && (scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / scoreOriginality.length).toFixed(2)}</p>
