@@ -32,8 +32,8 @@ function App() {
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/admin" element={<PaAdmin />} />
         <Route exact path="/admin/stats" element={<Stats />} />
-        <Route exact path="/listadoProjects" element={<ListadoProjects />} />
-        <Route exact path="/ListadoUsers" element={<ListadoUsers />} />
+        <Route exact path="/admin/listadoProjects" element={<ListadoProjects />} />
+        <Route exact path="/admin/ListadoUsers" element={<ListadoUsers />} />
         <Route path='*' element={<Page404 />} />
       </Routes>
       <Footer />
