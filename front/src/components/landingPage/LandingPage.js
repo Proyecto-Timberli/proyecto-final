@@ -11,7 +11,7 @@ import { scroll } from "../../functions";
 
 export default function LandingPage() {
     scroll()
-    const logged = useSelector((state) => state.logged);
+    const logged = useSelector((state) => state.loggedUserId);
 
     return (
         <div className="landingWrapper">

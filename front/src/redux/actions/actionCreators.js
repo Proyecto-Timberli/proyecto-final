@@ -4,12 +4,12 @@ import { SAMPLE_ACTION,
     GET_ALL_PROJECTS,
     RESET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
-    LOGGED, SERVER_MESSAGE,
+    SERVER_MESSAGE,
     ORDER_PROJECTS_BY,
     GET_ALL_USERS,
     ADMIN_SUSPEND_USER,
-    ADMIN_SUSPEND_PROJECT
-
+    ADMIN_SUSPEND_PROJECT,
+    LOGGED_USER_ID
 } from "./actions.js"
 
 import axios from 'axios'
@@ -61,7 +61,8 @@ export function getUserById(id) {
                 
                 if (err.response.status === 404) {
                     dispatch({
-                        type: RESET_USER_BY_ID
+                        type: GET_USER_BY_ID,
+                        payload: { err: "not found" } 
                     })
                 }
 
@@ -103,13 +104,6 @@ export function resetProjectById() {
     }
 }
 
-export function loggin() {
-    return {
-        type: LOGGED,
-    }
-}
-
-
 
 export function crearMensajeState(mensaje) {
 
@@ -132,6 +126,7 @@ export function orderProjectsBy(projects) {
 
 export function adminSupendUser(userId,userType) {
     return function (dispatch) {
+
         axios.put(REACT_APP_API+'/api/admin/user',{userId,userType})
             .then(res => {
                 dispatch({
@@ -153,5 +148,12 @@ export function adminSupendProject(projectId,state) {
                     payload: res.data
                 })
             })
+    }
+}
+
+export function setLoggedUserId(payload) {
+    return {
+        type: LOGGED_USER_ID,
+        payload: payload
     }
 }
