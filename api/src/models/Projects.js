@@ -17,6 +17,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
+        shortDescription: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
         description: {
             type: DataTypes.TEXT,
             allowNull: true
@@ -25,9 +29,28 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        score: {
+        scoreStyle: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
-            allowNull: true
+            allowNull: true,
+
+        },
+        scoreFunctionality: {
+            type: DataTypes.ARRAY(DataTypes.DECIMAL),
+            allowNull: true,
+        },
+        scoreOriginality: {
+            type: DataTypes.ARRAY(DataTypes.DECIMAL),
+            allowNull: true,
+        },
+        scoreAverage: {
+            type: DataTypes.DECIMAL,
+            // set() {
+            //     const promedio = ((this.scoreStyle.reduce((e, a) => e + a) / this.scoreStyle.length) +
+            //         (this.scoreFunctionality.reduce((e, a) => e + a) / this.scoreFunctionality.length) +
+            //         (this.scoreOriginality.reduce((e, a) => e + a) / this.scoreOriginality.length)) / 3
+            //     return promedio
+            // }
+
         },
         deploying: {
             type: DataTypes.STRING,
@@ -37,10 +60,13 @@ module.exports = (sequelize) => {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: true
         },
-        state:{
+        state: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: 'Aceptado'
+        },
+        projectType: {
+            type: DataTypes.STRING
         }
     });
 };

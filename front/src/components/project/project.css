@@ -31,7 +31,7 @@
     min-height: 500px;
     max-width: 100%;
     max-height: 100%;
-    
+
 }
 
 .cont-img-detalle {
@@ -95,14 +95,16 @@
 }
 
 .desc-detalle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 12px;
     border: none;
     border-radius: 5px;
     background-color: white;
     font-weight: bolder;
     letter-spacing: 1px;
-    cursor: pointer;
-    margin: 10px;
+    margin: 10px 25px 0px 25px;
     box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
     transition: 0.6s;
 }
@@ -183,7 +185,4 @@
     color: white;
     letter-spacing: 1px;
     margin-top: 0;
-}
-.text{
-    margin: 0 auto;
 }

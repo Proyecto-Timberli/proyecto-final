@@ -6,9 +6,9 @@ import { SAMPLE_ACTION,
     RESET_PROJECT_BY_ID,
     SERVER_MESSAGE,
     ORDER_PROJECTS_BY,
+    GET_ALL_USERS,
     ADMIN_SUSPEND_USER,
     ADMIN_SUSPEND_PROJECT,
-    LOGIN,
     LOGGED_USER_ID
 } from "./actions.js"
 
@@ -35,7 +35,18 @@ export function getAllProjects() {
     }
 }
 
-
+export function getAllUsers(){
+    return function(dispatch){
+        axios.get('http://localhost:3001/api/user')
+        .then(response => {
+            dispatch({
+                type: GET_ALL_USERS,
+                payload: response.data
+            })
+        })
+       
+    }
+}
 
 
 export function getUserById(id) {
@@ -114,7 +125,7 @@ export function orderProjectsBy(projects) {
 
 export function adminSupendUser(id,userType) {
     return function (dispatch) {
-        axios.put(`http://localhost:3001/api/admin`,{id,userType})
+        axios.put(REACT_APP_API+`/api/admin`,{id,userType})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_USER,
@@ -125,7 +136,7 @@ export function adminSupendUser(id,userType) {
 }
 export function adminSupendProject(id,state) {
     return function (dispatch) {
-        axios.put(`http://localhost:3001/api/admin/`,{id,state})
+        axios.put(REACT_APP_API+`/api/admin/`,{id,state})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_PROJECT,

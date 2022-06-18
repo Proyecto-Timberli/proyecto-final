@@ -11,17 +11,17 @@ export default function validate(values, stateImage) {
         errores.name = "El nombre solamente puede contener letras"
     }
 
-    if (!values.descripcion) {
-        errores.descripcion = "Por favor ingresa una descripcion"
-    } else if (values.descripcion.split(" ").join("").length < 15) {
-        errores.descripcion = "La descripcion debe tener minimo 15 caracteres"
+    if (!values.shortDescripcion) {
+        errores.shortDescripcion = "Por favor ingresa una descripcion"
+    } else if (values.shortDescripcion.split(" ").join("").length < 6) {
+        errores.shortDescripcion = "La shortDescripcion debe tener minimo 6 caracteres"
     }
     if (!values.tecnologias) {
         errores.tecnologias = "Por favor ingresa minimo una tecnologia"
-    } else if(!regular.test(values.tecnologias)){
+    } else if (!regular.test(values.tecnologias)) {
         errores.tecnologias = " solo puede contener letras, numeros, espacios, puntos y comas"
     }
-    
+
     // if (!values.repositorio) {
     //         errores.repositorio = "Por favor ingresa un link al repositorio"
     //     } else if (!expresionForUrl.test(values.repositorio)) {

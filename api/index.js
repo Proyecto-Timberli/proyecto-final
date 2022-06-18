@@ -22,8 +22,8 @@ const { conn} = require('./src/db.js');
 const mokeando = require('./mokeando.js')
 
 
-const config = {}
-//const config = { force: true }
+//const config = {}
+const config = { force: true }
 
 conn.sync(config).then(() => {
   server.listen(process.env.PORT, () => {

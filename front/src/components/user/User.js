@@ -96,7 +96,7 @@ const User = () => {
                     <img src={userData.image} className='profilePic' alt="profilepic" />
                     <h2 className='profile-name'>{userData.name}</h2>
                     <div className='profileInfoDetails'>
-                        {/* <p>@{userData.userName}</p> */}
+                        <p>{userData.rol}</p>
                         {showSocialMediaLink("linkedIn")}
                         {showSocialMediaLink("github")}
                     </div>

@@ -1,23 +1,22 @@
-.arriba-contenedor-project{
+.arriba-contenedor-users{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-
-.icono-title-project{
+.icono-title-users{
     font-size: 3rem;
+
 }
 
-.contenedor-listado-project{
+.contenedor-listado-user{
     width: 75%;
     margin: 0 auto;
     padding: 15px;
 
-
 }
 
-.project-card-admin{
+.user-card-admin{
     list-style: none;
     width: 100%;
     background-color: #012A4A;
@@ -25,38 +24,31 @@
     color: white;
     font-weight: bold;
     text-align: left;
-    margin: 2px;
+    margin: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid white;
 }
-.project-card-admin a {
+.user-card-admin:hover{
+    background-color: #073356;
+
+}
+.user-card-admin a {
     text-decoration: none;
     color: inherit;
 }
-.content-project-state{
-    float: right;
+.user-desplegable-admin{
     display: flex;
-    align-items: center;
-    color: yellow;
+    flex-direction: row;
+    width: 80%;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #012A4A;
+    margin-bottom: 15px;
 }
-.state-project{
-    margin-right: 5px;
-}
-.accept-project{
-    color: green;
-    font-size: 1.5rem;
-
-}
-.decline-project{
-    color: red;
-    font-size: 1.5rem;
-
-}
-
-
-.link-home-admin{
-    text-decoration: none;
-    color: inherit;
+.button-desplegable{
+    margin: 5px;
 }

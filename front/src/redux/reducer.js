@@ -10,16 +10,17 @@ import { SAMPLE_ACTION,
     RESET_USER_BY_ID,
     SERVER_MESSAGE,
     ORDER_PROJECTS_BY,
-    LOGGED_USER_ID
+    LOGGED_USER_ID,
+    GET_ALL_USERS
 } from "./actions/actions.js";
 
 const initialState = {
     allProject: [],
     userById: {},
     projectById: {},
-    login: null,
     server_message: '',
-    loggedUserId: null
+    loggedUserId: null,
+    allUsers: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -75,6 +76,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 loggedUserId: action.payload
             }
+        case GET_ALL_USERS: {
+            return{
+                ...state,
+                allUsers: action.payload
+            }
+        }
         default:
             return state
     }

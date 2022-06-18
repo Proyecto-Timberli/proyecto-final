@@ -13,10 +13,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        /* userName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }, */
         mail: {
             type: DataTypes.STRING,
             allowNull: false
@@ -45,10 +41,15 @@ module.exports = (sequelize) => {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        userType:{
+        userType: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: 'user'
+        },
+        rol: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: 'Nada'
         }
     });
 };

@@ -41,7 +41,7 @@ const Home = () => {
     let logger = useSelector((state) => state.loggedUserId)
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
-
+    console.log(allProjects);
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     return (
@@ -58,16 +58,19 @@ const Home = () => {
                 {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
-
                         {cardsInPag.renderCards.map(e => (!!e) && <Card
-                            description={e.description}
+                            description={e.shortDescription}
                             key={e.id}
                             name={e.name}
                             id={e.id}
                             user={e.user.name}
                             imagen={e.imagen}
                             userId={e.userId}
-                            score={e.score}
+                            scoreFunctionality={e.scoreFunctionality}
+                            scoreOriginality={e.scoreOriginality}
+                            scoreStyle={e.scoreStyle}
+
+                            score={e.scoreAverage}
                         />)}
                     </div>
                 }

@@ -30,7 +30,7 @@ router.put("/project", async (req, res, next) => {
           const projectEdit= {...projectUpdate, state: state}
           await projectUpdate.update(projectEdit);
           await projectUpdate.save();
-          res.send("se modifico correctamente el usuario "+projectUpdate.name);
+          res.send("se modifico correctamente el proyecto "+projectUpdate.name);
         }
     }
     catch(err){
