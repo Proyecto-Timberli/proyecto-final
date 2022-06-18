@@ -58,7 +58,7 @@ const Home = () => {
     }, [allProjects,filterTechs,filterBySearch])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
-    let logger = useSelector((state) => state.logged)
+    let logger = useSelector((state) => state.loggedUserId)
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     return (
@@ -84,14 +84,18 @@ const Home = () => {
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
                         {cardsInPag.renderCards.map(e => (!!e) && <Card
-                            description={e.description}
+                            description={e.shortDescription}
                             key={e.id}
                             name={e.name}
                             id={e.id}
                             user={e.user.name}
                             imagen={e.imagen}
                             userId={e.userId}
-                            score={e.score}
+                            scoreFunctionality={e.scoreFunctionality}
+                            scoreOriginality={e.scoreOriginality}
+                            scoreStyle={e.scoreStyle}
+
+                            score={e.scoreAverage}
                         />)}
                     </div>
                 }

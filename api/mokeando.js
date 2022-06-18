@@ -12,6 +12,8 @@ const mokeando = async () => {
     {
       name: "Tommy Shelby",
       userName: "Tshelby22",
+      userType: "suspended",
+
       mail: "Tshelby@mail.com",
       password: "password",
       image: "https://static.wikia.nocookie.net/peaky-blinders/images/8/8e/Tommys3.jpg/revision/latest?cb=20190715140230",
@@ -44,7 +46,7 @@ const mokeando = async () => {
     },
     {
       name: "Luciano",
-      userName: "luciano",
+      /*       userName: "luciano", */
       mail: "luciano@mail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -54,7 +56,7 @@ const mokeando = async () => {
     },
     {
       name: "Cristobal",
-      userName: "Saposan",
+      /*       userName: "Saposan", */
       mail: "cristobal.herreros@gmail.com",
       password: "aVerySecurePassword",
       linkedin: "https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/",
@@ -64,7 +66,7 @@ const mokeando = async () => {
     },
     {
       name: "Lucas",
-      userName: "soylucas",
+      /*       userName: "soylucas", */
       mail: "soylucas@hotmail.com",
       password: "contraseña",
       linkedin: "Tengo linkedin!",
@@ -74,7 +76,7 @@ const mokeando = async () => {
     },
     {
       name: "María",
-      userName: "soymaria",
+      /*       userName: "soymaria", */
       mail: "soymaría@gmail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -84,7 +86,8 @@ const mokeando = async () => {
     },
     {
       name: "Roberto",
-      userName: "RRobert",
+      /*       userName: "RRobert", */
+      userType: "suspended",
       mail: "roberto123@hotmail.com",
       password: "papasword",
       linkedin: "https://www.linkedin.com/",
@@ -94,7 +97,9 @@ const mokeando = async () => {
     },
     {
       name: "Anita",
+      userType: "suspended",
       userName: "An1",
+
       mail: "an1t4@gmail.com",
       password: "simplePassword",
       linkedin: "none",
@@ -105,7 +110,8 @@ const mokeando = async () => {
 
     {
       name: "Julio",
-      userName: "JuliusCaesar",
+      /*       userName: "JuliusCaesar", */
+      userType: "suspended",
       mail: "juliuscaesar@romanempire.com",
       password: "brutusiwillhavemyrevenge",
       linkedin: "https://www.linkedin.com/",
@@ -116,7 +122,7 @@ const mokeando = async () => {
     },
     {
       name: "Alejandro",
-      userName: "AlexanderTheGreat",
+      userType: "suspended",
       mail: "alexander33@gmail.com",
       password: "simplepassword",
       linkedin: "none",
@@ -126,7 +132,7 @@ const mokeando = async () => {
     },
     {
       name: "Cleopatra",
-      userName: "c1eopatra",
+      userType: "suspended",
       mail: "queenofegypt@hotmail.com",
       password: "milk-baths",
       linkedin: "none",
@@ -135,8 +141,8 @@ const mokeando = async () => {
       image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
     },
     {
-      name: "Billy",
-      userName: "NotBillGates",
+      name: "notBill",
+      /*       userName: "NotBillGates", */
       mail: "iamnotbillgates@microsoft.com",
       password: "i-lied",
       linkedin: "https://www.linkedin.com/",
@@ -147,7 +153,7 @@ const mokeando = async () => {
     },
     {
       name: "Bastián",
-      userName: "bastyJr",
+      /*       userName: "bastyJr", */
       mail: "bastianprogrammer@gmail.com",
       password: "randomHashMadeByPasswordManager",
       linkedin: "none",
@@ -450,11 +456,49 @@ const mokeando = async () => {
     { name: "Amazon Web Services" }
   ];
 
+
+  function numeroRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+
+
+
+  projects.map((e) => {
+    if (!!e.score) {
+      e.scoreStyle = []
+      e.scoreFunctionality = []
+      e.scoreOriginality = []
+      e.scoreStyle.push(e.score[0]);
+      e.scoreFunctionality.push(e.score[1])
+      e.scoreOriginality.push(e.score[2])
+    }
+    else { null }
+
+
+
+
+  })
+
+
+
   for (let i = 0; i < users.length; i++) {
     let arrayProjects = []
+
     for (let j = 0; j < projects.length; j++) {
-      arrayProjects.push(await Project.create(projects[j]))
+      if (numeroRandom(1, 2) === 1) {
+
+        projects[j].scoreFunctionality.push(numeroRandom(1, 5))
+        projects[j].scoreStyle.push(numeroRandom(1, 5))
+        projects[j].scoreOriginality.push(numeroRandom(1, 5))
+
+        projects[j].scoreAverage = ((projects[j].scoreStyle.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreStyle.length) +
+          (projects[j].scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreFunctionality.length) +
+          (projects[j].scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreOriginality.length)) / 3
+        arrayProjects.push(await Project.create(projects[j]))
+      }
     }
+
     let user = await User.create(users[i])
     await user.addProjects(arrayProjects)
   }

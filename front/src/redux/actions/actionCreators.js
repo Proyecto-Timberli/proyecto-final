@@ -4,12 +4,12 @@ import { SAMPLE_ACTION,
     GET_ALL_PROJECTS,
     RESET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
-    LOGGED, SERVER_MESSAGE,
+    SERVER_MESSAGE,
     ORDER_PROJECTS_BY,
     GET_ALL_USERS,
     ADMIN_SUSPEND_USER,
-    ADMIN_SUSPEND_PROJECT
-
+    ADMIN_SUSPEND_PROJECT,
+    LOGGED_USER_ID
 } from "./actions.js"
 
 import axios from 'axios'
@@ -61,7 +61,8 @@ export function getUserById(id) {
                 
                 if (err.response.status === 404) {
                     dispatch({
-                        type: RESET_USER_BY_ID
+                        type: GET_USER_BY_ID,
+                        payload: { err: "not found" } 
                     })
                 }
 
@@ -103,13 +104,6 @@ export function resetProjectById() {
     }
 }
 
-export function loggin() {
-    return {
-        type: LOGGED,
-    }
-}
-
-
 
 export function crearMensajeState(mensaje) {
 
@@ -130,9 +124,10 @@ export function orderProjectsBy(projects) {
 
 
 
-export function adminSupendUser(id,userType) {
+export function adminSupendUser(userId,userType) {
     return function (dispatch) {
-        axios.put(REACT_APP_API+`/api/admin`,{id,userType})
+
+        axios.put(REACT_APP_API+'/api/admin/user',{userId,userType})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_USER,
@@ -140,15 +135,25 @@ export function adminSupendUser(id,userType) {
                 })
             })
     }
+    
 }
-export function adminSupendProject(id,state) {
+
+
+export function adminSupendProject(projectId,state) {
     return function (dispatch) {
-        axios.put(REACT_APP_API+`/api/admin/`,{id,state})
+        axios.put(REACT_APP_API+'/api/admin/project',{projectId,state})
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_PROJECT,
                     payload: res.data
                 })
             })
+    }
+}
+
+export function setLoggedUserId(payload) {
+    return {
+        type: LOGGED_USER_ID,
+        payload: payload
     }
 }

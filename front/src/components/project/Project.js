@@ -66,11 +66,12 @@ function Project() {
                     <div className='cont-info'>
                         <div>
                             <h3>Puntuacion:</h3>
-                            <div className='info-detalle' >{(project.score[0] | project.score[1] | project.score[2])}</div>
+                            {console.log(project.scoreStyle)}
+                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
-                            <Link to={"/user/" + project.userId} style={{ 'text-decoration': 'none' }}>
+                            <Link to={"/user/" + project.userId} >
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
                         </div>

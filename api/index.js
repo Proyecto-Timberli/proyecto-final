@@ -22,7 +22,10 @@ const { conn} = require('./src/db.js');
 const mokeando = require('./mokeando.js')
 
 
-conn.sync({ force: true }).then(() => {
+//const config = {}
+const config = { force: true }
+
+conn.sync(config).then(() => {
   server.listen(process.env.PORT, () => {
     console.log('%s listening at '+process.env.PORT);
   })

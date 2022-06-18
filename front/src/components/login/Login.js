@@ -1,16 +1,75 @@
 import React from "react";
 import './login.css';
 import imgLogin from '../../images/clipLogin.gif';
-import { Link } from 'react-router-dom';
-import google from '../../images/google.png';
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {MdInsertEmoticon} from "react-icons/md";
+/* import google from '../../images/google.png';
 import linkedin from '../../images/linkedin.png';
-import github from '../../images/github.png';
+import github from '../../images/github.png'; */
 import { scroll } from "../../functions";
-
+import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { setLoggedUserId } from "../../redux/actions/actionCreators";
 
 export default function Login() {
+
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    })
+
+    const dispatch = useDispatch()
+
+
+    const [formErrors, setFormErrors] = useState({ error: ""})
+
+    const [comingFromRegister, setComingFromRegister] = useState(false)
+
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    if (!comingFromRegister && location.state && location.state.registerSuccess) {
+        setComingFromRegister(true)
+    }
+
+    function showFromRegisterMessage() {
+        if (comingFromRegister) {
+            return <div>
+            <h2 className="msj-exitoso-login"><MdInsertEmoticon/> Registro exitoso, ahora puedes iniciar sesión <MdInsertEmoticon/></h2>
+        </div>
+        }
+    }
+
+    function loginAttempt() {
+        // intento de login
+        axios.post('http://localhost:3001/api/auth/login', {
+            email: formData.email,
+            password: formData.password
+        }).then(response => {
+            // Login exitoso
+            if (response.data.status === "success") {
+                console.log(response.data)
+                localStorage.setItem('usertoken', response.data.token)
+                localStorage.setItem('userid', response.data.id)
+                dispatch(setLoggedUserId(response.data.id))
+                return navigate('/home')
+            }
+        })
+        .catch(err => {
+            // Login Fallido                
+            setFormErrors(
+                { error: err.response.data.error }
+            )
+
+
+    })
+    }
+
+
     scroll()
-    return (
+    return (<>
+        {showFromRegisterMessage()}
         <div className='container-login'>
 
             <div className='login-left'>
@@ -25,26 +84,54 @@ export default function Login() {
                 <form method="POST" className='login-form'>
                     <div className="login-item">
                         <label></label>
-                        <input className="login-input" type='text' placeholder='Email' />
+                        <input 
+                        className="login-input" 
+                        type='text' 
+                        placeholder='Email' 
+                        value={formData.email} 
+                        onChange={(e) => {
+                            setFormData({
+                                ...formData,
+                                email: e.target.value
+                            })
+                        }}/>
                     </div>
                     <div className="login-item">
                         <label></label>
-                        <input className="login-input" type='password' placeholder='Password' />
+                        <input 
+                        className="login-input" 
+                        type='password' 
+                        placeholder='Password'
+                        value={formData.password} 
+                        onChange={(e) => {
+                            setFormData({
+                                ...formData,
+                                password: e.target.value
+                            })
+                        }}/>
                     </div>
                     <div className="login-item">
                         <label className="login-checkbox">
-                            <input type="checkbox" name="rememberMe" style={{ display: 'unset' }} className="rememberMe" />
+                            {/* <input type="checkbox" name="rememberMe" style={{ display: 'unset' }} className="rememberMe" />
                             <span className="login-checkmark"></span>
-                            Remember me
+                            Remember me */}
                         </label>
                     </div>
                     <div className='login-item'>
-                        <button className='login-button'> LOG IN </button>
+                        <label className="login-formError">{formErrors.error}</label>
+                    </div>
+                    <div className='login-item'>
+                        <button 
+                        className='login-button'
+                        onClick={(e) => {
+                            e.preventDefault()
+                            loginAttempt()
+                        }}> LOG IN </button>
                     </div>
                 </form>
 
                 <div className='login-section'>
-                    <h4> Or sign in with</h4>
+                    {/* <h4> Or sign in with</h4>
                     <div className="login-buttons">
                         <a href='https://www.google.com/'>
                             <img src={google} width="60" alt="google" className='linkGoogle' />
@@ -55,7 +142,7 @@ export default function Login() {
                         <a href='https://github.com/'>
                             <img src={github} width="60" alt="github" className='linkGithub' />
                         </a>
-                    </div>
+                    </div> */}
                     <div className='login-register'>
                         <p className="login-text">Not a member? </p>
                         <Link className="login-link" to='/register'>
@@ -67,6 +154,6 @@ export default function Login() {
             </div>
 
         </div>
-    )
+        </>)
 };
 
