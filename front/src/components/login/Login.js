@@ -3,6 +3,7 @@ import './login.css';
 import imgLogin from '../../images/clipLogin.gif';
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {MdInsertEmoticon} from "react-icons/md";
 /* import google from '../../images/google.png';
 import linkedin from '../../images/linkedin.png';
 import github from '../../images/github.png'; */
@@ -35,7 +36,7 @@ export default function Login() {
     function showFromRegisterMessage() {
         if (comingFromRegister) {
             return <div>
-            <h2>Registro exitoso, ahora puedes iniciar sesión :)</h2>
+            <h2 className="msj-exitoso-login"><MdInsertEmoticon/> Registro exitoso, ahora puedes iniciar sesión <MdInsertEmoticon/></h2>
         </div>
         }
     }
