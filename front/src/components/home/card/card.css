@@ -37,6 +37,7 @@
     text-decoration: none;
     font-weight: bolder;
     transition: all .2s;
+    margin: 0;
 }
 
 .text-title-card:hover {

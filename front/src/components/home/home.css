@@ -50,7 +50,7 @@
     transition: 0.6s;
 }
 
-.home-publica-si-logged{
+.home-publica-si-logged {
     background-color: #a9d6e5cb;
     box-shadow: 0px 0px 10px 5px #a9d6e5cb;
     align-items: center;
@@ -59,15 +59,16 @@
     margin-bottom: 3%;
 }
 
-.home-publicar, .home-publicar-link{
-    color:#012A4A;
+.home-publicar,
+.home-publicar-link {
+    color: #012A4A;
     font-weight: bolder;
     text-decoration: none;
     transition: 0.4s;
 
 }
 
-.home-publicar-link:hover{
+.home-publicar-link:hover {
     text-decoration: none;
     font-size: larger;
 }
@@ -89,10 +90,8 @@
 
 .container-paginado {
     display: inline-block;
-    padding: 1px;
     margin: 1px;
-    top: 15px;
-    padding: 25px 8px 35px 8px;
+    padding: 1px
 }
 
 .home-paginado-button:hover {
