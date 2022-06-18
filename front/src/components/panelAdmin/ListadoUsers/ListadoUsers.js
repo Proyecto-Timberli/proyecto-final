@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './listadoU.css'
 import { MdManageAccounts, MdKeyboardArrowDown } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers,adminSupendUser } from '../../../redux/actions/actionCreators'
+import { getAllUsers, adminSupendUser } from '../../../redux/actions/actionCreators'
 import ModalUser from './modalUser/ModalUser.js'
 import ModalProjects from './modalProjects/ModalProjects.js'
 import Paginado from '../../home/Paginado.js'
@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 function ListadoUsers() {
     let dispatch = useDispatch()
     let allUsers = useSelector((state) => state.allUsers)
-    
+
 
     const [desplegar, setDesplegar] = useState(0)
     const [modal, setModal] = useState(0)
@@ -60,25 +60,25 @@ function ListadoUsers() {
             projects: projects
         })
     }
-    function resetEstado(){
+    function resetEstado() {
         setmodalP({
-            id:0,
-            name:'',
-            projects:[]
+            id: 0,
+            name: '',
+            projects: []
         })
     }
-   
-    function guardarCambios(userId, userType){
-      
+
+    function guardarCambios(userId, userType) {
+
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
         dispatch(getAllUsers());
 
     }
 
-    function resetEstadoRol(){
+    function resetEstadoRol() {
         setModal(0)
-        
+
     }
 
     useEffect(() => {
@@ -99,7 +99,7 @@ function ListadoUsers() {
                 <div className="contenedor-listado-user">
                     {
                         cardsInPag.renderCards.map(u => ((!!u) &&
-                            <div>
+                            <div key={u.id}>
                                 <div className='user-card-admin' key={u.id}>
                                     <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
                                     <div className='content-project-state'>
@@ -114,7 +114,7 @@ function ListadoUsers() {
                                             <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModal(u.id)}>CAMBIAR ROL</button></div>
                                             {/* <div className='button-desplegable'><button>REPORTES</button></div> */}
                                             <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModalProyectos(u.id, u.name, u.projects)}>PROYECTOS</button></div>
-                                            
+
 
                                         </div>
                                         : null
@@ -126,24 +126,24 @@ function ListadoUsers() {
                 </div>
             }
             {
-                 !!modal && modal !=0 ?
-                    <ModalUser 
-                    estado = {guardarCambios}
-                    id= {modal}
-                    reset= {resetEstadoRol}
+                !!modal && modal != 0 ?
+                    <ModalUser
+                        estado={guardarCambios}
+                        id={modal}
+                        reset={resetEstadoRol}
                     />
                     : null
             }
             {
-                !!modalP && modalP.id !=0 ?
-                <ModalProjects 
-                key={modalP.id}
-                estado = {resetEstado}
-                id= {modalP.id}
-                nombre = {modalP.name}
-                projects= {modalP.projects}
-                />
-                : null
+                !!modalP && modalP.id != 0 ?
+                    <ModalProjects
+                        key={modalP.id}
+                        estado={resetEstado}
+                        id={modalP.id}
+                        nombre={modalP.name}
+                        projects={modalP.projects}
+                    />
+                    : null
             }
             <div>
                 {paginado.buttons().map(button =>
