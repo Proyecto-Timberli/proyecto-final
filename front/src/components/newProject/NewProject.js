@@ -10,7 +10,7 @@ import { scroll } from "../../functions";
 export default function NewProject() {
     scroll()
     const dispatch = useDispatch()
-    const logged = useSelector((state) => state.logged)
+    const logged = useSelector((state) => state.loggedUserId)
     const initialValues = {
         name: "",
         Fecha: "",
@@ -30,14 +30,9 @@ export default function NewProject() {
     function handleInputImage(e) {
         e.preventDefault()
 
-
         if (e.target.value === "") return
         setImagen([e.target.files[0], ...Imagen])
-
-
-
     }
-
 
     function deletePhoto(e) {
         let indexInput = e.target.id * 1;
@@ -46,6 +41,7 @@ export default function NewProject() {
         }))
 
     }
+
     async function onSubmit(e, errors, values, resetForm) {
         e.preventDefault();
         if (Object.keys(errors).length > 0 || JSON.stringify(values) === JSON.stringify(initialValues)) {
@@ -71,7 +67,6 @@ export default function NewProject() {
         resetForm()
         setImagen("");
     }
-
 
     return (<>
         {!logged ? <div className={styles.containerAllDiv}>

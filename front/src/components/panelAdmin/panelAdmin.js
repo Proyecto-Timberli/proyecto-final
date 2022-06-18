@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const PanelAdmin = () => {
     let dispatch = useDispatch()
-    const adminLogged = useSelector((state) => state.logged)
-    const cambioLogin = () => {
-        dispatch(loggin())
-    }
+    const adminLogged = useSelector((state) => state.loggedUserId)
+    
     //////////////////////////////////////////////////////////
     //traer usuarios con sus proyectos
     

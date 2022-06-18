@@ -25,6 +25,11 @@ router.get('/', async (req, res, next) => {
 
 router.get("/id/:idUser", async (req, res, next) => {
     const { idUser } = req.params
+
+    if (!idUser || idUser === "null") {
+        return res.sendStatus(400)
+    }
+
     try {
         const user = await User.findByPk(idUser, {
             include: Project

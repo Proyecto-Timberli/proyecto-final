@@ -73,7 +73,7 @@ export default function Orders() {
         </select>
       </div>
       <div>
-        <input type="search" placeholder="Buscar proyecto..." />
+        <input type="search" className="div-input" placeholder="Buscar proyecto..." />
       </div>
       <div>
         <select onChange={(e) => changeOrder(e, "score")}>

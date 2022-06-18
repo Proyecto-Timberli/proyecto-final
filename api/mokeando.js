@@ -46,7 +46,7 @@ const mokeando = async () => {
     },
     {
       name: "Luciano",
-      userName: "luciano",
+/*       userName: "luciano", */
       mail: "luciano@mail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -56,7 +56,7 @@ const mokeando = async () => {
     },
     {
       name: "Cristobal",
-      userName: "Saposan",
+/*       userName: "Saposan", */
       mail: "cristobal.herreros@gmail.com",
       password: "aVerySecurePassword",
       linkedin: "https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/",
@@ -66,7 +66,7 @@ const mokeando = async () => {
     },
     {
       name: "Lucas",
-      userName: "soylucas",
+/*       userName: "soylucas", */
       mail: "soylucas@hotmail.com",
       password: "contraseña",
       linkedin: "Tengo linkedin!",
@@ -76,7 +76,7 @@ const mokeando = async () => {
     },
     {
       name: "María",
-      userName: "soymaria",
+/*       userName: "soymaria", */
       mail: "soymaría@gmail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -86,9 +86,8 @@ const mokeando = async () => {
     },
     {
       name: "Roberto",
+/*       userName: "RRobert", */
       userType: "suspended",
-
-      userName: "RRobert",
       mail: "roberto123@hotmail.com",
       password: "papasword",
       linkedin: "https://www.linkedin.com/",
@@ -111,9 +110,8 @@ const mokeando = async () => {
 
     {
       name: "Julio",
-      userName: "JuliusCaesar",
+/*       userName: "JuliusCaesar", */
       userType: "suspended",
-
       mail: "juliuscaesar@romanempire.com",
       password: "brutusiwillhavemyrevenge",
       linkedin: "https://www.linkedin.com/",
@@ -124,9 +122,7 @@ const mokeando = async () => {
     },
     {
       name: "Alejandro",
-      userName: "AlexanderTheGreat",
       userType: "suspended",
-
       mail: "alexander33@gmail.com",
       password: "simplepassword",
       linkedin: "none",
@@ -136,9 +132,7 @@ const mokeando = async () => {
     },
     {
       name: "Cleopatra",
-      userName: "c1eopatra",
       userType: "suspended",
-
       mail: "queenofegypt@hotmail.com",
       password: "milk-baths",
       linkedin: "none",
@@ -147,8 +141,8 @@ const mokeando = async () => {
       image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
     },
     {
-      name: "Billy",
-      userName: "NotBillGates",
+      name: "notBill",
+/*       userName: "NotBillGates", */
       mail: "iamnotbillgates@microsoft.com",
       password: "i-lied",
       linkedin: "https://www.linkedin.com/",
@@ -159,7 +153,7 @@ const mokeando = async () => {
     },
     {
       name: "Bastián",
-      userName: "bastyJr",
+/*       userName: "bastyJr", */
       mail: "bastianprogrammer@gmail.com",
       password: "randomHashMadeByPasswordManager",
       linkedin: "none",

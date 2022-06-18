@@ -83,3 +83,7 @@
     color: #013A63;
     font-weight: bolder;
 }
+
+.formErrors-label {
+    color:red;
+}
