@@ -61,7 +61,8 @@ export function getUserById(id) {
                 
                 if (err.response.status === 404) {
                     dispatch({
-                        type: RESET_USER_BY_ID
+                        type: GET_USER_BY_ID,
+                        payload: { err: "not found" } 
                     })
                 }
 

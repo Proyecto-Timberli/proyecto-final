@@ -38,7 +38,31 @@ const Navbar = () => {
         }
     }
     
+    function checkIfLoggedIn() {
+        // revisamos si hay token
+        let usertoken = window.localStorage.getItem('usertoken')
+
+        // si no hay token, seteamos a null
+        if (!usertoken){
+            dispatch(setLoggedUserId(null))
+        } else {
+
+            // si hay token, debiera haber userid...
+            let userid = window.localStorage.getItem('userid')
+
+            // si no hay userid, deslogear
+            if (!userid) {
+                dispatch(setLoggedUserId(null))   
+
+            // si HAY userid, logearse en toda la app
+            } else {
+                dispatch(setLoggedUserId(userid))
+            }
+        }
+    }
+
     // antes de renderizar, verificamos si hay token de usuario
+    checkIfLoggedIn()
     
 
     return (

@@ -50,6 +50,7 @@ export default function Login() {
             if (response.data.status === "success") {
                 console.log(response.data)
                 localStorage.setItem('usertoken', response.data.token)
+                localStorage.setItem('userid', response.data.id)
                 dispatch(setLoggedUserId(response.data.id))
                 return navigate('/home')
             }

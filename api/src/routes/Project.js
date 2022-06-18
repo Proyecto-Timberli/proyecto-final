@@ -8,10 +8,8 @@ const { verifyToken } = require('../middlewares/authjwt')
 
 
 
-router.get("/", [verifyToken], async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    console.log("entro a get /projects")
-
     const allProjects = await Project.findAll({
       include: User
     })
@@ -55,7 +53,7 @@ router.post("/", [verifyToken], async (req, res, next) => {
 })
 
 
-router.put("/", async (req, res, next) => {
+router.put("/", [verifyToken], async (req, res, next) => {
     const {projectId , projectEdit} = req.body;
     try {
         if(projectId && projectEdit){
@@ -70,7 +68,7 @@ router.put("/", async (req, res, next) => {
 })
 
 
-router.delete("/", async (req, res, next) => {
+router.delete("/", [verifyToken], async (req, res, next) => {
   const { projectId } = req.body;
   try {
     if (projectId) {
