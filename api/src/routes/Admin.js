@@ -8,6 +8,7 @@ const router = Router();
 
 router.put("/user", async (req, res, next) => {
     const {userId , userType} = req.body;
+    
     try{
         if(userId && userType){
           const userUpdate= await User.findByPk(userId);

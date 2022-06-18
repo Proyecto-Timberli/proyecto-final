@@ -12,7 +12,9 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 
 router.get('/', async(req, res, next)=>{
     try {
-        const allUsers = await User.findAll();
+        const allUsers = await User.findAll({
+            include: Project
+        });
         return res.send(allUsers)
     } catch (error) {
         console.log(error);

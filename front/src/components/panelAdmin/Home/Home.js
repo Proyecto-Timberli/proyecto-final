@@ -31,7 +31,7 @@ function Home() {
             </div>
             <div className='feature-box'>
             <MdRemoveCircle className='icon-feature-admin'/>
-            <Link className='link-home-admin' to ='/listadoSuspendidos'>
+            <Link className='link-home-admin' to ='/admin/listadoSuspendidos'>
                 <h5 className='title-feature-admin'>Ver Listado de Suspendidos</h5>
                 </Link>
             </div>

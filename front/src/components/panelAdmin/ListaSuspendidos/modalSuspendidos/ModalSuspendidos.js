@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import "./modal.css"
 
-const ModalUser = ({estado}) => {
+const ModalUser = ({estado, id}) => {
     const dispatch = useDispatch()
 
+    const[valor, setValor] = useState('')
     
-    let onClickButton = (e) => {
-        e.preventDefault();
-        
+    function handleOnChange(e){
+        e.preventDefault()
+        setValor(e.target.value)
     }
     return (
         <div className='modal'>
@@ -19,16 +20,16 @@ const ModalUser = ({estado}) => {
                         <div className='modal-contenido'>
                             <h1>Cambiar Rol</h1>
                             <form>
-                                <select>
-                                    <option>Admin</option>
-                                    <option>Suspended</option>
-                                    <option>User</option>
-                                    <option>Premium</option>
+                                <select onChange={handleOnChange}>
+                                    <option value='admin'>Admin</option>
+                                    <option value='suspended'>Suspended</option>
+                                    <option value='user'>User</option>
+                                    <option value='premium'>Premium</option>
 
                                 </select>
                             </form>
 
-                            <button onClick={(e) => estado(e)}>Guardar!</button>
+                            <button onClick={(e) => estado(id, valor)}>Guardar!</button>
                         </div>
                     </div>
     );

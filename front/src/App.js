@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/admin" element={<PaAdmin />} />
         <Route exact path="/listadoProjects" element={<ListadoProjects />} />
         <Route exact path="/ListadoUsers" element={<ListadoUsers />} />
-        <Route exact path="/ListadoSuspendidos" element={<ListadoSuspendidos />} />
+        <Route exact path="/admin/ListadoSuspendidos" element={<ListadoSuspendidos />} />
 
         <Route path='*' element={<Page404 />} />
       </Routes>

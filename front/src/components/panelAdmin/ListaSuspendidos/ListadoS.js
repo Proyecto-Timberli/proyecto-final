@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MdPersonOff, MdKeyboardArrowDown } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from '../../../redux/actions/actionCreators'
+import { getAllUsers, adminSupendUser } from '../../../redux/actions/actionCreators'
 import Paginado from '../../home/Paginado.js'
 import ModalSuspendidos from './modalSuspendidos/ModalSuspendidos.js'
 
@@ -39,24 +39,27 @@ function ListadoS() {
     }, [allUserss])
 
     function cambiarEstado(e) {
-        e.preventDefault()
-        if (desplegar === 0) {
-            setDesplegar(1)
-        } else if (desplegar === 1) {
+       
+        if (desplegar !== e) {
+            setDesplegar(e)
+        } else if (desplegar === e) {
             setDesplegar(0)
 
         }
     }
 
     function cambiarEstadoModal(e) {
-        e.preventDefault()
-        if (modal === 0) {
-            setModal(1)
-        }
-        else if (modal === 1) {
-            setModal(0)
-        }
+        setModal(e)
     }
+
+    function guardarCambios(userId, userType){
+      
+        dispatch(adminSupendUser(userId, userType))
+        setModal(0)
+    }
+
+
+    
     return (
 
 
@@ -80,16 +83,16 @@ function ListadoS() {
                                     <div className='user-card-admin' key={u.id}>
                                         <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
                                         <div className='content-project-state'>
-                                            <MdKeyboardArrowDown onClick={(e) => cambiarEstado(e)}/>
+                                            <MdKeyboardArrowDown onClick={(e) => cambiarEstado(u.id)}/>
                                         </div>
                                     </div>
                                     
                                 }
 
                                 {
-                                    desplegar === 1 ?
+                                    desplegar === u.id ?
                                         <div className='user-desplegable-admin'>
-                                            <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModal(e)}>CAMBIAR ESTADO DE CUENTA</button></div>
+                                            <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModal(u.id)}>CAMBIAR ESTADO DE CUENTA</button></div>
                                         </div>
                                         : null
                                 }
@@ -100,9 +103,10 @@ function ListadoS() {
                 </div>
             }
             {
-                modal === 1 ?
+                !!modal && modal !=0  ?
                     <ModalSuspendidos
-                    estado = {cambiarEstadoModal}
+                    estado = {guardarCambios}
+                    id= {modal}
                     />
                     : null
             }
