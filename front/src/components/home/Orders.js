@@ -72,14 +72,14 @@ export default function Orders() {
   return (
     <React.Fragment>
       <div>
-        <select onChange={(e) => changeOrder(e, "name")}>
+        <select className="home-select" onChange={(e) => changeOrder(e, "name")}>
           <option key="any" value={"any"} >Alfabeto</option>
           <option key="A-Z" value={"asc"} >A-Z</option>
           <option key="Z-A" value={"desc"} >Z-A</option>
         </select>
       </div>
       <div>
-        <select onChange={(e) => changeOrder(e, "score")}>
+        <select className="home-select" onChange={(e) => changeOrder(e, "score")}>
           <option key="any" value={"any"} >Score</option>
           <option key="mayor" value={"desc"} >Mayor Puntaje</option>
           <option key="menor" value={"asc"} >Menor Puntaje</option>

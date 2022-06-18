@@ -51,12 +51,14 @@
 }
 
 .home-publica-si-logged {
+    border-radius: 12px;
     background-color: #a9d6e5cb;
     box-shadow: 0px 0px 10px 5px #a9d6e5cb;
     align-items: center;
     justify-content: center;
     padding: 0.5%;
     margin-bottom: 3%;
+    border: 1px solid;
 }
 
 .home-publicar,
@@ -125,27 +127,30 @@
     border-radius: 6px;
 }
 
-div select {
+.home-select {
     border-style: solid;
-    width: 100%;
-    position: relative;
-    flex-grow: 1;
+
     font-size: 14px;
     line-height: 20px;
-    font-weight: 600;
-    width: 100%;
-    display: block;
-    padding: 9px 32px;
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
-    outline: 0;
+    font-weight: 700;
+    border: 1px solid #000000;
+    border-radius: 12px;
     transition: border .4s;
     cursor: pointer;
 }
 
-div select:hover {
+.home-search {
+    font-weight: 700;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    line-height: 30px;
+
+}
+
+.home-select:hover {
     border: 1px solid #012A4A;
 }
+
 
 /* 
 .card {

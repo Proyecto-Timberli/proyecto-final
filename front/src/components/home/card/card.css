@@ -1,8 +1,13 @@
 /* From uiverse.io by @alexruix */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
 .cards-cont {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 200;
+
 }
 
 .card-home {
@@ -86,7 +91,11 @@
 
 .img-project-card {
     border-radius: 20px;
-    height: 65%;
+    /* height: 65%; */
+    max-width: 483.594px;
+    min-height: 260px;
+
+
 }
 
 .card-info-home {
@@ -125,7 +134,22 @@
     transition: 0.4s;
 }
 
+.cont-scores {
+    display: flex;
+    justify-content: center;
+}
+
+.cont-scores div {
+    background-color: rgb(1 7 124 / 30%);
+    width: 18vw;
+    height: 12vh;
+    border-radius: 60px;
+
+}
+
+
 .text-score-card {
     padding-bottom: 0;
+
     margin: 0%;
 }

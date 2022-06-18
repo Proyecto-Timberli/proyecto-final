@@ -1,12 +1,12 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import Card from "./card/Card.js"
 import "../home/home.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects} from '../../redux/actions/actionCreators'
+import { getAllProjects } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
-import {technologies} from './technologies.js'
+import { technologies } from './technologies.js'
 import { scroll } from "../../functions";
 
 const Home = () => {
@@ -20,22 +20,22 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////filter by search////////////////////////////
     const [filterBySearch, setFilterBySearch] = useState("")
-    let arrayFilterBySearch = allProjects.filter(project => project.name&&project.name.toLowerCase().includes(filterBySearch.toLowerCase()))
-    const searchFilterChange= function(e){
+    let arrayFilterBySearch = allProjects.filter(project => project.name && project.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+    const searchFilterChange = function (e) {
         setFilterBySearch(e.target.value);
     }
     let estadoGlobalDeCards = allProjects
-    if (filterBySearch!==""){
-        estadoGlobalDeCards = arrayFilterBySearch   
+    if (filterBySearch !== "") {
+        estadoGlobalDeCards = arrayFilterBySearch
     }
     //////////////////////////////////////////////////////////////////////////////
     ///////////////////////////filter by techs///////////////////////////////////////////////////
-    const [filterTechs , setFilterTechs] = useState("Any");
-    const filterByTech = ()=>{
-        let arrayFilterByTechs=estadoGlobalDeCards.filter(project => project.tecnology&&project.tecnology.includes(filterTechs))
-        return  arrayFilterByTechs 
+    const [filterTechs, setFilterTechs] = useState("Any");
+    const filterByTech = () => {
+        let arrayFilterByTechs = estadoGlobalDeCards.filter(project => project.tecnology && project.tecnology.includes(filterTechs))
+        return arrayFilterByTechs
     }
-    const techFilterChange= function(e){
+    const techFilterChange = function (e) {
         setFilterTechs(e.target.value);
     }
     //////////////////////////////////////////////////////////////////////////////
@@ -44,18 +44,18 @@ const Home = () => {
         renderCards: [],
         pag: 1,
     });
-    let paginado = new Paginado(9, estadoGlobalDeCards, cardsInPag.pag, filterByTech(),filterTechs,)
+    let paginado = new Paginado(9, estadoGlobalDeCards, cardsInPag.pag, filterByTech(), filterTechs,)
     const accionarPaginado = (selectPag) => {
         setCardsInPag({
             ...cardsInPag,
             ...paginado.paginar(selectPag)
         })
-    }       
+    }
     useEffect(() => {
-        if (allProjects.length) {   
-            accionarPaginado(1)  
+        if (allProjects.length) {
+            accionarPaginado(1)
         }
-    }, [allProjects,filterTechs,filterBySearch])
+    }, [allProjects, filterTechs, filterBySearch])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.loggedUserId)
@@ -70,13 +70,13 @@ const Home = () => {
                 </div>
                 <div className='cont-filtros'>
                     <div>
-                      <input type="search" placeholder="Buscar proyecto..." name="search" onChange={(e)=>searchFilterChange(e)} value={filterBySearch}/>
+                        <input className='home-search' type="search" placeholder="Buscar proyecto..." name="search" onChange={(e) => searchFilterChange(e)} value={filterBySearch} />
                     </div>
                     <Orders />
-                    <select name="technologies" id="technologies" onChange={(e)=>techFilterChange(e)}>
-                      <option key="Any" value={"Any"} >Any</option>
-                      {technologies.map((tech, index)=> 
-                      <option key={index} value={tech.name}>{tech.name}</option>)}
+                    <select className="home-select" name="technologies" id="technologies" onChange={(e) => techFilterChange(e)}>
+                        <option key="Any" value={"Any"} >Any</option>
+                        {technologies.map((tech, index) =>
+                            <option key={index} value={tech.name}>{tech.name}</option>)}
                     </select>
                 </div>
 
