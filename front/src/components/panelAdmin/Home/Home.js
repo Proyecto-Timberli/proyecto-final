@@ -13,6 +13,7 @@ function Home() {
                 <h2>Admin</h2>
             </div>
 
+
             <div className='features-cont'>
                 <div className='feature-box'>
                     <MdSupervisedUserCircle className='icon-feature-admin' />
@@ -32,9 +33,11 @@ function Home() {
                     <h5 className='title-feature-admin'>Ver Listado de Contribuciones</h5>
                 </div>
                 <div className='feature-box'>
-                    <MdRemoveCircle className='icon-feature-admin' />
-                    <h5 className='title-feature-admin'>Ver Listado de Suspendidos</h5>
-                </div>
+            <MdRemoveCircle className='icon-feature-admin'/>
+            <Link className='link-home-admin' to ='/admin/listadoSuspendidos'>
+                <h5 className='title-feature-admin'>Ver Listado de Suspendidos</h5>
+                </Link>
+            </div>
                 <div className='feature-box'>
                     <MdNotificationImportant className='icon-feature-admin' />
                     <h5 className='title-feature-admin'>Notificaciones</h5>
@@ -45,6 +48,7 @@ function Home() {
                         <h5 className='title-feature-admin'>Estadísticas</h5>
                     </Link>
                 </div>
+
             </div>
         </div>
     )
