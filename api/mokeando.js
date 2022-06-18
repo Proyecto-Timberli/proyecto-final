@@ -177,7 +177,7 @@ const mokeando = async () => {
   const projects = [
     {
       name: "Henry Food",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto Henry Foods para mostrar como ejemplo en clases",
       description: "SPA que consume datos de una API y renderiza recetas con algunos datos en el home. Permite buscar recetas, ordenarlas alfabeticamente y por healthscore y filtrar por tipo de dieta. Se puede ingresar al detalle de cada receta donde se muestra mas información. El usuario puede crear su propia receta. ",
       repository: "https://github.com/LucianoMocchegiani/PI_Food",
@@ -195,7 +195,7 @@ const mokeando = async () => {
     },
     {
       name: "ML 2.0",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de mercado libre :)",
       description: "Se intento copiar lo mas parecido posible la pagina web de ML, imitando el diseño y las funcionalidades. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
@@ -213,7 +213,7 @@ const mokeando = async () => {
     },
     {
       name: "Armazon 2.0",
-      tecnology: "Ruby on Rails",
+      tecnology: ["Ruby on rails"],
       shortDescription: "Clon de Amazon",
       description: "Se intento copiar lo mas parecido posible la pagina web de amazon, imitando el diseño y las funcionalidades. Muy desafiante ya que se usaron tecnologias distintas a las que usamos regularmente. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
@@ -229,7 +229,7 @@ const mokeando = async () => {
     },
     {
       name: "ProfileLibrary",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de Facebook/Linked-in",
       description: "En este proyecto se intento clonar Facebook y LinkedIn trantando de respetar las funcionalidades y el diseño. El proyecto se realizo en conjunto con otros desarrolladores web y diseñadores ux/ui",
       repository: "none",
@@ -245,7 +245,7 @@ const mokeando = async () => {
     },
     {
       name: "React project",
-      tecnology: "React",
+      tecnology: ["ReactJs"],
       shortDescription: "Proyecto creado con create-react-app",
       description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando ReactJS. Se trata de un ejercicio realizado para el bootcamp de SoyHenry",
       repository: "none",
@@ -261,7 +261,7 @@ const mokeando = async () => {
     },
     {
       name: "Hello World.js",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto para aprender a programar con Javascript",
       description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando JavaScript, forma parte de un challenge de la página FreeCodeCamp.",
       repository: "none",
@@ -279,7 +279,7 @@ const mokeando = async () => {
     },
     {
       name: "BlueBird",
-      tecnology: "Ruby on Rails",
+      tecnology: ["Ruby on rails"],
       shortDescription: "Clon de twitter pero mejor (?)",
       description: "En este proyecto se imitó el diseño y la funcionalidad de Twitter utilizando otras tecnologias.",
       repository: "none",
