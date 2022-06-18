@@ -16,6 +16,7 @@ export default function NewProject() {
         Fecha: "",
         tecnologias: "",
         descripcion: "",
+        shortDescripcion: "",
         repositorio: "",
         deploy: "",
         imagenF: "",
@@ -29,10 +30,10 @@ export default function NewProject() {
     function handleInputImage(e) {
         e.preventDefault()
 
-      
+
         if (e.target.value === "") return
         setImagen([e.target.files[0], ...Imagen])
-     
+
 
 
     }
@@ -57,12 +58,13 @@ export default function NewProject() {
             imagen: Imagen,
             tecnology: values.tecnologias,
             description: values.descripcion,
+            shortDescripcion: values.shortDescripcion,
             repository: values.repositorio || "",
             deploying: values.deploy || "",
             userid: "1",
             score: [0]
         }
-      
+
         setCreacion(true);
         setTimeout(() => { setCreacion(false); }, 3000)
         postProject(NewProject)
@@ -70,7 +72,7 @@ export default function NewProject() {
         setImagen("");
     }
 
- 
+
     return (<>
         {!logged ? <div className={styles.containerAllDiv}>
             <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
@@ -102,7 +104,19 @@ export default function NewProject() {
                                         </div>
                                     </label>
                                     {touched.name && errors.name && <p className={styles.error}>{errors.name}</p>}
-
+                                    <label>
+                                        <div className={styles.form}>
+                                            <textarea
+                                                className={styles.input}
+                                                placeholder='Ingresa una descripcion corta'
+                                                name="shortDescripcion"
+                                                value={values.shortDescripcion}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}>
+                                            </textarea>
+                                        </div>
+                                    </label>
+                                    {touched.shortDescripcion && errors.shortDescripcion && <p className={styles.error}>{errors.shortDescripcion}</p>}
                                     <label>
                                         <div className={styles.form}>
                                             <textarea
@@ -115,7 +129,7 @@ export default function NewProject() {
                                             </textarea>
                                         </div>
                                     </label>
-                                    {touched.descripcion && errors.descripcion && <p className={styles.error}>{errors.descripcion}</p>}
+                                    {/* {touched.descripcion && errors.descripcion && <p className={styles.error}>{errors.descripcion}</p>} */}
 
 
 

@@ -98,6 +98,7 @@ const mokeando = async () => {
     },
     {
       name: "Anita",
+      userType: "suspended",
       userName: "An1",
       
       mail: "an1t4@gmail.com",
@@ -461,8 +462,30 @@ const mokeando = async () => {
     { name: "Amazon Web Services" }
   ];
 
+
+  projects.map((e) => {
+    if (!!e.score) {
+      e.scoreStyle = []
+      e.scoreFunctionality = []
+      e.scoreOriginality = []
+      e.scoreStyle.push(e.score[0]);
+      e.scoreFunctionality.push(e.score[1])
+      e.scoreOriginality.push(e.score[2])
+    }
+    else { null }
+
+
+
+    e.scoreAverage = ((e.scoreStyle.reduce((e, a) => e + a) / e.scoreStyle.length) +
+      (e.scoreFunctionality.reduce((e, a) => e + a) / e.scoreFunctionality.length) +
+      (e.scoreOriginality.reduce((e, a) => e + a) / e.scoreOriginality.length)) / 3
+  })
+
+
+
   for (let i = 0; i < users.length; i++) {
     let arrayProjects = []
+
     for (let j = 0; j < projects.length; j++) {
       arrayProjects.push(await Project.create(projects[j]))
     }
