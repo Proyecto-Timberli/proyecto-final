@@ -60,3 +60,12 @@
     text-decoration: none;
     color: inherit;
 }
+
+.volver-admin{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 5px;
+    color: white;
+    border-radius: 15px;
+    background-color: #012A4A;
+}
