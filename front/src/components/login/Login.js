@@ -43,7 +43,8 @@ export default function Login() {
         }).then(response => {
             // Login exitoso
             if (response.data.status === "success") {
-                localStorage.setItem('usertoken', response.data)
+                console.log(response.data)
+                localStorage.setItem('usertoken', response.data.token)
                 return navigate('/home')
             }
         })
