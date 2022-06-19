@@ -474,17 +474,6 @@ const mokeando = async () => {
 
   })
 
-  for (let i = 0; i < 4; i++) {
-    let valores = [5, 10, 1, 5]
-    let newContribution = {
-      name: users[i].name,
-      mail: users[i].mail,
-      amount: valores[i]
-    }
-  
-    let contribution= await Contributions.create(newContribution)
-    await contribution.createUser(users[i])
-  }
 
   for (let i = 0; i < users.length; i++) {
     let arrayProjects = []
@@ -502,10 +491,20 @@ const mokeando = async () => {
         arrayProjects.push(await Project.create(projects[j]))
       }
     }
-
     let user = await User.create(users[i])
     await user.addProjects(arrayProjects)
+    if (i < 4) {
+      let valores = [5, 10, 1, 5]
+      let newContribution = {
+        name: users[i].name,
+        mail: users[i].mail,
+        amount: valores[i]
+      }
+      let contribution = await Contributions.create(newContribution)
+      await user.addContributions(contribution)
+    }
   }
+
 }
 module.exports = mokeando
 

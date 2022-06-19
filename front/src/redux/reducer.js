@@ -2,16 +2,18 @@
  * Reducer de nuestra aplicación
  */
 
-import { SAMPLE_ACTION,
+import {
+    SAMPLE_ACTION,
     GET_ALL_PROJECTS,
     GET_PROJECT_BY_ID,
-    GET_USER_BY_ID, 
+    GET_USER_BY_ID,
     RESET_PROJECT_BY_ID,
     RESET_USER_BY_ID,
     SERVER_MESSAGE,
     ORDER_PROJECTS_BY,
     LOGGED_USER_ID,
-    GET_ALL_USERS
+    GET_ALL_USERS,
+    GET_CONTRUBUTION
 } from "./actions/actions.js";
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
     server_message: '',
     loggedUserId: null,
     allUsers: [],
+    contributions: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -77,9 +80,16 @@ export default function reducer(state = initialState, action) {
                 loggedUserId: action.payload
             }
         case GET_ALL_USERS: {
-            return{
+            return {
                 ...state,
                 allUsers: action.payload
+            }
+        }
+
+        case GET_CONTRUBUTION: {
+            return {
+                ...state,
+                contributions: action.payload
             }
         }
         default:

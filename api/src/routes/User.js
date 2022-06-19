@@ -72,11 +72,11 @@ router.post("/donation", async (req, res, next) => {
             confirm: true
         })
         let contribution = await Contributions.create({
-            name:userMok.name,
-            mail:userMok.mail,
+            name: userMok.name,
+            mail: userMok.mail,
             amount
         })
-        await contribution.createUser(userMok)
+        await contribution.addUser(userMok)
         res.send(payment)
     } catch (err) {
         res.send(err);
