@@ -66,11 +66,13 @@ function Project() {
                     <div className='cont-info'>
                         <div>
                             <h3>Puntuacion:</h3>
-                            <div className='info-detalle' >{(project.score[0] | project.score[1] | project.score[2])}</div>
+
+
+                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
-                            <Link to={"/user/" + project.userId} style={{'text-decoration':'none'}}>
+                            <Link to={"/user/" + project.userId} >
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
                         </div>
@@ -91,13 +93,13 @@ function Project() {
                     <div className='cont-info'>
                         <div >
                             <h3>Deploy:</h3>
-                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a href={project.deploying}> Link Deploy</a></div>}
+                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a target="_blank" href={project.deploying}> Link Deploy</a></div>}
 
                         </div>
                         {/* GitHub */}
                         <div>
                             <h3>GitHub:</h3>
-                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a href={project.repository}> Link GitHub</a></div>}
+                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a target="_blank" href={project.repository}> Link GitHub</a></div>}
                         </div>
 
                     </div>
@@ -107,11 +109,11 @@ function Project() {
                     <div className='desc-detalle'>
                         <h3 >Descripcion:</h3>
                         <div>
-                            <p className="text">{project.description}</p>
+                            <p className="text2">{project.description}</p>
                         </div>
                         <h3>Tecnologias:</h3>
                         <div>
-                            <p className="text">{project.tecnology}</p>
+                            <p className="text2">{project.tecnology}</p>
                         </div>
                     </div>
                 </div>

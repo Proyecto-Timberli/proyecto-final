@@ -2,16 +2,22 @@ import { useParams } from 'react-router'
 import { useState } from 'react'
 import React from 'react'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { getUserById } from '../../redux/actions/actionCreators'
+import { getUserById, resetUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
 import './User.css'
 import { scroll } from "../../functions";
+import { MdCreate } from "react-icons/md";
 
 const User = () => {
     scroll()
     // se usa para la request al back
     const { id } = useParams()
+
+    const [paramsId, setParamsId] = useState(id)
+
+
+
     const dispatcher = useDispatch()
 
     const [selectedSection, setSelectedSection] = useState("about")
@@ -20,15 +26,22 @@ const User = () => {
     const userData = useSelector((state) => state.userById)
 
     function showSocialMediaLink(which) {
-        if (which === "github" && userData.github !== "none") {
+        if (which === "github" && (userData.github !== "none" && userData.github !== null)) {
             return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
         }
-        if (which === "linkedIn" && userData.linkedin !== "none") {
+        if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null)) {
             return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
         }
         return null
     }
 
+    function showPencil() {
+        
+        if (!!id && id === '1') {
+            console.log(id)
+            return (<MdCreate/>)
+        }
+    }
     function showUserDescription() {
         if (userData !== {} && userData.description) {
             return (<>
@@ -73,52 +86,105 @@ const User = () => {
     /** 
      * Lógica del componente
      */
+
+    if (paramsId !== id) {
+        setParamsId(id)
+        setAskedForData(false)
+    }
+
+    // si ya pedi datos
+    if (askedForData) {
+        // Si hubo 404
+        if (userData.err === "not found") {
+            return (
+                <div className='profileContainer'>
+                    <div className='profileContents'>
+                        <h1>Usuario no encontrado.</h1>
+                    </div>
+                </div>
+            )
+        }
+
+        // si no hay user, esta cargando aun
+        if (userData === {}) {
+            return (
+                <div className='profileContainer'>
+                    <div className='profileContents'>
+                        <h1>Cargando...</h1>
+                    </div>
+                </div>
+            )
+        }
+
+        // si los datos y el param son los mismos, mostrar usuario
+        if (userData.id === Number.parseInt(paramsId)) {
+            return (
+                <div className='profileContainer'>
+                    <div className='profileInfo'>
+                        <img src={userData.image} className='profilePic' alt="profilepic" />
+
+                        <h2 className='profile-name'>{userData.name} {showPencil()}</h2>
+                        <div className='profileInfoDetails'>
+                            <p>{userData.rol} {showPencil()}</p>
+                            {showSocialMediaLink("linkedIn")}{showPencil()}
+                            {showSocialMediaLink("github")}{showPencil()}
+                        </div>
+                    </div>
+                    <div className='profileContents'>
+                        <div className='profileContentSections'>
+                            <h2><button onClick={(e) => {
+                                e.preventDefault()
+                                setSelectedSection("about")
+                            }} className='profileContentSectionButton'>Perfil</button> | <button onClick={(e) => {
+                                e.preventDefault()
+                                setSelectedSection("projects")
+                            }} className='profileContentSectionButton'>Proyectos</button></h2>
+                        </div>
+                        <div className='profileContentContainer'>
+                            {showSelectedProfileSection()}
+                        </div>
+                    </div>
+
+                </div>
+
+            )
+        }
+
+
+
+
+        // y el id de usuario no es el midmo que el de la pagina...
+        // hay que mandar a resetar el usuario y cargar otra vez
+
+        if (userData.id !== Number.parseInt(paramsId)) {
+            getUserById(paramsId)(dispatcher)
+            return (
+                <div className='profileContainer'>
+                    <div className='profileContents'>
+                        <h1>Cargando...</h1>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+
+
+    // si no tengo datos, pido datos
+    // recuerdar que ya los pedi
     if (!askedForData) {
-        getUserById(id)(dispatcher)
+        getUserById(paramsId)(dispatcher)
         setAskedForData(true)
-        return (<h1>Cargando...</h1>)
-    }
-
-    if (askedForData && userData.id !== Number.parseInt(id)) {
         return (
             <div className='profileContainer'>
                 <div className='profileContents'>
-                    <h1>Usuario no encontrado.</h1>
-                </div>
-            </div>
-        )
-    }
-
-    if (askedForData && userData.id === Number.parseInt(id)) {
-        return (
-            <div className='profileContainer'>
-                <div className='profileInfo'>
-                    <img src={userData.image} className='profilePic' alt="profilepic" />
-                    <h2 className='profile-name'>{userData.name}</h2>
-                    <div className='profileInfoDetails'>
-                        <p>@{userData.userName}</p>
-                        {showSocialMediaLink("linkedIn")}
-                        {showSocialMediaLink("github")}
-                    </div>
-                </div>
-                <div className='profileContents'>
-                    <div className='profileContentSections'>
-                        <h2><button onClick={(e) => {
-                            e.preventDefault()
-                            setSelectedSection("about")
-                        }} className='profileContentSectionButton'>Perfil</button> | <button onClick={(e) => {
-                            e.preventDefault()
-                            setSelectedSection("projects")
-                        }} className='profileContentSectionButton'>Proyectos</button></h2>
-                    </div>
-                    <div className='profileContentContainer'>
-                        {showSelectedProfileSection()}
-                    </div>
+                    <h1>Cargando...</h1>
                 </div>
             </div>)
     }
 
 
 }
+
 
 export default User

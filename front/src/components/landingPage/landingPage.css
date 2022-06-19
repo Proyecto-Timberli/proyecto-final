@@ -1,23 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.landingWrapper{
+.landingWrapper {
     display: flex;
     flex-direction: column;
     background-image: url('../../images/landingBackground.png');
     background-size: cover;
     font-family: 'Poppins', sans-serif;
+
     overflow: hidden;
 }
 
-.landingTop{
+.landingTop {
     display: flex;
     flex-direction: row;
     background-color: #013A63;
     height: 600px;
-    margin-bottom: 120px;
+
 }
 
-.landingWelcome{
+.landingWelcome {
     display: flex;
     flex-direction: column;
     color: white;
@@ -29,7 +30,9 @@
     font-size: larger;
 }
 
-.btn-explore, .btn-share, .btn-login {
+.btn-explore,
+.btn-share,
+.btn-login {
     padding: 12px;
     width: 300px;
     border: none;
@@ -43,33 +46,36 @@
     transition: 0.6s;
 }
 
-.btn-explore:hover, .btn-share:hover, .btn-login:hover {
+.btn-explore:hover,
+.btn-share:hover,
+.btn-login:hover {
     background-color: #014F86;
-    color:white;
+    color: white;
     box-shadow: 0 0 5px 3px rgb(235, 230, 230);
 }
 
 
-.landingImage{
+.landingImage {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     padding-left: 8%;
 }
 
-.imageL{
+.imageL {
     padding-top: 2%;
     height: 650px;
+    z-index: 10;
 }
 
-.intro{
+.intro {
     background-color: rgba(224, 221, 221, 0.738);
     padding: 1%;
     justify-content: center;
     align-items: center;
 }
 
-.landing-title{
+.landing-title {
     font-size: 30px;
     font-weight: bolder;
     padding: 2% 0% 0% 0%;
@@ -77,33 +83,35 @@
     letter-spacing: 1px;
 }
 
-.sections{
+.sections {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.section{
-    padding: 0% 5% 3% 5%;
+.section {
+
     width: 350px;
 }
 
-.text{
+.text {
     text-justify: distribute;
     font-weight: bolder;
     color: #012A4A;
     width: 350px;
 }
 
-.box-one, .box-two, .box-three{
+.box-one,
+.box-two,
+.box-three {
     height: 500px;
     margin: 10% 0% 10% 0%;
     display: flex;
     flex-direction: row;
 }
 
-.boxSection{
+.boxSection {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,17 +119,20 @@
     margin: 8% 18% 10% 18%;
 }
 
-.lineLanding{
+.lineLanding {
     border-color: #428fbb;
     width: 60%;
     border-width: 1px;
 }
 
-.imageBox1, .imageBox2, .imageBox3 {
+.imageBox1,
+.imageBox2,
+.imageBox3 {
     border-radius: 10px;
     box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
 }
 
-.imageBox3, .imageBox1{
+.imageBox3,
+.imageBox1 {
     margin-bottom: 3%;
 }

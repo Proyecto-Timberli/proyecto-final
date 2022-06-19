@@ -14,6 +14,11 @@ import Page404 from '../src/components/Page404/Page404.js';
 import Payment from '../src/components/payment/Payment';
 import PaAdmin from '../src/components/panelAdmin/Home/Home.js';
 import ListadoProjects from '../src/components/panelAdmin/ListadoProjects/ListadoProjects.js'
+import ListadoUsers from '../src/components/panelAdmin/ListadoUsers/ListadoUsers.js'
+import ListadoSuspendidos from '../src/components/panelAdmin/ListaSuspendidos/ListadoS.js'
+import Stats from './components/panelAdmin/Stats/stats';
+import Community from './components/community/community';
+
 function App() {
   return (
     <div className="App">
@@ -29,7 +34,11 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/admin" element={<PaAdmin />} />
-        <Route exact path="/listadoProjects" element={<ListadoProjects />} />
+        <Route exact path="/admin/ListadoSuspendidos" element={<ListadoSuspendidos />} />
+        <Route exact path="/admin/stats" element={<Stats />} />
+        <Route exact path="/admin/listadoProjects" element={<ListadoProjects />} />
+        <Route exact path="/admin/ListadoUsers" element={<ListadoUsers />} />
+        <Route exact path="/community" element={<Community />} />
 
         <Route path='*' element={<Page404 />} />
       </Routes>

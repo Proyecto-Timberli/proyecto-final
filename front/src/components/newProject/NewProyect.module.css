@@ -13,30 +13,35 @@
   justify-content: center;
   align-items: center;
 }
+
 .error {
   color: #e92b2d;
   font-weight: 600;
   font-size: 12px;
 }
-.exito{
+
+.exito {
   text-align: center;
-	font-size: 14px;
-	padding-top: 20px;
-	color: #02a802;
+  font-size: 14px;
+  padding-top: 20px;
+  color: #02a802;
 }
+
 .containerAll {
   display: flex;
   padding-top: 50px;
   padding-bottom: 50px;
   justify-content: center;
 }
+
 .containerAllDiv {
   display: flex;
-  margin:200px 0 200px 0;
+  margin: 200px 0 200px 0;
   padding-top: 50px;
   padding-bottom: 50px;
   justify-content: center;
 }
+
 .inputprueba {
   padding: 10px;
 
@@ -53,9 +58,11 @@
   border-color: #1d87d7;
   border-style: dashed;
 }
+
 .title {
   color: #1d87d7;
 }
+
 .image {
   width: 80%;
   height: 80%;
@@ -63,39 +70,47 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
 .inputImages {
   content: " Archivo 1";
 }
+
 .imagePreview {
   width: 100%;
   height: 100%;
   display: flex;
 }
+
 .imagePreviewDemo {
   width: 100%;
   height: 100%;
   display: flex;
 }
+
 .imagePreviewDemo:hover {
   cursor: pointer;
   opacity: 0.4;
 }
+
 .divImage {
   padding: 12px;
   color: lightsteelblue;
 }
+
 .container_I {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.files{
+
+.files {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .containerImagesPreview {
   display: flex;
   flex-direction: row;
@@ -109,6 +124,7 @@
   background-color: #ccc;
   padding: 8px;
 }
+
 .containerImagesPreviewDemo {
   display: flex;
   flex-direction: row;
@@ -122,10 +138,11 @@
   background-color: #ccc;
   padding: 8px;
 }
+
 .form {
   --width-of-input: 200px;
   --border-height: 1px;
-  --border-before-color: #A9D6E5;
+  --border-before-color: #00b4f0;
   --border-after-color: #5891ff;
   --input-hovered-color: #4985e01f;
   font-family: 'Poppins', sans-serif;
@@ -135,12 +152,17 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
 /* styling of Input */
 .input {
   color: rgb(0, 0, 0);
   font-size: 0.9rem;
   background-color: transparent;
   width: 100%;
+  min-width: 80px;
+  min-height: 40px;
+  max-width: 200px;
+  max-height: 200px;
   box-sizing: border-box;
   padding-inline: 0.5em;
   padding-block: 0.7em;
@@ -148,8 +170,10 @@
   font-family: 'Poppins', sans-serif;
   border-bottom: var(--border-height) solid var(--border-before-color);
 }
+
 /* styling of animated border */
 .input_border {
+
   position: absolute;
   background: var(--border-after-color);
   width: 0%;
@@ -158,6 +182,7 @@
   left: 0;
   transition: 0.3s;
 }
+
 /* Hover on Input */
 .input:hover {
   background: var(--input-hovered-color);
@@ -166,17 +191,18 @@
 .input:focus {
   outline: none;
 }
+
 /* here is code of animated border */
-.input:focus ~ .input_border {
+.input:focus~.input_border {
   width: 100%;
 }
 
-.btnProyecto{
+.btnProyecto {
   width: 250px;
   padding: 10px;
   border: none;
-  background-color: #61A5C2;
-  border-radius: 2px;
+  background-color: #0b85b9;
+  border-radius: 4px;
   color: white;
   cursor: pointer;
   transition: 0.4s;

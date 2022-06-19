@@ -1,8 +1,13 @@
 /* From uiverse.io by @alexruix */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
 .cards-cont {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 200;
+
 }
 
 .card-home {
@@ -13,7 +18,7 @@
     width: 900px;
     height: 400px;
     transition: 0.4s;
-    background: linear-gradient(to right,#99cfee, #01497C);
+    background: linear-gradient(to right, #99cfee, #01497C);
     box-shadow: 0px 7px 20px rgba(43, 8, 37, 0.2);
     margin: 10px;
     border-radius: 20px;
@@ -23,7 +28,7 @@
     color: white;
     transition: 0.5s;
     padding: 2%;
-    color:white;
+    color: white;
 }
 
 
@@ -36,6 +41,15 @@
     font-weight: 500;
     text-decoration: none;
     font-weight: bolder;
+    transition: all .2s;
+    margin: 0;
+}
+
+.text-title-card:hover {
+    letter-spacing: 6px;
+    transform: scale(1.2);
+    text-shadow: 7px 5px 5px black;
+
 }
 
 .title-card {
@@ -51,7 +65,7 @@
 }
 
 /*Button*/
- .card-button-home {
+.card-button-home {
     padding: 0.6rem;
     outline: none;
     border: none;
@@ -73,14 +87,18 @@
     align-items: center;
     justify-content: center;
     background: #01497C;
-} 
- 
-.img-project-card{
-    border-radius: 20px;
-    height: 65%;
 }
 
-.card-info-home{
+.img-project-card {
+    border-radius: 20px;
+    /* height: 65%; */
+    max-width: 483.594px;
+    min-height: 260px;
+
+
+}
+
+.card-info-home {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -89,7 +107,7 @@
     height: 100%;
 }
 
-.username-card{
+.username-card {
     display: flex;
     text-decoration: none;
     align-items: flex-start;
@@ -103,7 +121,7 @@
     cursor: pointer;
 }
 
-.card-user{
+.card-user {
     border: 1px solid rgba(0, 0, 0, 0.554);
     padding: 5px 10px 5px 10px;
     margin: 20px 10px 0px 10px;
@@ -116,6 +134,22 @@
     transition: 0.4s;
 }
 
-.text-score-card{
-    padding-bottom: 5%;
+.cont-scores {
+    display: flex;
+    justify-content: center;
+}
+
+.cont-scores div {
+    background-color: rgb(1 7 124 / 30%);
+    width: 18vw;
+    height: 12vh;
+    border-radius: 60px;
+
+}
+
+
+.text-score-card {
+    padding-bottom: 0;
+
+    margin: 0%;
 }

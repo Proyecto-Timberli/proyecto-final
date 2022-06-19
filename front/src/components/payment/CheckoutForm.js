@@ -8,13 +8,17 @@ export default function CheckoutForm() {
 
     const [error, setError] = React.useState("");
     const [compraConcretada, setCompraConcretada] = React.useState("");
+    const [amount, setAmount] = React.useState(0)
 
-
+    const handleChange = (e) => {
+        setAmount(e.target.value);
+        console.log(amount)
+    }
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+        setCompraConcretada("")
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
@@ -28,9 +32,9 @@ export default function CheckoutForm() {
         const { id } = paymentMethod;
         console.log(paymentMethod)
         setError("")
-        
+
         //FUNCION QUE MANDA NUESTROS DATOS PARA EL BACKEND(sendCheckoutForm)
-        const { data } = await sendCheckoutForm(id)
+        const { data } = await sendCheckoutForm(id, amount)
         //ACA SI EXISTE DATA.CODE QUIERE DECIR QUE HAY UN MENSAJE DE ERROR Y SE MUESTRA
         if (data.code) {
             //setError(data.raw.message)
@@ -46,6 +50,7 @@ export default function CheckoutForm() {
 
 
 
+
     return (
         <div className="card-payment">
             <form className="form-payment" onSubmit={handleSubmit}>
@@ -54,11 +59,33 @@ export default function CheckoutForm() {
                     alt="donation"
                     className="donation-image"
                 />
+                <h5 className="form-payment-title">Selecciona el monto a donar en dolares!</h5>
+                <p className="form-payment-subtitle">(Tu tarjeta convierte los dolares a tu moneda local!)</p>
+                <div className='opciones-payment'>
+                    <div className="form-check-payment">
+                        <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                        <label className="form-label-payment">
+                            $1
+                        </label>
+                    </div>
 
-                <h3 className="price-payment">$10</h3>
-                <CardElement />
-                <button className="btn-payment" type="submit"> CONTRIBUIR </button>
+                    <div className="form-check-payment">
+                        <input className="form-check-input" type="radio" value='500' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                        <label className="form-label-payment" >
+                            $5
+                        </label>
+                    </div>
+
+                    <div className="form-check-payment">
+                        <input className="form-check-input" type="radio" value='1000' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                        <label className="form-label-payment" >
+                            $10
+                        </label>
+                    </div>
+                </div>
+                <CardElement className="card-element-payment" />
                 {error && <div >{error}</div>}
+                <button className="btn-payment" type="submit"> CONTRIBUIR </button>
                 {compraConcretada && <div >{compraConcretada}</div>}
             </form>
         </div>

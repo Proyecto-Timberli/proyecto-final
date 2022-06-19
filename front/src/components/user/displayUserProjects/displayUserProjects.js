@@ -7,7 +7,7 @@ const DisplayUserProjects = ({ projects }) => {
     function displayProjects() {
         return projects.map((p) => {
             return (
-                <MiniCard key={p.id} id={p.id} name={p.name} description={p.description} />
+                <MiniCard key={p.id} imagen={p.imagen[0]} id={p.id} name={p.name} description={p.shortDescription} />
             )
         })
     }

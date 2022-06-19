@@ -1,14 +1,23 @@
-.card-payment{
+.card-payment {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.form-payment{
-    height: 450px;
-    width: 700px;
-    box-shadow: 1px 1px 20px 10px grey;
+.form-payment-title {
+    font-size: 3vh;
+    margin: 0;
+}
+
+.form-payment-subtitle {
+    color: gray;
+}
+
+.form-payment {
+    height: 76vh;
+    width: 40vw;
+    box-shadow: 5px 5px 20px 10px rgb(213 213 213);
     border-radius: 20px;
     margin: 20px;
     padding: 20px;
@@ -16,6 +25,29 @@
     justify-content: center;
 }
 
-.donation-image{
+.opciones-payment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-check-payment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-label-payment {
+    display: flex;
+    width: 110px;
+}
+
+
+.donation-image {
     width: 400px;
+}
+
+.card-element-payment {
+    margin: 4% 25% 4% 25%;
 }

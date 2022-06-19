@@ -58,6 +58,12 @@ export default function Orders() {
       else if (orderPress.name === "desc") {
         dispatch(orderProjectsBy(Desc(allProjects, "name")))
       }
+      if (orderPress.score === "asc") {
+        dispatch(orderProjectsBy(Asc(allProjects, "score")))
+      }
+      else if (orderPress.score === "desc") {
+        dispatch(orderProjectsBy(Desc(allProjects, "score")))
+      }
     }
   }, [orderPress])
 
@@ -66,18 +72,15 @@ export default function Orders() {
   return (
     <React.Fragment>
       <div>
-        <select onChange={(e) => changeOrder(e, "name")}>
-          <option key="any" value={"any"} >any</option>
+        <select className="home-select" onChange={(e) => changeOrder(e, "name")}>
+          <option key="any" value={"any"} >Alfabeto</option>
           <option key="A-Z" value={"asc"} >A-Z</option>
           <option key="Z-A" value={"desc"} >Z-A</option>
         </select>
       </div>
       <div>
-        <input type="search" placeholder="Buscar proyecto..." />
-      </div>
-      <div>
-        <select onChange={(e) => changeOrder(e, "score")}>
-          <option key="any" value={"any"} >any</option>
+        <select className="home-select" onChange={(e) => changeOrder(e, "score")}>
+          <option key="any" value={"any"} >Score</option>
           <option key="mayor" value={"desc"} >Mayor Puntaje</option>
           <option key="menor" value={"asc"} >Menor Puntaje</option>
         </select>

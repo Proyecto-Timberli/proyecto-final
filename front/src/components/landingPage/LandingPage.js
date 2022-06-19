@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import './landingPage.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
@@ -11,12 +11,12 @@ import { scroll } from "../../functions";
 
 export default function LandingPage() {
     scroll()
-    const logged = useSelector((state) => state.logged);
+    const logged = useSelector((state) => state.loggedUserId);
 
     return (
         <div className="landingWrapper">
-                <div className="landingTop">
-                    {logged ?
+            <div className="landingTop">
+                {logged ?
                     <div className="landingWelcome">
                         <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
                         <Link to='/home'>
@@ -36,13 +36,13 @@ export default function LandingPage() {
                             <button className="btn-login"> LOG IN </button>
                         </Link>
                     </div>
-                    }
-                    <div className="landingImage">
-                        <img src={imageLanding} className='imageL' alt='aca va la imagen' />
-                    </div>
-                
+                }
+                <div className="landingImage">
+                    <img src={imageLanding} className='imageL' alt='aca va la imagen' />
                 </div>
-                
+
+            </div>
+
 
             <div className="landingBody">
                 <div className='intro'>
@@ -79,7 +79,7 @@ export default function LandingPage() {
                         <h2>Dejá tu marca</h2>
                         <hr className="lineLanding"></hr>
                         <p className="text">Con tanto que explorar, proyectos reales que crear y el apoyo de la comunidad, la plataforma Timberli te permite compartir tus proyectos, obtener feedback y lograr un crecimiento real.</p>
-                        <Link to='/register'>
+                        <Link to='/community'>
                             <button className="btn-login"> Forma parte </button>
                         </Link>
                     </section>
