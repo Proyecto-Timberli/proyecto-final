@@ -43,13 +43,13 @@ export default function Login() {
 
     function loginAttempt() {
         // intento de login
-        axios.post(process.env.REACT_APP_API+'/api/auth/login', {
+        axios.post(process.env.REACT_APP_API + '/api/auth/login', {
             email: formData.email,
             password: formData.password
         }).then(response => {
             // Login exitoso
             if (response.data.status === "success") {
-                console.log(response.data)
+
                 localStorage.setItem('usertoken', response.data.token)
                 localStorage.setItem('userid', response.data.id)
                 dispatch(setLoggedUserId(response.data.id))
