@@ -40,9 +40,9 @@ function Register() {
         let errors = validateForm(formData)
 
         if (Object.keys(errors).length === 0) {
-            let { data } = await axios.post(process.env.REACT_APP_API+"/api/auth/register", formData)
+            let { data } = await axios.post(process.env.REACT_APP_API + "/api/auth/register", formData)
             if (data.status === "success") {
-                navigate("/login", { state: { registerSuccess: true}})
+                navigate("/login", { state: { registerSuccess: true } })
             }
         } else {
             setFormErrors(errors)
@@ -116,14 +116,14 @@ function Register() {
                                 </div>
                                 <div className="form-button">
                                     <input type="submit"
-                                    name="signup"
-                                    id="signup"
-                                    className="form-submit"
-                                    value="Registrar"
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        registerUser()
-                                    }}/>
+                                        name="signup"
+                                        id="signup"
+                                        className="form-submit"
+                                        value="Registrar"
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            registerUser()
+                                        }} />
                                 </div>
                             </form>
                         </div>

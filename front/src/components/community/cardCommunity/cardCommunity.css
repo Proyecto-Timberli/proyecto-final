@@ -1,0 +1,45 @@
+.community-card {
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+    background-color: #012A4A;
+    overflow: hidden;
+    border: solid black 2px;
+    margin: 5px 0 5px 0;
+    height: 40vh;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 1px 1px 2px black;
+    box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 1) inset;
+    -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 1) inset;
+}
+
+.community-card:hover {
+    z-index: 99;
+    transform: scale(1.1);
+    background-color: #1f9fe9;
+    box-shadow: 1px 0px 25px 0px rgba(0, 0, 0, 1) inset;
+    -webkit-box-shadow: 1px 0px 25px 0px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 1px 0px 25px 0px rgba(0, 0, 0, 1) inset;
+}
+
+.community-card img {
+    transition: .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 100px 10px;
+    overflow: hidden;
+    min-width: 14vw;
+    min-height: 20vh;
+    max-width: 14vw;
+    max-height: 20vh;
+}
+
+.community-card:hover img {
+    box-shadow: 3px 5px 3px 0px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 3px 5px 3px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 3px 5px 3px 0px rgba(0, 0, 0, 1);
+}

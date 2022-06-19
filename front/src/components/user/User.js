@@ -2,12 +2,12 @@ import { useParams } from 'react-router'
 import { useState } from 'react'
 import React from 'react'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { getUserById, resetUserById } from '../../redux/actions/actionCreators'
+import { getUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
 import './User.css'
 import { scroll } from "../../functions";
-import { MdCreate } from "react-icons/md";
+
 
 const User = () => {
     scroll()
@@ -35,13 +35,6 @@ const User = () => {
         return null
     }
 
-    function showPencil() {
-        
-        if (!!id && id === '1') {
-            console.log(id)
-            return (<MdCreate/>)
-        }
-    }
     function showUserDescription() {
         if (userData !== {} && userData.description) {
             return (<>
@@ -123,11 +116,11 @@ const User = () => {
                     <div className='profileInfo'>
                         <img src={userData.image} className='profilePic' alt="profilepic" />
 
-                        <h2 className='profile-name'>{userData.name} {showPencil()}</h2>
+                        <h2 className='profile-name'>{userData.name} </h2>
                         <div className='profileInfoDetails'>
-                            <p>{userData.rol} {showPencil()}</p>
-                            {showSocialMediaLink("linkedIn")}{showPencil()}
-                            {showSocialMediaLink("github")}{showPencil()}
+                            <p>{userData.rol} </p>
+                            {showSocialMediaLink("linkedIn")}
+                            {showSocialMediaLink("github")}
                         </div>
                     </div>
                     <div className='profileContents'>

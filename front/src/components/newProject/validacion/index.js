@@ -1,4 +1,4 @@
-let expresionForUrl = /^(ftp|http|https):\/\/[^ "]+$/
+// let expresionForUrl = /^(ftp|http|https):\/\/[^ "]+$/
 const expresionForOnlyLetters = /^(?=.*?[A-Za-z])[A-Za-z+]+$/
 var regular = /^[a-zA-Z0-9-.&, ]*$/
 
