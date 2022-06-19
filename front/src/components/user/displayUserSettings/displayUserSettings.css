@@ -1,0 +1,79 @@
+.userSettingsContainer {
+    width: calc(100% - 2em);
+    margin-top: 1em;
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.userSettings-firstGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    /* outline: 2px solid blue; */
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+
+    border-bottom: 2px solid gray;
+    padding-bottom: 1.5em;
+}
+
+.userSettings-secondGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* outline: 2px solid blue; */
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    border-bottom: 2px solid gray;
+
+    padding-bottom: 1.5em;
+
+}
+
+.userSettings-fg-inputContainer {
+    width: calc(50% - 1em);
+    padding: 0.5em;
+    /* outline: 2px solid red; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.userSettings-sg-inputContainer {
+    width: 100%;
+    /* outline: 2px solid red; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.userSettings-textInput {
+    width: calc(100% - 3em);
+}
+
+.userSettings-textArea {
+    width: calc(100% - 3em);
+    min-width: calc(100% - 3em);
+    max-width: calc(100% - 3em);
+    min-height: 5em;
+}
