@@ -33,7 +33,8 @@ Vista de admin:
 
 Navbar: 
         arreglar warnigs cuando estamos logeados
-
+comunidad:
+        aplicar css
 Navbar de usuario: (demo 3)
         agregar notificaciones
         agregar comunidad 
