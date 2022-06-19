@@ -34,6 +34,8 @@
     flex-direction: column;
     justify-content: center;
     padding: 1%;
+    min-width: 70vw;
+    min-height: 55vh;
 }
 
 .home-paginado-button {

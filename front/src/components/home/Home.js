@@ -53,6 +53,7 @@ const Home = () => {
         })
     }
     useEffect(() => {
+        console.log(cardsInPag.renderCards);
         if (allProjects.length) {
             accionarPaginado(1)
         }
@@ -82,7 +83,7 @@ const Home = () => {
                     </select>
                 </div>
 
-                {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
+                {(cardsInPag.renderCards[0] === undefined) ? <div className='cards-cont'>No existen proyectos con esos parametros </div> :
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
                         {cardsInPag.renderCards.map(e => (!!e) && <Card
