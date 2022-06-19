@@ -43,7 +43,7 @@ export default function Login() {
 
     function loginAttempt() {
         // intento de login
-        axios.post('http://localhost:3001/api/auth/login', {
+        axios.post(process.env.REACT_APP_API+'/api/auth/login', {
             email: formData.email,
             password: formData.password
         }).then(response => {

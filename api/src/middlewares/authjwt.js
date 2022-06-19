@@ -17,7 +17,7 @@ const verifyToken = async (req, res, next) => {
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user_id = decoded.user_id;
+      req.user_id = decoded.user_id;  
 
       next(); // sale del middleware, ahora la request tiene el id del usuario
 
