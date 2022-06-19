@@ -8,8 +8,10 @@ const verifyToken = async (req, res, next) => {
    * 
    * ojo: solo verifica que tenga token, no que tipo de usuario es
    */
+
   try {
     const headerToken = req.get("Authorization");
+
     if (!headerToken) {
       return res.status(401).json({ error: "No tienes autorización" });
     }
@@ -17,7 +19,7 @@ const verifyToken = async (req, res, next) => {
     const token = headerToken.replace("Bearer ", "");
 
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
       req.user_id = decoded.user_id;
 
       next(); // sale del middleware, ahora la request tiene el id del usuario

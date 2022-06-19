@@ -87,6 +87,17 @@ router.put("/", [ verifyToken ], async (req, res, next) => {
         })
     }
 
+    // validación del back
+    if (userEdit) {
+        if (!userEdit.name) {
+            return res.send({
+                status: "error",
+                msg: "Usuario debe tener un nombre."
+            })
+        }
+    }
+    
+    // actualizar cambios
     try {
         if (userId && userEdit) {
             const userUpdate = await User.findByPk(userId);

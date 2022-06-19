@@ -77,3 +77,15 @@
     max-width: calc(100% - 3em);
     min-height: 5em;
 }
+
+.userSettings-saveButton {
+    margin: 0.5em;
+}
+
+.save-message-ok {
+    color: green;
+}
+
+.save-message-err {
+    color: red
+}
