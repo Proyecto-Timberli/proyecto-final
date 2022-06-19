@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import "./community.css"
 import { getAllUsers } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
 import { ordenar } from '../../functions';
 import CardCommunity from './cardCommunity/cardCommunity';
 
@@ -11,8 +10,6 @@ const Community = () => {
     let allUsers = useSelector((state) => state.allUsers)
     let arrayAmostrar = [...allUsers]
     const [orden, setOrden] = useState("fecha")
-
-    console.log(allUsers);
 
     function handleChange(e) {
         e.preventDefault()
@@ -23,7 +20,7 @@ const Community = () => {
 
     useEffect(() => {
         dispatch(getAllUsers())
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     ordenar(arrayAmostrar, orden)
 

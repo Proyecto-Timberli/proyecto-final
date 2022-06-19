@@ -16,6 +16,7 @@ const Home = () => {
     let allProjects = useSelector((state) => state.allProject)
     useEffect(() => {
         dispatch(getAllProjects());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////filter by search////////////////////////////
@@ -55,6 +56,7 @@ const Home = () => {
         if (allProjects.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allProjects, filterTechs, filterBySearch])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////

@@ -2,12 +2,12 @@ import { useParams } from 'react-router'
 import { useState } from 'react'
 import React from 'react'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { getUserById, resetUserById } from '../../redux/actions/actionCreators'
+import { getUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
 import './User.css'
 import { scroll } from "../../functions";
-import { MdCreate } from "react-icons/md";
+
 
 const User = () => {
     scroll()

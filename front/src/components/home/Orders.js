@@ -65,6 +65,7 @@ export default function Orders() {
         dispatch(orderProjectsBy(Desc(allProjects, "score")))
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderPress])
 
 
