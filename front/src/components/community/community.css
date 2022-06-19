@@ -1,0 +1,12 @@
+.cont-filtro-community {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.select-community {
+    max-height: 10vh;
+    max-width: 30vh;
+}
