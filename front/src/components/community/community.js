@@ -36,6 +36,7 @@ const Community = () => {
                 <select className='select-community' onChange={e => handleChange(e)}>
                     <option value="fecha">Orden de registro</option>
                     <option value="nombre">Nombre</option>
+                    <option value="proyectos">Cant.Proyectos</option>
 
                 </select>
             </div>
