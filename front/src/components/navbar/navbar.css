@@ -6,21 +6,27 @@
     align-items: center;
     justify-content: space-between;
     background: #012A4A;
-    padding: 0.5% 1% 0.5% 3%;
     font-family: 'Poppins', sans-serif;
     position: sticky;
     top: 0;
     z-index: 999;
+    height: 11vh;
 }
 
 .logo-navBar {
+    margin-left: 19px;
     font-size: 43px;
     font-weight: bolder;
     border: none;
     background: transparent;
-    padding-left: 40%;
+    transition: all .5s;
     text-decoration: none;
     color: white;
+}
+
+.logo-navBar:hover {
+    font-size: 48px;
+    text-shadow: 1px 1px 4px rgb(255, 255, 255);
 }
 
 .verTodo-navBar {
@@ -38,7 +44,8 @@
 .botones-nav {
     display: flex;
     flex-direction: row;
-    margin: 1%;
+    margin-right: 19px;
+
 }
 
 .btn-perfil-navBar,

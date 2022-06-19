@@ -1,15 +1,15 @@
-.arriba-contenedor-project{
+.arriba-contenedor-project {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.icono-title-project{
+.icono-title-project {
     font-size: 3rem;
 }
 
-.contenedor-listado-project{
+.contenedor-listado-project {
     width: 75%;
     margin: 0 auto;
     padding: 15px;
@@ -17,7 +17,7 @@
 
 }
 
-.project-card-admin{
+.project-card-admin {
     list-style: none;
     width: 100%;
     background-color: #012A4A;
@@ -31,42 +31,47 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .project-card-admin a {
     text-decoration: none;
     color: inherit;
 }
-.content-project-state{
+
+.content-project-state {
     float: right;
     display: flex;
     align-items: center;
     color: yellow;
 }
-.state-project{
+
+.state-project {
     margin-right: 5px;
 }
-.accept-project{
+
+.accept-project {
     color: green;
     font-size: 1.5rem;
 
 }
-.decline-project{
+
+.decline-project {
     color: red;
     font-size: 1.5rem;
 
 }
 
 
-.link-home-admin{
+.link-home-admin {
     text-decoration: none;
     color: inherit;
 }
 
-.volver-admin{
+.volver-admin {
     text-decoration: none;
     border: 1px solid black;
     padding: 5px;
     color: white;
     border-radius: 15px;
     background-color: #012A4A;
-    
+
 }
