@@ -11,12 +11,10 @@ const mokeando = async () => {
   const users = [
     {
       name: "Tommy Shelby",
-      userName: "Tshelby22",
       userType: "suspended",
-
       mail: "Tshelby@mail.com",
       password: "password",
-      image: "https://static.wikia.nocookie.net/peaky-blinders/images/8/8e/Tommys3.jpg/revision/latest?cb=20190715140230",
+      image: "https://www.losandes.com.ar/resizer/JYi2hpIvlUhn-uZTzC34D-UZXEo=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MMLEOSMQZREZDERPUO7WRD4VNI.jpg",
       description: "Thomas Michael Shelby, OBE, DCM, MM, MP. Manejo distintas tecnologias como: Vue, Angular, Wordpress",
       linkedin: "",
       github: "https://github.com/",
@@ -24,10 +22,9 @@ const mokeando = async () => {
     },
     {
       name: "Ada shelby",
-      serName: "Ashelby24",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://static.wikia.nocookie.net/peaky-blinders/images/d/df/Ada5.jpg/revision/latest?cb=20190924183542",
+      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
       description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
@@ -35,7 +32,6 @@ const mokeando = async () => {
     },
     {
       name: "Arthur Shelby Jr",
-      userName: "AshelbyJr",
       mail: "arturojunior@mail.com",
       password: "password",
       image: "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
@@ -110,14 +106,13 @@ const mokeando = async () => {
 
     {
       name: "Julio",
-      /*       userName: "JuliusCaesar", */
       userType: "suspended",
       mail: "juliuscaesar@romanempire.com",
       password: "brutusiwillhavemyrevenge",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
       description: "Mi nombre es Julio tengo mucha experiencia en desarrollo web, sobre todo backend. Me encuentro en cosntante capacitación, busco desarrollar mis skills como frontend web y mobile developer.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2RNWGgfi3nOLGtj3YnhauaC9HWurFHaJ--V6FrPaWILiaaqKbvZEmIeR5QVdlRpdMFOg&usqp=CAU",
+      image: "https://pbs.twimg.com/media/ECD1E7hVUAAZmpX.jpg",
 
     },
     {
@@ -138,17 +133,16 @@ const mokeando = async () => {
       linkedin: "none",
       github: "none",
       description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarrolladora full stack. HTML y CSS.",
-      image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
+      image: "https://imdermatologico.com/wp-content/uploads/2018/05/cleopatra-complejo.jpg",
     },
     {
       name: "notBill",
-      /*       userName: "NotBillGates", */
       mail: "iamnotbillgates@microsoft.com",
       password: "i-lied",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
       description: "Bienvenidos a mi portfolio profesional. Manejo de todo un poco, pero me especializo en backend. Soy experto en tecnologias como MongoDB, PostgreSQL, NodeJS y expressJS",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2RNWGgfi3nOLGtj3YnhauaC9HWurFHaJ--V6FrPaWILiaaqKbvZEmIeR5QVdlRpdMFOg&usqp=CAU",
+      image: "https://thumbs.dreamstime.com/b/cara-humana-gen%C3%A9rica-del-hombre-vista-delantera-futurista-81662768.jpg",
 
     },
     {
@@ -177,7 +171,7 @@ const mokeando = async () => {
   const projects = [
     {
       name: "Henry Food",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto Henry Foods para mostrar como ejemplo en clases",
       description: "SPA que consume datos de una API y renderiza recetas con algunos datos en el home. Permite buscar recetas, ordenarlas alfabeticamente y por healthscore y filtrar por tipo de dieta. Se puede ingresar al detalle de cada receta donde se muestra mas información. El usuario puede crear su propia receta. ",
       repository: "https://github.com/LucianoMocchegiani/PI_Food",
@@ -195,7 +189,7 @@ const mokeando = async () => {
     },
     {
       name: "ML 2.0",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de mercado libre :)",
       description: "Se intento copiar lo mas parecido posible la pagina web de ML, imitando el diseño y las funcionalidades. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
@@ -213,7 +207,7 @@ const mokeando = async () => {
     },
     {
       name: "Armazon 2.0",
-      tecnology: "Ruby on Rails",
+      tecnology: ["Ruby on rails"],
       shortDescription: "Clon de Amazon",
       description: "Se intento copiar lo mas parecido posible la pagina web de amazon, imitando el diseño y las funcionalidades. Muy desafiante ya que se usaron tecnologias distintas a las que usamos regularmente. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
@@ -229,7 +223,7 @@ const mokeando = async () => {
     },
     {
       name: "ProfileLibrary",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de Facebook/Linked-in",
       description: "En este proyecto se intento clonar Facebook y LinkedIn trantando de respetar las funcionalidades y el diseño. El proyecto se realizo en conjunto con otros desarrolladores web y diseñadores ux/ui",
       repository: "none",
@@ -245,7 +239,7 @@ const mokeando = async () => {
     },
     {
       name: "React project",
-      tecnology: "React",
+      tecnology: ["ReactJs"],
       shortDescription: "Proyecto creado con create-react-app",
       description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando ReactJS. Se trata de un ejercicio realizado para el bootcamp de SoyHenry",
       repository: "none",
@@ -261,7 +255,7 @@ const mokeando = async () => {
     },
     {
       name: "Hello World.js",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto para aprender a programar con Javascript",
       description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando JavaScript, forma parte de un challenge de la página FreeCodeCamp.",
       repository: "none",
@@ -279,7 +273,7 @@ const mokeando = async () => {
     },
     {
       name: "BlueBird",
-      tecnology: "Ruby on Rails",
+      tecnology: ["Ruby on rails"],
       shortDescription: "Clon de twitter pero mejor (?)",
       description: "En este proyecto se imitó el diseño y la funcionalidad de Twitter utilizando otras tecnologias.",
       repository: "none",

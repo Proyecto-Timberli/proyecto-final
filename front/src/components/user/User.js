@@ -2,11 +2,12 @@ import { useParams } from 'react-router'
 import { useState } from 'react'
 import React from 'react'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { getUserById, resetUserById } from '../../redux/actions/actionCreators'
+import { getUserById } from '../../redux/actions/actionCreators'
 import { useSelector, useDispatch } from 'react-redux'
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
 import './User.css'
 import { scroll } from "../../functions";
+
 
 const User = () => {
     scroll()
@@ -15,7 +16,7 @@ const User = () => {
 
     const [paramsId, setParamsId] = useState(id)
 
-    
+
 
     const dispatcher = useDispatch()
 
@@ -25,10 +26,10 @@ const User = () => {
     const userData = useSelector((state) => state.userById)
 
     function showSocialMediaLink(which) {
-        if (which === "github" && (userData.github !== "none" && userData.github !== null )) {
+        if (which === "github" && (userData.github !== "none" && userData.github !== null)) {
             return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
         }
-        if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null )) {
+        if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null)) {
             return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
         }
         return null
@@ -78,8 +79,8 @@ const User = () => {
     /** 
      * Lógica del componente
      */
-    
-    if (paramsId !== id) {    
+
+    if (paramsId !== id) {
         setParamsId(id)
         setAskedForData(false)
     }
@@ -94,7 +95,7 @@ const User = () => {
                         <h1>Usuario no encontrado.</h1>
                     </div>
                 </div>
-                )
+            )
         }
 
         // si no hay user, esta cargando aun
@@ -105,7 +106,7 @@ const User = () => {
                         <h1>Cargando...</h1>
                     </div>
                 </div>
-                )
+            )
         }
 
         // si los datos y el param son los mismos, mostrar usuario
@@ -114,9 +115,10 @@ const User = () => {
                 <div className='profileContainer'>
                     <div className='profileInfo'>
                         <img src={userData.image} className='profilePic' alt="profilepic" />
-                        <h2 className='profile-name'>{userData.name}</h2>
+
+                        <h2 className='profile-name'>{userData.name} </h2>
                         <div className='profileInfoDetails'>
-                            <p>{userData.rol}</p>
+                            <p>{userData.rol} </p>
                             {showSocialMediaLink("linkedIn")}
                             {showSocialMediaLink("github")}
                         </div>
@@ -135,8 +137,14 @@ const User = () => {
                             {showSelectedProfileSection()}
                         </div>
                     </div>
-                </div>)
+
+                </div>
+
+            )
         }
+
+
+
 
         // y el id de usuario no es el midmo que el de la pagina...
         // hay que mandar a resetar el usuario y cargar otra vez
@@ -149,12 +157,12 @@ const User = () => {
                         <h1>Cargando...</h1>
                     </div>
                 </div>
-                )
+            )
         }
-    } 
-    
-    
-    
+    }
+
+
+
     // si no tengo datos, pido datos
     // recuerdar que ya los pedi
     if (!askedForData) {

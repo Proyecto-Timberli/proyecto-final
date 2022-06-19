@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from "./card/Card.js"
 import "../home/home.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects, loggin } from '../../redux/actions/actionCreators'
+import { getAllProjects } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
-
+import { technologies } from './technologies.js'
 import { scroll } from "../../functions";
 
 const Home = () => {
@@ -16,32 +16,52 @@ const Home = () => {
     let allProjects = useSelector((state) => state.allProject)
     useEffect(() => {
         dispatch(getAllProjects());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
     //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////filter by search////////////////////////////
+    const [filterBySearch, setFilterBySearch] = useState("")
+    let arrayFilterBySearch = allProjects.filter(project => project.name && project.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+    const searchFilterChange = function (e) {
+        setFilterBySearch(e.target.value);
+    }
+    let estadoGlobalDeCards = allProjects
+    if (filterBySearch !== "") {
+        estadoGlobalDeCards = arrayFilterBySearch
+    }
     //////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////filter by techs///////////////////////////////////////////////////
+    const [filterTechs, setFilterTechs] = useState("Any");
+    const filterByTech = () => {
+        let arrayFilterByTechs = estadoGlobalDeCards.filter(project => project.tecnology && project.tecnology.includes(filterTechs))
+        return arrayFilterByTechs
+    }
+    const techFilterChange = function (e) {
+        setFilterTechs(e.target.value);
+    }
+    //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////config paginado//////////////////////////////////////////////
     const [cardsInPag, setCardsInPag] = useState({
         renderCards: [],
         pag: 1,
     });
-    const paginado = new Paginado(9, allProjects, cardsInPag.pag, null, "Any", 1)
-    const accionarPaginado = (selectPag, selectFilter) => {
+    let paginado = new Paginado(9, estadoGlobalDeCards, cardsInPag.pag, filterByTech(), filterTechs,)
+    const accionarPaginado = (selectPag) => {
         setCardsInPag({
             ...cardsInPag,
-            ...paginado.paginar(selectPag, selectFilter)
+            ...paginado.paginar(selectPag)
         })
     }
     useEffect(() => {
+        console.log(cardsInPag.renderCards);
         if (allProjects.length) {
             accionarPaginado(1)
         }
-    }, [allProjects])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [allProjects, filterTechs, filterBySearch])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.loggedUserId)
-    //////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////
-    //console.log(allProjects);
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     return (
@@ -52,10 +72,18 @@ const Home = () => {
                     {logger ? <Link to="/newProject" className='home-publicar-link'> Publica tu proyecto!</Link> : <p className='home-publicar'> Para publicar, logueate</p>}
                 </div>
                 <div className='cont-filtros'>
+                    <div>
+                        <input className='home-search' type="search" placeholder="Buscar proyecto..." name="search" onChange={(e) => searchFilterChange(e)} value={filterBySearch} />
+                    </div>
                     <Orders />
+                    <select className="home-select" name="technologies" id="technologies" onChange={(e) => techFilterChange(e)}>
+                        <option key="Any" value={"Any"} >Any</option>
+                        {technologies.map((tech, index) =>
+                            <option key={index} value={tech.name}>{tech.name}</option>)}
+                    </select>
                 </div>
 
-                {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
+                {(cardsInPag.renderCards[0] === undefined) ? <div className='cards-cont'>No existen proyectos con esos parametros </div> :
                     <div className='cards-cont'>
                         {/* Map para mostrar las Cards */}
                         {cardsInPag.renderCards.map(e => (!!e) && <Card

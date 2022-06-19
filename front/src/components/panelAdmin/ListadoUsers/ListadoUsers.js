@@ -39,6 +39,7 @@ function ListadoUsers() {
         if (allUsers.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allUsers])
 
     function cambiarEstado(e) {
@@ -83,6 +84,7 @@ function ListadoUsers() {
 
     useEffect(() => {
         dispatch(getAllUsers());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -126,7 +128,7 @@ function ListadoUsers() {
                 </div>
             }
             {
-                !!modal && modal != 0 ?
+                !!modal && modal !== 0 ?
                     <ModalUser
                         estado={guardarCambios}
                         id={modal}
@@ -135,7 +137,7 @@ function ListadoUsers() {
                     : null
             }
             {
-                !!modalP && modalP.id != 0 ?
+                !!modalP && modalP.id !== 0 ?
                     <ModalProjects
                         key={modalP.id}
                         estado={resetEstado}
@@ -153,7 +155,7 @@ function ListadoUsers() {
                     </div>
                 )}
             </div>
-            
+
 
         </div>
     )

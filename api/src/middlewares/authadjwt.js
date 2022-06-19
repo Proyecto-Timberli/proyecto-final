@@ -17,9 +17,9 @@ const verifyToken = async (req, res, next) => {
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user_id = decoded.user_id;  
+      req.user_Type = decoded.user_Type
 
-      next(); // sale del middleware, ahora la request tiene el id del usuario
+      next(); // sale del middleware, ahora la request tiene el type del usuario
 
       // de querer añadir más atributos a la request, recordar añadirlos en
       // la ruta de login, token actual solo envia user_id y email encriptados

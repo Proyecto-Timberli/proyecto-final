@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './listado.css'
 import { MdWork, MdDoneOutline, MdClear } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects,adminSupendProject } from '../../../redux/actions/actionCreators'
+import { getAllProjects, adminSupendProject } from '../../../redux/actions/actionCreators'
 import Paginado from '../../home/Paginado.js'
 import { Link } from 'react-router-dom'
 
@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom'
 function ListadoProjects() {
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
-    const [estado, setEstado] = useState('Aceptado')
+
     useEffect(() => {
         dispatch(getAllProjects());
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
@@ -32,17 +32,21 @@ function ListadoProjects() {
         if (allProjects.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allProjects])
 
-    function cambiarEstado(id, state) {
-            
-        if (state == 'Aceptado') {
-            dispatch(adminSupendProject(id, 'Pendiente' ))
-            
-        } else if (state == 'Pendiente') {
-            dispatch(adminSupendProject(id, 'Aceptado' ))
-        }       
-        
+    async function cambiarEstado(id, state) {
+
+        if (state === 'Aceptado') {
+
+            await dispatch(adminSupendProject(id, 'Pendiente'))
+
+        } else if (state === 'Pendiente') {
+            await dispatch(adminSupendProject(id, 'Aceptado'))
+        }
+
+        await dispatch(getAllProjects());
+
     }
 
 
@@ -82,7 +86,7 @@ function ListadoProjects() {
                     </div>
                 )}
             </div>
-            
+
 
         </div>
     )

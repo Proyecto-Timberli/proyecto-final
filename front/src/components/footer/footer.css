@@ -7,7 +7,10 @@
     justify-content: center;
     width: 100%;
     position: relative;
-    background-color: #012A4A;
+    background: #012a4a;
+    background: linear-gradient(180deg, #012a4a 0%, #034679 60%);
+    background: -webkit-linear-gradient(180deg, #012a4a 0%, #034679 60%);
+    background: -moz-linear-gradient(180deg, #012a4a 0%, #034679 60%);
     font-family: 'Poppins', sans-serif;
     padding-bottom: 1px;
 }

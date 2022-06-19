@@ -1,12 +1,14 @@
 const axios = require('axios');
 const { Router } = require('express');
 const { Project, User,Contributions } = require('../db.js');
+const { verifyToken } = require('../middlewares/authadjwt')
 
 
 const router = Router();
 
 
-router.put("/user", async (req, res, next) => {
+
+router.put("/user", [verifyToken], async (req, res, next) => {
     const { userId, userType } = req.body;
 
     try {
@@ -22,6 +24,7 @@ router.put("/user", async (req, res, next) => {
         next(err);
     }
 })
+
 router.get("/donation", async (req, res, next) => {
     try {
         const allCotributions = await Contributions.findAll({
@@ -32,7 +35,9 @@ router.get("/donation", async (req, res, next) => {
         next(err)
     }
 })
-router.put("/project", async (req, res, next) => {
+
+
+router.put("/project", [verifyToken], async (req, res, next) => {
     const { projectId, state } = req.body;
     try {
         if (projectId && state) {

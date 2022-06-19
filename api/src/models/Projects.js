@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         tecnology: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: true
         },
         shortDescription: {

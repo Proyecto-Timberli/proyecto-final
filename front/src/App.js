@@ -17,6 +17,7 @@ import ListadoProjects from '../src/components/panelAdmin/ListadoProjects/Listad
 import ListadoUsers from '../src/components/panelAdmin/ListadoUsers/ListadoUsers.js'
 import ListadoSuspendidos from '../src/components/panelAdmin/ListaSuspendidos/ListadoS.js'
 import Stats from './components/panelAdmin/Stats/stats';
+import Community from './components/community/community';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/admin/stats" element={<Stats />} />
         <Route exact path="/admin/listadoProjects" element={<ListadoProjects />} />
         <Route exact path="/admin/ListadoUsers" element={<ListadoUsers />} />
+        <Route exact path="/community" element={<Community />} />
 
         <Route path='*' element={<Page404 />} />
       </Routes>
