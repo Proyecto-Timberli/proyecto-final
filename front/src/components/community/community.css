@@ -4,6 +4,8 @@
     align-content: space-around;
     align-items: center;
     justify-content: space-around;
+    min-width: 70vw;
+    min-height: 55vh;
 }
 
 .cont-filtro-community {
