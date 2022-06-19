@@ -37,7 +37,7 @@ export function getAllProjects() {
 
 export function getAllUsers(){
     return function(dispatch){
-        axios.get('http://localhost:3001/api/user')
+        axios.get(REACT_APP_API+'/api/user')
         .then(response => {
             dispatch({
                 type: GET_ALL_USERS,

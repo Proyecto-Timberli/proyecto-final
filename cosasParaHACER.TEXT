@@ -31,8 +31,10 @@ Vista de admin:
                crear lista de contribucines
                estadisticas acomodar css
 
-
-
+Navbar: 
+        arreglar warnigs cuando estamos logeados
+comunidad:
+        aplicar css
 Navbar de usuario: (demo 3)
         agregar notificaciones
         agregar comunidad 
