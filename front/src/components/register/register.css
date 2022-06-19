@@ -29,7 +29,7 @@
 }
 
 .form-title{
-    color: #013A63;
+    color: #0b85b9;
 }
 
 .form-group{
@@ -37,16 +37,38 @@
 }
 
 .register-input{
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    --border-height: 2px;
+    --border-before-color: #2C7DA0;
+    --border-after-color: #5891ff;
+    --input-hovered-color: #4985e01f;
     border-bottom-width: 2px;
     border-bottom-color: #2C7DA0;
     width: 250px;
     padding: 5px;
     cursor: pointer;
-}
+    color: rgb(0, 0, 0);
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    min-width: 80px;
+    min-height: 40px;
+    max-width: 200px;
+    max-height: 200px;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+  }
+    
 
+.register-input:hover {
+    background: var(--input-hovered-color);
+}
+.register-input:focus {
+    outline: none; 
+}
 .label-agree-term, .agree-term{
     font-size: smaller;
     cursor: pointer;
@@ -83,7 +105,18 @@
     color: #013A63;
     font-weight: bolder;
 }
-
-.formErrors-label {
-    color:red;
+.register-formErrors-p-container{
+    width: 270px;
+    height: 10px;
+    
 }
+.register-formErrors-p {
+    width: 280px;
+    margin-top: 0;
+    position:absolute;
+    color: #e92b2d;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
