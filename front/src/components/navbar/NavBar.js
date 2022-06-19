@@ -7,7 +7,7 @@ import { setLoggedUserId } from '../../redux/actions/actionCreators'
 const Navbar = () => {
     let dispatch = useDispatch()
     const userId = useSelector(state => state.loggedUserId)
-    
+
     function logOut() {
         window.localStorage.removeItem('usertoken')
         dispatch(setLoggedUserId(null))
@@ -28,22 +28,22 @@ const Navbar = () => {
             )
         } else {
             return (<div className='botones-nav'>
-            <Link to="/register"> 
-                <button className='btn-register-navBar'> Unirse </button>
-            </Link>
-            <Link to="/login"> 
-                <button className='btn-login-navBar'> Login </button>
-            </Link>
-        </div>)
+                <Link to="/register">
+                    <button className='btn-register-navBar'> Unirse </button>
+                </Link>
+                <Link to="/login">
+                    <button className='btn-login-navBar'> Login </button>
+                </Link>
+            </div>)
         }
     }
-    
+
     function checkIfLoggedIn() {
         // revisamos si hay token
         let usertoken = window.localStorage.getItem('usertoken')
 
         // si no hay token, seteamos a null
-        if (!usertoken){
+        if (!usertoken) {
             dispatch(setLoggedUserId(null))
         } else {
 
@@ -52,9 +52,9 @@ const Navbar = () => {
 
             // si no hay userid, deslogear
             if (!userid) {
-                dispatch(setLoggedUserId(null))   
+                dispatch(setLoggedUserId(null))
 
-            // si HAY userid, logearse en toda la app
+                // si HAY userid, logearse en toda la app
             } else {
                 dispatch(setLoggedUserId(userid))
             }
@@ -63,7 +63,7 @@ const Navbar = () => {
 
     // antes de renderizar, verificamos si hay token de usuario
     checkIfLoggedIn()
-    
+
 
     return (
         <div id='Navbar'>
@@ -72,6 +72,9 @@ const Navbar = () => {
             </div>
             <Link to="/home" className='verTodo-navBar'>
                 VER PROYECTOS
+            </Link>
+            <Link to="/community" className='verTodo-navBar'>
+                COMUNIDAD
             </Link>
             {navbarButtons()}
 
