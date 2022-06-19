@@ -46,8 +46,7 @@ router.post("/register", (req, res, next) => {
         })
 })
 
-router.post("/login", (req, res, next) => {
-
+router.post("/login", (req, res, next) => { 
     User.findOne({
         where: {
             mail: req.body.email
@@ -55,10 +54,14 @@ router.post("/login", (req, res, next) => {
     }).then(user => {
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
+                console.log(jwt.sign({ user_id: user.dataValues.id, email: user.dataValues.mail }, process.env.JWT_SECRET_KEY, {
+                    expiresIn: 1440
+                }))
                 let token = jwt.sign({ user_id: user.dataValues.id, email: user.dataValues.mail }, process.env.JWT_SECRET_KEY, {
                     expiresIn: 1440
                 })
-
+               
+                
                 res.send({
                     status: "success",
                     token: token,
