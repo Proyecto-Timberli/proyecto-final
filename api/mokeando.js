@@ -1,4 +1,4 @@
-const { User, Project } = require('./src/db.js');
+const { User, Project, Contributions } = require('./src/db.js');
 const mokeando = async () => {
 
   const user_description_1 = "Hola! Esta es mi descripcion generica. Soy una persona muy profesional y me apasiona este rubro! No duden en contratarme, por favor"
@@ -474,7 +474,17 @@ const mokeando = async () => {
 
   })
 
-
+  for (let i = 0; i < 4; i++) {
+    let valores = [5, 10, 1, 5]
+    let newContribution = {
+      name: users[i].name,
+      mail: users[i].mail,
+      amount: valores[i]
+    }
+  
+    let contribution= await Contributions.create(newContribution)
+    await contribution.createUser(users[i])
+  }
 
   for (let i = 0; i < users.length; i++) {
     let arrayProjects = []
