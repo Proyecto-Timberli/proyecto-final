@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styles from "./NewProyect.module.css"
-import { useSelector, } from 'react-redux'
 import { Formik } from 'formik'
 import validate from './validacion'
 import postProject from './functionForPost/PostProject'
@@ -10,8 +9,8 @@ import { scroll } from "../../functions";
 export default function NewProject() {
     scroll()
     let userid = window.localStorage.getItem('userid')
-
-    const logged = useSelector((state) => state.loggedUserId)
+    let token = window.localStorage.getItem('usertoken')
+    
     const initialValues = {
         name: "",
         Fecha: "",
@@ -32,7 +31,7 @@ export default function NewProject() {
         e.preventDefault()
 
         if (e.target.value === "") return
-        setImagen([e.target.files[0], ...Imagen])
+        setImagen(Array.from(e.target.files).concat(Imagen))
     }
 
     function deletePhoto(e) {
@@ -69,9 +68,8 @@ export default function NewProject() {
         resetForm()
         setImagen([]);
     }
-
     return (<>
-        {!logged ? <div className={styles.containerAllDiv}>
+        {!token ? <div className={styles.containerAllDiv}>
             <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
         </div> :
             <Formik
