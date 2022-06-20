@@ -46,6 +46,8 @@ export default function CheckoutForm() {
 
         //Para controlar las contribuciones recibidas:
         let userId = window.localStorage.getItem('userid')
+        console.log(userId)
+        //si esta logueado existe el ID, si no envia contribucion anonima:
         if (userId) {
             dispatch(listPayments(amount, userId))
         } else {

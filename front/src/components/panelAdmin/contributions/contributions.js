@@ -10,9 +10,8 @@ const Contributions = () => {
 
     useEffect(() => {
         dispatch(getContributions())
+    }, [dispatch])
 
-    }, [])
-    console.log(contribuciones);
     return (
         <div className='cont-cont-general'>
 
@@ -25,9 +24,9 @@ const Contributions = () => {
 
                 {contribuciones.map(e =>
                     <div className='contribuciones-card' key={e.id}>
-                        <label>Contribucion: {e.id} </label>
+                        <label>Contribucion #{e.id} </label>
                         <div>Contribuidor: {e.name} </div>
-                        <div>Cantidad: {e.amount} </div>
+                        <div>Cantidad: {e.amount} U$D</div>
 
                     </div>
                 )}

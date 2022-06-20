@@ -40,9 +40,10 @@ router.post("/donation", async (req, res, next) => {
     const { contribution, user } = req.body
     try {
         console.log(contribution)
+        const contribuidor = await User.findByPk(user)
         const newContribution = await Contributions.create ({
             amount: contribution, 
-            name: user,
+            name: contribuidor,
         })
         return res.send(newContribution);
     } 
