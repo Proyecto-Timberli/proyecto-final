@@ -3,7 +3,7 @@ import { getAllProjects } from '../../../redux/actions/actionCreators'
 import { getAllUsers } from '../../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-
+import "./stats.css";
 
 
 
@@ -21,9 +21,11 @@ const Stats = () => {
 
     }, [])//eslint-disable-line react-hooks/exhaustive-deps
     return (
-        <div>
+        <div className='cont-general-stats'>
             <h1>Estadisticas</h1>
-            <div>
+            <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
+
+            <div className='contenedor-stats'>
                 <label>Total de Usuarios: {usuarios.length} </label>
                 <br></br>
                 <label>Total de Proyectos: {proyectos.length} </label>
@@ -33,7 +35,6 @@ const Stats = () => {
                 <label>Total de Contribuciones: 0 </label>
 
             </div>
-            <Link to="/admin" >Volver al Panel</Link>
         </div>
     );
 }
