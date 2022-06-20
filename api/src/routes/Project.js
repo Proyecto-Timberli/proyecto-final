@@ -38,10 +38,10 @@ router.get("/id/:idProject", async (req, res, next) => {
 });
 
 
-router.post("/", [verifyToken], async (req, res, next) => {
-  const { name, tecnology, description, repository, score, userid, deploying, imagen } = req.body;
+router.post("/", async (req, res, next) => {
+  const { name, tecnology, shortDescription, description, repository, userid, deploying } = req.body;
   try {
-    const newProject = await Project.create({ name, tecnology, description, repository, score, deploying, imagen })
+    const newProject = await Project.create({ name, shortDescription, tecnology, description, repository, deploying })
     let user = await User.findByPk(userid)
     await user.addProject(newProject)
 
@@ -54,17 +54,17 @@ router.post("/", [verifyToken], async (req, res, next) => {
 
 
 router.put("/", [verifyToken], async (req, res, next) => {
-    const {projectId , projectEdit} = req.body;
-    try {
-        if(projectId && projectEdit){
-          const projectUpdate= await Project.findByPk(projectId);
-          await projectUpdate.update(projectEdit);
-          await projectUpdate.save();
-          res.send("el proyecto "+projectUpdate.name+" se modifico correctamente");
-        }
-    } catch(err){
-        next(err);
+  const { projectId, projectEdit } = req.body;
+  try {
+    if (projectId && projectEdit) {
+      const projectUpdate = await Project.findByPk(projectId);
+      await projectUpdate.update(projectEdit);
+      await projectUpdate.save();
+      res.send("el proyecto " + projectUpdate.name + " se modifico correctamente");
     }
+  } catch (err) {
+    next(err);
+  }
 })
 
 

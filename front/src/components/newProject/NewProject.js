@@ -9,12 +9,13 @@ import { scroll } from "../../functions";
 
 export default function NewProject() {
     scroll()
+    let userid = window.localStorage.getItem('userid')
 
     const logged = useSelector((state) => state.loggedUserId)
     const initialValues = {
         name: "",
         Fecha: "",
-        tecnologias: "",
+        tecnologias: [],
         descripcion: "",
         shortDescripcion: "",
         repositorio: "",
@@ -49,23 +50,24 @@ export default function NewProject() {
             return
         }
         setErrorSubmit(false)
+        setCreacion(true);
+
         const NewProject = {
             name: values.name,
             imagen: Imagen,
-            tecnology: values.tecnologias,
+            tecnology: [],
             description: values.descripcion,
             shortDescripcion: values.shortDescripcion,
             repository: values.repositorio || "",
             deploying: values.deploy || "",
-            userid: "1",
-            score: [0]
+            userid: userid
         }
-
-        setCreacion(true);
+        NewProject.tecnology.push(values.tecnologias)
+        console.log(NewProject);
         setTimeout(() => { setCreacion(false); }, 3000)
         postProject(NewProject)
         resetForm()
-        setImagen("");
+        setImagen([]);
     }
 
     return (<>
@@ -82,93 +84,93 @@ export default function NewProject() {
                     <div className={styles.containerAll}>
                         <div className={styles.container}>
                             <div>
-                               <h1 className={styles.title}>Comparti tu proyecto</h1>
-                               <form onSubmit={e => e.preventDefault()} className={styles.container_I} >                           
-                                <div className={styles.form}>
-                                    <input
-                                        placeholder='Nombre de tu website'
-                                        name="name"
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        className={styles.input}
-                                        onBlur={handleBlur}>
-                                    </input>
-                                    <span className={styles.input_border}></span>
-                                </div>
-                                <div className={styles.errorcontainer}>
-                                    {touched.name && errors.name && <p className={styles.error}>{errors.name}</p>}
-                                </div>
-                                <div className={styles.form}>
-                                    <textarea
-                                        className={styles.input}
-                                        placeholder='Ingresa una descripcion corta'
-                                        name="shortDescripcion"
-                                        value={values.shortDescripcion}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}>
-                                    </textarea>
-                                </div>    
-                                <div className={styles.errorcontainer}>
-                                    {touched.shortDescripcion && errors.shortDescripcion && <p className={styles.error}>{errors.shortDescripcion}</p>}
-                                </div>                          
-                                <div className={styles.form}>
-                                    <textarea
-                                        className={styles.input}
-                                        placeholder='Ingresa una descripcion'
-                                        name="descripcion"
-                                        value={values.descripcion}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}>
-                                    </textarea>
-                                </div>       
-                                <div className={styles.errorcontainer}>
-                                   {/* {touched.descripcion && errors.descripcion && <p className={styles.error}>{errors.descripcion}</p>} */}    
-                                </div>                                                                          
-                                <div className={styles.form}>
-                                    <input
-                                        placeholder='Tecnologias utilizadas'
-                                        name="tecnologias"
-                                        value={values.tecnologias}
-                                        className={styles.input}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}>
-                                    </input>
-                                    <span className={styles.input_border}></span>
-                                </div>                           
-                                <div className={styles.errorcontainer}>
-                                    {touched.tecnologias && errors.tecnologias && <p className={styles.error}>{errors.tecnologias}</p>}
-                                </div>
-                               <div className={styles.form}>
-                                    <input
-                                        placeholder='URL del repositorio'
-                                        name="repositorio"
-                                        value={values.repositorio}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={styles.input}>
+                                <h1 className={styles.title}>Comparti tu proyecto</h1>
+                                <form onSubmit={e => e.preventDefault()} className={styles.container_I} >
+                                    <div className={styles.form}>
+                                        <input
+                                            placeholder='Nombre de tu website'
+                                            name="name"
+                                            value={values.name}
+                                            onChange={handleChange}
+                                            className={styles.input}
+                                            onBlur={handleBlur}>
+                                        </input>
+                                        <span className={styles.input_border}></span>
+                                    </div>
+                                    <div className={styles.errorcontainer}>
+                                        {touched.name && errors.name && <p className={styles.error}>{errors.name}</p>}
+                                    </div>
+                                    <div className={styles.form}>
+                                        <textarea
+                                            className={styles.input}
+                                            placeholder='Ingresa una descripcion corta'
+                                            name="shortDescripcion"
+                                            value={values.shortDescripcion}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}>
+                                        </textarea>
+                                    </div>
+                                    <div className={styles.errorcontainer}>
+                                        {touched.shortDescripcion && errors.shortDescripcion && <p className={styles.error}>{errors.shortDescripcion}</p>}
+                                    </div>
+                                    <div className={styles.form}>
+                                        <textarea
+                                            className={styles.input}
+                                            placeholder='Ingresa una descripcion'
+                                            name="descripcion"
+                                            value={values.descripcion}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}>
+                                        </textarea>
+                                    </div>
+                                    <div className={styles.errorcontainer}>
+                                        {/* {touched.descripcion && errors.descripcion && <p className={styles.error}>{errors.descripcion}</p>} */}
+                                    </div>
+                                    <div className={styles.form}>
+                                        <input
+                                            placeholder='Tecnologias utilizadas'
+                                            name="tecnologias"
+                                            value={values.tecnologias}
+                                            className={styles.input}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}>
+                                        </input>
+                                        <span className={styles.input_border}></span>
+                                    </div>
+                                    <div className={styles.errorcontainer}>
+                                        {touched.tecnologias && errors.tecnologias && <p className={styles.error}>{errors.tecnologias}</p>}
+                                    </div>
+                                    <div className={styles.form}>
+                                        <input
+                                            placeholder='URL del repositorio'
+                                            name="repositorio"
+                                            value={values.repositorio}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className={styles.input}>
 
-                                    </input>
-                                    <span className={styles.input_border}></span>
-                                </div>                          
-                                <div className={styles.errorcontainer}>
-                                    {touched.repositorio && errors.repositorio && <p className={styles.error}>{errors.repositorio}</p>}
-                                </div>                          
-                                <div className={styles.form}>
-                                    <input
-                                        placeholder='URL del deploy'
-                                        name="deploy"
-                                        value={values.deploy}
-                                        className={styles.input}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}>
-                                    </input>
-                                    <span className={styles.input_border}></span>
-                                </div>
-                                <div className={styles.errorcontainer}>
-                                    {touched.deploy && errors.deploy && <p className={styles.error}>{errors.deploy}</p>}
-                                </div>
-                            
-                                {/* <input
+                                        </input>
+                                        <span className={styles.input_border}></span>
+                                    </div>
+                                    <div className={styles.errorcontainer}>
+                                        {touched.repositorio && errors.repositorio && <p className={styles.error}>{errors.repositorio}</p>}
+                                    </div>
+                                    <div className={styles.form}>
+                                        <input
+                                            placeholder='URL del deploy'
+                                            name="deploy"
+                                            value={values.deploy}
+                                            className={styles.input}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}>
+                                        </input>
+                                        <span className={styles.input_border}></span>
+                                    </div>
+                                    <div className={styles.errorcontainer}>
+                                        {touched.deploy && errors.deploy && <p className={styles.error}>{errors.deploy}</p>}
+                                    </div>
+
+                                    {/* <input
                                     className={styles.inputprueba}
                                     name="Imagen"
                                     disabled={Imagen[0] ? true : false}
@@ -190,25 +192,25 @@ export default function NewProject() {
                                 /> */}
 
 
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
-                                <aside id="modal" className={styles.files}>
-                                    <div className={styles.cargarimagen}>
-                                        <label htmlFor="input_images">
-                                            Cargar imagenes
-                                            <input hidden accept='image/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
-                                        </label>
+                                    {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+                                    <aside id="modal" className={styles.files}>
+                                        <div className={styles.cargarimagen}>
+                                            <label htmlFor="input_images">
+                                                Cargar imagenes
+                                                <input hidden accept='image/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
+                                            </label>
+                                        </div>
+                                    </aside>
+                                    <div className={styles.errorcontainer}>
+                                        {/* {touched.Imagen && errors.Imagen && <p className={styles.error}>{errors.Imagen}</p>} */}
                                     </div>
-                                </aside>
-                                <div className={styles.errorcontainer}>
-                                    {touched.Imagen && errors.Imagen && <p className={styles.error}>{errors.Imagen}</p>}
-                                </div>
-                                
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+
+                                    {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
 
 
 
 
-                                {/* {Imagen[0] ? (
+                                    {/* {Imagen[0] ? (
                                     <div className={styles.containerImagesPreviewDemo}>
                                         {Imagen.map((photo, index) => {
                                             return (
@@ -228,41 +230,41 @@ export default function NewProject() {
                                         You currently have no photos added
                                     </div>
                                 )} */}
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
+                                    {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -----------------------------------*/}
 
-                                <div id="imagen"></div>
-                                {Imagen[0] ? (
-                                    <div className={styles.containerImagesPreview} >
-                                        {Imagen.map((e, index) => {
-                                            return (
-                                                <img
-                                                    className={styles.imagePreview}
-                                                    key={index}
-                                                    src={URL.createObjectURL(e)}
-                                                    id={index}
-                                                    alt=""
-                                                    onClick={e => deletePhoto(e)} />
-                                            )
-                                        })}
+                                    <div id="imagen"></div>
+                                    {Imagen[0] ? (
+                                        <div className={styles.containerImagesPreview} >
+                                            {Imagen.map((e, index) => {
+                                                return (
+                                                    <img
+                                                        className={styles.imagePreview}
+                                                        key={index}
+                                                        src={URL.createObjectURL(e)}
+                                                        id={index}
+                                                        alt=""
+                                                        onClick={e => deletePhoto(e)} />
+                                                )
+                                            })}
+                                        </div>
+                                    ) : <div className={styles.divImage}>
+                                        You currently have no photos added
+                                    </div>}
+
+                                    {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
+                                    <button
+                                        className={styles.btnProyecto}
+                                        name="buttonSubmit"
+                                        // disabled={JSON.stringify(initialValues) === JSON.stringify(values)}
+                                        onBlur={handleBlur}
+                                        onClick={e => onSubmit(e, errors, values, resetForm)}
+                                    >Publicar</button>
+                                    <div className={styles.errorcontainer}>
+                                        {creacion && <div className={styles.exito}>Proyecto creado con exito</div>}
+                                        {errorSubmit && <div className={styles.error}>Completa de forma correcta los campos</div>}
                                     </div>
-                                ) : <div className={styles.divImage}>
-                                    You currently have no photos added
-                                </div>}
-
-                                {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
-                                <button
-                                    className={styles.btnProyecto}
-                                    name="buttonSubmit"
-                                    // disabled={JSON.stringify(initialValues) === JSON.stringify(values)}
-                                    onBlur={handleBlur}
-                                    onClick={e => onSubmit(e, errors, values, resetForm)}
-                                >Publicar</button>
-                                <div className={styles.errorcontainer}>
-                                {creacion && <div className={styles.exito}>Proyecto creado con exito</div>}
-                                {errorSubmit && <div className={styles.error}>Completa de forma correcta los campos</div>}
-                                </div>                        
-                           </form>
-                        </div>                           
+                                </form>
+                            </div>
                             <div>
                                 <img src={imagen}
                                     alt="foto"

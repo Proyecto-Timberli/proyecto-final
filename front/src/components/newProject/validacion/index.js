@@ -32,9 +32,9 @@ export default function validate(values, stateImage) {
     // } else if (!expresionForUrl.test(values.deploy)) {
     //     errores.deploy = "Por favor ingresa un link valido"
     // }
-    if (!values.Imagen[0] && !stateImage[0]) {
-        errores.Imagen = "Por favor ingresa una imagen"
-    }
+    // if (!values.Imagen[0] && !stateImage[0]) {
+    //     errores.Imagen = "Por favor ingresa una imagen"
+    // }
 
 
     return errores;
