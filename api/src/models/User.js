@@ -47,10 +47,10 @@ module.exports = (sequelize) => {
             allowNull: false,
             defaultValue: 'user'
         },
-        rol: {
+        short_description: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'Nada'
+            defaultValue: ''
         }
     });
 };

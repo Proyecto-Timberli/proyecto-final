@@ -19,6 +19,7 @@ function Register() {
         repeat_password: "",
         tos: false
     })
+
     const [formErrors, setFormErrors] = useState({
         name: "",
         email: "",
@@ -26,16 +27,21 @@ function Register() {
         repeat_password: "",
         tos: ""
     })
+
     const handleInputChange=(e)=>{
         setFormData({
             ...formData,
             [e.target.name]:e.target.value,
         });
+    }
+
+    const handleInputOnBlur = (e) => {
         setFormErrors({
             ...formErrors,
             [e.target.name]:validateForm(formData)[e.target.name],
         });
     }
+
     async function registerUser() {
         let errors = validateForm(formData)
 
@@ -43,7 +49,14 @@ function Register() {
             let { data } = await axios.post(process.env.REACT_APP_API + "/api/auth/register", formData)
             if (data.status === "success") {
                 navigate("/login", { state: { registerSuccess: true } })
+            } else {
+                setFormErrors({
+                    ...formErrors,
+                    email: data.error,
+                })
             }
+
+
         } else {
             setFormErrors(errors)
         }
@@ -64,7 +77,8 @@ function Register() {
                                     className="register-input" 
                                     placeholder=" Nombre"
                                     value={formData.name}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                    onChange={handleInputChange}
+                                    onBlur={handleInputOnBlur}/>
                                     <div className="register-formErrors-p-container">
                                     {formErrors.name && <p className="register-formErrors-p">{formErrors.name}</p>} 
                                     </div>                                   
@@ -75,7 +89,8 @@ function Register() {
                                     className="register-input"
                                     placeholder="Email"
                                     value={formData.email}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                    onChange={handleInputChange}
+                                    onBlur={handleInputOnBlur}/>
                                     <div className="register-formErrors-p-container">
                                     {formErrors.email && <p className="register-formErrors-p">{formErrors.email}</p>}
                                     </div>                                    
@@ -86,7 +101,8 @@ function Register() {
                                     className="register-input"
                                     placeholder="Password"
                                     value={formData.password}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                    onChange={handleInputChange}
+                                    onBlur={handleInputOnBlur}/>
                                     <div className="register-formErrors-p-container">
                                     {formErrors.password && <p className="register-formErrors-p">{formErrors.password}</p>} 
                                     </div>                                  
@@ -97,7 +113,8 @@ function Register() {
                                     className="register-input"
                                     placeholder="Repite tu password"
                                     value={formData.repeat_password}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                    onChange={handleInputChange}
+                                    onBlur={handleInputOnBlur}/>
                                     <div className="register-formErrors-p-container">
                                     {formErrors.repeat_password && <p className="register-formErrors-p">{formErrors.repeat_password}</p>} 
                                     </div>         

@@ -46,7 +46,7 @@ const Community = () => {
                         key={e.id}
                         project={e.projects}
                         image={e.image}
-                        rol={e.rol}
+                        short_description={e.short_description}
                     />
                 )}
             </div>

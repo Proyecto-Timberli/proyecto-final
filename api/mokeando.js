@@ -14,21 +14,21 @@ const mokeando = async () => {
       userType: "suspended",
       mail: "Tshelby@mail.com",
       password: "password",
-      image: "https://www.losandes.com.ar/resizer/JYi2hpIvlUhn-uZTzC34D-UZXEo=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MMLEOSMQZREZDERPUO7WRD4VNI.jpg",
+      image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
       description: "Thomas Michael Shelby, OBE, DCM, MM, MP. Manejo distintas tecnologias como: Vue, Angular, Wordpress",
       linkedin: "",
       github: "https://github.com/",
-      rol: "Frontend Developer"
+      short_description: "Frontend Developer"
     },
     {
       name: "Ada shelby",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
-      description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
+      image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
+      description: "Mi nombre es Ada y soy desarolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
-      rol: "Full-Stack Developer"
+      short_description: "Full-Stack Developer"
     },
     {
       name: "Arthur Shelby Jr",
@@ -38,7 +38,7 @@ const mokeando = async () => {
       description: "Hola! Soy Arturo, ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto!",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
-      rol: "Backend Developer"
+      short_description: "Backend Developer"
     },
     {
       name: "Luciano",
@@ -164,7 +164,7 @@ const mokeando = async () => {
       description: "Hola! Soy Micaela, soy licenciada en gestión ambiental y estudiante de desarrollo web Full Stack. SKILLS: HTML | CSS | JavaScript | ReactJS | Redux | Bootstrap, NodeJS | Express | MySQL | PostgreSQL, GIT | SCRUM, ¡No dudes en contactarme! 🚀",
       linkedin: "https://www.linkedin.com/in/micaela-schaberger/",
       github: "https://github.com/mschaberger",
-      rol: "Full-Stack Developer"
+      short_description: "Full-Stack Developer"
     },
   ];
 

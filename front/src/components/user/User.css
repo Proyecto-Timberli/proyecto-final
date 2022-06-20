@@ -21,10 +21,21 @@
 }
 
 .profilePic {
-    border-radius: 10em;
-    min-width: 15em;
-    max-height: 15em;
+    height: 15em;
+    width: auto;
     padding: 1em;
+}
+
+.user-profilePicContainer {
+    border-radius: 15em;
+    width: 15em;
+    height: 15em;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 .profileInfoDetails {

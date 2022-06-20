@@ -34,7 +34,7 @@ router.post("/register", (req, res, next) => {
         } else {
             res.json({
                 status: 'error',
-                error: 'Usuario ya existe.'
+                error: 'Email ya registrado.'
             })
         }
     })
@@ -54,10 +54,11 @@ router.post("/login", (req, res, next) => {
     }).then(user => {
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
-                console.log(jwt.sign({ user_id: user.dataValues.id, email: user.dataValues.mail }, process.env.JWT_SECRET_KEY, {
-                    expiresIn: 1440
-                }))
-                let token = jwt.sign({ user_id: user.dataValues.id, email: user.dataValues.mail }, process.env.JWT_SECRET_KEY, {
+                let token = jwt.sign({ 
+                    user_id: user.dataValues.id, 
+                    email: user.dataValues.mail,
+                    user_type: user.dataValues.userType
+                }, process.env.JWT_SECRET_KEY, {
                     expiresIn: 1440
                 })
                

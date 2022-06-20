@@ -6,6 +6,7 @@ const { Project, User, Contributions } = require('../db.js');
 const Stripe = require("stripe")
 const router = Router();
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
+const { verifyToken } = require('../middlewares/authjwt')
 
 
 const stripe = new Stripe(STRIPE_SECRET_KEY)
@@ -63,7 +64,7 @@ router.post("/donation", async (req, res, next) => {
             "image": "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
             "description": "Hola! Soy Arturo, ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto!",
             "userType": "user",
-            "rol": "Backend Developer",
+            "short_description": "Backend Developer",
         }
         const payment = await stripe.paymentIntents.create({
             amount,
@@ -83,19 +84,50 @@ router.post("/donation", async (req, res, next) => {
     }
 })
 
-router.put("/", async (req, res, next) => {
+router.put("/", [ verifyToken ], async (req, res, next) => {
     const { userId, userEdit } = req.body;
+
+    // Verificar que usuario X no pueda modificar datos de usuario Y
+    // ...a menos que sea admin
+    if (userId && userId !== req.user_id) {
+        /*
+        if (req.admin === true)
+            no mandar el error que sigue a continuación    
+        */
+
+        res.status(401).send({
+            status: "error",
+            msg: "No tienes autorización para realizar esta acción"
+        })
+    }
+
+    // validación del back
+    if (userEdit) {
+        if (!userEdit.name) {
+            return res.send({
+                status: "error",
+                msg: "Usuario debe tener un nombre."
+            })
+        }
+    }
+    
+    // actualizar cambios
     try {
         if (userId && userEdit) {
             const userUpdate = await User.findByPk(userId);
             await userUpdate.update(userEdit);
             await userUpdate.save();
-            res.send("su usuario se modifico correctamente ");
+            res.send({
+                status: "success",
+                msg: "Información de usuario modificada correctamente"
+            });
         }
     }
     catch (err) {
-
-        next(err);
+        res.status(400).send({
+            status: "error",
+            msg: err
+        });
     }
 })
 
