@@ -13,10 +13,10 @@ export default function Orders() {
   const Desc = (array, atribute) => {
     let arrayDeObj = [...array]
     let arrayObj = arrayDeObj.sort(function (a, b) {
-      if (a[atribute] < b[atribute]) {
+      if (a[atribute].toUpperCase() < b[atribute].toUpperCase()) {
         return 1;
       }
-      if (a[atribute] > b[atribute]) {
+      if (a[atribute].toUpperCase() > b[atribute].toUpperCase()) {
         return -1;
       }
       // a must be equal to b
@@ -28,10 +28,10 @@ export default function Orders() {
   const Asc = (array, atribute) => {
     let arrayDeObj = [...array]
     let arrayObj = arrayDeObj.sort(function (a, b) {
-      if (a[atribute] > b[atribute]) {
+      if (a[atribute].toLowerCase() > b[atribute].toLowerCase()) {
         return 1;
       }
-      if (a[atribute] < b[atribute]) {
+      if (a[atribute].toLowerCase() < b[atribute].toLowerCase()) {
         return -1;
       }
       // a must be equal to b
@@ -59,10 +59,10 @@ export default function Orders() {
         dispatch(orderProjectsBy(Desc(allProjects, "name")))
       }
       if (orderPress.score === "asc") {
-        dispatch(orderProjectsBy(Asc(allProjects, "score")))
+        dispatch(orderProjectsBy(Asc(allProjects, "scoreAverage")))
       }
       else if (orderPress.score === "desc") {
-        dispatch(orderProjectsBy(Desc(allProjects, "score")))
+        dispatch(orderProjectsBy(Desc(allProjects, "scoreAverage")))
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
