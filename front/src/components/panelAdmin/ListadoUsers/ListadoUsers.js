@@ -14,8 +14,10 @@ import { Link } from 'react-router-dom'
 function ListadoUsers() {
     let dispatch = useDispatch()
     let allUsers = useSelector((state) => state.allUsers)
-
-
+    useEffect(() => {
+        dispatch(getAllUsers());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     const [desplegar, setDesplegar] = useState(0)
     const [modal, setModal] = useState(0)
     const [modalP, setmodalP] = useState({
@@ -23,7 +25,8 @@ function ListadoUsers() {
         name: '',
         projects: [],
     })
-
+    const [actualizar, setActualizar] = useState(false)
+    ///////////////////////////////////////////////////////////////////////////////
     const [cardsInPag, setCardsInPag] = useState({
         renderCards: [],
         pag: 1,
@@ -36,21 +39,24 @@ function ListadoUsers() {
         })
     }
     useEffect(() => {
+        dispatch(getAllUsers());
         if (allUsers.length) {
-            accionarPaginado(1)
+            setActualizar(false)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [actualizar])
+    useEffect(() => {
+        if (allUsers.length) {
+            accionarPaginado(cardsInPag.pag)
+        }
     }, [allUsers])
-
+    ///////////////////////////////////////////////////////////////////////////////
     function cambiarEstado(e) {
         if (desplegar !== e) {
             setDesplegar(e)
         } else if (desplegar === e) {
             setDesplegar(0)
-
         }
     }
-
     function cambiarEstadoModal(e) {
         setModal(e)
     }
@@ -68,24 +74,14 @@ function ListadoUsers() {
             projects: []
         })
     }
-
     function guardarCambios(userId, userType) {
-
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
-        dispatch(getAllUsers());
-
+        setActualizar(true)
     }
-
     function resetEstadoRol() {
         setModal(0)
-
     }
-
-    useEffect(() => {
-        dispatch(getAllUsers());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
 
     return (
