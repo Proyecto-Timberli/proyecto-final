@@ -1,12 +1,59 @@
+.community-cont {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 70vw;
+    min-height: 55vh;
+}
+
 .cont-filtro-community {
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: center;
+    color: white;
     flex-wrap: nowrap;
+    font-size: large;
+    background-color: #012A4A;
+    width: 38vh;
+    height: 6vh;
+    border-radius: 20px;
 }
 
 .select-community {
     max-height: 10vh;
     max-width: 30vh;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: center;
+    width: 10vw;
+    outline: 0;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.select-community:hover {
+    background: #b5b1e8;
+}
+
+.select-community:focus {
+    background: #b5b1e8;
+}
+
+.select-community::-ms-expand {
+    display: none;
+}
+
+.community-cont-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
 }

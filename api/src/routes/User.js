@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Router } = require('express');
-const { Project, User } = require('../db.js');
+const { Project, User, Contributions } = require('../db.js');
 //const { Op, useInflection } = require('sequelize');
 //const { Recipe, API_KEY, Diet } = require("../db")
 const Stripe = require("stripe")
@@ -52,17 +52,31 @@ router.get("/id/:idUser", async (req, res, next) => {
 
 router.post("/donation", async (req, res, next) => {
     try {
-
-
         const { id, amount } = req.body;
-
+        const userMok = {
+            "name": "Juan pablo",
+            "mail": "algor@mail.com",
+            "password": "password",
+            "linkedin": "https://www.linkedin.com",
+            "github": "https://github.com/",
+            "stack": null,
+            "image": "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
+            "description": "Hola! Soy Arturo, ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto!",
+            "userType": "user",
+            "rol": "Backend Developer",
+        }
         const payment = await stripe.paymentIntents.create({
             amount,
             currency: "USD",
             payment_method: id,
             confirm: true
         })
-
+        let contribution = await Contributions.create({
+            name: userMok.name,
+            mail: userMok.mail,
+            amount
+        })
+        await contribution.addUser(userMok)
         res.send(payment)
     } catch (err) {
         res.send(err);

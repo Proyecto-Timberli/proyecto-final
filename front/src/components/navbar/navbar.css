@@ -5,7 +5,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background: #012A4A;
+    background: #012a4a;
+    background: linear-gradient(180deg, #012a4a 0%, #034679 60%);
+    background: -webkit-linear-gradient(180deg, #012a4a 0%, #034679 60%);
+    background: -moz-linear-gradient(180deg, #012a4a 0%, #034679 60%);
     font-family: 'Poppins', sans-serif;
     position: sticky;
     top: 0;
@@ -30,7 +33,6 @@
 }
 
 .verTodo-navBar {
-    padding-left: 9%;
     text-decoration: none;
     color: white;
     transition: 0.5s;

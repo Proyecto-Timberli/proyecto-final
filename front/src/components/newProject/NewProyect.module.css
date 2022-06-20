@@ -9,15 +9,18 @@
   font-family: 'Poppins', sans-serif;
   width: 72%;
   padding: 40px;
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  box-shadow: 5px 5px 20px 10px rgb(213, 213, 213);
   justify-content: center;
   align-items: center;
 }
 
 .error {
+  width: 280px;
+  margin-top: 0;
+  position:absolute;
   color: #e92b2d;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .exito {
@@ -60,7 +63,8 @@
 }
 
 .title {
-  color: #1d87d7;
+  font-size: 25px;
+  color: #0b85b9;
 }
 
 .image {
@@ -70,9 +74,21 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-
+.cargarimagen{
+  border-radius: 3px;
+  background-color: #61A5C2;
+  color: white;
+  padding-top: 1px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+}
+.cargarimagen:hover{
+  background-color: #2A6F97;
+}
 .inputImages {
   content: " Archivo 1";
+  background-color: #61A5C2;
 }
 
 .imagePreview {
@@ -100,15 +116,14 @@
 .container_I {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  margin-right: 3%;
 }
 
 .files {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .containerImagesPreview {
@@ -139,22 +154,16 @@
   padding: 8px;
 }
 
-.form {
-  --width-of-input: 200px;
-  --border-height: 1px;
-  --border-before-color: #00b4f0;
-  --border-after-color: #5891ff;
-  --input-hovered-color: #4985e01f;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  width: var(--width-of-input);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+
 
 /* styling of Input */
 .input {
+  --border-height: 2px;
+  --border-before-color: #2C7DA0;
+  --border-after-color: #5891ff;
+  --input-hovered-color: #4985e01f;
+  font-family: 'Poppins', sans-serif;
+  width: var(--width-of-input);
   color: rgb(0, 0, 0);
   font-size: 0.9rem;
   background-color: transparent;
@@ -201,7 +210,7 @@
   width: 250px;
   padding: 10px;
   border: none;
-  background-color: #0b85b9;
+  background-color: #61A5C2;
   border-radius: 4px;
   color: white;
   cursor: pointer;
@@ -215,4 +224,7 @@
   border-radius: 2px;
   color: white;
   cursor: pointer;
+}
+.errorcontainer{
+  height:35px;
 }

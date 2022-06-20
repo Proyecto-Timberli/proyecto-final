@@ -1,4 +1,4 @@
-const { User, Project } = require('./src/db.js');
+const { User, Project, Contributions } = require('./src/db.js');
 const mokeando = async () => {
 
   const user_description_1 = "Hola! Esta es mi descripcion generica. Soy una persona muy profesional y me apasiona este rubro! No duden en contratarme, por favor"
@@ -11,12 +11,10 @@ const mokeando = async () => {
   const users = [
     {
       name: "Tommy Shelby",
-      userName: "Tshelby22",
       userType: "suspended",
-
       mail: "Tshelby@mail.com",
       password: "password",
-      image: "https://static.wikia.nocookie.net/peaky-blinders/images/8/8e/Tommys3.jpg/revision/latest?cb=20190715140230",
+      image: "https://www.losandes.com.ar/resizer/JYi2hpIvlUhn-uZTzC34D-UZXEo=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MMLEOSMQZREZDERPUO7WRD4VNI.jpg",
       description: "Thomas Michael Shelby, OBE, DCM, MM, MP. Manejo distintas tecnologias como: Vue, Angular, Wordpress",
       linkedin: "",
       github: "https://github.com/",
@@ -24,10 +22,9 @@ const mokeando = async () => {
     },
     {
       name: "Ada shelby",
-      serName: "Ashelby24",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://static.wikia.nocookie.net/peaky-blinders/images/d/df/Ada5.jpg/revision/latest?cb=20190924183542",
+      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
       description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
@@ -35,7 +32,6 @@ const mokeando = async () => {
     },
     {
       name: "Arthur Shelby Jr",
-      userName: "AshelbyJr",
       mail: "arturojunior@mail.com",
       password: "password",
       image: "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
@@ -110,14 +106,13 @@ const mokeando = async () => {
 
     {
       name: "Julio",
-      /*       userName: "JuliusCaesar", */
       userType: "suspended",
       mail: "juliuscaesar@romanempire.com",
       password: "brutusiwillhavemyrevenge",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
       description: "Mi nombre es Julio tengo mucha experiencia en desarrollo web, sobre todo backend. Me encuentro en cosntante capacitación, busco desarrollar mis skills como frontend web y mobile developer.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2RNWGgfi3nOLGtj3YnhauaC9HWurFHaJ--V6FrPaWILiaaqKbvZEmIeR5QVdlRpdMFOg&usqp=CAU",
+      image: "https://pbs.twimg.com/media/ECD1E7hVUAAZmpX.jpg",
 
     },
     {
@@ -138,17 +133,16 @@ const mokeando = async () => {
       linkedin: "none",
       github: "none",
       description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarrolladora full stack. HTML y CSS.",
-      image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
+      image: "https://imdermatologico.com/wp-content/uploads/2018/05/cleopatra-complejo.jpg",
     },
     {
       name: "notBill",
-      /*       userName: "NotBillGates", */
       mail: "iamnotbillgates@microsoft.com",
       password: "i-lied",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
       description: "Bienvenidos a mi portfolio profesional. Manejo de todo un poco, pero me especializo en backend. Soy experto en tecnologias como MongoDB, PostgreSQL, NodeJS y expressJS",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2RNWGgfi3nOLGtj3YnhauaC9HWurFHaJ--V6FrPaWILiaaqKbvZEmIeR5QVdlRpdMFOg&usqp=CAU",
+      image: "https://thumbs.dreamstime.com/b/cara-humana-gen%C3%A9rica-del-hombre-vista-delantera-futurista-81662768.jpg",
 
     },
     {
@@ -481,7 +475,6 @@ const mokeando = async () => {
   })
 
 
-
   for (let i = 0; i < users.length; i++) {
     let arrayProjects = []
 
@@ -498,10 +491,20 @@ const mokeando = async () => {
         arrayProjects.push(await Project.create(projects[j]))
       }
     }
-
     let user = await User.create(users[i])
     await user.addProjects(arrayProjects)
+    if (i < 4) {
+      let valores = [5, 10, 1, 5]
+      let newContribution = {
+        name: users[i].name,
+        mail: users[i].mail,
+        amount: valores[i]
+      }
+      let contribution = await Contributions.create(newContribution)
+      await user.addContributions(contribution)
+    }
   }
+
 }
 module.exports = mokeando
 
