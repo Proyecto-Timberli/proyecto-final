@@ -14,6 +14,7 @@
     background: linear-gradient(to bottom, #012A4A, #014F86);
     border-radius: 1em;
     margin: 0.5em;
+    max-width: 16em;
 }
 
 .profile-name {
@@ -39,7 +40,9 @@
 }
 
 .profileInfoDetails {
-    color: white
+    color: white;
+    word-break: break-all;
+
 }
 
 .profileContents {
@@ -92,4 +95,6 @@
 .p-profile,
 .p-stack {
     color: white;
+    word-break: break-all;
+
 }

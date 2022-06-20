@@ -3,6 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { sendCheckoutForm } from "../../functions";
 import { useDispatch } from "react-redux";
 import { listPayments } from "../../redux/actions/actionCreators.js"
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 export default function CheckoutForm() {
     const stripe = useStripe();
@@ -23,29 +24,19 @@ export default function CheckoutForm() {
         event.preventDefault();
         setCompraConcretada("")
         setCargando(true)
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
         })
         if (error) {
             setError(error.message)
+            setCargando(false)
+
             return
         }
 
-
-        const { id } = paymentMethod;
         setError("")
-
-        //FUNCION QUE MANDA NUESTROS DATOS PARA EL BACKEND(sendCheckoutForm)
-        const { data } = await sendCheckoutForm(id, amount)
-        //ACA SI EXISTE DATA.CODE QUIERE DECIR QUE HAY UN MENSAJE DE ERROR Y SE MUESTRA
-        if (data.code) {
-            //setError(data.raw.message)
-            setError(data.raw.message)
-            return
-        }
-        setError("")
-
         //Para controlar las contribuciones recibidas:
         let userId = window.localStorage.getItem('userid')
         console.log(userId)
@@ -55,13 +46,12 @@ export default function CheckoutForm() {
         } else {
             dispatch(listPayments(amount, 'Anonimo'))
         }
-        
+
         //ACA LIMPIAMOS EL INPUT DE LA TARJETA
         setCargando(false)
-        setCompraConcretada("donacion concretada")
+        setCompraConcretada("Donacion Concretada")
         elements.getElement(CardElement).clear()
     }
-
 
 
 
