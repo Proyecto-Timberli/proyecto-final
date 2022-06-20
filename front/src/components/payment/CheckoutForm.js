@@ -70,8 +70,8 @@ export default function CheckoutForm() {
                     alt="donation"
                     className="donation-image"
                 />
-                <h5 className="form-payment-title">Selecciona el monto a donar en dolares!</h5>
-                <p className="form-payment-subtitle">(Tu tarjeta convierte los dolares a tu moneda local!)</p>
+                <h5 className="form-payment-title">Selecciona el monto a donar en dolares:</h5>
+                <p className="form-payment-subtitle">(Tu tarjeta lo convierte a tu moneda local)</p>
                 <div className='opciones-payment'>
                     <div className="form-check-payment">
                         <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />

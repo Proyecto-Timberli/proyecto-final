@@ -41,16 +41,26 @@ router.post("/donation", async (req, res, next) => {
     try {
         console.log(contribution)
         const contribuidor = await User.findByPk(user)
-        const newContribution = await Contributions.create ({
-            amount: contribution, 
-            name: contribuidor,
-        })
+        if (contribuidor) {
+            var newContribution = await Contributions.create ({
+                amount: contribution/100, 
+                name: contribuidor,
+            })
+        }
+        else {
+            var newContribution = await Contributions.create ({
+                amount: contribution/100, 
+                name: 'Anonimo',
+            })
+        }
+
         return res.send(newContribution);
     } 
     catch(err){
         next(err)
     }
-})
+});
+
 
 
 router.put("/project", [verifyToken], async (req, res, next) => {
