@@ -1,10 +1,13 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { sendCheckoutForm } from "../../functions";
+import { useDispatch } from "react-redux";
+import { listPayments } from "../../redux/actions/actionCreators.js"
 
 export default function CheckoutForm() {
     const stripe = useStripe();
     const elements = useElements();
+    const dispatch = useDispatch();
 
     const [error, setError] = React.useState("");
     const [compraConcretada, setCompraConcretada] = React.useState("");
@@ -12,7 +15,6 @@ export default function CheckoutForm() {
 
     const handleChange = (e) => {
         setAmount(e.target.value);
-        console.log(amount)
     }
 
 
@@ -30,7 +32,6 @@ export default function CheckoutForm() {
 
 
         const { id } = paymentMethod;
-        console.log(paymentMethod)
         setError("")
 
         //FUNCION QUE MANDA NUESTROS DATOS PARA EL BACKEND(sendCheckoutForm)
@@ -42,7 +43,15 @@ export default function CheckoutForm() {
             return
         }
         setError("")
-        console.log(data)
+
+        //Para controlar las contribuciones recibidas:
+        let userId = window.localStorage.getItem('userid')
+        if (userId) {
+            dispatch(listPayments(amount, userId))
+        } else {
+            dispatch(listPayments(amount, 'Anonimo'))
+        }
+        
         //ACA LIMPIAMOS EL INPUT DE LA TARJETA
         setCompraConcretada("Compra concretada")
         elements.getElement(CardElement).clear()

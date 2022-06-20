@@ -27,6 +27,7 @@ const Contributions = () => {
                     <div className='contribuciones-card' key={e.id}>
                         <label>Contribucion: {e.id} </label>
                         <div>Contribuidor: {e.name} </div>
+                        <div>Cantidad: {e.amount} </div>
 
                     </div>
                 )}
