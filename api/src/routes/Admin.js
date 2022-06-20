@@ -8,7 +8,7 @@ const router = Router();
 
 
 
-router.put("/user", [verifyToken], async (req, res, next) => {
+router.put("/user",  async (req, res, next) => {
     const { userId, userType } = req.body;
 
     try {
@@ -63,7 +63,7 @@ router.post("/donation", async (req, res, next) => {
 
 
 
-router.put("/project", [verifyToken], async (req, res, next) => {
+router.put("/project",  async (req, res, next) => {
     const { projectId, state } = req.body;
     try {
         if (projectId && state) {
