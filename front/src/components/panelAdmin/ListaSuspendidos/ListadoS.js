@@ -11,11 +11,12 @@ import './listadoS.css'
 function ListadoS() {
     let dispatch = useDispatch()
     let allUserss = useSelector((state) => state.allUsers)
-     let allUsers = allUserss.filter( (e)=> {
+    let allUsers = allUserss.filter((e) => {
         return e.userType === 'suspended'
     })
     useEffect(() => {
         dispatch(getAllUsers());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const [modal, setModal] = useState(0)
 
@@ -36,10 +37,11 @@ function ListadoS() {
         if (allUserss.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allUserss])
 
     function cambiarEstado(e) {
-       
+
         if (desplegar !== e) {
             setDesplegar(e)
         } else if (desplegar === e) {
@@ -52,14 +54,20 @@ function ListadoS() {
         setModal(e)
     }
 
-    function guardarCambios(userId, userType){
-      
+    function guardarCambios(userId, userType) {
+
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
+        dispatch(getAllUsers());
+
+    }
+
+    function resetEstadoRol() {
+        setModal(0)
+
     }
 
 
-    
     return (
 
 
@@ -68,6 +76,8 @@ function ListadoS() {
                 <MdPersonOff className='icono-title-suspendidos' />
                 <h1>Listado de Usuarios Suspendidos</h1>
             </div>
+            <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
+
             {(Object.keys(allUsers).length === 0) ?
                 <div>NO HAY USUARIOS</div>
                 :
@@ -79,14 +89,14 @@ function ListadoS() {
 
 
                                 {
-                                    
+
                                     <div className='user-card-admin' key={u.id}>
                                         <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
                                         <div className='content-project-state'>
-                                            <MdKeyboardArrowDown onClick={(e) => cambiarEstado(u.id)}/>
+                                            <MdKeyboardArrowDown onClick={(e) => cambiarEstado(u.id)} />
                                         </div>
                                     </div>
-                                    
+
                                 }
 
                                 {
@@ -103,10 +113,11 @@ function ListadoS() {
                 </div>
             }
             {
-                !!modal && modal !=0  ?
+                !!modal && modal !== 0 ?
                     <ModalSuspendidos
-                    estado = {guardarCambios}
-                    id= {modal}
+                        estado={guardarCambios}
+                        id={modal}
+                        reset={resetEstadoRol}
                     />
                     : null
             }
@@ -118,6 +129,7 @@ function ListadoS() {
                     </div>
                 )}
             </div>
+
 
         </div>
     )

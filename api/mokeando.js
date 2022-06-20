@@ -1,4 +1,4 @@
-const { User, Project } = require('./src/db.js');
+const { User, Project, Contributions } = require('./src/db.js');
 const mokeando = async () => {
 
   const user_description_1 = "Hola! Esta es mi descripcion generica. Soy una persona muy profesional y me apasiona este rubro! No duden en contratarme, por favor"
@@ -11,9 +11,7 @@ const mokeando = async () => {
   const users = [
     {
       name: "Tommy Shelby",
-      userName: "Tshelby22",
       userType: "suspended",
-
       mail: "Tshelby@mail.com",
       password: "password",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
@@ -24,7 +22,6 @@ const mokeando = async () => {
     },
     {
       name: "Ada shelby",
-      serName: "Ashelby24",
       mail: "adashelby24@mail.com",
       password: "password",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
@@ -35,7 +32,6 @@ const mokeando = async () => {
     },
     {
       name: "Arthur Shelby Jr",
-      userName: "AshelbyJr",
       mail: "arturojunior@mail.com",
       password: "password",
       image: "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
@@ -46,7 +42,7 @@ const mokeando = async () => {
     },
     {
       name: "Luciano",
-/*       userName: "luciano", */
+      /*       userName: "luciano", */
       mail: "luciano@mail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -56,7 +52,7 @@ const mokeando = async () => {
     },
     {
       name: "Cristobal",
-/*       userName: "Saposan", */
+      /*       userName: "Saposan", */
       mail: "cristobal.herreros@gmail.com",
       password: "aVerySecurePassword",
       linkedin: "https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/",
@@ -66,7 +62,7 @@ const mokeando = async () => {
     },
     {
       name: "Lucas",
-/*       userName: "soylucas", */
+      /*       userName: "soylucas", */
       mail: "soylucas@hotmail.com",
       password: "contraseña",
       linkedin: "Tengo linkedin!",
@@ -76,7 +72,7 @@ const mokeando = async () => {
     },
     {
       name: "María",
-/*       userName: "soymaria", */
+      /*       userName: "soymaria", */
       mail: "soymaría@gmail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -86,7 +82,7 @@ const mokeando = async () => {
     },
     {
       name: "Roberto",
-/*       userName: "RRobert", */
+      /*       userName: "RRobert", */
       userType: "suspended",
       mail: "roberto123@hotmail.com",
       password: "papasword",
@@ -99,7 +95,7 @@ const mokeando = async () => {
       name: "Anita",
       userType: "suspended",
       userName: "An1",
-      
+
       mail: "an1t4@gmail.com",
       password: "simplePassword",
       linkedin: "none",
@@ -110,14 +106,13 @@ const mokeando = async () => {
 
     {
       name: "Julio",
-/*       userName: "JuliusCaesar", */
       userType: "suspended",
       mail: "juliuscaesar@romanempire.com",
       password: "brutusiwillhavemyrevenge",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
-      description: "Mi nombre es Julio tengo mucha experiencia en desarshort_descriptionlo web, sobre todo backend. Me encuentro en cosntante capacitación, busco desarshort_descriptionlar mis skills como frontend web y mobile developer.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2RNWGgfi3nOLGtj3YnhauaC9HWurFHaJ--V6FrPaWILiaaqKbvZEmIeR5QVdlRpdMFOg&usqp=CAU",
+      description: "Mi nombre es Julio tengo mucha experiencia en desarrollo web, sobre todo backend. Me encuentro en cosntante capacitación, busco desarrollar mis skills como frontend web y mobile developer.",
+      image: "https://pbs.twimg.com/media/ECD1E7hVUAAZmpX.jpg",
 
     },
     {
@@ -137,23 +132,22 @@ const mokeando = async () => {
       password: "milk-baths",
       linkedin: "none",
       github: "none",
-      description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarshort_descriptionladora full stack. HTML y CSS.",
-      image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
+      description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarrolladora full stack. HTML y CSS.",
+      image: "https://imdermatologico.com/wp-content/uploads/2018/05/cleopatra-complejo.jpg",
     },
     {
       name: "notBill",
-/*       userName: "NotBillGates", */
       mail: "iamnotbillgates@microsoft.com",
       password: "i-lied",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
       description: "Bienvenidos a mi portfolio profesional. Manejo de todo un poco, pero me especializo en backend. Soy experto en tecnologias como MongoDB, PostgreSQL, NodeJS y expressJS",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2RNWGgfi3nOLGtj3YnhauaC9HWurFHaJ--V6FrPaWILiaaqKbvZEmIeR5QVdlRpdMFOg&usqp=CAU",
+      image: "https://thumbs.dreamstime.com/b/cara-humana-gen%C3%A9rica-del-hombre-vista-delantera-futurista-81662768.jpg",
 
     },
     {
       name: "Bastián",
-/*       userName: "bastyJr", */
+      /*       userName: "bastyJr", */
       mail: "bastianprogrammer@gmail.com",
       password: "randomHashMadeByPasswordManager",
       linkedin: "none",
@@ -177,7 +171,7 @@ const mokeando = async () => {
   const projects = [
     {
       name: "Henry Food",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto Henry Foods para mostrar como ejemplo en clases",
       description: "SPA que consume datos de una API y renderiza recetas con algunos datos en el home. Permite buscar recetas, ordenarlas alfabeticamente y por healthscore y filtrar por tipo de dieta. Se puede ingresar al detalle de cada receta donde se muestra mas información. El usuario puede crear su propia receta. ",
       repository: "https://github.com/LucianoMocchegiani/PI_Food",
@@ -195,7 +189,7 @@ const mokeando = async () => {
     },
     {
       name: "ML 2.0",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de mercado libre :)",
       description: "Se intento copiar lo mas parecido posible la pagina web de ML, imitando el diseño y las funcionalidades. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
@@ -213,7 +207,7 @@ const mokeando = async () => {
     },
     {
       name: "Armazon 2.0",
-      tecnology: "Ruby on Rails",
+      tecnology: ["Ruby on rails"],
       shortDescription: "Clon de Amazon",
       description: "Se intento copiar lo mas parecido posible la pagina web de amazon, imitando el diseño y las funcionalidades. Muy desafiante ya que se usaron tecnologias distintas a las que usamos regularmente. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
@@ -229,7 +223,7 @@ const mokeando = async () => {
     },
     {
       name: "ProfileLibrary",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de Facebook/Linked-in",
       description: "En este proyecto se intento clonar Facebook y LinkedIn trantando de respetar las funcionalidades y el diseño. El proyecto se realizo en conjunto con otros desarshort_descriptionladores web y diseñadores ux/ui",
       repository: "none",
@@ -245,7 +239,7 @@ const mokeando = async () => {
     },
     {
       name: "React project",
-      tecnology: "React",
+      tecnology: ["ReactJs"],
       shortDescription: "Proyecto creado con create-react-app",
       description: "Este proyecto fue uno de los primeros desarshort_descriptionlos que realice utilizando ReactJS. Se trata de un ejercicio realizado para el bootcamp de SoyHenry",
       repository: "none",
@@ -261,7 +255,7 @@ const mokeando = async () => {
     },
     {
       name: "Hello World.js",
-      tecnology: "React, Redux, Express.js",
+      tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto para aprender a programar con Javascript",
       description: "Este proyecto fue uno de los primeros desarshort_descriptionlos que realice utilizando JavaScript, forma parte de un challenge de la página FreeCodeCamp.",
       repository: "none",
@@ -279,7 +273,7 @@ const mokeando = async () => {
     },
     {
       name: "BlueBird",
-      tecnology: "Ruby on Rails",
+      tecnology: ["Ruby on rails"],
       shortDescription: "Clon de twitter pero mejor (?)",
       description: "En este proyecto se imitó el diseño y la funcionalidad de Twitter utilizando otras tecnologias.",
       repository: "none",
@@ -457,6 +451,13 @@ const mokeando = async () => {
   ];
 
 
+  function numeroRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+
+
+
   projects.map((e) => {
     if (!!e.score) {
       e.scoreStyle = []
@@ -470,22 +471,40 @@ const mokeando = async () => {
 
 
 
-    e.scoreAverage = ((e.scoreStyle.reduce((e, a) => e + a) / e.scoreStyle.length) +
-      (e.scoreFunctionality.reduce((e, a) => e + a) / e.scoreFunctionality.length) +
-      (e.scoreOriginality.reduce((e, a) => e + a) / e.scoreOriginality.length)) / 3
-  })
 
+  })
 
 
   for (let i = 0; i < users.length; i++) {
     let arrayProjects = []
 
     for (let j = 0; j < projects.length; j++) {
-      arrayProjects.push(await Project.create(projects[j]))
+      if (numeroRandom(1, 2) === 1) {
+
+        projects[j].scoreFunctionality.push(numeroRandom(1, 5))
+        projects[j].scoreStyle.push(numeroRandom(1, 5))
+        projects[j].scoreOriginality.push(numeroRandom(1, 5))
+
+        projects[j].scoreAverage = ((projects[j].scoreStyle.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreStyle.length) +
+          (projects[j].scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreFunctionality.length) +
+          (projects[j].scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreOriginality.length)) / 3
+        arrayProjects.push(await Project.create(projects[j]))
+      }
     }
     let user = await User.create(users[i])
     await user.addProjects(arrayProjects)
+    if (i < 4) {
+      let valores = [5, 10, 1, 5]
+      let newContribution = {
+        name: users[i].name,
+        mail: users[i].mail,
+        amount: valores[i]
+      }
+      let contribution = await Contributions.create(newContribution)
+      await user.addContributions(contribution)
+    }
   }
+
 }
 module.exports = mokeando
 

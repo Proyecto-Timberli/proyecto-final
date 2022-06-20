@@ -22,10 +22,10 @@ function Footer() {
 
                     <div className='footer-right'>
                         <Link to='/about' className='p-link'>
-                            <p className='a-footer'>ABOUT</p>
+                            <p className='a-footer'>SOBRE NOSOTROS</p>
                         </Link>
                         <Link to='/payment' className='p-link'>
-                            <p className='a-footer'>CONTRIBUTE</p>
+                            <p className='a-footer'>CONTRIBUIR</p>
                         </Link>
                     </div>
 

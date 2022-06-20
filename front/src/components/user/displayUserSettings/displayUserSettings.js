@@ -54,7 +54,7 @@ const DisplayUserSettings = ({ userData }) => {
         </div>
 
         <div className='userSettings-fg-inputContainer'>
-          <p>Enlace a LinkedIn</p>
+          <p>Enlace a LinkedIn:</p>
           <input type="text"
           className='userSettings-textInput'
           value={userSettings.linkedin}
@@ -67,7 +67,7 @@ const DisplayUserSettings = ({ userData }) => {
         </div>
 
         <div className='userSettings-fg-inputContainer'>
-          <p>Enlace a Github</p>
+          <p>Enlace a Github:</p>
           <input type="text"
           className='userSettings-textInput'
           value={userSettings.github}

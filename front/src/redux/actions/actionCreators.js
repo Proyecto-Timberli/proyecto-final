@@ -1,4 +1,5 @@
-import { SAMPLE_ACTION,
+import {
+    SAMPLE_ACTION,
     GET_USER_BY_ID,
     GET_PROJECT_BY_ID,
     GET_ALL_PROJECTS,
@@ -9,12 +10,13 @@ import { SAMPLE_ACTION,
     GET_ALL_USERS,
     ADMIN_SUSPEND_USER,
     ADMIN_SUSPEND_PROJECT,
-    LOGGED_USER_ID
+    LOGGED_USER_ID,
+    GET_CONTRUBUTION
 } from "./actions.js"
 
 import axios from 'axios'
 
-const {REACT_APP_API} = process.env
+const { REACT_APP_API } = process.env
 
 export function sampleAction(value) {
     return {
@@ -25,7 +27,7 @@ export function sampleAction(value) {
 
 export function getAllProjects() {
     return function (dispatch) {
-        axios.get(REACT_APP_API+'/api/project')
+        axios.get(REACT_APP_API + '/api/project')
             .then(response => {
                 dispatch({
                     type: GET_ALL_PROJECTS,
@@ -35,34 +37,34 @@ export function getAllProjects() {
     }
 }
 
-export function getAllUsers(){
-    return function(dispatch){
-        axios.get('http://localhost:3001/api/user')
-        .then(response => {
-            dispatch({
-                type: GET_ALL_USERS,
-                payload: response.data
+export function getAllUsers() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + '/api/user')
+            .then(response => {
+                dispatch({
+                    type: GET_ALL_USERS,
+                    payload: response.data
+                })
             })
-        })
-       
+
     }
 }
 
 
 export function getUserById(id) {
     return function (dispatch) {
-        axios.get(REACT_APP_API+`/api/user/id/${id}`)
+        axios.get(REACT_APP_API + `/api/user/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_USER_BY_ID,
                     payload: res.data
                 })
             }).catch((err) => {
-                
+
                 if (err.response.status === 404) {
                     dispatch({
                         type: GET_USER_BY_ID,
-                        payload: { err: "not found" } 
+                        payload: { err: "not found" }
                     })
                 }
 
@@ -72,7 +74,7 @@ export function getUserById(id) {
 
 export function getProjectById(id) {
     return function (dispatch) {
-        axios.get(REACT_APP_API+`/api/project/id/${id}`)
+        axios.get(REACT_APP_API + `/api/project/id/${id}`)
             .then(res => {
                 dispatch({
                     type: GET_PROJECT_BY_ID,
@@ -84,7 +86,7 @@ export function getProjectById(id) {
 
 export function postProject(project) {
     return function () {
-        axios.post(REACT_APP_API+'/api/project', project)
+        axios.post(REACT_APP_API + '/api/project', project)
             .then(response => response.data)
             .catch(error => console.error(error))
     }
@@ -124,10 +126,10 @@ export function orderProjectsBy(projects) {
 
 
 
-export function adminSupendUser(userId,userType) {
+export function adminSupendUser(userId, userType) {
     return function (dispatch) {
 
-        axios.put(REACT_APP_API+'/api/admin/user',{userId,userType})
+        axios.put(REACT_APP_API + '/api/admin/user', { userId, userType })
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_USER,
@@ -135,13 +137,13 @@ export function adminSupendUser(userId,userType) {
                 })
             })
     }
-    
+
 }
 
 
-export function adminSupendProject(id,state) {
+export function adminSupendProject(projectId, state) {
     return function (dispatch) {
-        axios.put(REACT_APP_API+`/api/admin/`,{id,state})
+        axios.put(REACT_APP_API + '/api/admin/project', { projectId, state })
             .then(res => {
                 dispatch({
                     type: ADMIN_SUSPEND_PROJECT,
@@ -155,5 +157,18 @@ export function setLoggedUserId(payload) {
     return {
         type: LOGGED_USER_ID,
         payload: payload
+    }
+}
+
+export function getContributions() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/admin/donation`)
+            .then(res => {
+                dispatch({
+                    type: GET_CONTRUBUTION,
+                    payload: res.data
+                })
+            }
+            )
     }
 }

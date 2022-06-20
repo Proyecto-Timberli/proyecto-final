@@ -1,8 +1,13 @@
 /* From uiverse.io by @alexruix */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
 .cards-cont {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 200;
+
 }
 
 .card-home {
@@ -10,8 +15,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 900px;
-    height: 400px;
+    width: 70vw;
+    height: 55vh;
     transition: 0.4s;
     background: linear-gradient(to right, #99cfee, #01497C);
     box-shadow: 0px 7px 20px rgba(43, 8, 37, 0.2);
@@ -37,6 +42,7 @@
     text-decoration: none;
     font-weight: bolder;
     transition: all .2s;
+    margin: 0;
 }
 
 .text-title-card:hover {
@@ -85,7 +91,11 @@
 
 .img-project-card {
     border-radius: 20px;
-    height: 65%;
+    /* height: 65%; */
+    max-width: 483.594px;
+    min-height: 260px;
+
+
 }
 
 .card-info-home {
@@ -124,7 +134,22 @@
     transition: 0.4s;
 }
 
+.cont-scores {
+    display: flex;
+    justify-content: center;
+}
+
+.cont-scores div {
+    background-color: rgb(1 7 124 / 30%);
+    width: 18vw;
+    height: 12vh;
+    border-radius: 60px;
+
+}
+
+
 .text-score-card {
     padding-bottom: 0;
+
     margin: 0%;
 }

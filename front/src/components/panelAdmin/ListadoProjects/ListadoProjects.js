@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './listado.css'
 import { MdWork, MdDoneOutline, MdClear } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects } from '../../../redux/actions/actionCreators'
+import { getAllProjects, adminSupendProject } from '../../../redux/actions/actionCreators'
 import Paginado from '../../home/Paginado.js'
 import { Link } from 'react-router-dom'
 
@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom'
 function ListadoProjects() {
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
-    const [estado, setEstado] = useState('Aceptado')
+
     useEffect(() => {
         dispatch(getAllProjects());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
@@ -31,15 +32,21 @@ function ListadoProjects() {
         if (allProjects.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allProjects])
 
-    function cambiarEstado(e) {
+    async function cambiarEstado(id, state) {
 
-        if (estado == 'Aceptado') {
-            setEstado('Pendiente')
-        } else if (estado == 'Pendiente') {
-            setEstado('Aceptado')
+        if (state === 'Aceptado') {
+
+            await dispatch(adminSupendProject(id, 'Pendiente'))
+
+        } else if (state === 'Pendiente') {
+            await dispatch(adminSupendProject(id, 'Aceptado'))
         }
+
+        await dispatch(getAllProjects());
+
     }
 
 
@@ -49,6 +56,7 @@ function ListadoProjects() {
                 <MdWork className='icono-title-project' />
                 <h1>Listado de Proyectos</h1>
             </div>
+            <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
             {(Object.keys(allProjects).length === 0) ? <div>No existen proyectos con esos parametros </div> :
                 <div className='contenedor-listado-project'>
@@ -57,11 +65,11 @@ function ListadoProjects() {
                             <div className='project-card-admin' key={p.id}>
                                 <li key={p.id}> <Link to={"/project/" + p.id}>{p.name}</Link> </li>
                                 <div className='content-project-state'>
-                                    <p className='state-project'>{estado}</p>
+                                    <p className='state-project'>{p.state}</p>
                                     {
-                                        estado === 'Aceptado' ?
-                                            <MdClear className='decline-project' onClick={(e) => cambiarEstado(e)} /> :
-                                            <MdDoneOutline className='accept-project' onClick={(e) => cambiarEstado(e)} />
+                                        p.state === 'Aceptado' ?
+                                            <MdClear className='decline-project' onClick={(e) => cambiarEstado(p.id, p.state)} /> :
+                                            <MdDoneOutline className='accept-project' onClick={(e) => cambiarEstado(p.id, p.state)} />
                                     }
                                 </div>
 
@@ -78,7 +86,8 @@ function ListadoProjects() {
                     </div>
                 )}
             </div>
-            <Link to="/admin" >Volver al Panel</Link>
+
+
         </div>
     )
 }

@@ -34,7 +34,7 @@ router.post("/register", (req, res, next) => {
         } else {
             res.json({
                 status: 'error',
-                error: 'Usuario ya existe.'
+                error: 'Email ya registrado.'
             })
         }
     })
@@ -46,8 +46,7 @@ router.post("/register", (req, res, next) => {
         })
 })
 
-router.post("/login", (req, res, next) => {
-
+router.post("/login", (req, res, next) => { 
     User.findOne({
         where: {
             mail: req.body.email
@@ -62,7 +61,8 @@ router.post("/login", (req, res, next) => {
                 }, process.env.JWT_SECRET_KEY, {
                     expiresIn: 1440
                 })
-
+               
+                
                 res.send({
                     status: "success",
                     token: token,

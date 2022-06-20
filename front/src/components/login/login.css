@@ -102,3 +102,8 @@
 .login-formError {
     color: red
 }
+.msj-exitoso-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

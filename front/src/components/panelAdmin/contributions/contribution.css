@@ -1,0 +1,20 @@
+.cont-cont-general {
+    min-height: 60vh;
+}
+
+.contribuciones-cont {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contribuciones-card {
+    height: 8vh;
+    width: 25vw;
+    border: solid black;
+    border-radius: 18px;
+    padding: 5px;
+    margin: 10px;
+
+}

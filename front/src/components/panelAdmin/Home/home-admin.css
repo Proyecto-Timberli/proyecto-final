@@ -1,18 +1,18 @@
-.arriba-cont{
+.arriba-cont {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-left: 15px;
 }
 
-.icono-admin{
+.icono-admin {
     font-size: 1.5rem;
     margin: 2px;
 }
 
 /* =============================BOX FEATURES==================================== */
 
-.features-cont{
+.features-cont {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -24,7 +24,7 @@
     padding: 15px;
 }
 
-.feature-box{
+.feature-box {
     display: flex;
     flex-direction: column;
     background-color: #012A4A;
@@ -32,21 +32,28 @@
     border-radius: 11px;
     width: 32%;
     height: 150px;
-
-    
+    transition: .6s;
+    z-index: 3;
 }
 
-.icon-feature-admin{
+.feature-box:hover {
+    transform: scale(1.1);
+    z-index: 7;
+    background-color: #04518b;
+
+}
+
+.icon-feature-admin {
     margin: 0 auto;
     font-size: 2.5rem;
     color: white;
     float: left;
 }
 
-.title-feature-admin{
+.title-feature-admin {
     color: white;
     font-weight: bolder;
     font-size: 1.3rem;
-    text-shadow:  1px 2px 3px rgb(0, 0, 0);
+    text-shadow: 1px 2px 3px rgb(0, 0, 0);
     margin: 25px;
 }

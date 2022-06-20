@@ -13,6 +13,7 @@ import { getUserById } from '../../redux/actions/actionCreators'
 import { scroll } from "../../functions";
 import './User.css'
 
+
 const User = () => {
     scroll()
 
@@ -20,7 +21,7 @@ const User = () => {
     const { id } = useParams()
     const [paramsId, setParamsId] = useState(id)
 
-    
+
 
     const dispatcher = useDispatch()
 
@@ -68,8 +69,6 @@ const User = () => {
         } else {
             return <div className='profileContentSections'>{anyUserProfile.map(elemToButton)}</div>
         }
-
-        return 
     }
 
     function showLoadedProfile() {
@@ -98,8 +97,8 @@ const User = () => {
     /** 
      * Lógica del componente
      */
-    
-    if (paramsId !== id) {    
+
+    if (paramsId !== id) {
         setParamsId(id)
         setAskedForData(false)
     }

@@ -19,7 +19,7 @@ const Stats = () => {
         dispatch(getAllProjects())
         dispatch(getAllUsers());
 
-    }, [])
+    }, [])//eslint-disable-line react-hooks/exhaustive-deps
     return (
         <div>
             <h1>Estadisticas</h1>

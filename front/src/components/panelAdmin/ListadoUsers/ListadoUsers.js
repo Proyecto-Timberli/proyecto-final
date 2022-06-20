@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './listadoU.css'
 import { MdManageAccounts, MdKeyboardArrowDown } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers,adminSupendUser } from '../../../redux/actions/actionCreators'
+import { getAllUsers, adminSupendUser } from '../../../redux/actions/actionCreators'
 import ModalUser from './modalUser/ModalUser.js'
 import ModalProjects from './modalProjects/ModalProjects.js'
 import Paginado from '../../home/Paginado.js'
@@ -16,8 +16,8 @@ function ListadoUsers() {
     let allUsers = useSelector((state) => state.allUsers)
     useEffect(() => {
         dispatch(getAllUsers());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
     const [desplegar, setDesplegar] = useState(0)
     const [modal, setModal] = useState(0)
     const [modalP, setmodalP] = useState({
@@ -25,7 +25,8 @@ function ListadoUsers() {
         name: '',
         projects: [],
     })
-
+    const [actualizar, setActualizar] = useState(false)
+    ///////////////////////////////////////////////////////////////////////////////
     const [cardsInPag, setCardsInPag] = useState({
         renderCards: [],
         pag: 1,
@@ -38,20 +39,24 @@ function ListadoUsers() {
         })
     }
     useEffect(() => {
+        dispatch(getAllUsers());
         if (allUsers.length) {
-            accionarPaginado(1)
+            setActualizar(false)
+        }
+    }, [actualizar])
+    useEffect(() => {
+        if (allUsers.length) {
+            accionarPaginado(cardsInPag.pag)
         }
     }, [allUsers])
-
+    ///////////////////////////////////////////////////////////////////////////////
     function cambiarEstado(e) {
         if (desplegar !== e) {
             setDesplegar(e)
         } else if (desplegar === e) {
             setDesplegar(0)
-
         }
     }
-
     function cambiarEstadoModal(e) {
         setModal(e)
     }
@@ -62,18 +67,22 @@ function ListadoUsers() {
             projects: projects
         })
     }
-    function resetEstado(){
+    function resetEstado() {
         setmodalP({
-            id:0,
-            name:'',
-            projects:[]
+            id: 0,
+            name: '',
+            projects: []
         })
     }
-    function guardarCambios(userId, userType){
-      
+    function guardarCambios(userId, userType) {
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
+        setActualizar(true)
     }
+    function resetEstadoRol() {
+        setModal(0)
+    }
+
 
     return (
         <div>
@@ -81,17 +90,18 @@ function ListadoUsers() {
                 <MdManageAccounts className='icono-title-users' />
                 <h1>Listado de Usuarios</h1>
             </div>
-
+            <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
             {(Object.keys(allUsers).length === 0) ?
                 <div>NO HAY USUARIOS</div>
                 :
                 <div className="contenedor-listado-user">
                     {
                         cardsInPag.renderCards.map(u => ((!!u) &&
-                            <div>
+                            <div key={u.id}>
                                 <div className='user-card-admin' key={u.id}>
                                     <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
                                     <div className='content-project-state'>
+                                        {u.userType.toUpperCase()}
                                         <MdKeyboardArrowDown onClick={(e) => cambiarEstado(u.id)} />
                                     </div>
 
@@ -102,7 +112,7 @@ function ListadoUsers() {
                                             <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModal(u.id)}>CAMBIAR ROL</button></div>
                                             {/* <div className='button-desplegable'><button>REPORTES</button></div> */}
                                             <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModalProyectos(u.id, u.name, u.projects)}>PROYECTOS</button></div>
-                                            
+
 
                                         </div>
                                         : null
@@ -114,23 +124,24 @@ function ListadoUsers() {
                 </div>
             }
             {
-                 !!modal && modal !=0 ?
-                    <ModalUser 
-                    estado = {guardarCambios}
-                    id= {modal}
+                !!modal && modal !== 0 ?
+                    <ModalUser
+                        estado={guardarCambios}
+                        id={modal}
+                        reset={resetEstadoRol}
                     />
                     : null
             }
             {
-                !!modalP && modalP.id !=0 ?
-                <ModalProjects 
-                key={modalP.id}
-                estado = {resetEstado}
-                id= {modalP.id}
-                nombre = {modalP.name}
-                projects= {modalP.projects}
-                />
-                : null
+                !!modalP && modalP.id !== 0 ?
+                    <ModalProjects
+                        key={modalP.id}
+                        estado={resetEstado}
+                        id={modalP.id}
+                        nombre={modalP.name}
+                        projects={modalP.projects}
+                    />
+                    : null
             }
             <div>
                 {paginado.buttons().map(button =>
@@ -140,7 +151,8 @@ function ListadoUsers() {
                     </div>
                 )}
             </div>
-            <Link to="/admin" >Volver al Panel</Link>
+
+
         </div>
     )
 }

@@ -30,14 +30,16 @@ function Home() {
                 </div>
                 <div className='feature-box'>
                     <MdPaid className='icon-feature-admin' />
-                    <h5 className='title-feature-admin'>Ver Listado de Contribuciones</h5>
+                    <Link className='link-home-admin' to='/admin/contribuciones'  >
+                        <h5 className='title-feature-admin'>Ver Listado de Contribuciones</h5>
+                    </Link>
                 </div>
                 <div className='feature-box'>
-            <MdRemoveCircle className='icon-feature-admin'/>
-            <Link className='link-home-admin' to ='/admin/listadoSuspendidos'>
-                <h5 className='title-feature-admin'>Ver Listado de Suspendidos</h5>
-                </Link>
-            </div>
+                    <MdRemoveCircle className='icon-feature-admin' />
+                    <Link className='link-home-admin' to='/admin/listadoSuspendidos'>
+                        <h5 className='title-feature-admin'>Ver Listado de Suspendidos</h5>
+                    </Link>
+                </div>
                 <div className='feature-box'>
                     <MdNotificationImportant className='icon-feature-admin' />
                     <h5 className='title-feature-admin'>Notificaciones</h5>

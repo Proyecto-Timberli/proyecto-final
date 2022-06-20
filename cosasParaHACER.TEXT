@@ -1,0 +1,40 @@
+
+Demo 2 faltantes:
+Perfil de usuario: 
+        cargar imagen user, 
+        editar nombre, 
+        editar info, 
+        editar linkedin y github,
+        editar sobremi agregar descripcion, 
+        editar estack de tecnologias,
+        opcion de agregar proyectos en proyectos perfil de usuario,
+        editar mail y editar contraseña,
+        arreglar estilos.
+Formulario de registro:
+        nombre añadir control onchange
+        mail añadir control onchange
+        contraseña añadir control onchange 
+        repetir contraseña añadir control onchange
+        tilde contraseña añadir control onSubmit
+Detail Project:
+        acomodar css de descripcion  y tecnologias
+Home:
+        acomodar css filtros y imput busqueda
+Cards:  
+        acomodar css
+Formulario de Proyecto:
+        acomodar css
+        tecnologias deve ser un select con el array tecnologias
+Vista de admin:
+        panel de admin:
+               arreglar actualizacion de paginado
+               crear lista de contribucines
+               estadisticas acomodar css
+
+Navbar: 
+        arreglar warnigs cuando estamos logeados
+comunidad:
+        aplicar css
+Navbar de usuario: (demo 3)
+        agregar notificaciones
+        agregar comunidad 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import imagen from './signup-image.png'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +19,7 @@ function Project() {
     useEffect(() => {
         dispatch(getProjectById(id))
         scroll()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     ////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////paginado imagenes/////////////////////////////////////
@@ -40,6 +40,7 @@ function Project() {
         if (Object.keys(project).length && project.imagen.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -66,11 +67,13 @@ function Project() {
                     <div className='cont-info'>
                         <div>
                             <h3>Puntuacion:</h3>
-                            <div className='info-detalle' >{project.scoreStyle} |  {project.scoreFunctionality}  | {project.scoreOriginality}</div>
+
+
+                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
-                            <Link to={"/user/" + project.userId} style={{ 'text-decoration': 'none' }}>
+                            <Link to={"/user/" + project.userId} >
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
                         </div>
@@ -78,7 +81,7 @@ function Project() {
 
                     <div className='cont-img-detalle'>
                         {cardsInPag.renderCards.map(image => (!!image) &&
-                            <img key={image} className='card-img-detalle' src={image}></img>)}
+                            <img alt='Foto' key={image} className='card-img-detalle' src={image}></img>)}
                         <div className="project-paginado-button-container">
                             {paginado.buttons().map(button =>
                                 <div key={button}>
@@ -91,13 +94,13 @@ function Project() {
                     <div className='cont-info'>
                         <div >
                             <h3>Deploy:</h3>
-                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a target="_blank" href={project.deploying}> Link Deploy</a></div>}
+                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a target="_blank" href={project.deploying} rel="noopener noreferrer"> Link Deploy</a></div>}
 
                         </div>
                         {/* GitHub */}
                         <div>
                             <h3>GitHub:</h3>
-                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a target="_blank" href={project.repository}> Link GitHub</a></div>}
+                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a target="_blank" href={project.repository} rel="noopener noreferrer"> Link GitHub</a></div>}
                         </div>
 
                     </div>
