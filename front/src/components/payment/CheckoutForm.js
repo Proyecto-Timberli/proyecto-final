@@ -10,6 +10,7 @@ export default function CheckoutForm() {
     const dispatch = useDispatch();
 
     const [error, setError] = React.useState("");
+    const [cargando, setCargando] = React.useState(false);
     const [compraConcretada, setCompraConcretada] = React.useState("");
     const [amount, setAmount] = React.useState(0)
 
@@ -21,6 +22,7 @@ export default function CheckoutForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setCompraConcretada("")
+        setCargando(true)
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
@@ -55,7 +57,8 @@ export default function CheckoutForm() {
         }
         
         //ACA LIMPIAMOS EL INPUT DE LA TARJETA
-        setCompraConcretada("Compra concretada")
+        setCargando(false)
+        setCompraConcretada("donacion concretada")
         elements.getElement(CardElement).clear()
     }
 
@@ -96,8 +99,9 @@ export default function CheckoutForm() {
                 </div>
                 <CardElement className="card-element-payment" />
                 {error && <div >{error}</div>}
-                <button className="btn-payment" type="submit"> CONTRIBUIR </button>
+                <button className="btn-payment" type="submit" disabled={cargando}> CONTRIBUIR </button>
                 {compraConcretada && <div >{compraConcretada}</div>}
+                {cargando && <div >Cargando...</div>}
             </form>
         </div>
     )
