@@ -64,7 +64,7 @@ router.post("/donation", async (req, res, next) => {
             "image": "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
             "description": "Hola! Soy Arturo, ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto!",
             "userType": "user",
-            "rol": "Backend Developer",
+            "short_description": "Backend Developer",
         }
         const payment = await stripe.paymentIntents.create({
             amount,

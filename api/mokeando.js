@@ -25,7 +25,7 @@ const mokeando = async () => {
       mail: "adashelby24@mail.com",
       password: "password",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
-      description: "Mi nombre es Ada y soy desarshort_descriptionladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
+      description: "Mi nombre es Ada y soy desarolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
       short_description: "Full-Stack Developer"
@@ -35,7 +35,7 @@ const mokeando = async () => {
       mail: "arturojunior@mail.com",
       password: "password",
       image: "https://cdn-www.comingsoon.net/assets/uploads/2021/05/arthurshelby.jpg",
-      description: "Hola! Soy Arturo, ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarshort_descriptionle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto!",
+      description: "Hola! Soy Arturo, ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto!",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
       short_description: "Backend Developer"
@@ -67,7 +67,7 @@ const mokeando = async () => {
       password: "contraseña",
       linkedin: "Tengo linkedin!",
       github: "https://github.com/",
-      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarshort_descriptionle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
+      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
     },
     {
@@ -77,7 +77,7 @@ const mokeando = async () => {
       password: "password",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
-      description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarshort_descriptionladora full stack.",
+      description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarrolladora full stack.",
       image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
     },
     {
@@ -88,7 +88,7 @@ const mokeando = async () => {
       password: "papasword",
       linkedin: "https://www.linkedin.com/",
       github: "https://github.com/",
-      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarshort_descriptionle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
+      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
       image: "https://cdn-images.livecareer.es/pages/foto_cv_lc_es_4.jpg",
     },
     {
@@ -100,7 +100,7 @@ const mokeando = async () => {
       password: "simplePassword",
       linkedin: "none",
       github: "https://github.com/",
-      description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarshort_descriptionladora full stack.",
+      description: "Hola a todos! Me considero una persona creativa y resolutiva, que disfruta mucho del trabajo en equipo. soy experta en Javascript y estoy aprendiendo Python. Me inclino mas por el frontend que por el back, pero soy desarrolladora full stack.",
       image: "https://i.pinimg.com/736x/a6/5e/ba/a65ebae219c97f8624f32140e80889a9.jpg",
     },
 
@@ -122,7 +122,7 @@ const mokeando = async () => {
       password: "simplepassword",
       linkedin: "none",
       github: "https://github.com/",
-      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarshort_descriptionle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
+      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
     },
     {
@@ -152,7 +152,7 @@ const mokeando = async () => {
       password: "randomHashMadeByPasswordManager",
       linkedin: "none",
       github: "https://github.com/",
-      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarshort_descriptionle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
+      description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
       image: "https://i0.wp.com/lamiradafotografia.es/wp-content/uploads/2014/07/simpson-rock.jpg"
     },
     {
@@ -161,7 +161,7 @@ const mokeando = async () => {
       mail: "micaela.schaberger@gmail.com",
       password: "password",
       image: "https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg",
-      description: "Hola! Soy Micaela, soy licenciada en gestión ambiental y estudiante de desarshort_descriptionlo web Full Stack. SKILLS: HTML | CSS | JavaScript | ReactJS | Redux | Bootstrap, NodeJS | Express | MySQL | PostgreSQL, GIT | SCRUM, ¡No dudes en contactarme! 🚀",
+      description: "Hola! Soy Micaela, soy licenciada en gestión ambiental y estudiante de desarrollo web Full Stack. SKILLS: HTML | CSS | JavaScript | ReactJS | Redux | Bootstrap, NodeJS | Express | MySQL | PostgreSQL, GIT | SCRUM, ¡No dudes en contactarme! 🚀",
       linkedin: "https://www.linkedin.com/in/micaela-schaberger/",
       github: "https://github.com/mschaberger",
       short_description: "Full-Stack Developer"
@@ -225,7 +225,7 @@ const mokeando = async () => {
       name: "ProfileLibrary",
       tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Clon de Facebook/Linked-in",
-      description: "En este proyecto se intento clonar Facebook y LinkedIn trantando de respetar las funcionalidades y el diseño. El proyecto se realizo en conjunto con otros desarshort_descriptionladores web y diseñadores ux/ui",
+      description: "En este proyecto se intento clonar Facebook y LinkedIn trantando de respetar las funcionalidades y el diseño. El proyecto se realizo en conjunto con otros desarrolladores web y diseñadores ux/ui",
       repository: "none",
       score: [5, 5, 3],
       deploying: "https://www.facebook.com/",
@@ -241,7 +241,7 @@ const mokeando = async () => {
       name: "React project",
       tecnology: ["ReactJs"],
       shortDescription: "Proyecto creado con create-react-app",
-      description: "Este proyecto fue uno de los primeros desarshort_descriptionlos que realice utilizando ReactJS. Se trata de un ejercicio realizado para el bootcamp de SoyHenry",
+      description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando ReactJS. Se trata de un ejercicio realizado para el bootcamp de SoyHenry",
       repository: "none",
       score: [4, 3, 3],
       deploying: "https://es.reactjs.org/",
@@ -257,7 +257,7 @@ const mokeando = async () => {
       name: "Hello World.js",
       tecnology: ["ReactJs", "Redux", "ExpressJs"],
       shortDescription: "Proyecto para aprender a programar con Javascript",
-      description: "Este proyecto fue uno de los primeros desarshort_descriptionlos que realice utilizando JavaScript, forma parte de un challenge de la página FreeCodeCamp.",
+      description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando JavaScript, forma parte de un challenge de la página FreeCodeCamp.",
       repository: "none",
       score: [1, 2, 3],
       deploying: "https://www.soyhenry.com/",
@@ -354,7 +354,7 @@ const mokeando = async () => {
     },
     {
       name: "APP-CLIMA",
-      shortDescription: "Aplicación del clima desarshort_descriptionlada para el bootcamp de desarshort_descriptionlo web",
+      shortDescription: "Aplicación del clima desarrollada para el bootcamp de desarrollo web",
       description: "Se trata de una SPA que consume datos de una API y renderiza el estado del tiempo de distintas ciudades. Se puede ingresar al detalle de cada ciudad en donde se muestra mayor información.",
       repository: "https://github.com/mschmidt17/APP-CLIMA",
       deploying: "",
@@ -387,7 +387,7 @@ const mokeando = async () => {
     { text: "Muy buena LandingPage, sencilla de comprender." },
     { text: "Me gustó mucho la idea del proyecto, le agregaría una NavBar para encontrar más fácil las distintas secciones." },
     { text: "Genial! Muy original! Solo agregaría un ordenador de los más a los menos populares." },
-    { text: "Me pareció un proyecto muy pshort_descriptionijo, fácil de usar." },
+    { text: "Me pareció un proyecto muy prolijo, fácil de usar." },
     { text: "Me gustó mucho este proyecto!!!! Solo lo haría responsivo. " },
     { text: "Qué buen trabajo! Me gustaron mucho las imágenes utilizadas y los colores. El carrusel de la página de inicio quedó increíble." },
     { text: "Excelente!! Lograste una imitación muy buena de la página real." },
