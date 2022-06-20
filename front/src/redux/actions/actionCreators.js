@@ -11,7 +11,8 @@ import {
     ADMIN_SUSPEND_USER,
     ADMIN_SUSPEND_PROJECT,
     LOGGED_USER_ID,
-    GET_CONTRUBUTION
+    GET_CONTRUBUTION,
+    LIST_PAYMENTS,
 } from "./actions.js"
 
 import axios from 'axios'
@@ -169,6 +170,15 @@ export function getContributions() {
                     payload: res.data
                 })
             }
-            )
+        )
+    }
+}
+
+
+export function listPayments(contribution, user) {
+    return function () {
+        axios.post(REACT_APP_API + '/api/admin/donation', {contribution, user})
+            .then(response => response.data)
+            .catch(error => console.error(error))
     }
 }

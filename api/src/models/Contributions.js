@@ -15,9 +15,8 @@ module.exports = (sequelize) => {
         },
         mail: {
             type: DataTypes.STRING,
-            allowNull: false
         },
-       amount: {
+        amount: {
             type: DataTypes.INTEGER,
             allowNull: false
        }

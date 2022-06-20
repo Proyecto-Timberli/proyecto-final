@@ -1,10 +1,13 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { sendCheckoutForm } from "../../functions";
+import { useDispatch } from "react-redux";
+import { listPayments } from "../../redux/actions/actionCreators.js"
 
 export default function CheckoutForm() {
     const stripe = useStripe();
     const elements = useElements();
+    const dispatch = useDispatch();
 
     const [error, setError] = React.useState("");
     const [compraConcretada, setCompraConcretada] = React.useState("");
@@ -12,7 +15,6 @@ export default function CheckoutForm() {
 
     const handleChange = (e) => {
         setAmount(e.target.value);
-        console.log(amount)
     }
 
 
@@ -30,7 +32,6 @@ export default function CheckoutForm() {
 
 
         const { id } = paymentMethod;
-        console.log(paymentMethod)
         setError("")
 
         //FUNCION QUE MANDA NUESTROS DATOS PARA EL BACKEND(sendCheckoutForm)
@@ -42,7 +43,17 @@ export default function CheckoutForm() {
             return
         }
         setError("")
-        console.log(data)
+
+        //Para controlar las contribuciones recibidas:
+        let userId = window.localStorage.getItem('userid')
+        console.log(userId)
+        //si esta logueado existe el ID, si no envia contribucion anonima:
+        if (userId) {
+            dispatch(listPayments(amount, userId))
+        } else {
+            dispatch(listPayments(amount, 'Anonimo'))
+        }
+        
         //ACA LIMPIAMOS EL INPUT DE LA TARJETA
         setCompraConcretada("Compra concretada")
         elements.getElement(CardElement).clear()
@@ -59,8 +70,8 @@ export default function CheckoutForm() {
                     alt="donation"
                     className="donation-image"
                 />
-                <h5 className="form-payment-title">Selecciona el monto a donar en dolares!</h5>
-                <p className="form-payment-subtitle">(Tu tarjeta convierte los dolares a tu moneda local!)</p>
+                <h5 className="form-payment-title">Selecciona el monto a donar en dolares:</h5>
+                <p className="form-payment-subtitle">(Tu tarjeta lo convierte a tu moneda local)</p>
                 <div className='opciones-payment'>
                     <div className="form-check-payment">
                         <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />

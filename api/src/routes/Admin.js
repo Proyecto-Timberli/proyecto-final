@@ -36,6 +36,32 @@ router.get("/donation", async (req, res, next) => {
     }
 })
 
+router.post("/donation", async (req, res, next) => {
+    const { contribution, user } = req.body
+    try {
+        console.log(contribution)
+        const contribuidor = await User.findByPk(user)
+        if (contribuidor) {
+            var newContribution = await Contributions.create ({
+                amount: contribution/100, 
+                name: contribuidor.name,
+            })
+        }
+        else {
+            var newContribution = await Contributions.create ({
+                amount: contribution/100, 
+                name: 'Anonimo',
+            })
+        }
+
+        return res.send(newContribution);
+    } 
+    catch(err){
+        next(err)
+    }
+});
+
+
 
 router.put("/project", [verifyToken], async (req, res, next) => {
     const { projectId, state } = req.body;

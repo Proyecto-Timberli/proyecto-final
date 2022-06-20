@@ -13,7 +13,8 @@ import {
     ORDER_PROJECTS_BY,
     LOGGED_USER_ID,
     GET_ALL_USERS,
-    GET_CONTRUBUTION
+    GET_CONTRUBUTION,
+    LIST_PAYMENTS
 } from "./actions/actions.js";
 
 const initialState = {
@@ -92,6 +93,13 @@ export default function reducer(state = initialState, action) {
                 contributions: action.payload
             }
         }
+
+        case LIST_PAYMENTS: {
+            return {
+                ...state,
+            };
+        }
+
         default:
             return state
     }
