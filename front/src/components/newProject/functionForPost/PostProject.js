@@ -1,5 +1,5 @@
 import axios from "axios"
-const {REACT_APP_CLOUD_NAME,REACT_APP_UPLOAD_PRESET}=process.env
+const {REACT_APP_CLOUD_NAME,REACT_APP_UPLOAD_PRESET, REACT_APP_API}=process.env
 
 const postProject = async ({ deploying, imagen, name, tecnology, description, repository, score, userid }) => {
     let upload_preset = REACT_APP_UPLOAD_PRESET;
@@ -22,7 +22,7 @@ const postProject = async ({ deploying, imagen, name, tecnology, description, re
            
             const project = { deploying, imagen: res, name, tecnology, description, repository, score, userid }
           
-            axios.post('http://localhost:3001/api/project', project)
+            axios.post(REACT_APP_API+"api/project", project)
                 .then(response => response.data)
                 .catch(error => console.error(error))
         }).catch(err => { console.error(err) })
