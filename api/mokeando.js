@@ -14,7 +14,7 @@ const mokeando = async () => {
       userType: "suspended",
       mail: "Tshelby@mail.com",
       password: "password",
-      image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
+      image: "https://www.losandes.com.ar/resizer/JYi2hpIvlUhn-uZTzC34D-UZXEo=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MMLEOSMQZREZDERPUO7WRD4VNI.jpg",
       description: "Thomas Michael Shelby, OBE, DCM, MM, MP. Manejo distintas tecnologias como: Vue, Angular, Wordpress",
       linkedin: "",
       github: "https://github.com/",
@@ -24,8 +24,8 @@ const mokeando = async () => {
       name: "Ada shelby",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
-      description: "Mi nombre es Ada y soy desarolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
+      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
+      description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
       short_description: "Full-Stack Developer"
@@ -42,7 +42,6 @@ const mokeando = async () => {
     },
     {
       name: "Luciano",
-      /*       userName: "luciano", */
       mail: "luciano@mail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -52,7 +51,6 @@ const mokeando = async () => {
     },
     {
       name: "Cristobal",
-      /*       userName: "Saposan", */
       mail: "cristobal.herreros@gmail.com",
       password: "aVerySecurePassword",
       linkedin: "https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/",
@@ -62,7 +60,6 @@ const mokeando = async () => {
     },
     {
       name: "Lucas",
-      /*       userName: "soylucas", */
       mail: "soylucas@hotmail.com",
       password: "contraseña",
       linkedin: "Tengo linkedin!",
@@ -72,7 +69,6 @@ const mokeando = async () => {
     },
     {
       name: "María",
-      /*       userName: "soymaria", */
       mail: "soymaría@gmail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -82,7 +78,6 @@ const mokeando = async () => {
     },
     {
       name: "Roberto",
-      /*       userName: "RRobert", */
       userType: "suspended",
       mail: "roberto123@hotmail.com",
       password: "papasword",
@@ -95,7 +90,6 @@ const mokeando = async () => {
       name: "Anita",
       userType: "suspended",
       userName: "An1",
-
       mail: "an1t4@gmail.com",
       password: "simplePassword",
       linkedin: "none",
@@ -124,6 +118,7 @@ const mokeando = async () => {
       github: "https://github.com/",
       description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
+      short_description: "Recluiter IT"
     },
     {
       name: "Cleopatra",
@@ -143,11 +138,10 @@ const mokeando = async () => {
       github: "https://github.com/",
       description: "Bienvenidos a mi portfolio profesional. Manejo de todo un poco, pero me especializo en backend. Soy experto en tecnologias como MongoDB, PostgreSQL, NodeJS y expressJS",
       image: "https://thumbs.dreamstime.com/b/cara-humana-gen%C3%A9rica-del-hombre-vista-delantera-futurista-81662768.jpg",
-
+      short_description: "Generic Person"
     },
     {
       name: "Bastián",
-      /*       userName: "bastyJr", */
       mail: "bastianprogrammer@gmail.com",
       password: "randomHashMadeByPasswordManager",
       linkedin: "none",
@@ -479,7 +473,7 @@ const mokeando = async () => {
     let arrayProjects = []
 
     for (let j = 0; j < projects.length; j++) {
-      if (numeroRandom(1, 2) === 1) {
+      if (numeroRandom(1, 5) === 1) {
 
         projects[j].scoreFunctionality.push(numeroRandom(1, 5))
         projects[j].scoreStyle.push(numeroRandom(1, 5))

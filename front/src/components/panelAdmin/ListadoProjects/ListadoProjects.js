@@ -35,17 +35,15 @@ function ListadoProjects() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allProjects])
 
-    async function cambiarEstado(id, state) {
+    function cambiarEstado(id, state) {
 
         if (state === 'Aceptado') {
 
-            await dispatch(adminSupendProject(id, 'Pendiente'))
+            dispatch(adminSupendProject(id, 'Pendiente'))
 
         } else if (state === 'Pendiente') {
-            await dispatch(adminSupendProject(id, 'Aceptado'))
+            dispatch(adminSupendProject(id, 'Aceptado'))
         }
-
-        await dispatch(getAllProjects());
 
     }
 
@@ -63,7 +61,8 @@ function ListadoProjects() {
                     {
                         cardsInPag.renderCards.map(p => ((!!p) &&
                             <div className='project-card-admin' key={p.id}>
-                                <li key={p.id}> <Link to={"/project/" + p.id}>{p.name}</Link> </li>
+
+                                <li key={p.id}><b>{p.id}   </b>   <Link to={"/project/" + p.id}>{p.name}</Link> </li>
                                 <div className='content-project-state'>
                                     <p className='state-project'>{p.state}</p>
                                     {
