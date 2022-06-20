@@ -53,7 +53,6 @@ const Home = () => {
         })
     }
     useEffect(() => {
-        console.log(cardsInPag.renderCards);
         if (allProjects.length) {
             accionarPaginado(1)
         }

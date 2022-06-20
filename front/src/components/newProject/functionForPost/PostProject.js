@@ -27,12 +27,6 @@ const postProject = async ({ deploying, imagen, name, tecnology, description, re
                 .catch(error => console.error(error))
         }).catch(err => { console.error(err) })
 
-
-
-
-
-
-
 }
 
 export default postProject;
