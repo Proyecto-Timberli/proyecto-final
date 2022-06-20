@@ -1,5 +1,5 @@
 import React from 'react';
-import { crearMensajeState } from '../../redux/actions/actionCreators';
+import { crearMensajeState } from '../../../redux/actions/actionCreators';
 import { useDispatch, useSelector } from 'react-redux';
 
 

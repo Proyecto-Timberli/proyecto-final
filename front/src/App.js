@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from '../src/components/navbar/NavBar.js'
-import Login from '../src/components/login/Login.js';
+import Login from './components/navbar/login/Login.js';
 import Register from './components/navbar/register/Register.js'
 import Home from '../src/components/home/Home.js'
 import User from '../src/components/user/User.js'
 import Project from '../src/components/project/Project.js'
-import NewProject from '../src/components/newProject/NewProject.js'
-import About from '../src/components/about/About.js'
+import NewProject from './components/home/newProject/NewProject.js'
+import About from './components/footer/about/About';
 import Footer from '../src/components/footer/Footer.js'
-import Page404 from '../src/components/Page404/Page404.js';
+import Page404 from './components/componentesGenerales/Page404/Page404.js';
 import Payment from '../src/components/payment/Payment';
 import PaAdmin from '../src/components/panelAdmin/Home/Home.js';
 import ListadoProjects from '../src/components/panelAdmin/ListadoProjects/ListadoProjects.js'

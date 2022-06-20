@@ -1,5 +1,5 @@
 import React from 'react';
-import spinner from "./spinner.gif"
+import spinner from "./spinner.gif";
 const Cargando = () => {
     return (<div>
         <p>Cargando...</p>

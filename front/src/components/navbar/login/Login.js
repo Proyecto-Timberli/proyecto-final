@@ -7,10 +7,10 @@ import { MdInsertEmoticon } from "react-icons/md";
 /* import google from '../../images/google.png';
 import linkedin from '../../images/linkedin.png';
 import github from '../../images/github.png'; */
-import { scroll } from "../../functions";
+import { scroll } from "../../../functions";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
-import { setLoggedUserId } from "../../redux/actions/actionCreators";
+import { setLoggedUserId } from "../../../redux/actions/actionCreators";
 
 export default function Login() {
 

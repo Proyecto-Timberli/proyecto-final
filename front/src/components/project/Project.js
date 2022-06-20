@@ -4,8 +4,8 @@ import './project.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
-import Cargando from '../cargando/cargando';
-import Page404 from '../Page404/Page404';
+import Cargando from '../componentesGenerales/cargando/cargando';
+import Page404 from '../componentesGenerales/Page404/Page404';
 import { scroll } from "../../functions";
 
 

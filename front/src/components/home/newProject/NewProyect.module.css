@@ -17,7 +17,7 @@
 .error {
   width: 280px;
   margin-top: 0;
-  position:absolute;
+  position: absolute;
   color: #e92b2d;
   font-weight: 600;
   font-size: 13px;
@@ -74,7 +74,8 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.cargarimagen{
+
+.cargarimagen {
   border-radius: 3px;
   background-color: #61A5C2;
   color: white;
@@ -83,9 +84,11 @@
   padding-right: 1px;
   padding-bottom: 1px;
 }
-.cargarimagen:hover{
+
+.cargarimagen:hover {
   background-color: #2A6F97;
 }
+
 .inputImages {
   content: " Archivo 1";
   background-color: #61A5C2;
@@ -225,6 +228,7 @@
   color: white;
   cursor: pointer;
 }
-.errorcontainer{
-  height:35px;
+
+.errorcontainer {
+  height: 35px;
 }

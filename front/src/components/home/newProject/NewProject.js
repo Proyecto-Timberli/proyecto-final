@@ -4,7 +4,7 @@ import { Formik } from 'formik'
 import validate from './validacion'
 import postProject from './functionForPost/PostProject'
 import imagen from "./images/plataforma.png"
-import { scroll } from "../../functions";
+import { scroll } from "../../../functions";
 
 export default function NewProject() {
     scroll()

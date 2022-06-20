@@ -1,15 +1,15 @@
 import React from 'react';
 import './about.css';
 import teamWork from './images/teamWork.gif'
-import profilePic from '../../images/profilePic.jpeg'
-import linkedIn from '../../images/logotipo-de-linkedin.png'
-import gitHub from '../../images/signo-de-github.png'
-import { scroll } from "../../functions"
-import lucianoImg from "./images/luciano-ab.jpg"
-import lucasImg from "./images/lucas-ab.jpg"
-import cristobalImg from "./images/cristobal-ab.png"
-import andresImg from "./images/andres-ab.jpg"
-import juanImg from "./images/juan-ab.png"
+import profilePic from '../../../images/profilePic.jpeg'
+import linkedIn from '../../../images/logotipo-de-linkedin.png'
+import gitHub from '../../../images/signo-de-github.png'
+import { scroll } from "../../../functions"
+import lucianoImg from "./images/luciano-ab.jpg";
+import lucasImg from "./images/lucas-ab.jpg";
+import cristobalImg from "./images/cristobal-ab.png";
+import andresImg from "./images/andres-ab.jpg";
+import juanImg from "./images/juan-ab.png";
 
 
 export default function About() {
