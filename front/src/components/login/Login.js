@@ -1,6 +1,6 @@
 import React from "react";
 import './login.css';
-import imgLogin from '../../images/clipLogin.gif';
+import imgLogin from './images/clipLogin.gif';
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdInsertEmoticon } from "react-icons/md";

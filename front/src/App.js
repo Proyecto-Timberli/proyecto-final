@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from '../src/components/navbar/NavBar.js'
-import LandingPage from '../src/components/landingPage/LandingPage.js'
 import Login from '../src/components/login/Login.js';
-import Register from '../src/components/register/Register.js'
+import Register from './components/navbar/register/Register.js'
 import Home from '../src/components/home/Home.js'
 import User from '../src/components/user/User.js'
 import Project from '../src/components/project/Project.js'
@@ -19,13 +18,14 @@ import ListadoSuspendidos from '../src/components/panelAdmin/ListaSuspendidos/Li
 import Stats from './components/panelAdmin/Stats/stats';
 import Community from './components/community/community';
 import Contributions from './components/panelAdmin/contributions/contributions.js'
+import Index from './components/index';
 
 function App() {
   return (
     <div className="App">
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<Index />} />
         <Route exact path="/login" element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route exact path="/home" element={<Home />} />

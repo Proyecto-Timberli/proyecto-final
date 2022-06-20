@@ -3,14 +3,14 @@ import styles from "./NewProyect.module.css"
 import { Formik } from 'formik'
 import validate from './validacion'
 import postProject from './functionForPost/PostProject'
-import imagen from "../../images/plataforma.png"
+import imagen from "./images/plataforma.png"
 import { scroll } from "../../functions";
 
 export default function NewProject() {
     scroll()
     let userid = window.localStorage.getItem('userid')
     let token = window.localStorage.getItem('usertoken')
-    
+
     const initialValues = {
         name: "",
         Fecha: "",

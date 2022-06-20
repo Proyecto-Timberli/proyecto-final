@@ -2,11 +2,11 @@ import React from "react";
 import './landingPage.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import imageLanding from '../../images/landingImageW.png';
-import boxOneImage from '../../images/Clip_brainstorm_by_Icons8.gif';
-import boxTwoImage from '../../images/landingImage.jpeg';
-import boxThreeImage from '../../images/developers-gif-showcase.gif';
-import { scroll } from "../../functions";
+import imageLanding from './images/landingImageW.png';
+import boxOneImage from './images/landingProjects.png';
+import boxTwoImage from './images/landingCommunity.png';
+import boxThreeImage from './images/landingAbout.png';
+import { scroll } from "../../../functions";
 
 
 export default function LandingPage() {

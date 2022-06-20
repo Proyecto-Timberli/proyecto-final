@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.css';
-import teamWork from '../../images/teamWork.gif'
+import teamWork from './images/teamWork.gif'
 import profilePic from '../../images/profilePic.jpeg'
 import linkedIn from '../../images/logotipo-de-linkedin.png'
 import gitHub from '../../images/signo-de-github.png'
@@ -82,7 +82,7 @@ export default function About() {
                     </div>
 
                     <div className='team-member'>
-                        <img src={juanImg || profilePic} style={{height:'195px'}} alt='' className='memberImage' />
+                        <img src={juanImg || profilePic} style={{ height: '195px' }} alt='' className='memberImage' />
                         <p className='member-name'>Juan Pablo Rodriguez</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
