@@ -44,7 +44,7 @@ router.post("/donation", async (req, res, next) => {
         if (contribuidor) {
             var newContribution = await Contributions.create ({
                 amount: contribution/100, 
-                name: contribuidor,
+                name: contribuidor.name,
             })
         }
         else {
