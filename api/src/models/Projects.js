@@ -32,18 +32,24 @@ module.exports = (sequelize) => {
         scoreStyle: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true,
+            defaultValue: [0]
 
         },
         scoreFunctionality: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true,
+            defaultValue: [0]
+
         },
         scoreOriginality: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true,
+            defaultValue: [0]
+
         },
         scoreAverage: {
             type: DataTypes.DECIMAL,
+            defaultValue: 0
             // set() {
             //     const promedio = ((this.scoreStyle.reduce((e, a) => e + a) / this.scoreStyle.length) +
             //         (this.scoreFunctionality.reduce((e, a) => e + a) / this.scoreFunctionality.length) +
@@ -58,7 +64,8 @@ module.exports = (sequelize) => {
         },
         imagen: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: true
+            allowNull: true,
+            defaultValue: ["https://avalos.sv/wp-content/uploads/default-featured-image.png"]
         },
         state: {
             type: DataTypes.STRING,

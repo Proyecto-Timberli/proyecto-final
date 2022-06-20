@@ -8,7 +8,7 @@ const router = Router();
 
 
 
-router.put("/user", [verifyToken], async (req, res, next) => {
+router.put("/user",  async (req, res, next) => {
     const { userId, userType } = req.body;
 
     try {
@@ -36,8 +36,34 @@ router.get("/donation", async (req, res, next) => {
     }
 })
 
+router.post("/donation", async (req, res, next) => {
+    const { contribution, user } = req.body
+    try {
+        console.log(contribution)
+        const contribuidor = await User.findByPk(user)
+        if (contribuidor) {
+            var newContribution = await Contributions.create ({
+                amount: contribution/100, 
+                name: contribuidor.name,
+            })
+        }
+        else {
+            var newContribution = await Contributions.create ({
+                amount: contribution/100, 
+                name: 'Anonimo',
+            })
+        }
 
-router.put("/project", [verifyToken], async (req, res, next) => {
+        return res.send(newContribution);
+    } 
+    catch(err){
+        next(err)
+    }
+});
+
+
+
+router.put("/project",  async (req, res, next) => {
     const { projectId, state } = req.body;
     try {
         if (projectId && state) {

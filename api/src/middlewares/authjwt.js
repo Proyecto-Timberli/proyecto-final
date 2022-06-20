@@ -3,12 +3,15 @@ const jwt = require("jsonwebtoken");
 
 const verifyToken = async (req, res, next) => {
   /** 
-   * Middleware verifica siexiste token de usuario de la aplicación
+   * Middleware verifica si existe token de usuario de la aplicación
+   * y asigna el id del usuario a la request
    * 
    * ojo: solo verifica que tenga token, no que tipo de usuario es
    */
+
   try {
     const headerToken = req.get("Authorization");
+
     if (!headerToken) {
       return res.status(401).json({ error: "No tienes autorización" });
     }
@@ -16,8 +19,8 @@ const verifyToken = async (req, res, next) => {
     const token = headerToken.replace("Bearer ", "");
 
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user_id = decoded.user_id;  
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+      req.user_id = decoded.user_id;
 
       next(); // sale del middleware, ahora la request tiene el id del usuario
 

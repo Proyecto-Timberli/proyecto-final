@@ -90,11 +90,11 @@
 }
 
 .img-project-card {
+    width: 483.594;
+    height: 260px;
     border-radius: 20px;
-    /* height: 65%; */
-    max-width: 483.594px;
     min-height: 260px;
-
+    max-width: 460px;
 
 }
 

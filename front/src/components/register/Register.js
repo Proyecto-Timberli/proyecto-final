@@ -4,7 +4,7 @@ import imgSignUp from './signup-image.png'
 import validateForm from './validation.js'
 
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //import { scroll } from "../../functions";
 import axios from 'axios'
@@ -19,6 +19,7 @@ function Register() {
         repeat_password: "",
         tos: false
     })
+
     const [formErrors, setFormErrors] = useState({
         name: "",
         email: "",
@@ -26,16 +27,21 @@ function Register() {
         repeat_password: "",
         tos: ""
     })
-    const handleInputChange=(e)=>{
+
+    const handleInputChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.name]:e.target.value,
-        });
-        setFormErrors({
-            ...formErrors,
-            [e.target.name]:validateForm(formData)[e.target.name],
+            [e.target.name]: e.target.value,
         });
     }
+
+    const handleInputOnBlur = (e) => {
+        setFormErrors({
+            ...formErrors,
+            [e.target.name]: validateForm(formData)[e.target.name],
+        });
+    }
+
     async function registerUser() {
         let errors = validateForm(formData)
 
@@ -43,7 +49,14 @@ function Register() {
             let { data } = await axios.post(process.env.REACT_APP_API + "/api/auth/register", formData)
             if (data.status === "success") {
                 navigate("/login", { state: { registerSuccess: true } })
+            } else {
+                setFormErrors({
+                    ...formErrors,
+                    email: data.error,
+                })
             }
+
+
         } else {
             setFormErrors(errors)
         }
@@ -60,57 +73,61 @@ function Register() {
                             <form method="POST" className="register-form" id="register-form">
                                 <div className="form-group">
                                     <input name="name"
-                                    type="text"
-                                    className="register-input" 
-                                    placeholder=" Nombre"
-                                    value={formData.name}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                        type="text"
+                                        className="register-input"
+                                        placeholder=" Nombre"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        onBlur={handleInputOnBlur} />
                                     <div className="register-formErrors-p-container">
-                                    {formErrors.name && <p className="register-formErrors-p">{formErrors.name}</p>} 
-                                    </div>                                   
+                                        {formErrors.name && <p className="register-formErrors-p">{formErrors.name}</p>}
+                                    </div>
                                 </div>
                                 <div className="form-group">
                                     <input name="email"
-                                    type="email"
-                                    className="register-input"
-                                    placeholder="Email"
-                                    value={formData.email}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                        type="email"
+                                        className="register-input"
+                                        placeholder="Email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        onBlur={handleInputOnBlur} />
                                     <div className="register-formErrors-p-container">
-                                    {formErrors.email && <p className="register-formErrors-p">{formErrors.email}</p>}
-                                    </div>                                    
+                                        {formErrors.email && <p className="register-formErrors-p">{formErrors.email}</p>}
+                                    </div>
                                 </div>
                                 <div className="form-group">
                                     <input name="password"
-                                    type="password"
-                                    className="register-input"
-                                    placeholder="Password"
-                                    value={formData.password}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                        type="password"
+                                        className="register-input"
+                                        placeholder="Password"
+                                        value={formData.password}
+                                        onChange={handleInputChange}
+                                        onBlur={handleInputOnBlur} />
                                     <div className="register-formErrors-p-container">
-                                    {formErrors.password && <p className="register-formErrors-p">{formErrors.password}</p>} 
-                                    </div>                                  
+                                        {formErrors.password && <p className="register-formErrors-p">{formErrors.password}</p>}
+                                    </div>
                                 </div>
                                 <div className="form-group">
                                     <input name="repeat_password"
-                                    type="password"
-                                    className="register-input"
-                                    placeholder="Repite tu password"
-                                    value={formData.repeat_password}
-                                    onChange={(e) => handleInputChange(e)}/>
+                                        type="password"
+                                        className="register-input"
+                                        placeholder="Repite tu password"
+                                        value={formData.repeat_password}
+                                        onChange={handleInputChange}
+                                        onBlur={handleInputOnBlur} />
                                     <div className="register-formErrors-p-container">
-                                    {formErrors.repeat_password && <p className="register-formErrors-p">{formErrors.repeat_password}</p>} 
-                                    </div>         
+                                        {formErrors.repeat_password && <p className="register-formErrors-p">{formErrors.repeat_password}</p>}
+                                    </div>
                                 </div>
                                 <div className="form-group">
                                     <input type="checkbox"
-                                    name="agree-term"
-                                    id="agree-term"
-                                    className="agree-term"
-                                    checked={formData.tos}
-                                    onChange={(e) => {
-                                        setFormData({...formData, tos: !formData.tos})
-                                    }}/>
+                                        name="agree-term"
+                                        id="agree-term"
+                                        className="agree-term"
+                                        checked={formData.tos}
+                                        onChange={(e) => {
+                                            setFormData({ ...formData, tos: !formData.tos })
+                                        }} />
                                     <label htmlFor="agree-term" className="label-agree-term"><span><span></span></span>Acepto todos los   <a href="#" className="term-service">términos y condiciones</a></label>
                                     <div className="register-formErrors-p-container">{formErrors.tos && <p className="register-formErrors-p">{formErrors.tos}</p>} </div>
                                 </div>
@@ -129,7 +146,7 @@ function Register() {
                         </div>
                         <div className="signup-image">
                             <figure><img src={imgSignUp} alt="sing up" /></figure>
-                            <a href="/login" className="signup-image-link">Ya soy miembro, quiero logearme</a>
+                            <Link to="/login" className="signup-image-link">Ya soy miembro, quiero logearme</Link>
                         </div>
                     </div>
                 </div>
