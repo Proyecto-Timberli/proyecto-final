@@ -474,15 +474,19 @@ const mokeando = async () => {
 
     for (let j = 0; j < projects.length; j++) {
       if (numeroRandom(1, 5) === 1) {
+        let project = await Project.create(projects[j])
 
-        projects[j].scoreFunctionality.push(numeroRandom(1, 5))
-        projects[j].scoreStyle.push(numeroRandom(1, 5))
-        projects[j].scoreOriginality.push(numeroRandom(1, 5))
+        project.scoreFunctionality.push(numeroRandom(1, 5))
+        project.scoreStyle.push(numeroRandom(1, 5))
+        project.scoreOriginality.push(numeroRandom(1, 5))
 
-        projects[j].scoreAverage = ((projects[j].scoreStyle.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreStyle.length) +
-          (projects[j].scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreFunctionality.length) +
-          (projects[j].scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreOriginality.length)) / 3
-        arrayProjects.push(await Project.create(projects[j]))
+        project.set({
+          scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
+            (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length) +
+            (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)) / 3
+        })
+        await project.save()
+        arrayProjects.push(project)
       }
     }
     let user = await User.create(users[i])
