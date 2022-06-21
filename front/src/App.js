@@ -10,7 +10,7 @@ import NewProject from './components/home/newProject/NewProject.js'
 import About from './components/footer/about/About';
 import Footer from '../src/components/footer/Footer.js'
 import Page404 from './components/componentesGenerales/Page404/Page404.js';
-import Payment from '../src/components/payment/Payment';
+import Payment from '../src/components/footer/payment/Payment';
 import PaAdmin from '../src/components/panelAdmin/Home/Home.js';
 import ListadoProjects from '../src/components/panelAdmin/ListadoProjects/ListadoProjects.js'
 import ListadoUsers from '../src/components/panelAdmin/ListadoUsers/ListadoUsers.js'
