@@ -1,8 +1,8 @@
 import React from "react";
-import { scroll } from "../../functions"
+import { scroll } from "../../../functions"
 import "./payment.css";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements} from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe("pk_test_51LAw3jAfelRzCSD4dKW2R2z0c8chiNwxDHaZcKYqzD0HyctRV5liikAohfqVdIkQtY24J7CGBAbI63bPLmV95VjT00gsBrWflF");
@@ -16,7 +16,7 @@ export default function Payment() {
 
     return (
         <Elements stripe={stripePromise}>
-            <CheckoutForm/>
+            <CheckoutForm />
         </Elements>
     );
 };
