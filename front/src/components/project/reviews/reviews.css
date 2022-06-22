@@ -1,0 +1,30 @@
+.form-review {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin: 5px; */
+    justify-content: center;
+}
+
+.cont-estrellas {
+    display: flex;
+    /* width: 31rem; */
+    margin: 25px;
+    border-radius: 20px;
+    background: #7a93cb40;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.review-text-area {
+    height: 10rem;
+    width: 40rem;
+    resize: none;
+    border-radius: 30px;
+    padding: 1%;
+    border-top: 10px groove #006eff;
+    border-right: 10px groove #006eff;
+    border-bottom: 10px groove #006eff;
+    border-left: 10px groove #006eff;
+}
