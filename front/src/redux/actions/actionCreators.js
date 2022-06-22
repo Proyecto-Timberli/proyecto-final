@@ -191,13 +191,14 @@ export function listPayments(contribution, user) {
 
 
 export function postReview(input, userid, projectid) {
-
+    console.log(input);
     return function () {
 
         axios.post(REACT_APP_API + '/api/review', { input, userid, projectid })
             .then(response => response.data)
             .catch(error => console.error(error))
-    }}
+    }
+}
 
 
 
@@ -210,58 +211,59 @@ export function getReviews() {
                     payload: response.data
                 })
             }
-            )}
+            )
+    }
 }
 
 /////////////////////REPORT/////////////////////////////
 export function getReportsProjects(projectId) {
     return function (dispatch) {
-        axios.get(REACT_APP_API + `/api/report/project`,{projectId:projectId})
+        axios.get(REACT_APP_API + `/api/report/project`, { projectId: projectId })
             .then(res => {
                 dispatch({
                     type: GET_REPORTS_PROJECTS,
                     payload: res.data
                 })
             }
-        )
+            )
     }
 }
 export function getReportsUsers(userId) {
     return function (dispatch) {
-        axios.get(REACT_APP_API + `/api/report/user`,{userId:userId})
+        axios.get(REACT_APP_API + `/api/report/user`, { userId: userId })
             .then(res => {
                 dispatch({
                     type: GET_REPORTS_USERS,
                     payload: res.data
                 })
             }
-        )
+            )
 
     }
 }
-export function postReportUser({userId,reportedBy,reportComment}) {
+export function postReportUser({ userId, reportedBy, reportComment }) {
     return function (dispatch) {
-        axios.post(REACT_APP_API + `/api/report/user`,{userId:userId,reportedBy:reportedBy,reportComment:reportComment})
+        axios.post(REACT_APP_API + `/api/report/user`, { userId: userId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
                 dispatch({
                     type: POST_REPORT_USER,
                     payload: res.data
                 })
             }
-        )
+            )
 
     }
 }
-export function postReportProject({projectId,reportedBy,reportComment}) {
+export function postReportProject({ projectId, reportedBy, reportComment }) {
     return function (dispatch) {
-        axios.post(REACT_APP_API + `/api/report/user`,{projectId:projectId,reportedBy:reportedBy,reportComment:reportComment})
+        axios.post(REACT_APP_API + `/api/report/user`, { projectId: projectId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
                 dispatch({
                     type: POST_REPORT_PROJECT,
                     payload: res.data
                 })
             }
-        )
+            )
 
     }
 }

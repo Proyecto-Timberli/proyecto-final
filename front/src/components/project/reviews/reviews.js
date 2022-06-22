@@ -7,10 +7,10 @@ import { postReview } from '../../../redux/actions/actionCreators';
 import ReviewsCard from "./reviewsCard/reviewsCard"
 
 
-const Reviews = ({ projectid }) => {
+const Reviews = ({ projectid, reviews, user }) => {
     const userId = useSelector(state => state.loggedUserId)
     let dispatch = useDispatch()
-    let reviews = useSelector(state => state.reviews)
+
     const [input, setInput] = useState({
         text: "",
         scoreStyle: 1,
@@ -37,7 +37,6 @@ const Reviews = ({ projectid }) => {
         //validacion errores//
 
         //////////////////////
-        console.log("hola");
         dispatch(postReview(input, userId, projectid))
     }
     return (
@@ -79,8 +78,14 @@ const Reviews = ({ projectid }) => {
                 <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area' />
                 <button>Enviar</button>
             </form>
+            {reviews.length > 0 ? reviews.map(e => <ReviewsCard key={e.id}
+                user={user}
+                text={e.text}
+                scoreFunctionality={e.scoreFunctionality}
+                scoreOriginality={e.scoreOriginality}
+                scoreStyle={e.scoreStyle} />)
+                : <div>No hay Reviews, se la primera!</div>}
 
-            <ReviewsCard />
         </div> : <h4>Logueate para comentar</h4>)
     );
 }

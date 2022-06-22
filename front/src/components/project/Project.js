@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectById,postReportProject,postReportUser} from '../../redux/actions/actionCreators'
+import { getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
@@ -28,7 +28,7 @@ function Project() {
         renderCards: [],
         pag: 1,
     });
-    
+
 
     const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
     const accionarPaginado = (selectPag, selectFilter) => {
@@ -47,8 +47,8 @@ function Project() {
     /////////////////////Report///////////////////////////////////////////////////////////////////
     // postReportProject(jectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
     // postReportUser({userId:2,reportedBy:1,reportComment:"realizo comentario racistas"})
-   
-  
+
+
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,9 +59,9 @@ function Project() {
         projectID: 0,
     })
 
-    function cambiarEstadoModalReport( userID, projectID) {
+    function cambiarEstadoModalReport(userID, projectID) {
         setmodalP({
-            
+
             userID: userID,
             projectID: projectID
         })
@@ -82,7 +82,7 @@ function Project() {
 
     }
 
-
+    console.log(project);
 
     return (
 
@@ -122,7 +122,7 @@ function Project() {
                         <div className='cont-botones-acciones'>
 
                             <button className='boton-accion-detalleProject'> <MdFavorite /></button>
-                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( project.userId, project.id)}/></button>
+                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(project.userId, project.id)} /></button>
 
                         </div>
                         <div >
@@ -153,6 +153,8 @@ function Project() {
                 </div>
                 <div>
                     <Reviews
+                        user={project.user}
+                        reviews={project.reviews}
                         projectid={project.id} />
                 </div>
                 {
