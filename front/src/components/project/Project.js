@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectById } from '../../redux/actions/actionCreators'
+import { getProjectById,postReportProject,postReportUser} from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
@@ -28,7 +28,7 @@ function Project() {
         renderCards: [],
         pag: 1,
     });
-
+    Report
 
     const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
     const accionarPaginado = (selectPag, selectFilter) => {
@@ -44,8 +44,13 @@ function Project() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////Report///////////////////////////////////////////////////////////////////
+    // postReportProject({projectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
+    // postReportUser({userId:2,reportedBy:1,reportComment:"realizo comentario racistas"})
+   
+  
     ////////////////////////////////////////////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     const [loading, setLoading] = useState(true);
 
@@ -95,7 +100,7 @@ function Project() {
                     </div>
                     <div className='cont-info'>
                         <div className='cont-botones-acciones'>
-                            <button className='boton-accion-detalleProject'> <MdFavorite /></button>
+                            <button className='boton-accion-detalleProject'><MdFavorite /></button>
                             <button className='boton-accion-detalleProject'><MdError /></button>
                         </div>
                         <div >

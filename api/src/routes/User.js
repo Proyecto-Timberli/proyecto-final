@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Router } = require('express');
-const { Project, User, Contributions } = require('../db.js');
+const { Project, User, Report, Contributions } = require('../db.js');
 //const { Op, useInflection } = require('sequelize');
 //const { Recipe, API_KEY, Diet } = require("../db")
 const Stripe = require("stripe")
@@ -14,7 +14,8 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 router.get('/', async (req, res, next) => {
     try {
         const allUsers = await User.findAll({
-            include: Project
+            include: Project,
+            include: Report,
         });
         return res.send(allUsers)
     } catch (error) {
