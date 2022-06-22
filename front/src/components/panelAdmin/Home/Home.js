@@ -42,7 +42,10 @@ function Home() {
                 </div>
                 <div className='feature-box'>
                     <MdNotificationImportant className='icon-feature-admin' />
-                    <h5 className='title-feature-admin'>Notificaciones</h5>
+                    <Link className='link-home-admin' to='/admin/reportes'>
+                        <h5 className='title-feature-admin'>Reportes</h5>
+                    </Link>
+
                 </div>
                 <div className='feature-box'>
                     <MdInsertChart className='icon-feature-admin' />

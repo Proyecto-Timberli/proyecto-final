@@ -1,15 +1,16 @@
 import React from 'react';
 import './about.css';
 import teamWork from './images/teamWork.gif'
-import profilePic from '../../../images/profilePic.jpeg'
-import linkedIn from '../../../images/logotipo-de-linkedin.png'
-import gitHub from '../../../images/signo-de-github.png'
 import { scroll } from "../../../functions"
 import lucianoImg from "./images/luciano-ab.jpg";
-import lucasImg from "./images/lucas-ab.jpg";
+import lucasImg from "./images/imgLucas.jpeg";
 import cristobalImg from "./images/cristobal-ab.png";
-import andresImg from "./images/andres-ab.jpg";
+import andresImg from "./images/imgAndres.jpeg";
 import juanImg from "./images/juan-ab.png";
+import robertoImg from "./images/imgRober.png";
+import micaImg from "./images/imgMica.jpg";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+
 
 
 export default function About() {
@@ -42,72 +43,72 @@ export default function About() {
                 <div className='team-members'>
 
                     <div className='team-member'>
-                        <img src={lucasImg || profilePic} alt='' className='memberImage' />
+                        <img src={lucasImg} alt='' className='memberImage' />
                         <p className='member-name'>Lucas Luna Clarasó</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/in/lucas-luna-claras%C3%B3-03a846203/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/lucaslunacl' className='member-github'><img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/in/lucas-luna-claras%C3%B3-03a846203/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/lucaslunacl' className='member-github' target="_blank" rel='noreferrer'><BsGithub/></a>
                         </div>
                     </div>
 
                     <div className='team-member'>
-                        <img src={andresImg || profilePic} alt='' className='memberImage' />
+                        <img src={andresImg} alt='' className='memberImage' />
                         <p className='member-name'>Andres Gomez</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/in/andres-gomez-guardamagna-32ab29234/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/TheAndresG' className='member-github'><img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/in/andres-gomez-guardamagna-32ab29234/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/TheAndresG' className='member-github' target="_blank" rel='noreferrer'><BsGithub /></a>
                         </div>
                     </div>
 
                     <div className='team-member'>
-                        <img src={cristobalImg || profilePic} alt='' className='memberImage' />
+                        <img src={cristobalImg} alt='' className='memberImage' />
                         <p className='member-name'>Cristobal Herreros</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/Sapo-san' className='member-github'><img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/Sapo-san' className='member-github' target="_blank" rel='noreferrer'><BsGithub /></a>
                         </div>
                     </div>
 
                     <div className='team-member'>
-                        <img src={lucianoImg || profilePic} alt='' className='memberImage' />
+                        <img src={lucianoImg} alt='' className='memberImage' />
                         <p className='member-name'>Luciano Mocchegiani</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/in/luciano-mocchegiani-268bb921a/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/LucianoMocchegiani' className='member-github'><img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/in/luciano-mocchegiani-268bb921a/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/LucianoMocchegiani' className='member-github' target="_blank" rel='noreferrer'><BsGithub /></a>
                         </div>
                     </div>
 
                     <div className='team-member'>
-                        <img src={juanImg || profilePic} style={{ height: '195px' }} alt='' className='memberImage' />
+                        <img src={juanImg} alt='' className='memberImage' />
                         <p className='member-name'>Juan Pablo Rodriguez</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/in/juan-pablo-rodriguez-392a35234/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/' className='member-github'><img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/in/juan-pablo-rodriguez-392a35234/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/' className='member-github' target="_blank" rel='noreferrer'><BsGithub /></a>
                         </div>
                     </div>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={micaImg}  alt='' className='memberImage' />
                         <p className='member-name'>Micaela Schaberger</p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/in/micaela-schaberger/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/mschaberger' className='member-github'><img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/in/micaela-schaberger/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/mschaberger' className='member-github' target="_blank" rel='noreferrer'><BsGithub /></a>
                         </div>
                     </div>
 
                     <div className='team-member'>
-                        <img src={profilePic} alt='' className='memberImage' />
+                        <img src={robertoImg}  alt='' className='memberImage' />
                         <p className='member-name'> Roberto Vargas </p>
                         <p className='member-prof'>Full stack dev.</p>
                         <div className='member-social'>
-                            <a href='https://www.linkedin.com/' className='member-github'> <img src={linkedIn} width={30} alt='' /></a>
-                            <a href='https://github.com/' className='member-github'> <img src={gitHub} width={30} alt='' /></a>
+                            <a href='https://www.linkedin.com/' className='member-github' target="_blank" rel='noreferrer'> <BsLinkedin /></a>
+                            <a href='https://github.com/' className='member-github' target="_blank" rel='noreferrer'> <BsGithub /> </a>
                         </div>
                     </div>
 
