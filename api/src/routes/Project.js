@@ -27,7 +27,7 @@ router.get("/id/:idProject", async (req, res, next) => {
   try {
     if (idProject) {
       {
-        const projectDetail = await Project.findByPk(idProject, { include: User })
+        const projectDetail = await Project.findByPk(idProject, { include: [{ model: User }, { model: Review }] })
         if (projectDetail) {
           return res.send(projectDetail)
         }
