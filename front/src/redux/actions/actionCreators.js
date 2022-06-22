@@ -13,6 +13,8 @@ import {
     LOGGED_USER_ID,
     GET_CONTRUBUTION,
     LIST_PAYMENTS,
+    GET_REPORTS_USERS,
+    GET_REPORTS_PROJECTS,
 } from "./actions.js"
 
 import axios from 'axios'
@@ -180,5 +182,33 @@ export function listPayments(contribution, user) {
         axios.post(REACT_APP_API + '/api/admin/donation', {contribution, user})
             .then(response => response.data)
             .catch(error => console.error(error))
+    }
+}
+
+
+export function getReportsProjects() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/report/project`)
+            .then(res => {
+                dispatch({
+                    type: GET_REPORTS_PROJECTS,
+                    payload: res.data
+                })
+            }
+        )
+    }
+}
+
+
+export function getReportsUsers() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/report/user`)
+            .then(res => {
+                dispatch({
+                    type: GET_REPORTS_USERS,
+                    payload: res.data
+                })
+            }
+        )
     }
 }

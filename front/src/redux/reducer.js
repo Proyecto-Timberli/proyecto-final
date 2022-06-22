@@ -14,7 +14,10 @@ import {
     LOGGED_USER_ID,
     GET_ALL_USERS,
     GET_CONTRUBUTION,
-    LIST_PAYMENTS
+    LIST_PAYMENTS,
+    GET_REPORTS_PROJECTS,
+    GET_REPORTS_USERS,
+
 } from "./actions/actions.js";
 
 const initialState = {
@@ -24,7 +27,9 @@ const initialState = {
     server_message: '',
     loggedUserId: null,
     allUsers: [],
-    contributions: []
+    contributions: [],
+    reportsProjects: [],
+    reportsUsers: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -93,7 +98,18 @@ export default function reducer(state = initialState, action) {
                 contributions: action.payload
             }
         }
-
+        case GET_REPORTS_PROJECTS: {
+            return{
+                ...state,
+                reportsUsers: action.payload
+            }
+        }
+        case GET_REPORTS_USERS:{
+            return{
+                ...state,
+                reportsProjects: action.payload
+            }
+        }
         case LIST_PAYMENTS: {
             return {
                 ...state,
