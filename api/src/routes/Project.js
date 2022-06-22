@@ -1,11 +1,9 @@
 const { Router } = require('express');
 const router = Router();
 const axios = require('axios');
-const { Project, User, Report } = require('../db.js');
+const { Project, User, Report, Review } = require('../db.js');
 const { Op, where } = require('sequelize');
 const { verifyToken } = require('../middlewares/authjwt')
-
-
 
 
 router.get("/", async (req, res, next) => {
