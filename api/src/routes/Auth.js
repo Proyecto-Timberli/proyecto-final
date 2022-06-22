@@ -103,11 +103,9 @@ router.post("/login", (req, res, next) => {
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/api/auth/github/callback"
+    callbackURL: process.env.BACKEND_BASE_URL + "/api/auth/github/callback"
   },
   async function(accessToken, refreshToken, profile, done) {
-    
-    console.log(accessToken, refreshToken)
 
     const [user, created] = await User.findOrCreate({ 
         where: {
@@ -144,7 +142,7 @@ router.get('/github/callback',
         expiresIn: 1440
     })
 
-    res.redirect('http://localhost:3000/home?token=' + token + '&id=' + res.req.user.dataValues.id);
+    res.redirect( process.env.FRONTEND_BASE_URL + '/home?token=' + token + '&id=' + res.req.user.dataValues.id);
   });
 
 
