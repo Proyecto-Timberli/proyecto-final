@@ -13,6 +13,7 @@ import {
     LOGGED_USER_ID,
     GET_CONTRUBUTION,
     LIST_PAYMENTS,
+    GET_REVIEWS,
 } from "./actions.js"
 
 import axios from 'axios'
@@ -170,15 +171,41 @@ export function getContributions() {
                     payload: res.data
                 })
             }
-        )
+            )
     }
 }
 
 
 export function listPayments(contribution, user) {
     return function () {
-        axios.post(REACT_APP_API + '/api/admin/donation', {contribution, user})
+        axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user })
             .then(response => response.data)
             .catch(error => console.error(error))
+    }
+}
+
+export function postReview(input, userid, projectid) {
+
+    return function () {
+
+        axios.post(REACT_APP_API + '/api/review', { input, userid, projectid })
+            .then(response => response.data)
+            .catch(error => console.error(error))
+    }
+}
+
+
+
+
+export function getReviews() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + '/api/review')
+            .then(response => {
+                dispatch({
+                    type: GET_REVIEWS,
+                    payload: response.data
+                })
+            }
+            )
     }
 }

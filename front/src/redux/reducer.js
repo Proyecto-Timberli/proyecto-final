@@ -14,7 +14,8 @@ import {
     LOGGED_USER_ID,
     GET_ALL_USERS,
     GET_CONTRUBUTION,
-    LIST_PAYMENTS
+    LIST_PAYMENTS,
+    GET_REVIEWS
 } from "./actions/actions.js";
 
 const initialState = {
@@ -24,7 +25,8 @@ const initialState = {
     server_message: '',
     loggedUserId: null,
     allUsers: [],
-    contributions: []
+    contributions: [],
+    reviews: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -98,6 +100,13 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
             };
+        }
+
+        case GET_REVIEWS: {
+            return {
+                ...state,
+                reviews: action.payload
+            }
         }
 
         default:

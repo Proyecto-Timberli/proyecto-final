@@ -120,7 +120,8 @@ function Project() {
                     </div>
                 </div>
                 <div>
-                    <Reviews />
+                    <Reviews
+                        projectid={project.id} />
                 </div>
             </div>
         </React.Fragment>
