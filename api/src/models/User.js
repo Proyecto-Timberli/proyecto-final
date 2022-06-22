@@ -51,6 +51,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: ''
+        },
+        githubId: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     });
 };

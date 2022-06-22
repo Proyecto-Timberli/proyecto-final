@@ -10,6 +10,7 @@ import { scroll } from "../../functions";
 
 
 export default function LandingPage() {
+
     scroll()
     const logged = useSelector((state) => state.loggedUserId);
 

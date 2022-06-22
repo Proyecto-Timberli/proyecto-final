@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from "./card/Card.js"
 import "../home/home.css"
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
@@ -10,6 +10,18 @@ import { technologies } from './technologies.js'
 import { scroll } from "../../functions";
 
 const Home = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams()
+    
+    let token = searchParams.get("token")
+
+    if (token) {
+        localStorage.setItem("usertoken", token)
+        localStorage.setItem("userid", searchParams.get("id"))
+        setSearchParams({})
+        console.log("got Here")
+    }
+
     scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()

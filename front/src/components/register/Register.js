@@ -2,7 +2,8 @@ import React from 'react'
 import './register.css'
 import imgSignUp from './signup-image.png'
 import validateForm from './validation.js'
-
+import linkedin from '../../images/linkedin.png';
+import github from '../../images/github.png';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -147,6 +148,14 @@ function Register() {
                         <div className="signup-image">
                             <figure><img src={imgSignUp} alt="sing up" /></figure>
                             <a href="/login" className="signup-image-link">Ya soy miembro, quiero logearme</a>
+                            <div className="login-buttons">
+                                <a href='https://www.linkedin.com/'>
+                                    <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
+                                </a>
+                                <a href='https://github.com/'>
+                                    <img src={github} width="60" alt="github" className='linkGithub' />
+                                </a>
+                        </div>
                         </div>
                     </div>
                 </div>
