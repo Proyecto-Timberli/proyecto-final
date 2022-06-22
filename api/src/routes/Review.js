@@ -13,11 +13,11 @@ router.post("/review", async (req, res, next) => {
         let project = await Project.findByPk(projectId)
         await user.addReview(newReview)
         await project.addReview(newReview)
-
-
-        project.scoreStyle.push(scoreStyle)
-        project.scoreFunctionality.push(scoreFunctionality)
-        project.scoreOriginality.push(scoreOriginality)
+        project.set({
+            scoreFunctionality: [[...project.scoreFunctionality], [scoreFunctionality]],
+            scoreStyle: [[...project.scoreStyle], [scoreFunctionality]],
+            scoreOriginality: [[...project.scoreOriginality], [scoreOriginality]],
+        })
 
         // project.save()
 
