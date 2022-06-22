@@ -61,11 +61,11 @@ function Project() {
 
     function cambiarEstadoModalReport( userID, projectID) {
         setmodalP({
-            
             userID: userID,
             projectID: projectID
         })
     }
+
     function resetEstadoModal() {
         setmodalP({
             id: 0,
@@ -73,6 +73,15 @@ function Project() {
             projectID: 0,
         })
     }
+
+    function enviarReporte(proyectId, userId,  comentario) {
+    //    console.log(proyectId)
+    //    console.log(userId)
+    //    console.log(comentario)  
+        dispatch(postReportProject(proyectId,userId, comentario))
+        resetEstadoModal()
+    }
+
     if (!Object.keys(project).length) {
         if (loading) {
             setTimeout(() => { setLoading(false) }, 5000)
@@ -159,10 +168,11 @@ function Project() {
                     !!modalP && modalP.projectID !== 0 ?
                         <ModalReport
                             key={modalP.projectID}
-                            estado={resetEstadoModal}
+                            estado={enviarReporte}
                             userID={modalP.userID}
                             projectID={modalP.projectID}
                             nombre={project.name}
+                            reset = {resetEstadoModal}
                         />
                         : null
                 }

@@ -17,6 +17,7 @@ router.get('/project', async (req, res, next) => {
         next(error);
     }
 })
+
 router.get('/user', async (req, res, next) => {
     const {userId}=req.body
     try {
@@ -29,8 +30,14 @@ router.get('/user', async (req, res, next) => {
         next(error);
     }
 })
+
 router.post("/project", async (req, res, next) => {
     const {projectId,reportedBy,reportComment} = req.body;
+
+    console.log(projectId)
+    console.log(reportedBy)
+    console.log(reportComment)
+
     try {
         const reportExist= await Report.findOne({where: {projectId:projectId,reportedBy:reportedBy}})
         if (!reportExist){
@@ -45,6 +52,7 @@ router.post("/project", async (req, res, next) => {
         next(error);
     } 
 })
+
 router.post("/user", async (req, res, next) => {
     const {userId,reportedBy,reportComment} = req.body;
     try {
