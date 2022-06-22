@@ -16,10 +16,6 @@ import {
     GET_CONTRUBUTION,
     LIST_PAYMENTS,
     GET_REVIEWS,
-    GET_REPORTS_PROJECTS,
-    GET_REPORTS_USERS,
-
-
 } from "./actions/actions.js";
 
 const initialState = {
@@ -102,18 +98,7 @@ export default function reducer(state = initialState, action) {
                 contributions: action.payload
             }
         }
-        case GET_REPORTS_PROJECTS: {
-            return{
-                ...state,
-                reportsUsers: action.payload
-            }
-        }
-        case GET_REPORTS_USERS:{
-            return{
-                ...state,
-                reportsProjects: action.payload
-            }
-        }
+     
         case LIST_PAYMENTS: {
             return {
                 ...state,

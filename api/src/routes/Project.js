@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const axios = require('axios');
-const { Project, User } = require('../db.js');
+const { Project, User, Report } = require('../db.js');
 const { Op, where } = require('sequelize');
 const { verifyToken } = require('../middlewares/authjwt')
 
@@ -11,7 +11,8 @@ const { verifyToken } = require('../middlewares/authjwt')
 router.get("/", async (req, res, next) => {
   try {
     const allProjects = await Project.findAll({
-      include: User
+      include: User,
+      include: Report,
     })
     if (allProjects.length) {
       return res.send(allProjects)
