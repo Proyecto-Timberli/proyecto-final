@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { MdError, MdKeyboardArrowDown } from "react-icons/md";
 import {Link} from 'react-router-dom'
-import { getReportsUsers, getReportsProjects } from '../../../redux/actions/actionCreators.js'
+// import {} from '../../../redux/actions/actionCreators.js'
 
 function Reportes() {
   let dispatch = useDispatch()
@@ -10,8 +10,8 @@ function Reportes() {
   let projectReports = useSelector((state) => state.reportsProjects)
 
   useEffect(() => {
-    dispatch(getReportsUsers())
-    dispatch(getReportsProjects())
+    // dispatch(getReportsUsers())
+    // dispatch(getReportsProjects())
   }, [])
 
   return (
