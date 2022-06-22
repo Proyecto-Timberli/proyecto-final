@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { MdError, MdKeyboardArrowDown } from "react-icons/md";
 import {Link} from 'react-router-dom'
-// import {} from '../../../redux/actions/actionCreators.js'
+import { getAllProjects } from '../../../redux/actions/actionCreators.js'
+import Project from '../../project/Project.js';
 
 function Reportes() {
   let dispatch = useDispatch()
-  let userReports = useSelector((state) => state.reportsUsers)
-  let projectReports = useSelector((state) => state.reportsProjects)
+  let allProjects = useSelector((state) => state.allProject)
+  allProjects.filter(project => project.Report === 1)
+  
 
   useEffect(() => {
-    // dispatch(getReportsUsers())
-    // dispatch(getReportsProjects())
+    dispatch(getAllProjects())
+    
   }, [])
 
   return (
@@ -22,7 +24,7 @@ function Reportes() {
       </div>
       <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
-    {(Object.keys(userReports).length ===0 )&& (Object.keys(projectReports).length===0)
+    {(Object.keys(allProjects).length===0)
   ? <div> NO HAY REPORTES </div>
   : <div>Hay reportes</div>  
   }

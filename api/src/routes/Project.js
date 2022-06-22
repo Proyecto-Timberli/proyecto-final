@@ -10,10 +10,7 @@ const { verifyToken } = require('../middlewares/authjwt')
 
 router.get("/", async (req, res, next) => {
   try {
-    const allProjects = await Project.findAll({
-      include: User,
-      include: Report,
-    })
+    const allProjects = await Project.findAll({ include: [{ model: User }, { model: Report }] })
     if (allProjects.length) {
       return res.send(allProjects)
     }

@@ -226,9 +226,11 @@ export function postReportUser({userId,reportedBy,reportComment}) {
 
     }
 }
-export function postReportProject({projectId,reportedBy,reportComment}) {
+export function postReportProject(projectId,reportedBy,reportComment) {
+
+    
     return function (dispatch) {
-        axios.post(REACT_APP_API + `/api/report/user`,{projectId:projectId,reportedBy:reportedBy,reportComment:reportComment})
+        axios.post(REACT_APP_API + `/api/report/project`,{projectId,reportedBy,reportComment})
             .then(res => {
                 dispatch({
                     type: POST_REPORT_PROJECT,
