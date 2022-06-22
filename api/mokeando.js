@@ -317,7 +317,7 @@ const mokeando = async () => {
       description: "Se trata de una aplicación muy sencilla, que se realizó a modo de practica para aprender a manejar react hooks.",
       repository: "https://github.com/mschaberger/Counter",
       deploying: "",
-      score: [0, 0, 0],
+      score: [2, 4, 1],
       projectType: "Practica",
       imagen: ["https://i.postimg.cc/7hKNRf3Q/countdown.png",
         "https://i.postimg.cc/BZpNbwrc/counter.png",
@@ -329,7 +329,7 @@ const mokeando = async () => {
       description: "Primer maquetado de HTML y CSS realizado a modo de prueba, no tiene funcionalidades.",
       repository: "https://github.com/mschaberger/pvmates",
       deploying: "",
-      score: [0, 4, 0],
+      score: [1, 4, 3],
       projectType: "Diseño",
       imagen: ["https://i.postimg.cc/qvy1JM4g/maquetado-PV.png"]
     },
@@ -457,9 +457,9 @@ const mokeando = async () => {
       e.scoreStyle = []
       e.scoreFunctionality = []
       e.scoreOriginality = []
-      e.scoreStyle.push(e.score[0]);
-      e.scoreFunctionality.push(e.score[1])
-      e.scoreOriginality.push(e.score[2])
+      e.scoreStyle.push(Number(e.score[0]));
+      e.scoreFunctionality.push(Number(e.score[1]))
+      e.scoreOriginality.push(Number(e.score[2]))
     }
     else { null }
 
@@ -476,16 +476,21 @@ const mokeando = async () => {
       if (numeroRandom(1, 5) === 1) {
         let project = await Project.create(projects[j])
 
-        project.scoreFunctionality.push(numeroRandom(1, 5))
-        project.scoreStyle.push(numeroRandom(1, 5))
-        project.scoreOriginality.push(numeroRandom(1, 5))
+        await project.set({
 
-        project.set({
+          scoreFunctionality: [[...project.scoreFunctionality], [numeroRandom(1, 5)]],
+          scoreStyle: [[...project.scoreStyle], [numeroRandom(1, 5)]],
+          scoreOriginality: [[...project.scoreOriginality], [numeroRandom(1, 5)]],
+
+        })
+        await project.set({
           scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
             (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length) +
             (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)) / 3
         })
+
         await project.save()
+
         arrayProjects.push(project)
       }
     }

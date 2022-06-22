@@ -48,11 +48,46 @@
 .cont-info {
     width: 20%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-content: stretch;
     justify-content: center;
+    align-items: center;
 }
 
+.cont-botones-acciones{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    top: -135px;
+    right: -50px;
+}
+
+.boton-accion-detalleProject{
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    font-size: 2rem;
+    margin-left: 10px;
+}
+.boton-accion-detalleProject:hover{
+    cursor: pointer;
+    
+
+}
+.boton-accion-detalleProject:nth-child(1){
+    color: #369de7;
+}
+
+.boton-accion-detalleProject:nth-child(2){
+    
+    color: #e91f1f;
+}
+
+.boton-accion-detalleProject:hover{
+    cursor: pointer;
+}
 .info-detalle {
     min-width: 150px;
     max-width: 150px;

@@ -14,6 +14,9 @@ import {
     GET_CONTRUBUTION,
     LIST_PAYMENTS,
     GET_REVIEWS,
+    GET_REPORTS_USERS,
+    GET_REPORTS_PROJECTS,
+
 } from "./actions.js"
 
 import axios from 'axios'
@@ -184,6 +187,7 @@ export function listPayments(contribution, user) {
     }
 }
 
+
 export function postReview(input, userid, projectid) {
 
     return function () {
@@ -191,8 +195,22 @@ export function postReview(input, userid, projectid) {
         axios.post(REACT_APP_API + '/api/review', { input, userid, projectid })
             .then(response => response.data)
             .catch(error => console.error(error))
+    }}
+
+
+export function getReportsProjects() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/report/project`)
+            .then(res => {
+                dispatch({
+                    type: GET_REPORTS_PROJECTS,
+                    payload: res.data
+                })
+            }
+        )
     }
 }
+
 
 
 
@@ -206,6 +224,19 @@ export function getReviews() {
                     payload: response.data
                 })
             }
-            )
+            )}
+}
+
+export function getReportsUsers() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/report/user`)
+            .then(res => {
+                dispatch({
+                    type: GET_REPORTS_USERS,
+                    payload: res.data
+                })
+            }
+        )
+
     }
 }
