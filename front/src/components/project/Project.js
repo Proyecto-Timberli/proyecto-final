@@ -8,7 +8,7 @@ import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
 import { scroll } from "../../functions";
 import Reviews from './reviews/reviews';
-
+import ModalReport from './modalReport/ModalReport.js'
 import { MdFavorite, MdError } from "react-icons/md";
 
 function Project() {
@@ -49,7 +49,25 @@ function Project() {
 
     const [loading, setLoading] = useState(true);
 
+    const [modalP, setmodalP] = useState({
+        userID: 0,
+        projectID: 0,
+    })
 
+    function cambiarEstadoModalReport( userID, projectID) {
+        setmodalP({
+            
+            userID: userID,
+            projectID: projectID
+        })
+    }
+    function resetEstadoModal() {
+        setmodalP({
+            id: 0,
+            userID: 0,
+            projectID: 0,
+        })
+    }
     if (!Object.keys(project).length) {
         if (loading) {
             setTimeout(() => { setLoading(false) }, 5000)
@@ -58,6 +76,8 @@ function Project() {
         return <Page404 />
 
     }
+
+
 
     return (
 
@@ -96,7 +116,7 @@ function Project() {
                     <div className='cont-info'>
                         <div className='cont-botones-acciones'>
                             <button className='boton-accion-detalleProject'> <MdFavorite /></button>
-                            <button className='boton-accion-detalleProject'><MdError /></button>
+                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( project.userId, project.id)}/></button>
                         </div>
                         <div >
                             <h3>Deploy:</h3>
@@ -128,6 +148,17 @@ function Project() {
                     <Reviews
                         projectid={project.id} />
                 </div>
+                {
+                    !!modalP && modalP.projectID !== 0 ?
+                        <ModalReport
+                            key={modalP.projectID}
+                            estado={resetEstadoModal}
+                            userID={modalP.userID}
+                            projectID={modalP.projectID}
+                            nombre={project.name}
+                        />
+                        : null
+                }
             </div>
         </React.Fragment>
     )

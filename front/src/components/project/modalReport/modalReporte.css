@@ -1,0 +1,8 @@
+.form-reporte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.label-reporte{
+    font-size: 1.3rem;
+}
