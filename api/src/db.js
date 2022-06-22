@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 let sequelize =
   process.env.NODE_ENV === "production"
@@ -50,18 +51,37 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Project, User, Comment, Contributions } = sequelize.models;
+const { Project, User, Comment, Contributions, Report } = sequelize.models;
 
-
+const common = (options) =>({
+  ...options,
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE',
+})
+////////////////////////////////////
 User.hasMany(Contributions)
 Contributions.belongsTo(User)
+////////////////////////////////////
 User.hasMany(Project)
 Project.belongsTo(User)
+////////////////////////////////////
 User.hasMany(Comment)
 Comment.belongsTo(User)
+////////////////////////////////////
 Project.hasMany(Comment)
 Comment.belongsTo(Project)
-
+////////////////////////////////////
+Project.hasMany(Report)
+Report.belongsTo(Project)
+User.hasMany(Report);
+Report.belongsTo(User)
+//////////////////seguir////////////////////////////
+// User.belongsToMany(User, common({through: "users_followers",
+// foreignKey: 'follower_id',otherKey:'following_id',as:'follower',}));
+// User.belongsToMany(User, common({through: "users_followers",
+// foreignKey: 'following_id',otherKey:'follower_id',as:'following',}));
+////////////////////////////////////
+////////////////////////////////////
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
