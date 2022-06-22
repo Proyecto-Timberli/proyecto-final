@@ -45,7 +45,7 @@ function Project() {
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////Report///////////////////////////////////////////////////////////////////
-    // postReportProject({projectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
+    // postReportProject(jectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
     // postReportUser({userId:2,reportedBy:1,reportComment:"realizo comentario racistas"})
    
   
