@@ -19,6 +19,7 @@ import Stats from './components/panelAdmin/Stats/stats';
 import Community from './components/community/community';
 import Contributions from './components/panelAdmin/contributions/contributions.js'
 import Index from './components/index';
+import Reportes from './components/panelAdmin/Reportes/Reportes.js'
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/admin/listadoProjects" element={<ListadoProjects />} />
         <Route exact path="/admin/ListadoUsers" element={<ListadoUsers />} />
         <Route exact path="/admin/contribuciones" element={<Contributions />} />
+        <Route exact path="/admin/reportes" element={<Reportes />} />
 
         <Route path='*' element={<Page404 />} />
       </Routes>

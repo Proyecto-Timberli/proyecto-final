@@ -32,31 +32,24 @@ module.exports = (sequelize) => {
         scoreStyle: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true,
-            defaultValue: [0]
+            defaultValue: []
 
         },
         scoreFunctionality: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true,
-            defaultValue: [0]
+            defaultValue: []
 
         },
         scoreOriginality: {
             type: DataTypes.ARRAY(DataTypes.DECIMAL),
             allowNull: true,
-            defaultValue: [0]
+            defaultValue: []
 
         },
         scoreAverage: {
             type: DataTypes.DECIMAL,
             defaultValue: 0
-            // set() {
-            //     const promedio = ((this.scoreStyle.reduce((e, a) => e + a) / this.scoreStyle.length) +
-            //         (this.scoreFunctionality.reduce((e, a) => e + a) / this.scoreFunctionality.length) +
-            //         (this.scoreOriginality.reduce((e, a) => e + a) / this.scoreOriginality.length)) / 3
-            //     return promedio
-            // }
-
         },
         deploying: {
             type: DataTypes.STRING,

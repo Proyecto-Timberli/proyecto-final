@@ -51,7 +51,9 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Project, User, Comment, Contributions, Report } = sequelize.models;
+
+const { Project, User, Review, Contributions, Report } = sequelize.models;
+
 
 const common = (options) =>({
   ...options,
@@ -64,12 +66,13 @@ Contributions.belongsTo(User)
 ////////////////////////////////////
 User.hasMany(Project)
 Project.belongsTo(User)
+
 ////////////////////////////////////
-User.hasMany(Comment)
-Comment.belongsTo(User)
+User.hasMany(Review)
+Review.belongsTo(User)
 ////////////////////////////////////
-Project.hasMany(Comment)
-Comment.belongsTo(Project)
+Project.hasMany(Review)
+Review.belongsTo(Project)
 ////////////////////////////////////
 Project.hasMany(Report)
 Report.belongsTo(Project)
@@ -82,6 +85,7 @@ Report.belongsTo(User)
 // foreignKey: 'following_id',otherKey:'follower_id',as:'following',}));
 ////////////////////////////////////
 ////////////////////////////////////
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');

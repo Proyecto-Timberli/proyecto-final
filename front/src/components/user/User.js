@@ -1,9 +1,10 @@
-import React, { useState }  from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
 
 
-import { showLoadingInfo,
+import {
+    showLoadingInfo,
     showUserNotFound,
     showSelectedProfileSection,
     showSocialMediaLink
@@ -30,13 +31,13 @@ const User = () => {
 
     const userData = useSelector((state) => state.userById)
 
-    function elemToButton (elem) {
-        return <button onClick={(e) => {
+    function elemToButton(elem, key) {
+        return <button key={key} onClick={(e) => {
             e.preventDefault()
             setSelectedSection(elem.state)
         }} className='profileContentSectionButton'>{elem.title}</button>
     }
-    
+
     function showProfileSectionLinks() {
         let anyUserProfile = [
             {
@@ -65,9 +66,9 @@ const User = () => {
         ]
 
         if (userData.id === Number.parseInt(localStorage.getItem("userid"))) {
-            return <div className='profileContentSections'>{myUserProfile.map(elemToButton)}</div>
+            return <div className='profileContentSections'>{myUserProfile.map(elemToButton, "myUserProfile")}</div>
         } else {
-            return <div className='profileContentSections'>{anyUserProfile.map(elemToButton)}</div>
+            return <div className='profileContentSections'>{anyUserProfile.map(elemToButton, "anyUserProfile")}</div>
         }
     }
 
@@ -82,7 +83,7 @@ const User = () => {
                     <div className='profileInfoDetails'>
                         <p>{userData.short_description}</p>
                         {showSocialMediaLink("linkedIn", userData)}
-                        {showSocialMediaLink("github", userData) }
+                        {showSocialMediaLink("github", userData)}
                     </div>
                 </div>
                 <div className='profileContents'>
@@ -127,8 +128,8 @@ const User = () => {
             getUserById(paramsId)(dispatcher)
             return showLoadingInfo()
         }
-    } 
-    
+    }
+
     // si no tengo datos, pido datos
     // y anotar que ya los pedi
     if (!askedForData) {

@@ -13,6 +13,10 @@ import {
     LOGGED_USER_ID,
     GET_CONTRUBUTION,
     LIST_PAYMENTS,
+    GET_REVIEWS,
+    GET_REPORTS_USERS,
+    GET_REPORTS_PROJECTS,
+
 } from "./actions.js"
 
 import axios from 'axios'
@@ -170,15 +174,69 @@ export function getContributions() {
                     payload: res.data
                 })
             }
-        )
+            )
     }
 }
 
 
 export function listPayments(contribution, user) {
     return function () {
-        axios.post(REACT_APP_API + '/api/admin/donation', {contribution, user})
+        axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user })
             .then(response => response.data)
             .catch(error => console.error(error))
+    }
+}
+
+
+export function postReview(input, userid, projectid) {
+
+    return function () {
+
+        axios.post(REACT_APP_API + '/api/review', { input, userid, projectid })
+            .then(response => response.data)
+            .catch(error => console.error(error))
+    }}
+
+
+export function getReportsProjects() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/report/project`)
+            .then(res => {
+                dispatch({
+                    type: GET_REPORTS_PROJECTS,
+                    payload: res.data
+                })
+            }
+        )
+    }
+}
+
+
+
+
+
+export function getReviews() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + '/api/review')
+            .then(response => {
+                dispatch({
+                    type: GET_REVIEWS,
+                    payload: response.data
+                })
+            }
+            )}
+}
+
+export function getReportsUsers() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + `/api/report/user`)
+            .then(res => {
+                dispatch({
+                    type: GET_REPORTS_USERS,
+                    payload: res.data
+                })
+            }
+        )
+
     }
 }
