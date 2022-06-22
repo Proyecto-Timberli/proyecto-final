@@ -67,6 +67,6 @@ module.exports = (sequelize) => {
         },
         projectType: {
             type: DataTypes.STRING
-        }
+        },
     });
 };

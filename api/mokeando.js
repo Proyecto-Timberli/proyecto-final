@@ -507,7 +507,6 @@ const mokeando = async () => {
       await user.addContributions(contribution)
     }
   }
-
 }
 module.exports = mokeando
 
