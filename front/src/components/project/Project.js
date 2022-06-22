@@ -8,7 +8,7 @@ import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
 import { scroll } from "../../functions";
 
-
+import { MdFavorite, MdError } from "react-icons/md";
 
 function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,7 @@ function Project() {
                 <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
                     <div className='cont-info'>
+
                         <div>
                             <h3>Puntuacion:</h3>
 
@@ -92,6 +93,10 @@ function Project() {
                         </div>
                     </div>
                     <div className='cont-info'>
+                        <div className='cont-botones-acciones'>
+                            <button className='boton-accion-detalleProject'> <MdFavorite /></button>
+                            <button className='boton-accion-detalleProject'><MdError /></button>
+                        </div>
                         <div >
                             <h3>Deploy:</h3>
                             {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a target="_blank" href={project.deploying} rel="noopener noreferrer"> Link Deploy</a></div>}
