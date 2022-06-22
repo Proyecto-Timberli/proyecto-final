@@ -7,6 +7,7 @@ import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
 import { scroll } from "../../functions";
+import Reviews from './reviews/reviews';
 
 import { MdFavorite, MdError } from "react-icons/md";
 
@@ -123,7 +124,10 @@ function Project() {
                         </div>
                     </div>
                 </div>
-
+                <div>
+                    <Reviews
+                        projectid={project.id} />
+                </div>
             </div>
         </React.Fragment>
     )

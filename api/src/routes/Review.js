@@ -4,9 +4,28 @@ const { Project, User, Review } = require('../db.js');
 
 const router = Router();
 
-router.post("/review", async (req, res, next) => {
-    const { userid, projectId, scoreStyle, scoreFunctionality, scoreOriginality, text } = req.body
 
+router.get("/", async (req, res, next) => {
+    const { idProject } = req.params;
+    try {
+        if (idProject) {
+            {
+                const reviewDetail = await Review.findByPk(idProject, { include: User })
+                if (reviewDetail) {
+                    return res.send(reviewDetail)
+                }
+            }
+        }
+    } catch (err) {
+        next(err);
+    }
+});
+
+
+
+
+router.post("/", async (req, res, next) => {
+    const { userid, projectId, scoreStyle, scoreFunctionality, scoreOriginality, text } = req.body
     try {
         const newReview = await Review.create({ scoreStyle, scoreFunctionality, scoreOriginality, text })
         let user = await User.findByPk(userid)
@@ -20,7 +39,7 @@ router.post("/review", async (req, res, next) => {
         })
 
         // project.save()
-
+        console.log("hola");
         project.set({
             scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
                 (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length) +
@@ -33,6 +52,7 @@ router.post("/review", async (req, res, next) => {
 
     } catch (error) {
 
+        res.send(error)
     }
 })
 
