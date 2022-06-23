@@ -13,10 +13,7 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 
 router.get('/', async (req, res, next) => {
     try {
-        const allUsers = await User.findAll({
-            include: Project,
-            include: Report,
-        });
+        const allUsers = await User.findAll({ include: [{ model: Project }, { model: Report }] });
         return res.send(allUsers)
     } catch (error) {
         console.log(error);
@@ -54,7 +51,7 @@ router.get("/id/:idUser", async (req, res, next) => {
 
 
 
-router.put("/", [ verifyToken ], async (req, res, next) => {
+router.put("/", [verifyToken], async (req, res, next) => {
     const { userId, userEdit } = req.body;
 
     // Verificar que usuario X no pueda modificar datos de usuario Y
@@ -80,7 +77,7 @@ router.put("/", [ verifyToken ], async (req, res, next) => {
             })
         }
     }
-    
+
     // actualizar cambios
     try {
         if (userId && userEdit) {
