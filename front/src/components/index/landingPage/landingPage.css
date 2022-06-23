@@ -144,11 +144,9 @@
 } */
 
 .chatbot-landing {
-
     position: fixed;
-    /* width: 252px; */
+    width: 350px; 
     bottom: 0;
     right: 0;
     z-index: 50;
-
 }

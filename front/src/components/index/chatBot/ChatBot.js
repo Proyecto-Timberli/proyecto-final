@@ -1,5 +1,6 @@
+import React from 'react';
 import Chatbot from 'react-chatbot-kit'
-import 'react-chatbot-kit/build/main.css'
+import './css/chatBot.css'
 import config from './config.js';
 import MessageParser from './MessageParser.js';
 import ActionProvider from './ActionProvider.js';
