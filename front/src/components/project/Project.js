@@ -152,7 +152,6 @@ function Project() {
                 </div>
                 <div>
                     <Reviews
-                        user={project.user}
                         reviews={project.reviews}
                         projectid={project.id} />
                 </div>

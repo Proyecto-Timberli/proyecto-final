@@ -8,8 +8,13 @@ import "./inicio.css"
 
 const Inicio = () => {
     scroll()
+
+    const userId = useSelector(state => state.loggedUserId)
+
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
+
+    // let arrayAMostrar = allProjects.filter(e => e.favorites.find(b => b.userId === userId) === userId)
     useEffect(() => {
         dispatch(getAllProjects());
     }, [])

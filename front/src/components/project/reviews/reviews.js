@@ -6,9 +6,10 @@ import { postReview } from '../../../redux/actions/actionCreators';
 import ReviewsCard from "./reviewsCard/reviewsCard"
 
 
-const Reviews = ({ projectid, reviews, user }) => {
-    const userId = useSelector(store => store.userId)
+const Reviews = ({ projectid, reviews }) => {
+    const userId = useSelector(store => store.loggedUserId)
     let dispatch = useDispatch()
+    console.log(reviews);
 
     const [input, setInput] = useState({
         text: "",
@@ -141,7 +142,7 @@ const Reviews = ({ projectid, reviews, user }) => {
                     <button>Enviar</button>
                 </form>}
             {reviews.length > 0 ? reviews.map(e => <ReviewsCard key={e.id}
-                user={user}
+                user={e.user}
                 text={e.text}
                 scoreFunctionality={e.scoreFunctionality}
                 scoreOriginality={e.scoreOriginality}
