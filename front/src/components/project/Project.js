@@ -17,6 +17,7 @@ function Project() {
     const { id } = useParams();
     let dispatch = useDispatch()
     let project = useSelector((state) => state.projectById)
+
     useEffect(() => {
         dispatch(getProjectById(id))
         scroll()
@@ -82,8 +83,6 @@ function Project() {
 
     }
 
-    console.log(project);
-
     return (
 
         <React.Fragment>
@@ -96,7 +95,7 @@ function Project() {
                             <h3>Puntuacion:</h3>
 
 
-                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
+                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
