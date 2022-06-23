@@ -2,7 +2,7 @@ import React from 'react'
 import './register.css'
 import imgSignUp from './signup-image.png'
 import validateForm from './validation.js'
-
+import ModalTechnologies from './modalTechnologies.js'
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
@@ -148,6 +148,7 @@ function Register() {
                             <figure><img src={imgSignUp} alt="sing up" /></figure>
                             <Link to="/login" className="signup-image-link">Ya soy miembro, quiero logearme</Link>
                         </div>
+                        <div><ModalTechnologies/></div>
                     </div>
                 </div>
             </section>
