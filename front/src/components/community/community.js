@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import "./community.css"
 import { getAllUsers } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from "react-redux";
@@ -25,10 +25,7 @@ const Community = () => {
     ordenar(arrayAmostrar, orden)
 
     return (
-        <div className='community-cont'>
-            <div>
-                Listado de Usuarios!
-            </div>
+        <Fragment>
             <div className='cont-filtro-community'>Filtra por:
                 <select className='select-community' onChange={e => handleChange(e)}>
                     <option value="fecha">Orden de registro</option>
@@ -37,21 +34,30 @@ const Community = () => {
 
                 </select>
             </div>
-            <div className='community-cont-card'>
+            <div className='community-cont'>
+                {/* <div>
+                Listado de Usuarios!
+            </div> */}
+                <div className='community-cont-card'>
 
-                {arrayAmostrar.map(e =>
-                    <CardCommunity
-                        name={e.name}
-                        id={e.id}
-                        key={e.id}
-                        project={e.projects}
-                        image={e.image}
-                        short_description={e.short_description}
-                    />
-                )}
+                    {arrayAmostrar.map(e =>
+                        <div>
+
+                            <CardCommunity
+                                name={e.name}
+                                id={e.id}
+                                key={e.id}
+                                project={e.projects}
+                                image={e.image}
+                                short_description={e.short_description}
+                            />
+                            <hr></hr>
+                        </div>
+                    )}
+                </div>
+
             </div>
-
-        </div>
+        </Fragment>
     );
 }
 
