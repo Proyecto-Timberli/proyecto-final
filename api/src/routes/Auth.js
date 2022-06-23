@@ -107,13 +107,21 @@ passport.use(new GitHubStrategy({
   },
   async function(accessToken, refreshToken, profile, done) {
 
+    let name = profile.displayName;
+
+    if (!profile.displayName) {
+        name = profile.username
+    }
+
+    console.log(profile)
+
     const [user, created] = await User.findOrCreate({ 
         where: {
             githubId: profile.id 
         },
         defaults: {
             githubId: profile.id,
-            name: profile.displayName,
+            name: name,
             github: profile.profileUrl,
             image: profile._json.avatar_url,
             mail: "oauth",
