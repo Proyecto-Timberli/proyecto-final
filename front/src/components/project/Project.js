@@ -17,6 +17,8 @@ function Project() {
     const { id } = useParams();
     let dispatch = useDispatch()
     let project = useSelector((state) => state.projectById)
+    let reportBy = useSelector((state) => state.loggedUserId)
+
     useEffect(() => {
         dispatch(getProjectById(id))
         scroll()
@@ -75,9 +77,7 @@ function Project() {
     }
 
     function enviarReporte(proyectId, userId,  comentario) {
-    //    console.log(proyectId)
-    //    console.log(userId)
-    //    console.log(comentario)  
+
         dispatch(postReportProject(proyectId,userId, comentario))
         resetEstadoModal()
     }
@@ -131,7 +131,7 @@ function Project() {
                         <div className='cont-botones-acciones'>
 
                             <button className='boton-accion-detalleProject'> <MdFavorite /></button>
-                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( project.userId, project.id)}/></button>
+                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( reportBy, project.id)}/></button>
 
                         </div>
                         <div >

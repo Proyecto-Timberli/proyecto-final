@@ -213,9 +213,9 @@ export function getReviews() {
 
 /////////////////////REPORT/////////////////////////////
 
-export function postReportUser({userId,reportedBy,reportComment}) {
+export function postReportUser(userId,reportedBy,reportComment) {
     return function (dispatch) {
-        axios.post(REACT_APP_API + `/api/report/user`,{userId:userId,reportedBy:reportedBy,reportComment:reportComment})
+        axios.post(REACT_APP_API + `/api/report/user`,{userId,reportedBy,reportComment})
             .then(res => {
                 dispatch({
                     type: POST_REPORT_USER,
