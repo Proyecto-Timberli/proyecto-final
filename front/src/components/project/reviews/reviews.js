@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 import "./reviews.css";
 import { useDispatch, useSelector } from "react-redux";
-import { postReview } from '../../../redux/actions/actionCreators';
+import { getProjectById, postReview } from '../../../redux/actions/actionCreators';
 import ReviewsCard from "./reviewsCard/reviewsCard"
 
 
@@ -79,6 +79,8 @@ const Reviews = ({ projectid, reviews }) => {
         }
         //////////////////////
         dispatch(postReview(input, userId, projectid))
+        dispatch(getProjectById(projectid))
+
     }
 
 
