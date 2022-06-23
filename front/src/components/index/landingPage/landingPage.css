@@ -135,3 +135,18 @@
 .imageBox1 {
     margin-bottom: 3%;
 }
+
+/* .react-chatbot-kit-chat-container {
+    position: fixed;
+    left: 1100px;
+    top: 500px;
+    width: 250px;
+} */
+
+.chatbot-landing {
+    position: fixed;
+    width: 350px; 
+    bottom: 40px;
+    right: 0;
+    z-index: 50;
+}
