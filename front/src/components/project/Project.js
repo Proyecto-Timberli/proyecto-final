@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
+import { deleteFavorite, getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
@@ -10,12 +10,17 @@ import { scroll } from "../../functions";
 import Reviews from './reviews/reviews';
 import ModalReport from './modalReport/ModalReport.js'
 import { MdFavorite, MdError } from "react-icons/md";
+import { addFavorites } from '../../redux/actions/actionCreators';
+
 
 function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
     const { id } = useParams();
     let dispatch = useDispatch()
+    let listUserFavorites = useSelector((state) => state.listFavorites)
+    let userId = window.localStorage.getItem('userid')
+    let token = window.localStorage.getItem('usertoken')
     let project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
 
@@ -76,9 +81,9 @@ function Project() {
         })
     }
 
-    function enviarReporte(proyectId, userId,  comentario) {
+    function enviarReporte(proyectId, userId, comentario) {
 
-        dispatch(postReportProject(proyectId,userId, comentario))
+        dispatch(postReportProject(proyectId, userId, comentario))
         resetEstadoModal()
     }
 
@@ -103,15 +108,15 @@ function Project() {
                             <h3>Puntuacion:</h3>
 
 
-                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</div>
-                        </div>
+                            <div className='info-detalle' >{project.scoreStyle.length > 0 && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
+                        </div >
                         <div >
                             <h3>Usuario:</h3>
                             <Link to={"/user/" + project.userId} >
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
                         </div>
-                    </div>
+                    </div >
 
                     <div className='cont-img-detalle'>
                         {cardsInPag.renderCards.map(image => (!!image) &&
@@ -127,9 +132,24 @@ function Project() {
                     </div>
                     <div className='cont-info'>
                         <div className='cont-botones-acciones'>
+                            <ul className='wrapper'>
+                                <li className='icon facebook'>
 
-                            <button className='boton-accion-detalleProject'> <MdFavorite /></button>
-                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( reportBy, project.id)}/></button>
+                                    {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
+                                        <>
+                                            <span className='tooltip'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
+                                            <button className='boton-accion-detalleProject' onClick={addFavorites(userId, project.id)}> <MdFavorite /></button>
+                                        </> :
+                                        <>
+                                            <span className='tooltip'>Borrar de Favoritos</span>
+                                            <button className='boton-accion-detalleProject' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
+                                        </>
+                                    }
+                                </li>
+                            </ul>
+
+
+                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(project.userId, project.id)} /></button>
 
                         </div>
                         <div >
@@ -144,9 +164,9 @@ function Project() {
                         </div>
 
                     </div>
-                </div>
+                </div >
                 {/*DESCRIPTION */}
-                <div>
+                < div >
                     <div className='desc-detalle'>
                         <h3 >Descripcion:</h3>
                         <div>
@@ -157,7 +177,7 @@ function Project() {
                             <p className="text2">{project.tecnology}</p>
                         </div>
                     </div>
-                </div>
+                </div >
                 <div>
                     <Reviews
                         reviews={project.reviews}
@@ -171,12 +191,12 @@ function Project() {
                             userID={modalP.userID}
                             projectID={modalP.projectID}
                             nombre={project.name}
-                            reset = {resetEstadoModal}
+                            reset={resetEstadoModal}
                         />
                         : null
                 }
-            </div>
-        </React.Fragment>
+            </div >
+        </React.Fragment >
     )
 }
 

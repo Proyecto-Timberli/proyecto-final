@@ -5,6 +5,7 @@
 // ** Imports **
 import DisplayUserProjects from './displayUserProjects/displayUserProjects'
 import DisplayUserSettings from './displayUserSettings/displayUserSettings'
+import DisplayUserFavorites from './displayUserFavorites/displayUserFavorites';
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 // ** Funciones **
@@ -72,6 +73,9 @@ export function showSelectedProfileSection(selectedSection, userData) {
 
     if (selectedSection === "settings") {
         return (<DisplayUserSettings userData={userData}/>)
+    }
+    if(selectedSection === "favorites"){
+        return (<DisplayUserFavorites favorites={userData.favorites} />)
     }
 }
 
