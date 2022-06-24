@@ -10,6 +10,9 @@ router.post("/project", async (req, res, next) => {
     const {projectId,reportedBy,reportComment} = req.body;
 
     try {
+        if(!reportedBy){
+            throw new Error('Error, debe estar logeado para reportar')
+        }
         const reportExist= await Report.findOne({where: {projectId:projectId,reportedBy:reportedBy}})
         const projectToReport= await Project.findByPk(projectId)
         if(reportComment.length===0){
@@ -48,6 +51,9 @@ router.post("/project", async (req, res, next) => {
 router.post("/user", async (req, res, next) => {
     const {userId,reportedBy,reportComment} = req.body;
     try {
+        if(!reportedBy){
+            throw new Error('Error, debe estar logeado para reportar')
+        }
         const reportExist= await Report.findOne({where: {userId:userId,reportedBy:reportedBy}})
         if (!reportExist){
             const userToReport= await User.findByPk(userId)
