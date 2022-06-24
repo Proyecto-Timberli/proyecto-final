@@ -132,7 +132,7 @@ export default function Login() {
                 <div className='login-section'>
                     <h4> Or sign in with</h4>
                     <div className="login-buttons">
-                        <a href='https://www.linkedin.com/'>
+                        <a href={process.env.REACT_APP_API + '/api/auth/google'}>
                             <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
                         </a>
                         <a href={process.env.REACT_APP_API + '/api/auth/github'}>
