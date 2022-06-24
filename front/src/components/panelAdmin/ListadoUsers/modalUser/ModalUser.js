@@ -19,10 +19,10 @@ const ModalUser = ({ estado, id, reset }) => {
         <div className='modal'>
 
             <div className='modal-contenido'>
-                <h1>Cambiar Rol</h1>
+                <h1 className='titulo-modal-admin'>Cambiar Rol</h1>
 
                 <form>
-                    <select onChange={handleOnChange}>
+                    <select className='select-modal-admin' onChange={handleOnChange}>
                         <option>--- ELEGIR ROL ---</option>
                         <option value='admin'>Admin</option>
                         <option value='suspended'>Suspended</option>
@@ -33,8 +33,8 @@ const ModalUser = ({ estado, id, reset }) => {
                 </form>
 
                 <div className='project-content-buttons'>
-                    <button onClick={(e) => estado(id, valor)}>Guardar!</button>
-                    <button onClick={(e) => reset()}>Cerrar!</button>
+                    <button className='btn-modal-admin' onClick={(e) => estado(id, valor)}>GUARDAR</button>
+                    <button className='btn-modal-admin' onClick={(e) => reset()}>CERRAR</button>
                 </div>
 
 
