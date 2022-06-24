@@ -33,7 +33,7 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
-
+    console.log(userData);
     const [modalP, setmodalP] = useState({ userID: 0, })
 
     function elemToButton(elem, key) {
@@ -93,7 +93,7 @@ const User = () => {
                 title: "Configuración",
                 state: "settings"
             }
-            ,{
+            , {
                 title: "Favoritos",
                 state: "favorites"
             }

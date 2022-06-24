@@ -26,7 +26,7 @@ export function showUserNotFound() {
                 <h1>Usuario no encontrado.</h1>
             </div>
         </div>
-        )
+    )
 }
 
 function showUserDescription(userData) {
@@ -44,10 +44,10 @@ function showUserDescription(userData) {
 }
 
 function showUserStack(stack) {
-    if (stack !== "none" && stack !== null &&  stack !== "") {
+    if (stack !== "none" && stack !== null && stack !== "") {
         return (<>
             <h3>Stack de tecnologías:</h3>
-            <p className="p-stack"> {stack}</p>
+            <p className="p-stack"> {stack.map(e => <b key={e}> {e} |</b>)}</p>
         </>)
     } else {
         return (<>
@@ -66,15 +66,15 @@ export function showSelectedProfileSection(selectedSection, userData) {
             </div>
         )
     }
-    
+
     if (selectedSection === "projects") {
         return (<DisplayUserProjects projects={userData.projects} />)
     }
 
     if (selectedSection === "settings") {
-        return (<DisplayUserSettings userData={userData}/>)
+        return (<DisplayUserSettings userData={userData} />)
     }
-    if(selectedSection === "favorites"){
+    if (selectedSection === "favorites") {
         return (<DisplayUserFavorites favorites={userData.favorites} />)
     }
 }
@@ -83,7 +83,7 @@ export function showSocialMediaLink(which, userData) {
     if (which === "github" && (userData.github !== "none" && userData.github !== null && userData.github !== "")) {
         return (<a className="profile-socialMediaLink" href={userData.github}><BsGithub /></a>)
     }
-    if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null && userData.linkedin !== "" )) {
+    if (which === "linkedIn" && (userData.linkedin !== "none" && userData.linkedin !== null && userData.linkedin !== "")) {
         return (<a className="profile-socialMediaLink" href={userData.linkedin}><BsLinkedin /></a>)
     }
     return null

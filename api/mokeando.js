@@ -208,7 +208,6 @@ const mokeando = async () => {
       name: "Joaquin",
       mail: "joaquinelmejor@mail.com",
       password: "password",
-      image: "",
       description: "Soy estudiante de programacion en la universidad de tucuman, y tambien hago el bootcamp de soyHenry",
       linkedin: "https://www.linkedin.com/feed/",
       github: "https://github.com/",
@@ -219,7 +218,6 @@ const mokeando = async () => {
       name: "Carlos",
       mail: "carlos_78@mail.com",
       password: "password",
-      image: "",
       description: "Hace 2 años me recibí de ingeniero quimico y al entrar a trabajar no me gustó para nada, vi que habia un bootcamp de programación y entré para probar suerte y acá estoy, trabajando para una empresa de USA",
       linkedin: "https://www.linkedin.com/feed/",
       github: "https://github.com/",
@@ -935,11 +933,11 @@ const mokeando = async () => {
   users.map(e => {
     e.stack = []
     for (let i = 0; i < 10; i++) {
-      if (numeroRandom(1, 3) === 1) {
+      if (numeroRandom(1, 3) == 1) {
         let tecnologia = tecnologias[numeroRandom(0, (tecnologias.length - 1))]
-        if (e.stack.some(e => e.name !== tecnologia.name)) {
-          e.stack.push(tecnologia)
-        }
+
+        e.stack.push(tecnologia.name)
+
       }
     }
   })
