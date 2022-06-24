@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './modalReporte.css'
 
-const ModalReport = ({ estado, idA, userID, projectID, nombre }) => {
+
+const ModalUserReport = ({ estado, idA, userID ,reporterID,  nombre }) => {
 
     const[error, setError] = useState(0)
 
@@ -13,7 +13,7 @@ const ModalReport = ({ estado, idA, userID, projectID, nombre }) => {
 
    const validar = () => {
     if(comentario.length>0){
-        estado(projectID,userID,comentario)
+        estado(userID,reporterID,comentario)
 
     }else{
         setError(1)
@@ -24,7 +24,7 @@ const ModalReport = ({ estado, idA, userID, projectID, nombre }) => {
         <div key={idA} className='modal'>
 
             <div className='modal-contenido'>
-                <h1>Reportar proyecto  "{nombre}"</h1>
+                <h1>Reportar usuario  "{nombre}"</h1>
                 
                 <div>
                     <form className='form-reporte'>
@@ -54,4 +54,4 @@ const ModalReport = ({ estado, idA, userID, projectID, nombre }) => {
     );
 }
 
-export default ModalReport;
+export default ModalUserReport;

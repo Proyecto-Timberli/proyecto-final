@@ -25,14 +25,24 @@ router.get("/", async (req, res, next) => {
 
 
 router.post("/", async (req, res, next) => {
-    const { projectid, input } = req.body
+    const { projectid, input, userId } = req.body
     const { scoreStyle, scoreFunctionality, scoreOriginality, text } = input
-    console.log(text);
     try {
-        console.log(scoreFunctionality);
+
+        let validacion = await Review.findOne({
+            where: {
+                userId: userId,
+                projectId: projectid
+            }
+        })
+        console.log(validacion);
+        if (validacion !== null) {
+            return res.send("Ya puntuaste este Project")
+        }
         const newReview = await Review.create({ scoreStyle, scoreFunctionality, scoreOriginality, text })
-        let user = await User.findByPk(1)
         let project = await Project.findByPk(projectid)
+
+        let user = await User.findByPk(userId)
         await user.addReviews(newReview)
         await project.addReviews(newReview)
         project.set({
@@ -54,7 +64,6 @@ router.post("/", async (req, res, next) => {
         res.send(newReview)
 
     } catch (error) {
-        // console.log(error);
         next(error)
     }
 })

@@ -1,22 +1,26 @@
 .community-card {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 20px;
-    background-color: #012A4A;
+
     overflow: hidden;
-    border: solid black 2px;
+
     margin: 5px 0 5px 0;
-    height: 40vh;
-    width: 15vw;
+    /* height: 40vh; */
+    width: 70vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     transition: .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-shadow: 1px 1px 2px black;
-    box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 1) inset;
-    -webkit-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 1) inset;
-    -moz-box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 1) inset;
+
+}
+
+.div-user-comunity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .community-card:hover {
