@@ -1,7 +1,10 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { sendCheckoutForm } from "../../../functions";
 import { useDispatch } from "react-redux";
 import { listPayments } from "../../../redux/actions/actionCreators.js"
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+
 
 export default function CheckoutForm() {
     const stripe = useStripe();

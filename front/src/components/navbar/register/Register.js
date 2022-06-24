@@ -62,7 +62,6 @@ function Register() {
             setFormErrors(errors)
         }
     }
-
     //scroll()
     return (
         <div>
