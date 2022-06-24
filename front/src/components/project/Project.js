@@ -20,8 +20,10 @@ function Project() {
     let dispatch = useDispatch()
     let listUserFavorites = useSelector((state) => state.listFavorites)
     let userId = window.localStorage.getItem('userid')
-    let token= window.localStorage.getItem('usertoken')
+    let token = window.localStorage.getItem('usertoken')
     let project = useSelector((state) => state.projectById)
+    let reportBy = useSelector((state) => state.loggedUserId)
+
     useEffect(() => {
         dispatch(getProjectById(id))
         scroll()
@@ -66,11 +68,11 @@ function Project() {
 
     function cambiarEstadoModalReport(userID, projectID) {
         setmodalP({
-
             userID: userID,
             projectID: projectID
         })
     }
+
     function resetEstadoModal() {
         setmodalP({
             id: 0,
@@ -78,6 +80,13 @@ function Project() {
             projectID: 0,
         })
     }
+
+    function enviarReporte(proyectId, userId, comentario) {
+
+        dispatch(postReportProject(proyectId, userId, comentario))
+        resetEstadoModal()
+    }
+
     if (!Object.keys(project).length) {
         if (loading) {
             setTimeout(() => { setLoading(false) }, 5000)
@@ -86,8 +95,6 @@ function Project() {
         return <Page404 />
 
     }
-
-
 
     return (
 
@@ -102,14 +109,14 @@ function Project() {
 
 
                             <div className='info-detalle' >{project.scoreStyle.length > 0 && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
-                        </div>
+                        </div >
                         <div >
                             <h3>Usuario:</h3>
                             <Link to={"/user/" + project.userId} >
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
                         </div>
-                    </div>
+                    </div >
 
                     <div className='cont-img-detalle'>
                         {cardsInPag.renderCards.map(image => (!!image) &&
@@ -130,12 +137,12 @@ function Project() {
 
                                     {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
                                         <>
-                                            <span className='tooltip'>{token?"Agregar a Favoritos":"logeate para agregar a favoritos"}</span>
+                                            <span className='tooltip'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
                                             <button className='boton-accion-detalleProject' onClick={addFavorites(userId, project.id)}> <MdFavorite /></button>
                                         </> :
                                         <>
                                             <span className='tooltip'>Borrar de Favoritos</span>
-                                            <button className='boton-accion-detalleProject' onClick={()=>deleteFavorite({userId, projectId:project.id})}> <MdFavorite /></button>
+                                            <button className='boton-accion-detalleProject' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
                                         </>
                                     }
                                 </li>
@@ -157,9 +164,9 @@ function Project() {
                         </div>
 
                     </div>
-                </div>
+                </div >
                 {/*DESCRIPTION */}
-                <div>
+                < div >
                     <div className='desc-detalle'>
                         <h3 >Descripcion:</h3>
                         <div>
@@ -170,24 +177,26 @@ function Project() {
                             <p className="text2">{project.tecnology}</p>
                         </div>
                     </div>
-                </div>
+                </div >
                 <div>
                     <Reviews
+                        reviews={project.reviews}
                         projectid={project.id} />
                 </div>
                 {
                     !!modalP && modalP.projectID !== 0 ?
                         <ModalReport
                             key={modalP.projectID}
-                            estado={resetEstadoModal}
+                            estado={enviarReporte}
                             userID={modalP.userID}
                             projectID={modalP.projectID}
                             nombre={project.name}
+                            reset={resetEstadoModal}
                         />
                         : null
                 }
-            </div>
-        </React.Fragment>
+            </div >
+        </React.Fragment >
     )
 }
 

@@ -20,6 +20,7 @@ router.get('/', async (req, res, next) => {
 
 
         });
+
         return res.send(allUsers)
     } catch (error) {
         console.log(error);
@@ -143,18 +144,18 @@ router.get("/favorites/:userId", async (req, res, next) => {
 router.put("/favorites", async (req, res, next) => {
     try {
         const { userId, projectId } = req.body;
-            
-            
-            let project = await Project.findByPk(projectId)
-            let favorite= await Favorites.findOne({where:{userId,project_id:projectId}})
-           if(favorite){
+
+
+        let project = await Project.findByPk(projectId)
+        let favorite = await Favorites.findOne({ where: { userId, project_id: projectId } })
+        if (favorite) {
             favorite.destroy()
             // favorite.filter(p => p.projects[0].id !== projectId)
             favorite.save()
             return res.send(`El proyecto ${project.name} se elimino de favoritos`)
-            
-           }
-           res.status(401).send("no existe ese favorito")
+
+        }
+        res.status(401).send("no existe ese favorito")
 
     } catch (err) {
         next(err)
@@ -170,7 +171,7 @@ router.post("/favorites", async (req, res, next) => {
                 include: [{ model: User }]
             })
             if (user && project) {
-                const newFavorite = await Favorites.create({ project,project_id:project.id })
+                const newFavorite = await Favorites.create({ project, project_id: project.id })
                 await newFavorite.addProjects(project)
                 await user.addFavorites(newFavorite)
             }

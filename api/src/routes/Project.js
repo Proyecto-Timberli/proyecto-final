@@ -1,11 +1,9 @@
 const { Router } = require('express');
 const router = Router();
 const axios = require('axios');
-const { Project, User, Report } = require('../db.js');
+const { Project, User, Report, Review } = require('../db.js');
 const { Op, where } = require('sequelize');
 const { verifyToken } = require('../middlewares/authjwt')
-
-
 
 
 router.get("/", async (req, res, next) => {
@@ -24,7 +22,7 @@ router.get("/id/:idProject", async (req, res, next) => {
   try {
     if (idProject) {
       {
-        const projectDetail = await Project.findByPk(idProject, { include: [{ model: User }, { model: Review }] })
+        const projectDetail = await Project.findByPk(idProject, { include: [{ model: User }, { model: Review, include: User }] })
         if (projectDetail) {
           return res.send(projectDetail)
         }

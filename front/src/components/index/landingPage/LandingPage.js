@@ -7,6 +7,7 @@ import boxOneImage from './images/landingProjects.png';
 import boxTwoImage from './images/landingCommunity.png';
 import boxThreeImage from './images/landingAbout.png';
 import { scroll } from "../../../functions";
+import Chatbot from "../chatBot/ChatBot";
 
 
 export default function LandingPage() {
@@ -40,9 +41,10 @@ export default function LandingPage() {
                 <div className="landingImage">
                     <img src={imageLanding} className='imageL' alt='aca va la imagen' />
                 </div>
-
             </div>
-
+            <div className="chatbot-landing">
+                <Chatbot/>
+            </div>
 
             <div className="landingBody">
                 <div className='intro'>

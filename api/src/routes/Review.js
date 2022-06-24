@@ -25,21 +25,34 @@ router.get("/", async (req, res, next) => {
 
 
 router.post("/", async (req, res, next) => {
-    const { userid, projectId, scoreStyle, scoreFunctionality, scoreOriginality, text } = req.body
+    const { projectid, input, userId } = req.body
+    const { scoreStyle, scoreFunctionality, scoreOriginality, text } = input
     try {
+
+        let validacion = await Review.findOne({
+            where: {
+                userId: userId,
+                projectId: projectid
+            }
+        })
+        console.log(validacion);
+        if (validacion !== null) {
+            return res.send("Ya puntuaste este Project")
+        }
         const newReview = await Review.create({ scoreStyle, scoreFunctionality, scoreOriginality, text })
-        let user = await User.findByPk(userid)
-        let project = await Project.findByPk(projectId)
-        await user.addReview(newReview)
-        await project.addReview(newReview)
+        let project = await Project.findByPk(projectid)
+
+        let user = await User.findByPk(userId)
+        await user.addReviews(newReview)
+        await project.addReviews(newReview)
         project.set({
-            scoreFunctionality: [[...project.scoreFunctionality], [scoreFunctionality]],
-            scoreStyle: [[...project.scoreStyle], [scoreFunctionality]],
-            scoreOriginality: [[...project.scoreOriginality], [scoreOriginality]],
+            scoreFunctionality: [...project.scoreFunctionality].concat(scoreFunctionality),
+            scoreStyle: [...project.scoreStyle].concat(scoreFunctionality),
+            scoreOriginality: [...project.scoreOriginality].concat(scoreOriginality),
         })
 
         // project.save()
-        console.log("hola");
+
         project.set({
             scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
                 (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length) +
@@ -51,8 +64,7 @@ router.post("/", async (req, res, next) => {
         res.send(newReview)
 
     } catch (error) {
-
-        res.send(error)
+        next(error)
     }
 })
 

@@ -1,12 +1,14 @@
 .community-cont {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-content: space-around;
     align-items: center;
     justify-content: space-around;
     min-width: 70vw;
     min-height: 55vh;
 }
+
+
 
 .cont-filtro-community {
     display: flex;
@@ -18,8 +20,11 @@
     font-size: large;
     background-color: #012A4A;
     width: 38vh;
-    height: 6vh;
+    height: 12vh;
     border-radius: 20px;
+    position: fixed;
+    right: 0;
+    top: 20rem;
 }
 
 .select-community {
@@ -56,4 +61,6 @@
     flex-direction: row;
     align-content: center;
     align-items: center;
+    margin-right: 38vh;
+    ;
 }

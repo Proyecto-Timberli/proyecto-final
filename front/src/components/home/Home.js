@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Card from "./card/Card.js"
+import Card from "../componentesGenerales/card/Card.js"
 import "../home/home.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
