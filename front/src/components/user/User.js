@@ -63,6 +63,10 @@ const User = () => {
                 title: "Configuración",
                 state: "settings"
             }
+            ,{
+                title: "Favoritos",
+                state: "favorites"
+            }
         ]
 
         if (userData.id === Number.parseInt(localStorage.getItem("userid"))) {

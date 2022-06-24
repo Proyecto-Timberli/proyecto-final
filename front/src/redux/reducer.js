@@ -16,6 +16,7 @@ import {
     GET_CONTRUBUTION,
     LIST_PAYMENTS,
     GET_REVIEWS,
+    GET_LIST_FAVORITES,
 } from "./actions/actions.js";
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
     allUsers: [],
     contributions: [],
     reviews: [],
+    listFavorites: [],
     reportsProjects: [],
     reportsUsers: [],
 
@@ -109,6 +111,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 reviews: action.payload
+            }
+        }
+        case GET_LIST_FAVORITES:{
+            return {
+                ...state,
+                listFavorites: action.payload
             }
         }
 

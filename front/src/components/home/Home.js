@@ -8,7 +8,7 @@ import Paginado from './Paginado'
 import Orders from './Orders.js';
 import { technologies } from './technologies.js'
 import { scroll } from "../../functions";
-
+import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
     scroll()
     //////////////////////////////////////////////////////////////////////////////
@@ -16,6 +16,9 @@ const Home = () => {
     let allProjects = useSelector((state) => state.allProject)
     useEffect(() => {
         dispatch(getAllProjects());
+        if (window.localStorage.getItem("usertoken")) {
+            dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //////////////////////////////////////////////////////////////////////////////
@@ -61,6 +64,7 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.loggedUserId)
+    //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     return (

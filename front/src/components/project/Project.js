@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectById,postReportProject,postReportUser} from '../../redux/actions/actionCreators'
+import { deleteFavorite, getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
@@ -10,12 +10,17 @@ import { scroll } from "../../functions";
 import Reviews from './reviews/reviews';
 import ModalReport from './modalReport/ModalReport.js'
 import { MdFavorite, MdError } from "react-icons/md";
+import { addFavorites } from '../../redux/actions/actionCreators';
+
 
 function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
     const { id } = useParams();
     let dispatch = useDispatch()
+    let listUserFavorites = useSelector((state) => state.listFavorites)
+    let userId = window.localStorage.getItem('userid')
+    let token= window.localStorage.getItem('usertoken')
     let project = useSelector((state) => state.projectById)
     useEffect(() => {
         dispatch(getProjectById(id))
@@ -28,7 +33,7 @@ function Project() {
         renderCards: [],
         pag: 1,
     });
-    
+
 
     const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
     const accionarPaginado = (selectPag, selectFilter) => {
@@ -47,8 +52,8 @@ function Project() {
     /////////////////////Report///////////////////////////////////////////////////////////////////
     // postReportProject(jectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
     // postReportUser({userId:2,reportedBy:1,reportComment:"realizo comentario racistas"})
-   
-  
+
+
     ////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,9 +64,9 @@ function Project() {
         projectID: 0,
     })
 
-    function cambiarEstadoModalReport( userID, projectID) {
+    function cambiarEstadoModalReport(userID, projectID) {
         setmodalP({
-            
+
             userID: userID,
             projectID: projectID
         })
@@ -96,7 +101,7 @@ function Project() {
                             <h3>Puntuacion:</h3>
 
 
-                            <div className='info-detalle' >{project.scoreStyle && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
+                            <div className='info-detalle' >{project.scoreStyle.length > 0 && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div>
                         <div >
                             <h3>Usuario:</h3>
@@ -120,9 +125,24 @@ function Project() {
                     </div>
                     <div className='cont-info'>
                         <div className='cont-botones-acciones'>
+                            <ul className='wrapper'>
+                                <li className='icon facebook'>
 
-                            <button className='boton-accion-detalleProject'> <MdFavorite /></button>
-                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( project.userId, project.id)}/></button>
+                                    {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
+                                        <>
+                                            <span className='tooltip'>{token?"Agregar a Favoritos":"logeate para agregar a favoritos"}</span>
+                                            <button className='boton-accion-detalleProject' onClick={addFavorites(userId, project.id)}> <MdFavorite /></button>
+                                        </> :
+                                        <>
+                                            <span className='tooltip'>Borrar de Favoritos</span>
+                                            <button className='boton-accion-detalleProject' onClick={()=>deleteFavorite({userId, projectId:project.id})}> <MdFavorite /></button>
+                                        </>
+                                    }
+                                </li>
+                            </ul>
+
+
+                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(project.userId, project.id)} /></button>
 
                         </div>
                         <div >

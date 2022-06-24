@@ -3,6 +3,7 @@ import './miniCard.css'
 import { Link } from 'react-router-dom';
 
 function MiniCard({ id, name, description, imagen }) {
+
     return (
         <div className="miniCard" >
             {/* <div className="miniCard">
