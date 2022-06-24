@@ -24,13 +24,84 @@
     border-radius: 20px;
 }
 
-.card-info-home {
-    color: white;
-    transition: 0.5s;
-    padding: 2%;
-    color: white;
+.card-div-user {
+    display: flex;
+    height: 100%;
+    width: 55%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 }
 
+.card-div-info {
+    display: flex;
+    height: 100%;
+    width: 40%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.corazon-card {
+    position: relative;
+    top: auto;
+    bottom: 9rem;
+    right: 1.5rem;
+    transition: all .5s;
+}
+
+.corazon {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    font-size: 2rem;
+    color: red;
+    transition: all .5s;
+
+}
+
+.corazon-card svg {
+    transition: all .2s;
+
+    position: relative;
+    box-sizing: border-box;
+}
+
+.corazon-card:hover svg {
+    position: relative;
+    background-color: wheat;
+    border-radius: 100px;
+}
+
+.corazon-card:active svg {
+    color: rgb(114, 0, 0);
+}
+
+.tooltipCard {
+    transition: all .3s;
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0);
+    text-align: center;
+    padding: 0px 0;
+    border-radius: 6px;
+
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.corazon-card:hover .tooltipCard {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+
+    visibility: visible;
+
+}
 
 /*Text*/
 .text-title-card {
@@ -54,7 +125,9 @@
 
 .title-card {
     text-decoration: none;
+    display: flex;
 }
+
 
 .text-body-card {
     font-size: 0.9rem;
@@ -79,36 +152,29 @@
 
 /*Image*/
 .card-img {
-    width: 60%;
-    height: 100%;
-    border-radius: 20px;
-    border-top-right-radius: 380px;
     display: flex;
+    width: 52rem;
+    height: 70rem;
     align-items: center;
     justify-content: center;
-    background: #01497C;
+    flex-direction: row;
+    max-width: 100%;
+    max-height: 80%;
 }
 
 .img-project-card {
-    width: 483.594;
-    height: 260px;
+    height: 16rem;
+    width: 28rem;
     border-radius: 20px;
-    min-height: 260px;
-    max-width: 460px;
-
+    max-height: 95%;
+    max-width: 95%;
 }
 
-.card-info-home {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
-    width: 40%;
-    height: 100%;
-}
 
 .username-card {
     display: flex;
+
+    margin-left: 20px;
     text-decoration: none;
     align-items: flex-start;
     justify-content: flex-end;
@@ -124,7 +190,6 @@
 .card-user {
     border: 1px solid rgba(0, 0, 0, 0.554);
     padding: 5px 10px 5px 10px;
-    margin: 20px 10px 0px 10px;
     border-radius: 12px;
     width: fit-content;
     background-color: rgba(255, 255, 255, 0.855);
@@ -133,20 +198,6 @@
     font-weight: bolder;
     transition: 0.4s;
 }
-
-.cont-scores {
-    display: flex;
-    justify-content: center;
-}
-
-.cont-scores div {
-    background-color: rgb(1 7 124 / 30%);
-    width: 18vw;
-    height: 12vh;
-    border-radius: 60px;
-
-}
-
 
 .text-score-card {
     padding-bottom: 0;

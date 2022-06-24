@@ -2,17 +2,18 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    sequelize.define('comment', {
+    sequelize.define('favorites', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
-
         },
-        text: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
+        project_id:{
+            type: DataTypes.INTEGER,
+        }
+        
+    },{
+        timestamps: false,
     });
 };

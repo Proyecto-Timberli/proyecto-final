@@ -1,12 +1,13 @@
 const axios = require('axios');
 const { Router } = require('express');
-const { Project, User, Contributions } = require('../db.js');
+const { Project, User, Report, Favorites } = require('../db.js');
 //const { Op, useInflection } = require('sequelize');
 //const { Recipe, API_KEY, Diet } = require("../db")
 const Stripe = require("stripe")
 const router = Router();
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
-const { verifyToken } = require('../middlewares/authjwt')
+const { verifyToken } = require('../middlewares/authjwt');
+
 
 
 const stripe = new Stripe(STRIPE_SECRET_KEY)
@@ -14,8 +15,12 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 router.get('/', async (req, res, next) => {
     try {
         const allUsers = await User.findAll({
-            include: Project
+            include: [{ model: Report }, { model: Project }],
+
+
+
         });
+
         return res.send(allUsers)
     } catch (error) {
         console.log(error);
@@ -33,7 +38,7 @@ router.get("/id/:idUser", async (req, res, next) => {
 
     try {
         const user = await User.findByPk(idUser, {
-            include: Project
+            include: [{ model: Project }, { model: Favorites, include: [{ model: Project }] }]
         })
 
         if (!user) {
@@ -53,7 +58,7 @@ router.get("/id/:idUser", async (req, res, next) => {
 
 
 
-router.put("/", [ verifyToken ], async (req, res, next) => {
+router.put("/", [verifyToken], async (req, res, next) => {
     const { userId, userEdit } = req.body;
 
     // Verificar que usuario X no pueda modificar datos de usuario Y
@@ -79,7 +84,7 @@ router.put("/", [ verifyToken ], async (req, res, next) => {
             })
         }
     }
-    
+
     // actualizar cambios
     try {
         if (userId && userEdit) {
@@ -117,4 +122,66 @@ router.delete("/", async (req, res, next) => {
 
 })
 
+
+router.get("/favorites/:userId", async (req, res, next) => {
+    try {
+        const { userId } = req.params;
+
+        if (userId) {
+            const userFavorites = await User.findByPk(userId, { include: [{ model: Favorites, include: [{ model: Project }] }] })
+            if (!userFavorites) {
+                res.sendStatus(404)
+            }
+            res.send(userFavorites.favorites)
+        }
+
+
+    } catch (err) { next(err) }
+
+
+
+})
+router.put("/favorites", async (req, res, next) => {
+    try {
+        const { userId, projectId } = req.body;
+
+
+        let project = await Project.findByPk(projectId)
+        let favorite = await Favorites.findOne({ where: { userId, project_id: projectId } })
+        if (favorite) {
+            favorite.destroy()
+            // favorite.filter(p => p.projects[0].id !== projectId)
+            favorite.save()
+            return res.send(`El proyecto ${project.name} se elimino de favoritos`)
+
+        }
+        res.status(401).send("no existe ese favorito")
+
+    } catch (err) {
+        next(err)
+    }
+})
+
+router.post("/favorites", async (req, res, next) => {
+    try {
+        const { userId, projectId } = req.body;
+        if (userId && projectId) {
+            const user = await User.findByPk(userId)
+            const project = await Project.findByPk(projectId, {
+                include: [{ model: User }]
+            })
+            if (user && project) {
+                const newFavorite = await Favorites.create({ project, project_id: project.id })
+                await newFavorite.addProjects(project)
+                await user.addFavorites(newFavorite)
+            }
+            res.send("El proyecto " + project.name + " se agrego a favoritos")
+
+
+        }
+
+    } catch (err) {
+        next(err);
+    }
+})
 module.exports = router;

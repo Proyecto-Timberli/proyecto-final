@@ -5,6 +5,9 @@ import validate from './validacion'
 import postProject from './functionForPost/PostProject'
 import imagen from "./images/plataforma.png"
 import { scroll } from "../../../functions";
+import ModalTechnologies from "./modalTechnologies.js"
+import { BiUpload  } from "react-icons/bi";
+import { AiOutlineSelect } from "react-icons/ai";
 
 export default function NewProject() {
     scroll()
@@ -54,7 +57,7 @@ export default function NewProject() {
         const NewProject = {
             name: values.name,
             imagen: Imagen,
-            tecnology: [],
+            tecnology: techs,
             description: values.descripcion,
             shortDescripcion: values.shortDescripcion,
             repository: values.repositorio || "",
@@ -68,6 +71,8 @@ export default function NewProject() {
         resetForm()
         setImagen([]);
     }
+    const [techs,setTechs]=useState([])
+    const [desplegarTechs,setDesplegarTechs] = useState(false)
     return (<>
         {!token ? <div className={styles.containerAllDiv}>
             <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
@@ -125,19 +130,24 @@ export default function NewProject() {
                                         {/* {touched.descripcion && errors.descripcion && <p className={styles.error}>{errors.descripcion}</p>} */}
                                     </div>
                                     <div className={styles.form}>
-                                        <input
-                                            placeholder='Tecnologias utilizadas'
-                                            name="tecnologias"
-                                            value={values.tecnologias}
-                                            className={styles.input}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}>
-                                        </input>
+                                        <div
+                                            className={styles.files}
+                                            onClick={()=>setDesplegarTechs(true)}><AiOutlineSelect/>Tecnologias utilizadas
+                                        </div>
                                         <span className={styles.input_border}></span>
                                     </div>
                                     <div className={styles.errorcontainer}>
                                         {touched.tecnologias && errors.tecnologias && <p className={styles.error}>{errors.tecnologias}</p>}
                                     </div>
+                                    {desplegarTechs&&
+                                        <div>
+                                            <ModalTechnologies
+                                                techs={techs}
+                                                funcionSet={setTechs}
+                                                desplegar={setDesplegarTechs}
+                                            />
+                                        </div>
+                                    }
                                     <div className={styles.form}>
                                         <input
                                             placeholder='URL del repositorio'
@@ -194,7 +204,7 @@ export default function NewProject() {
                                     <aside id="modal" className={styles.files}>
                                         <div className={styles.cargarimagen}>
                                             <label htmlFor="input_images">
-                                                Cargar imagenes
+                                            <BiUpload/>  Cargar imagenes
                                                 <input hidden accept='image/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
                                             </label>
                                         </div>
@@ -248,6 +258,7 @@ export default function NewProject() {
                                     ) : <div className={styles.divImage}>
                                         You currently have no photos added
                                     </div>}
+                                   
 
                                     {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
                                     <button

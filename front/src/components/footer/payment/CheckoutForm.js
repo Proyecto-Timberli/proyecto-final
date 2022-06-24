@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { listPayments } from "../../../redux/actions/actionCreators.js"
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
+
 export default function CheckoutForm() {
     const stripe = useStripe();
     const elements = useElements();
@@ -25,7 +26,7 @@ export default function CheckoutForm() {
         setCompraConcretada("")
         setCargando(true)
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
         })

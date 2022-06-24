@@ -51,8 +51,8 @@ function ListadoProjects() {
     return (
         <div>
             <div className='arriba-contenedor-project'>
-                <MdWork className='icono-title-project' />
-                <h1>Listado de Proyectos</h1>
+                <MdWork className='icono-title-project'/>
+                <h1>PROYECTOS</h1>
             </div>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
@@ -77,15 +77,14 @@ function ListadoProjects() {
                     }
                 </div>
             }
-            <div>
+            <div className="container-paginado">
                 {paginado.buttons().map(button =>
-                    <div className="container-paginado" key={button}>
+                    <div key={button}>
                         {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
                         {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
                     </div>
                 )}
             </div>
-
 
         </div>
     )

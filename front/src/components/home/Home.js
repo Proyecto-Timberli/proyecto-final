@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Card from "./card/Card.js"
+import Card from "../componentesGenerales/card/Card.js"
 import "../home/home.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import Paginado from './Paginado'
 import Orders from './Orders.js';
 import { technologies } from './technologies.js'
 import { scroll } from "../../functions";
-
+import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
     scroll()
     //////////////////////////////////////////////////////////////////////////////
@@ -16,6 +16,9 @@ const Home = () => {
     let allProjects = useSelector((state) => state.allProject)
     useEffect(() => {
         dispatch(getAllProjects());
+        if (window.localStorage.getItem("usertoken")) {
+            dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //////////////////////////////////////////////////////////////////////////////
@@ -63,6 +66,7 @@ const Home = () => {
     let logger = useSelector((state) => state.loggedUserId)
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
             <div>
@@ -103,9 +107,9 @@ const Home = () => {
                 }
                 {/* Espacio */}
                 <br></br>
-                <div>
+                <div className="container-paginado" >
                     {paginado.buttons().map(button =>
-                        <div className="container-paginado" key={button}>
+                        <div key={button}>
                             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
                             {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
                         </div>
