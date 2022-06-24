@@ -217,7 +217,6 @@ export function getReviews() {
 }
 
 /////////////////////REPORT/////////////////////////////
-<<<<<<< HEAD
 export function getReportsProjects(projectId) {
     return function (dispatch) {
         axios.get(REACT_APP_API + `/api/report/project`, { projectId: projectId })
@@ -246,12 +245,6 @@ export function getReportsUsers(userId) {
 export function postReportUser({ userId, reportedBy, reportComment }) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/user`, { userId: userId, reportedBy: reportedBy, reportComment: reportComment })
-=======
-
-export function postReportUser(userId,reportedBy,reportComment) {
-    return function (dispatch) {
-        axios.post(REACT_APP_API + `/api/report/user`,{userId,reportedBy,reportComment})
->>>>>>> dev-general
             .then(res => {
                 dispatch({
                     type: POST_REPORT_USER,

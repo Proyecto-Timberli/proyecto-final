@@ -33,12 +33,13 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
 
 
                 <Link to={"/project/" + id} className="title-card">
-                    <p className="text-title-card">{name}</p> <b> {"<3"}</b>
+                    <p className="text-title-card">{name}</p>
                 </Link>
                 <p className="text-body-card">{description}</p>
                 <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
                 <button className='card-button-home'>Ver mas</button>
             </div>
+            <b className='corazon-card'> {"<3"}</b>
 
         </div>
     )

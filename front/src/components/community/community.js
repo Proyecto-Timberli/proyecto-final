@@ -11,6 +11,20 @@ const Community = () => {
     let arrayAmostrar = [...allUsers]
     const [orden, setOrden] = useState("fecha")
 
+
+    const [filterBySearch, setFilterBySearch] = useState("")
+
+    let filtro = allUsers.filter(user => user.name && user.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+    const filtroBusqueda = function (e) {
+        setFilterBySearch(e.target.value);
+    }
+    arrayAmostrar = [...allUsers]
+    if (filterBySearch !== "") {
+        arrayAmostrar = filtro
+    }
+    ///
+
+
     function handleChange(e) {
         e.preventDefault()
         setOrden(e.target.value)
@@ -26,9 +40,13 @@ const Community = () => {
 
     return (
         <Fragment>
-            <div className='cont-filtro-community'>Filtra por:
+            <div className='cont-filtro-community'>
+                Busca Por Nombre
+                <input type="search" placeholder="Buscar un usuario..." name="search" onChange={(e) => filtroBusqueda(e)} value={filterBySearch} />
+
+                Ordenar por:
                 <select className='select-community' onChange={e => handleChange(e)}>
-                    <option value="fecha">Orden de registro</option>
+                    <option value="fecha">Nro.Registro</option>
                     <option value="nombre">Nombre</option>
                     <option value="proyectos">Cant.Proyectos</option>
 
