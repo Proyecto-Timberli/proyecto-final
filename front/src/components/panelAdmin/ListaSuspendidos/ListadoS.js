@@ -74,7 +74,7 @@ function ListadoS() {
         <div>
             <div className='arriba-contenedor-suspendidos'>
                 <MdPersonOff className='icono-title-suspendidos' />
-                <h1>Listado de Usuarios Suspendidos</h1>
+                <h1>USUARIOS SUSPENDIDOS</h1>
             </div>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
@@ -102,7 +102,7 @@ function ListadoS() {
                                 {
                                     desplegar === u.id ?
                                         <div className='user-desplegable-admin'>
-                                            <div className='button-desplegable'><button onClick={(e) => cambiarEstadoModal(u.id)}>CAMBIAR ESTADO DE CUENTA</button></div>
+                                            <div><button className='button-desplegable' onClick={(e) => cambiarEstadoModal(u.id)}>CAMBIAR ESTADO DE CUENTA</button></div>
                                         </div>
                                         : null
                                 }
@@ -121,9 +121,9 @@ function ListadoS() {
                     />
                     : null
             }
-            <div>
+            <div className="container-paginado">
                 {paginado.buttons().map(button =>
-                    <div className="container-paginado" key={button}>
+                    <div  key={button}>
                         {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
                         {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
                     </div>
