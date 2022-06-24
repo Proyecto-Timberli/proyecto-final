@@ -27,7 +27,6 @@ export const technologies = [
     { name: ".NET" },
     { name: "Django" },
     { name: "MongoDb" },
-    { name: "ExpressJs" },
     { name: "Sequelize" },
     { name: "Vue" },
     { name: "Angular" },
