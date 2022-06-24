@@ -17,6 +17,7 @@ function Project() {
     const { id } = useParams();
     let dispatch = useDispatch()
     let project = useSelector((state) => state.projectById)
+    let reportBy = useSelector((state) => state.loggedUserId)
 
     useEffect(() => {
         dispatch(getProjectById(id))
@@ -62,11 +63,11 @@ function Project() {
 
     function cambiarEstadoModalReport(userID, projectID) {
         setmodalP({
-
             userID: userID,
             projectID: projectID
         })
     }
+
     function resetEstadoModal() {
         setmodalP({
             id: 0,
@@ -74,6 +75,13 @@ function Project() {
             projectID: 0,
         })
     }
+
+    function enviarReporte(proyectId, userId,  comentario) {
+
+        dispatch(postReportProject(proyectId,userId, comentario))
+        resetEstadoModal()
+    }
+
     if (!Object.keys(project).length) {
         if (loading) {
             setTimeout(() => { setLoading(false) }, 5000)
@@ -121,7 +129,7 @@ function Project() {
                         <div className='cont-botones-acciones'>
 
                             <button className='boton-accion-detalleProject'> <MdFavorite /></button>
-                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(project.userId, project.id)} /></button>
+                            <button className='boton-accion-detalleProject' ><MdError  onClick={(e) => cambiarEstadoModalReport( reportBy, project.id)}/></button>
 
                         </div>
                         <div >
@@ -159,10 +167,11 @@ function Project() {
                     !!modalP && modalP.projectID !== 0 ?
                         <ModalReport
                             key={modalP.projectID}
-                            estado={resetEstadoModal}
+                            estado={enviarReporte}
                             userID={modalP.userID}
                             projectID={modalP.projectID}
                             nombre={project.name}
+                            reset = {resetEstadoModal}
                         />
                         : null
                 }

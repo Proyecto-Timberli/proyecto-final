@@ -1,18 +1,63 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { MdError, MdKeyboardArrowDown } from "react-icons/md";
-import {Link} from 'react-router-dom'
-import { getReportsUsers, getReportsProjects } from '../../../redux/actions/actionCreators.js'
-
+import { Link } from 'react-router-dom'
+import { getAllProjects, getAllUsers } from '../../../redux/actions/actionCreators.js'
+import Project from '../../project/Project.js';
+import Paginado from '../../home/Paginado.js'
+import './reportes.css'
 function Reportes() {
   let dispatch = useDispatch()
-  let userReports = useSelector((state) => state.reportsUsers)
-  let projectReports = useSelector((state) => state.reportsProjects)
+
+  let allProjects = useSelector((state) => state.allProject)
+  let projectsFilter = allProjects.filter(
+    project => project.reports.length === 0 ? null : project.reports)
+
+  let allUsers = useSelector((state) => state.allUsers)
+  let usersFilter = allUsers.filter(user => user.reports.length === 0 ? null : user.reports)
+
 
   useEffect(() => {
-    dispatch(getReportsUsers())
-    dispatch(getReportsProjects())
+    dispatch(getAllProjects())
+    dispatch(getAllUsers())
   }, [])
+
+  const [cardsInPag, setCardsInPag] = useState({
+    renderCards: [],
+    pag: 1,
+  });
+  const paginado = new Paginado(9, projectsFilter, cardsInPag.pag, null, "Any", 1)
+  const accionarPaginado = (selectPag, selectFilter) => {
+    setCardsInPag({
+      ...cardsInPag,
+      ...paginado.paginar(selectPag, selectFilter)
+    })
+  }
+  const [cardsInPagUsers, setCardsInPagUsers] = useState({
+    renderCards: [],
+    pag: 1,
+  });
+  const paginadoUsers = new Paginado(9, usersFilter, cardsInPagUsers.pag, null, "Any", 1)
+  const accionarPaginadoUsers = (selectPag, selectFilter) => {
+    setCardsInPagUsers({
+      ...cardsInPagUsers,
+      ...paginadoUsers.paginar(selectPag, selectFilter)
+    })
+  }
+
+  useEffect(() => {
+    if (projectsFilter.length) {
+      accionarPaginado(1)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allProjects])
+
+  useEffect(() => {
+    if (usersFilter.length) {
+      accionarPaginadoUsers(1)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allUsers])
 
   return (
     <div>
@@ -21,11 +66,66 @@ function Reportes() {
         <h1>Listado de Reportes</h1>
       </div>
       <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
+      <div className='contenedor-reportes'>
+        <div className='contenedor-reportes-proyectos'>
+          <h3>Proyectos </h3>
+          {(Object.keys(projectsFilter).length === 0)
 
-    {(Object.keys(userReports).length ===0 )&& (Object.keys(projectReports).length===0)
-  ? <div> NO HAY REPORTES </div>
-  : <div>Hay reportes</div>  
-  }
+            ? <div> NO HAY REPORTES</div>
+            : <div className='contenedor-listado-project'>
+              {
+                cardsInPag.renderCards.map(p => ((!!p) &&
+                  <div className='project-card-admin' key={p.id}>
+                    <li key={p.id}><b>{p.id}</b> -   <Link to={"/project/" + p.id}>{p.name}</Link> </li>
+                    <div>
+                      <p>{p.reports.length}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          }
+           <div>
+        {paginado.buttons().map(button =>
+          <div className="container-paginado" key={button}>
+            {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
+            {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
+          </div>
+        )}
+      </div>
+        </div>
+        <div className='contenedor-reportes-users'>
+          <h3>Usuarios </h3>
+
+          {(Object.keys(usersFilter).length === 0)
+
+            ? <div> NO HAY REPORTES</div>
+            : <div className='contenedor-listado-project'>
+              {
+                cardsInPagUsers.renderCards.map(p => ((!!p) &&
+                  <div className='project-card-admin' key={p.id}>
+                    <li key={p.id}><b>{p.id}</b> -   <Link to={"/project/" + p.id}>{p.name}</Link> </li>
+                    <div>
+                      <p>{p.reports.length}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          }
+           <div>
+        {paginado.buttons().map(button =>
+          <div className="container-paginado" key={button}>
+            {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
+            {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
+          </div>
+        )}
+      </div>
+        </div>
+      </div>
+
+
+
     </div>
   )
 }

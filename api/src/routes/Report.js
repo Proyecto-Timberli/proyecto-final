@@ -5,38 +5,33 @@ const router = Router();
 const { verifyToken } = require('../middlewares/authjwt')
 
 
-router.get('/project', async (req, res, next) => {
-    const {projectId}=req.body
-    try {
-        const allReports= await Report.findAll({where:{projectId:projectId}})
-        if(!allReports.length){
-            return res.send(undefined)
-        }
-        return res.send(allReports)
-    } catch (error) {
-        next(error);
-    }
-})
-router.get('/user', async (req, res, next) => {
-    const {userId}=req.body
-    try {
-        const allReports= await Report.findAll({where:{userId:userId}})
-        if(!allReports.length){
-            return res.send(undefined)
-        }
-        return res.send(allReports)
-    } catch (error) {
-        next(error);
-    }
-})
+// PROYECTOS //
 router.post("/project", async (req, res, next) => {
     const {projectId,reportedBy,reportComment} = req.body;
+
     try {
+        if(!reportedBy){
+            throw new Error('Error, debe estar logeado para reportar')
+        }
         const reportExist= await Report.findOne({where: {projectId:projectId,reportedBy:reportedBy}})
+        const projectToReport= await Project.findByPk(projectId)
+        if(reportComment.length===0){
+            throw new Error('Error, el comentario es obligatorio')
+        }
         if (!reportExist){
             const newReport= await Report.create({comment:reportComment,reportedBy:reportedBy})
-            const projectToReport= await Project.findByPk(projectId)
             await projectToReport.addReport(newReport)
+            const countReport= await Project.findByPk(
+                projectId,
+                {
+                include: Report
+            })
+
+            if(countReport.dataValues.reports.length ===1 ){
+                projectToReport.update({
+                    state: 'Pendiente'
+                })
+            }
             return res.send("se reporto correctamente el proyecto "+projectToReport.name)
         }else{
             return res.send("no puede reportar mas de una vez a un proyecto")
@@ -45,9 +40,20 @@ router.post("/project", async (req, res, next) => {
         next(error);
     } 
 })
+
+
+
+
+
+
+
+// USUARIOS //
 router.post("/user", async (req, res, next) => {
     const {userId,reportedBy,reportComment} = req.body;
     try {
+        if(!reportedBy){
+            throw new Error('Error, debe estar logeado para reportar')
+        }
         const reportExist= await Report.findOne({where: {userId:userId,reportedBy:reportedBy}})
         if (!reportExist){
             const userToReport= await User.findByPk(userId)
