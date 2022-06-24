@@ -951,9 +951,9 @@ const mokeando = async () => {
     let project = await Project.create(projects[j])
 
     await project.set({
-      scoreFunctionality: [[...project.scoreFunctionality].push(numeroRandom(1, 5))],
-      scoreStyle: [[...project.scoreStyle].push(numeroRandom(1, 5))],
-      scoreOriginality: [[...project.scoreOriginality].push(numeroRandom(1, 5))],
+      scoreFunctionality: [...project.scoreFunctionality].concat((numeroRandom(1, 5))),
+      scoreStyle: [...project.scoreStyle].concat((numeroRandom(1, 5))),
+      scoreOriginality: [...project.scoreOriginality].concat((numeroRandom(1, 5))),
     })
     await project.set({
       scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
