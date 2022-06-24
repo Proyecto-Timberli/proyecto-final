@@ -12,6 +12,9 @@ const Stats = () => {
     let dispatch = useDispatch()
     let proyectos = useSelector(store => store.allProject)
     let usuarios = useSelector(store => store.allUsers)
+    let contribuciones = useSelector(state => state.contributions)
+    let reviews = useSelector(state => state.reviews)
+
 
 
     useEffect(() => {
@@ -22,17 +25,26 @@ const Stats = () => {
     }, [])//eslint-disable-line react-hooks/exhaustive-deps
     return (
         <div className='cont-general-stats'>
-            <h1>Estadisticas</h1>
+            <h1>ESTADISTICAS</h1>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
             <div className='contenedor-stats'>
-                <label>Total de Usuarios: {usuarios.length} </label>
-                <br></br>
-                <label>Total de Proyectos: {proyectos.length} </label>
-                <br></br>
-                <label>Total de Comentarios: 0 </label>
-                <br></br>
-                <label>Total de Contribuciones: 0 </label>
+                <div className='stat-div'>
+                    <h2 className='stats-number'> {usuarios.length} </h2>
+                    <label className='stat-name'> USUARIOS </label>
+                </div>
+                <div className='stat-div'>
+                    <h2 className='stats-number'> {proyectos.length} </h2>
+                    <label className='stat-name'> PROYECTOS </label>
+                </div>
+                <div className='stat-div'>
+                    <h2 className='stats-number'> {reviews.length} </h2>
+                    <label className='stat-name'> REVIEWS </label>
+                </div>
+                <div className='stat-div'>
+                    <h2 className='stats-number'> {contribuciones.length} </h2>
+                    <label className='stat-name'> CONTRIBUCIONES </label>
+                </div>
 
             </div>
         </div>
