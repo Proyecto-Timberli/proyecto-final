@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
+.container-login {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Poppins', sans-serif;
+    margin: 70px 300px 70px 300px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px 10px rgb(213, 213, 213);
+    justify-content: center;
+    align-items: center;
+}
+
+.login-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-title {
+    color: #013A63;
+}
+
+.login-right {
+    padding: 20px 30px 20px 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-item {
+    padding: 15px;
+}
+
+.login-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 2px;
+    border-bottom-color: #2C7DA0;
+    width: 250px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.login-checkbox {
+    font-size: smaller;
+    cursor: pointer;
+    position: unset;
+}
+
+.login-button {
+    width: 250px;
+    padding: 10px;
+    border: none;
+    background-color: #61A5C2;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.login-button:hover {
+    border: none;
+    background-color: #2A6F97;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.login-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    cursor: pointer;
+    margin: 1em;
+}
+
+.login-register {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.login-text {
+    font-size: smaller;
+}
+
+.login-link {
+    margin-left: 5px;
+}
+
+.login-formError {
+    color: red
+}
+
+.msj-exitoso-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

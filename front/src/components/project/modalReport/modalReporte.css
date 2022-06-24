@@ -1,0 +1,36 @@
+.form-reporte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.label-reporte{
+    font-size: 1.3rem;
+}
+
+.error-modalReport{
+    color: red;
+    font-size: 1.3rem;
+    border: 1px solid black;
+
+    border-radius: 10px;
+     background-color: white;
+}
+
+.boton-cerrar-des{
+    background: #555d63;
+    -webkit-border-radius: 13;
+    -moz-border-radius: 13;
+    border-radius: 13px;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+.boton-cerrar-des:hover{
+    cursor:not-allowed;
+}

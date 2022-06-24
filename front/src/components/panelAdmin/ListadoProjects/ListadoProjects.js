@@ -35,17 +35,15 @@ function ListadoProjects() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allProjects])
 
-    async function cambiarEstado(id, state) {
+    function cambiarEstado(id, state) {
 
         if (state === 'Aceptado') {
 
-            await dispatch(adminSupendProject(id, 'Pendiente'))
+            dispatch(adminSupendProject(id, 'Pendiente'))
 
         } else if (state === 'Pendiente') {
-            await dispatch(adminSupendProject(id, 'Aceptado'))
+            dispatch(adminSupendProject(id, 'Aceptado'))
         }
-
-        await dispatch(getAllProjects());
 
     }
 
@@ -53,8 +51,8 @@ function ListadoProjects() {
     return (
         <div>
             <div className='arriba-contenedor-project'>
-                <MdWork className='icono-title-project' />
-                <h1>Listado de Proyectos</h1>
+                <MdWork className='icono-title-project'/>
+                <h1>PROYECTOS</h1>
             </div>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
@@ -63,7 +61,8 @@ function ListadoProjects() {
                     {
                         cardsInPag.renderCards.map(p => ((!!p) &&
                             <div className='project-card-admin' key={p.id}>
-                                <li key={p.id}> <Link to={"/project/" + p.id}>{p.name}</Link> </li>
+
+                                <li key={p.id}><b>{p.id}   </b>   <Link to={"/project/" + p.id}>{p.name}</Link> </li>
                                 <div className='content-project-state'>
                                     <p className='state-project'>{p.state}</p>
                                     {
@@ -78,15 +77,14 @@ function ListadoProjects() {
                     }
                 </div>
             }
-            <div>
+            <div className="container-paginado">
                 {paginado.buttons().map(button =>
-                    <div className="container-paginado" key={button}>
+                    <div key={button}>
                         {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
                         {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
                     </div>
                 )}
             </div>
-
 
         </div>
     )

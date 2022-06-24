@@ -1,6 +1,6 @@
 .community-cont {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-content: space-around;
     align-items: center;
     justify-content: space-around;
@@ -8,8 +8,11 @@
     min-height: 55vh;
 }
 
+
+
 .cont-filtro-community {
     display: flex;
+    flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: center;
@@ -18,8 +21,27 @@
     font-size: large;
     background-color: #012A4A;
     width: 38vh;
-    height: 6vh;
+    height: 16vh;
     border-radius: 20px;
+    position: fixed;
+    right: 0;
+    top: 28%;
+}
+
+.input-community {
+    outline: 0;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    transition: .5s;
+
+}
+
+.input-community::placeholder {
+    text-align: center;
+}
+
+.input-community:hover {
+    background-color: blanchedalmond;
 }
 
 .select-community {
@@ -34,7 +56,7 @@
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     position: relative;
-    transition: all 0.25s ease;
+    transition: all 0.5s ease;
 }
 
 .select-community:hover {
@@ -56,4 +78,6 @@
     flex-direction: row;
     align-content: center;
     align-items: center;
+    margin-right: 38vh;
+    ;
 }

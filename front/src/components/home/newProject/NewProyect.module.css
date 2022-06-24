@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.container {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: row;
+  border-radius: 30px;
+  background: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  width: 72%;
+  padding: 40px;
+  box-shadow: 5px 5px 20px 10px rgb(213, 213, 213);
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  width: 280px;
+  margin-top: 0;
+  position: absolute;
+  color: #e92b2d;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.exito {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 20px;
+  color: #02a802;
+}
+
+.containerAll {
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+}
+
+.containerAllDiv {
+  display: flex;
+  margin: 200px 0 200px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+}
+
+.inputprueba {
+  padding: 10px;
+
+  border-radius: 6px;
+  margin: 15px 0px 15px;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f6f6;
+  border-color: #1d87d7;
+  border-style: dashed;
+}
+
+.title {
+  font-size: 25px;
+  color: #0b85b9;
+}
+
+.image {
+  width: 80%;
+  height: 80%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cargarimagen {
+  border-radius: 3px;
+  background-color: #61A5C2;
+  color: white;
+  padding-top: 1px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+}
+
+.cargarimagen:hover {
+  background-color: #2A6F97;
+}
+
+.inputImages {
+  content: " Archivo 1";
+  background-color: #61A5C2;
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.imagePreviewDemo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.imagePreviewDemo:hover {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.divImage {
+  padding: 12px;
+  color: lightsteelblue;
+}
+
+.container_I {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3%;
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.containerImagesPreview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 200px;
+  width: 200px;
+  overflow: auto;
+  border: 1px solid #666;
+  background-color: #ccc;
+  padding: 8px;
+}
+
+.containerImagesPreviewDemo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 200px;
+  width: 200px;
+  overflow: auto;
+  border: 1px solid #666;
+  background-color: #ccc;
+  padding: 8px;
+}
+
+
+
+/* styling of Input */
+.input {
+  --border-height: 2px;
+  --border-before-color: #2C7DA0;
+  --border-after-color: #5891ff;
+  --input-hovered-color: #4985e01f;
+  font-family: 'Poppins', sans-serif;
+  width: var(--width-of-input);
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  min-width: 80px;
+  min-height: 40px;
+  max-width: 200px;
+  max-height: 200px;
+  box-sizing: border-box;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  border-bottom: var(--border-height) solid var(--border-before-color);
+}
+
+/* styling of animated border */
+.input_border {
+
+  position: absolute;
+  background: var(--border-after-color);
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+
+/* Hover on Input */
+.input:hover {
+  background: var(--input-hovered-color);
+}
+
+.input:focus {
+  outline: none;
+}
+
+/* here is code of animated border */
+.input:focus~.input_border {
+  width: 100%;
+}
+
+.btnProyecto {
+  width: 250px;
+  padding: 10px;
+  border: none;
+  background-color: #61A5C2;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+  font-family: inherit;
+}
+
+.btnProyecto:hover {
+  border: none;
+  background-color: #2A6F97;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+}
+
+.errorcontainer {
+  height: 35px;
+}

@@ -14,7 +14,7 @@ const mokeando = async () => {
       userType: "suspended",
       mail: "Tshelby@mail.com",
       password: "password",
-      image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
+      image: "https://www.losandes.com.ar/resizer/JYi2hpIvlUhn-uZTzC34D-UZXEo=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MMLEOSMQZREZDERPUO7WRD4VNI.jpg",
       description: "Thomas Michael Shelby, OBE, DCM, MM, MP. Manejo distintas tecnologias como: Vue, Angular, Wordpress",
       linkedin: "",
       github: "https://github.com/",
@@ -24,8 +24,8 @@ const mokeando = async () => {
       name: "Ada shelby",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
-      description: "Mi nombre es Ada y soy desarolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
+      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
+      description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
       short_description: "Full-Stack Developer"
@@ -42,7 +42,6 @@ const mokeando = async () => {
     },
     {
       name: "Luciano",
-      /*       userName: "luciano", */
       mail: "luciano@mail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -52,7 +51,6 @@ const mokeando = async () => {
     },
     {
       name: "Cristobal",
-      /*       userName: "Saposan", */
       mail: "cristobal.herreros@gmail.com",
       password: "aVerySecurePassword",
       linkedin: "https://www.linkedin.com/in/crist%C3%B3bal-herreros-viviani-50122b1b7/",
@@ -62,7 +60,6 @@ const mokeando = async () => {
     },
     {
       name: "Lucas",
-      /*       userName: "soylucas", */
       mail: "soylucas@hotmail.com",
       password: "contraseña",
       linkedin: "Tengo linkedin!",
@@ -72,7 +69,6 @@ const mokeando = async () => {
     },
     {
       name: "María",
-      /*       userName: "soymaria", */
       mail: "soymaría@gmail.com",
       password: "password",
       linkedin: "https://www.linkedin.com/",
@@ -82,7 +78,6 @@ const mokeando = async () => {
     },
     {
       name: "Roberto",
-      /*       userName: "RRobert", */
       userType: "suspended",
       mail: "roberto123@hotmail.com",
       password: "papasword",
@@ -95,7 +90,6 @@ const mokeando = async () => {
       name: "Anita",
       userType: "suspended",
       userName: "An1",
-
       mail: "an1t4@gmail.com",
       password: "simplePassword",
       linkedin: "none",
@@ -124,6 +118,7 @@ const mokeando = async () => {
       github: "https://github.com/",
       description: "Hola! Soy ingeniero en sistemas con más de 10 años de experiencia en el mundo IT. Me especializo en backend y manejo distintas tecnologías pero además desarrolle a lo largo de los años muchos soft skills. Si te gustan mis proyectos no dudes en ponerte en contacto! Aprendiendo Ruby on Rails y Vue3",
       image: "https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg",
+      short_description: "Recluiter IT"
     },
     {
       name: "Cleopatra",
@@ -143,11 +138,10 @@ const mokeando = async () => {
       github: "https://github.com/",
       description: "Bienvenidos a mi portfolio profesional. Manejo de todo un poco, pero me especializo en backend. Soy experto en tecnologias como MongoDB, PostgreSQL, NodeJS y expressJS",
       image: "https://thumbs.dreamstime.com/b/cara-humana-gen%C3%A9rica-del-hombre-vista-delantera-futurista-81662768.jpg",
-
+      short_description: "Generic Person"
     },
     {
       name: "Bastián",
-      /*       userName: "bastyJr", */
       mail: "bastianprogrammer@gmail.com",
       password: "randomHashMadeByPasswordManager",
       linkedin: "none",
@@ -164,6 +158,91 @@ const mokeando = async () => {
       description: "Hola! Soy Micaela, soy licenciada en gestión ambiental y estudiante de desarrollo web Full Stack. SKILLS: HTML | CSS | JavaScript | ReactJS | Redux | Bootstrap, NodeJS | Express | MySQL | PostgreSQL, GIT | SCRUM, ¡No dudes en contactarme! 🚀",
       linkedin: "https://www.linkedin.com/in/micaela-schaberger/",
       github: "https://github.com/mschaberger",
+      short_description: "Full-Stack Developer"
+    },
+    {
+      name: "Juan Garcia",
+      mail: "ElJuanGarcia@mail.com",
+      password: "password",
+      image: "https://fotos02.deia.eus/mmp/2020/04/16/690x278/bin45938709con21041783-ok.jpg",
+      description: "Soy licenciado de filosofia, la vida me llevo a estudiar y aprender sobre otras ramas, y ahi fue donde descubri mi amor por la programacio, sobre todo, con PHP y Phyton",
+      linkedin: "www.Linkeding.com",
+      github: "",
+      userType: "user",
+      short_description: "Back-end Ejoyer"
+    },
+    {
+      name: "Daniel",
+      mail: "DanielDiseño@mail.com",
+      password: "password",
+      image: "https://www.cippec.org/wp-content/uploads/2020/11/foto-juan-camisassa-e1605808262604.jpg",
+      description: "Me encanta el arte, soy amante del diseño desde muy joven, por eso apenas termine mi lic. en diseño grafico, decidí hacer mi sueño realidad y crear paginas webs!",
+      linkedin: "",
+      github: "www.github.com",
+      userType: "user",
+      short_description: "Front-end Devaloper"
+    },
+    {
+      name: "Oscar caleñas",
+      userName: "mixwell",
+      mail: "oscar_Caleñas@gmail.com",
+      password: "contraseña",
+      image: "https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg",
+      description: "Desarrolador de software y diseñador web con experiencia en el desarrollo de aplicaciones web y en el diseño de interfaces de usuario.",
+      linkedin: "",
+      github: "",
+      short_description: "Desarrollador web y diseñador de interfaces de usuario.",
+    },
+    {
+      name: "Bruno Mars",
+      userName: "BruMars",
+      mail: "bruno_mars",
+      password: "KPXZQZ",
+      image: "https://cdn.pixabay.com/photo/2016/03/26/20/35/young-man-1281282_960_720.jpg",
+      description: "Apasionado de la programacion y el desarrollo web, siempre con ganas de aprender y seguir creciendo💪",
+      linkedin: "https://www.linkedin.com/feed/",
+      github: "https://github.com",
+      short_description: "Apasionado del desarrollo web y de la programacion.",
+    },
+    {
+      name: "Joaquin",
+      mail: "joaquinelmejor@mail.com",
+      password: "password",
+      description: "Soy estudiante de programacion en la universidad de tucuman, y tambien hago el bootcamp de soyHenry",
+      linkedin: "https://www.linkedin.com/feed/",
+      github: "https://github.com/",
+      userType: "user",
+      short_description: "Full-Stack Developer"
+    },
+    {
+      name: "Carlos",
+      mail: "carlos_78@mail.com",
+      password: "password",
+      description: "Hace 2 años me recibí de ingeniero quimico y al entrar a trabajar no me gustó para nada, vi que habia un bootcamp de programación y entré para probar suerte y acá estoy, trabajando para una empresa de USA",
+      linkedin: "https://www.linkedin.com/feed/",
+      github: "https://github.com/",
+      userType: "user",
+      short_description: "Full-Stack Developer"
+    },
+    {
+      name: "James Thompson",
+      userType: "user",
+      mail: "thompson@mail.com",
+      password: "password",
+      image: "https://images.mubicdn.net/images/cast_member/2552/cache-207-1524922850/image-w856.jpg",
+      description: "James Thompson, OBE, DCM, MM, MP. Manejo distintas tecnologias como: .NET,Vue,ExpressJ,Javascript,Sequelize,NodeJs",
+      linkedin: "https://www.linkedin.com",
+      github: "https://github.com/",
+      short_description: "Full-Stack Developer"
+    },
+    {
+      name: "DarkNaruto666",
+      mail: "darkNaruto666@mail.com",
+      password: "password",
+      image: "https://i.pinimg.com/550x/0b/3e/2d/0b3e2d6365c72c6496d1be5d4d1968ad.jpg",
+      description: "Mi nombre es juan y soy desarrollador web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
+      linkedin: "https://www.linkedin.com",
+      github: "https://github.com/",
       short_description: "Full-Stack Developer"
     },
   ];
@@ -323,7 +402,7 @@ const mokeando = async () => {
       description: "Se trata de una aplicación muy sencilla, que se realizó a modo de practica para aprender a manejar react hooks.",
       repository: "https://github.com/mschaberger/Counter",
       deploying: "",
-      score: [0, 0, 0],
+      score: [2, 4, 1],
       projectType: "Practica",
       imagen: ["https://i.postimg.cc/7hKNRf3Q/countdown.png",
         "https://i.postimg.cc/BZpNbwrc/counter.png",
@@ -335,7 +414,7 @@ const mokeando = async () => {
       description: "Primer maquetado de HTML y CSS realizado a modo de prueba, no tiene funcionalidades.",
       repository: "https://github.com/mschaberger/pvmates",
       deploying: "",
-      score: [0, 4, 0],
+      score: [1, 4, 3],
       projectType: "Diseño",
       imagen: ["https://i.postimg.cc/qvy1JM4g/maquetado-PV.png"]
     },
@@ -365,7 +444,393 @@ const mokeando = async () => {
         "https://raw.githubusercontent.com/mschmidt17/APP-CLIMA/main/src/img/3.png",
       ]
     },
-  ];
+    {
+      name: "Paypal",
+      tecnology: ["ReactJs", "Redux", "ExpressJs", "NodeJs", "Sass", "Bootstrap"],
+      shortDescription: "La forma fácil y segura de enviar y recibir pagos en línea",
+      description: "Nuestra plataforma de pagos en línea ofrece a nuestros usuarios la total confianza para realizar transacciones de una forma innovadora y eficaz, ya sea desde casa, desde el celular o a través de una app.",
+      repository: "none",
+      score: [10, 10, 10],
+      deploying: "https://www.paypal.com/co/webapps/mpp/home?kid=p67128741798&gclid=Cj0KCQjw2MWVBhCQARIsAIjbwoMR3vo2ld3s_ma5IXz1EISWQ0tDu4FKfBLV46EBM2vtyec07ZcpVZMaAkAlEALw_wcB&gclsrc=aw.ds",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/zBYFP2k5/image.png", "https://i.postimg.cc/4NjP93hm/image.png", "https://i.postimg.cc/SR28SW-dV/image.png"]
+
+    },
+    {
+      name: "Twitch",
+      tecnology: ["NextJs", "Redux", "Javascript", "NodeJs", "Less", "Tailwind"],
+      shortDescription: "La plataforma de streaming de videojuegos",
+      description: "Twitch es una plataforma de streaming de videojuegos que ofrece a los usuarios una experiencia de streaming de videojuegos increíble, con una gran variedad de canales y una gran variedad de juegos.",
+      repository: "none",
+      score: [6, 7, 5],
+      deploying: "https://www.twitch.tv",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/g0p0S17G/image.png", "https://i.postimg.cc/nhgWnJxt/image.png"]
+    },
+    {
+      name: "uiverse.io",
+      tecnology: ["HTML", "CSS", "Javascript"],
+      shortDescription: "Universo de elementos de interfaz de usuario paraayudarte a sobresalirDe código abierto y de uso gratuito,solo copia y pega!",
+      description: "uiverse.io es una plataforma de desarrollo de aplicaciones web y de interfaces de usuario que permite a los desarrolladores crear aplicaciones web y interfaces de usuario de código abierto y de uso gratuito.",
+      repository: "none",
+      score: [8, 7, 8],
+      deploying: "https://uiverse.io",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/66DFvPp0/image.png", "https://i.postimg.cc/Hkj516bq/image.png", "https://i.postimg.cc/LXWwvCBm/image.png"]
+    },
+    {
+      name: "Huemint",
+      tecnology: ["Java", "Flutter", "HTML", "CSS", "Javascript"],
+      shortDescription: "Huemint es una aplicación que te ayuda a encontrar la mejor paleta de colores para tu sitio web.",
+      description: "Huemint utiliza el aprendizaje automático para generar colores para el diseño gráfico. En lugar de generar una paleta plana y dejar que descubras cómo aplicarla, puede generar colores en función de cómo se usará cada color en el diseño final.",
+      repository: "none",
+      score: [8, 7, 6],
+      deploying: "https://huemint.com",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/QC4PRmTd/image.png", "https://i.postimg.cc/mgMXwB8D/image.png", "https://i.postimg.cc/W1M8ZS1q/image.png"]
+    },
+    {
+      name: "Pixabay",
+      tecnology: ["HTML", "CSS", "Vue", "Kotlin", "Symfony"],
+      shortDescription: "Pixabay es una plataforma de busqueda de imágenes gratuita",
+      description: "Pixabay es una plataforma de busqueda de imágenes gratuita que te permite buscar imágenes de cualquier tipo y tamaño, y obtenerlas en formato de archivo de imagen, gráfico o vectorial.",
+      repository: "none",
+      score: [6, 6, 6],
+      deploying: "https://pixabay.com",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/8kwWv9G6/image.png", "https://i.postimg.cc/RhTjC9JG/image.png", "https://i.postimg.cc/sf9XGhpH/image.png"]
+    },
+    {
+      name: "nature",
+      tecnology: ["HTML", "CSS", "Javascript", "Flutter"],
+      shortDescription: "Nature es una revista de articulos de ciencia y tecnología",
+      description: "Nature  es una revista internacional semanal que publica las mejores investigaciones revisadas por pares en todos los campos de la ciencia y la tecnología.",
+      repository: "none",
+      score: [7, 8, 9],
+      deploying: "https://www.nature.com",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/QtNNrXtN/image.png", "https://i.postimg.cc/PrDj9L4z/image.png", "https://i.postimg.cc/DfJdXsnT/image.png"]
+
+    },
+    {
+      name: "ArtStation",
+      tecnology: ["Vue", "NextJs", "Tailwind ", "HTML", "Javascript"],
+      shortDescription: "ArtStation es una plataforma de creación de diseño gráfico",
+      description: "ArtStation es una plataforma de creación de diseño gráfico que permite a los usuarios crear y compartir diseños gráficos y animados.",
+      repository: "none",
+      score: [8, 7, 6],
+      deploying: "https://www.artstation.com",
+      projectType: "Imitacion",
+      imagen: ["https://i.postimg.cc/qvDnZMGr/image.png", "https://i.postimg.cc/CKd2W5Ts/image.png", "https://i.postimg.cc/1znQDJtS/image.png"]
+    },
+    {
+      name: "Perflix",
+      tecnology: ["ReactJs", "ExpressJs", "Javascript", "Sequelize"],
+      shortDescription: "web para ver peliculas y series",
+      description: "es una web donde te creas una cuenta pagas la mensualidad y tienes acceso a muchas series y peliculas. ",
+      repository: "https://github.com/",
+      score: [5, 3, 3],
+      deploying: "https://www.netflix.com/",
+      projectType: "Entretenimiento",
+      imagen: ["https://i.postimg.cc/T2nXhNmB/Captura_de_pantalla_de_2022-06-22_09-53-33.png",
+        "https://i.postimg.cc/c4dPCxd8/Captura_de_pantalla_de_2022-06-22_09-53-39.png",
+        "https://i.postimg.cc/HWzpWPb3/Captura_de_pantalla_de_2022-06-22_09-53-58.png",
+      ]
+    },
+    {
+      name: "Fiscord",
+      tecnology: ["Angular", "ExpressJs", "Javascript", "Sequelize"],
+      shortDescription: "web para hablar y socializar",
+      description: "esta web esta proyectada para uso social se pueden hacer llamadas crear canales para hablar y chatear . ",
+      repository: "https://github.com/",
+      score: [5, 4, 3],
+      deploying: "https://discord.com/",
+      projectType: "Social",
+      imagen: ["https://i.postimg.cc/wBXCf7VF/Captura_de_pantalla_de_2022-06-22_09-59-23.png",
+        "https://i.postimg.cc/76BQd7T1/Captura_de_pantalla_de_2022-06-22_09-58-26.png",
+        "https://i.postimg.cc/8Cg8mhhj/Captura_de_pantalla_de_2022-06-22_09-58-53.png"
+      ]
+    },
+    {
+      name: "Cradingwiev",
+      tecnology: ["Angular", "Javascript", "Django", "Python"],
+      shortDescription: "web para hablar y socializar",
+      description: "esta web esta proyectada para uso social se pueden hacer llamadas crear canales para hablar y chatear . ",
+      repository: "https://github.com/",
+      score: [5, 4, 3],
+      deploying: "https://es.tradingview.com/",
+      projectType: "Social",
+      imagen: ["https://i.postimg.cc/0jy1JP7n/Captura_de_pantalla_de_2022-06-22_10-01-53.png",
+        "https://i.postimg.cc/fW26r4c4/Captura_de_pantalla_de_2022-06-22_10-01-15.png",
+        "https://i.postimg.cc/J0DKFF8m/Captura_de_pantalla_de_2022-06-22_10-03-00.png",
+      ]
+    },
+    {
+      name: "AnimeFlr",
+      tecnology: ["Angular", "Javascript", "Bootstrap", ".NET"],
+      shortDescription: "visualiza tu anime favorito",
+      description: "esta web fue diseñada para elegir y ver animes , guardar animes favoritos y comentar cada video. ",
+      repository: "https://github.com/",
+      score: [5, 4, 5],
+      deploying: "https://www3.animeflv.net/",
+      projectType: "Entreteniumiento",
+      imagen: ["https://i.postimg.cc/fyYZNBjn/Captura_de_pantalla_de_2022-06-22_10-08-33.png",
+        "https://i.postimg.cc/MHBZGWwL/Captura_de_pantalla_de_2022-06-22_10-08-37.png",
+        "https://i.postimg.cc/Rqrrpfjs/Captura_de_pantalla_de_2022-06-22_10-08-49.png",
+      ]
+    },
+    {
+      name: "Cointelegraphhj",
+      tecnology: ["ReactJs", "Javascript", "Python", "Django"],
+      shortDescription: "mantenete informado sobre el mundo financiero",
+      description: "web estilo diario informativo sobre cryptomonedas y el mundo financiero en general. ",
+      repository: "https://github.com/",
+      score: [4, 4, 4],
+      deploying: "https://es.cointelegraph.com/",
+      projectType: "Informativo",
+      imagen: ["https://i.postimg.cc/sD3471Qs/Captura_de_pantalla_de_2022-06-22_10-09-58.png",
+        "https://i.postimg.cc/N0s3nQzc/Captura_de_pantalla_de_2022-06-22_10-10-08.png",
+        "https://i.postimg.cc/7PWWN34w/Captura_de_pantalla_de_2022-06-22_10-10-15.png",
+        "https://i.postimg.cc/SNLtbw8N/Captura_de_pantalla_de_2022-06-22_10-10-28.png"
+      ]
+    },
+    {
+      name: "StarTube",
+      tecnology: ["ReactJs", "ExpressJs", "Javascript", "Sequelize", "NodeJs"],
+      shortDescription: "web para ver y subir videos",
+      description: "Proyectada para que el usuario entree cree su cuenta suba y vea videos a su gusto. ",
+      repository: "https://github.com/",
+      score: [4, 3, 3],
+      deploying: "https://www.youtube.com/",
+      projectType: "Entretenimiento",
+      imagen: ["https://i.postimg.cc/tCzDMFQs/Captura_de_pantalla_de_2022-06-22_10-05-00.png",
+        "https://i.postimg.cc/TPcRykZR/Captura_de_pantalla_de_2022-06-22_10-05-35.png",
+        "https://i.postimg.cc/0jhxghJC/Captura_de_pantalla_de_2022-06-22_10-07-54.png"
+      ]
+    },
+    {
+      name: "Mangaleon",
+      tecnology: [".NET", "Vue", "ExpressJs", "Javascript", "Sequelize", "NodeJs"],
+      shortDescription: "web para visualizar mangas",
+      description: "Proyectada para buscar y ver el manga que elijas. ",
+      repository: "https://github.com/",
+      score: [4, 2, 3],
+      deploying: "https://www.mangatigre.net/",
+      projectType: "Entretenimiento",
+      imagen: ["https://i.postimg.cc/CKCKGMfp/Captura_de_pantalla_de_2022-06-22_10-11-00.png",
+        "https://i.postimg.cc/fbd96ht8/Captura_de_pantalla_de_2022-06-22_10-11-07.png",
+        "https://i.postimg.cc/mDbg8xQz/Captura_de_pantalla_de_2022-06-22_10-11-14.png",
+        "https://i.postimg.cc/ncx02058/Captura_de_pantalla_de_2022-06-22_10-11-19.png",
+        "https://i.postimg.cc/mDXBjPLJ/Captura_de_pantalla_de_2022-06-22_10-11-22.png"
+      ]
+    },
+    {
+
+      name: "Skere!",
+      shortDescription: "De gente Skere! para gente Skere!",
+      description: "",
+      repository: "",
+      deploying: "",
+      scoreStyle: [
+        1,
+        1
+      ],
+      scoreFunctionality: [
+        2,
+        3
+      ],
+      scoreOriginality: [
+        1,
+        2
+      ],
+      projectType: "Foro",
+      imagen: [
+        "https://i.pinimg.com/736x/f7/99/da/f799daf6e032206c41d1374b7c692290.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/0/01/Chromium_on_Ubuntu.png"
+      ]
+    },
+    {
+      name: "Direct-Chat",
+      shortDescription: "Una app de chat instanteneo para disfrutar con amigos",
+      description: "Con la visionaria idea que tome del 2004, decidí crear un chat para chetear en tiempo real. Tambien podes tirar zumbidos :0",
+      repository: "www.chat.com",
+      deploying: "",
+      scoreStyle: [
+        3,
+        5,
+        1
+      ],
+      scoreFunctionality: [
+        1,
+        2,
+        2
+      ],
+      scoreOriginality: [
+        1,
+        5,
+        3
+      ],
+      projectType: "APP",
+      imagen: [
+        "https://wwwhatsnew.com/wp-content/uploads/2022/03/crear-chat.jpg",
+        "https://helpdesk.bitrix24.es/upload/medialibrary/cf7/zshk2y4qr2x1yci6449hstp6fwztypqk/1.jpg"
+      ]
+    },
+    {
+      name: "Fotorum",
+      shortDescription: "Una gran coleccion de fotos",
+      description: "Una enorme galeria con todas las fotos, podes descargarlas o postear nuevas",
+      repository: "",
+      deploying: "",
+      scoreStyle: [
+        4,
+        2
+      ],
+      scoreFunctionality: [
+        1,
+        4
+      ],
+      scoreOriginality: [
+        1.5,
+        2
+      ],
+      projectType: "Entretenimiento",
+    },
+    {
+      name: "WifiWiki",
+      shortDescription: "Encuentra todos los wifis libres en tu zona",
+      description: "Anota wifis libres para ganar dinero extra por cada usuario que lo use, o simplemente busca wifis anotados por otros usuario",
+      repository: "www.wifi.com",
+      deploying: "",
+      scoreStyle: [
+        3,
+        2,
+        1
+      ],
+      scoreFunctionality: [
+        1,
+        2,
+        1
+      ],
+      scoreOriginality: [
+        1,
+        5,
+        1
+      ],
+      projectType: "APP",
+    },
+    {
+      name: "InstaLAG",
+      shortDescription: "Como instagram, pero con LAG! Disfruta de publicaciones de hace años",
+      description: "Alguna vez quisiste publicar algo, pero que se vea recien dentro de 3~5 años? Esta es tu pagina. Totalmente util",
+      repository: "",
+      deploying: "www.Instagram.com",
+      scoreStyle: [
+        4,
+        2,
+        4
+      ],
+      scoreFunctionality: [
+        3,
+        2,
+        3
+      ],
+      scoreOriginality: [
+        3,
+        5,
+        2
+      ],
+      projectType: "Red Social",
+    },
+    {
+      name: "Electro-Music",
+      shortDescription: "Buscabas una radio de electronica? Bueno esto es un podcast sobre electronica, casi",
+      description: "Queres aprender todo sobre componentes y circuitos electricos? Con Ruben castillo podes completamente en este hermoso podcast con pagina propia!",
+      repository: "www.linkfalso123.com",
+      deploying: "www.podcast.com",
+      scoreStyle: [
+        5,
+        5,
+        4
+      ],
+      scoreFunctionality: [
+        4,
+        2,
+        4
+      ],
+      scoreOriginality: [
+        3,
+        3,
+        4
+      ],
+      projectType: "APP",
+    },
+    {
+      name: "ClipR",
+      shortDescription: "Proyecto para descarga de videos/clips de twitch",
+      description: "Es un proyecto que tiene como objetivo la descarga de videos/clips de twitch y otras plataformas de videos",
+      repository: "",
+      deploying: "https://clipr.xyz/",
+      scoreStyle: [1, 1],
+      scoreFunctionality: [3, 3],
+      scoreOriginality: [3, 3],
+      projectType: "Descarga de videos",
+      imagen: ['https://i.postimg.cc/3rb4dKfj/image.png']
+    },
+
+
+    {
+      name: "Tuich",
+      shortDescription: "Plataforma de streaming",
+      description: "Es una plataforma para poder hacer emisiones en vivo de distintas categorias: Juegos, charlas, apuestas. etc",
+      repository: "",
+      deploying: "https://www.twitch.tv/",
+      scoreStyle: [3, 3],
+      scoreFunctionality: [3, 3],
+      scoreOriginality: [3, 3],
+      projectType: "Plataforma de Stream",
+      imagen: ['https://i.postimg.cc/SR7zX8ng/image.png']
+    },
+
+
+    {
+      name: "ReCopado!",
+      shortDescription: "Foro para opinar y compartir cosas",
+      description: "Es un foro para poder opinar de temas serios, graciosos, entre otros y además para compartir cosas",
+      repository: "",
+      deploying: "https://www.reddit.com/",
+      scoreStyle: [1, 2],
+      scoreFunctionality: [1, 3],
+      scoreOriginality: [3, 3],
+      projectType: "Foro",
+      imagen: ['https://i.postimg.cc/FKCt4nGZ/image.png']
+    },
+
+    {
+      name: "MercadoPay",
+      shortDescription: "Plataforma para manejo de plata",
+      description: "Es una plataforma para manejar tu plata, transferir, comprar, pagar",
+      repository: "",
+      deploying: "https://www.mercadopago.com.ar/",
+      scoreStyle: [3, 3],
+      scoreFunctionality: [3, 3],
+      scoreOriginality: [3, 3],
+      projectType: "Finanzas",
+      imagen: ['https://i.postimg.cc/wMfRczkN/image.png']
+    },
+    {
+      name: "buya",
+      shortDescription: "Plataforma de streaming",
+      description: "Es una plataforma para realizar stream, orientada a los videojuegos",
+      repository: "",
+      deploying: "https://booyah.live/",
+      scoreStyle: [1, 2],
+      scoreFunctionality: [3, 3],
+      scoreOriginality: [2, 3],
+      projectType: "Plataforma de Stream",
+      imagen: ['https://i.postimg.cc/qvLq84Mv/image.png']
+    }
+  ]
 
   const comments = [
     { text: "Excelente trabajo! Muy original" },
@@ -403,7 +868,6 @@ const mokeando = async () => {
     { name: "ReactJs" },
     { name: "ReactNative" },
     { name: "NodeJs" },
-    { name: "ExpressJs" },
     { name: "NextJs" },
     { name: "HTML" },
     { name: "CSS" },
@@ -450,12 +914,9 @@ const mokeando = async () => {
     { name: "Amazon Web Services" }
   ];
 
-
   function numeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
-
-
 
 
   projects.map((e) => {
@@ -463,48 +924,60 @@ const mokeando = async () => {
       e.scoreStyle = []
       e.scoreFunctionality = []
       e.scoreOriginality = []
-      e.scoreStyle.push(e.score[0]);
-      e.scoreFunctionality.push(e.score[1])
-      e.scoreOriginality.push(e.score[2])
+      e.scoreStyle.push(Number(e.score[0]));
+      e.scoreFunctionality.push(Number(e.score[1]))
+      e.scoreOriginality.push(Number(e.score[2]))
     }
     else { null }
+  })
+  users.map(e => {
+    e.stack = []
+    for (let i = 0; i < 10; i++) {
+      if (numeroRandom(1, 3) == 1) {
+        let tecnologia = tecnologias[numeroRandom(0, (tecnologias.length - 1))]
 
+        e.stack.push(tecnologia.name)
 
-
-
+      }
+    }
   })
 
-
   for (let i = 0; i < users.length; i++) {
-    let arrayProjects = []
-
-    for (let j = 0; j < projects.length; j++) {
-      if (numeroRandom(1, 2) === 1) {
-
-        projects[j].scoreFunctionality.push(numeroRandom(1, 5))
-        projects[j].scoreStyle.push(numeroRandom(1, 5))
-        projects[j].scoreOriginality.push(numeroRandom(1, 5))
-
-        projects[j].scoreAverage = ((projects[j].scoreStyle.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreStyle.length) +
-          (projects[j].scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreFunctionality.length) +
-          (projects[j].scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / projects[j].scoreOriginality.length)) / 3
-        arrayProjects.push(await Project.create(projects[j]))
-      }
-    }
-    let user = await User.create(users[i])
-    await user.addProjects(arrayProjects)
-    if (i < 4) {
-      let valores = [5, 10, 1, 5]
-      let newContribution = {
-        name: users[i].name,
-        mail: users[i].mail,
-        amount: valores[i]
-      }
-      let contribution = await Contributions.create(newContribution)
-      await user.addContributions(contribution)
-    }
+    await User.create(users[i])
   }
 
+  for (let j = 0; j < projects.length; j++) {
+
+    let project = await Project.create(projects[j])
+
+    await project.set({
+      scoreFunctionality: [[...project.scoreFunctionality].push(numeroRandom(1, 5))],
+      scoreStyle: [[...project.scoreStyle].push(numeroRandom(1, 5))],
+      scoreOriginality: [[...project.scoreOriginality].push(numeroRandom(1, 5))],
+    })
+    await project.set({
+      scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
+        (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length) +
+        (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)) / 3
+    })
+
+    await project.save()
+
+    const user = await User.findByPk((numeroRandom(1, (users.length))).toString())
+    await user.addProjects(project)
+  }
+
+  // let user = await User.create(users[i])
+
+  // let valores = [5, 10, 1, 5]
+  // let newContribution = {
+  //   name: users[i].name,
+  //   mail: users[i].mail,
+  //   amount: valores[i]
+  // }
+  // let contribution = await Contributions.create(newContribution)
+  // await user.addContributions(contribution)
 }
+
 module.exports = mokeando
 

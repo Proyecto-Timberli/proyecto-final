@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import "./community.css"
 import { getAllUsers } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,20 @@ const Community = () => {
     let allUsers = useSelector((state) => state.allUsers)
     let arrayAmostrar = [...allUsers]
     const [orden, setOrden] = useState("fecha")
+
+
+    const [filterBySearch, setFilterBySearch] = useState("")
+
+    let filtro = allUsers.filter(user => user.name && user.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+    const filtroBusqueda = function (e) {
+        setFilterBySearch(e.target.value);
+    }
+    arrayAmostrar = [...allUsers]
+    if (filterBySearch !== "") {
+        arrayAmostrar = filtro
+    }
+    ///
+
 
     function handleChange(e) {
         e.preventDefault()
@@ -25,33 +39,43 @@ const Community = () => {
     ordenar(arrayAmostrar, orden)
 
     return (
-        <div className='community-cont'>
-            <div>
-                Listado de Usuarios!
-            </div>
-            <div className='cont-filtro-community'>Filtra por:
+        <Fragment>
+            <div className='cont-filtro-community'>
+                Busca Por Nombre
+                <input className='input-community' type="search" placeholder="Buscar un usuario..." name="search" onChange={(e) => filtroBusqueda(e)} value={filterBySearch} />
+
+                Ordenar por:
                 <select className='select-community' onChange={e => handleChange(e)}>
-                    <option value="fecha">Orden de registro</option>
+                    <option value="fecha">Nro.Registro</option>
                     <option value="nombre">Nombre</option>
                     <option value="proyectos">Cant.Proyectos</option>
 
                 </select>
             </div>
-            <div className='community-cont-card'>
+            <div className='community-cont'>
+                {/* <div>
+                Listado de Usuarios!
+            </div> */}
+                <div className='community-cont-card'>
 
-                {arrayAmostrar.map(e =>
-                    <CardCommunity
-                        name={e.name}
-                        id={e.id}
-                        key={e.id}
-                        project={e.projects}
-                        image={e.image}
-                        short_description={e.short_description}
-                    />
-                )}
+                    {arrayAmostrar.map(e =>
+                        <div>
+
+                            <CardCommunity
+                                name={e.name}
+                                id={e.id}
+                                key={e.id}
+                                project={e.projects}
+                                image={e.image}
+                                short_description={e.short_description}
+                            />
+                            <hr></hr>
+                        </div>
+                    )}
+                </div>
+
             </div>
-
-        </div>
+        </Fragment>
     );
 }
 

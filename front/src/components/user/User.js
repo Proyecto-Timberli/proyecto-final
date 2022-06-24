@@ -1,9 +1,11 @@
-import React, { useState }  from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
+import { MdGroupAdd, MdError } from "react-icons/md";
 
 
-import { showLoadingInfo,
+import {
+    showLoadingInfo,
     showUserNotFound,
     showSelectedProfileSection,
     showSocialMediaLink
@@ -12,7 +14,8 @@ import { showLoadingInfo,
 import { getUserById } from '../../redux/actions/actionCreators'
 import { scroll } from "../../functions";
 import './User.css'
-
+import ModalUserReport from './modalUseReport/ModalUserReport.js'
+import { getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
 
 const User = () => {
     scroll()
@@ -22,6 +25,7 @@ const User = () => {
     const [paramsId, setParamsId] = useState(id)
 
 
+    let reportBy = useSelector((state) => state.loggedUserId)
 
     const dispatcher = useDispatch()
 
@@ -29,14 +33,41 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
+    console.log(userData);
+    const [modalP, setmodalP] = useState({ userID: 0, })
 
-    function elemToButton (elem) {
-        return <button onClick={(e) => {
+    function elemToButton(elem, key) {
+        return <button key={key} onClick={(e) => {
             e.preventDefault()
             setSelectedSection(elem.state)
         }} className='profileContentSectionButton'>{elem.title}</button>
     }
-    
+    function cambiarEstadoModalUserReport(reporterID, userID) {
+        setmodalP({
+            reporterID: reporterID,
+            userID: userID,
+
+        })
+    }
+
+    function resetEstadoModal() {
+        setmodalP({
+            id: 0,
+            userID: 0,
+            reporterID: 0
+
+        })
+    }
+
+    function enviarReporte(userId, userReporter, comentario) {
+        console.log(userId)
+        console.log(userReporter)
+        console.log(comentario)
+        dispatcher(postReportUser(userId, userReporter, comentario))
+        resetEstadoModal()
+    }
+
+
     function showProfileSectionLinks() {
         let anyUserProfile = [
             {
@@ -62,12 +93,16 @@ const User = () => {
                 title: "Configuración",
                 state: "settings"
             }
+            , {
+                title: "Favoritos",
+                state: "favorites"
+            }
         ]
 
         if (userData.id === Number.parseInt(localStorage.getItem("userid"))) {
-            return <div className='profileContentSections'>{myUserProfile.map(elemToButton)}</div>
+            return <div className='profileContentSections'>{myUserProfile.map(elemToButton, "myUserProfile")}</div>
         } else {
-            return <div className='profileContentSections'>{anyUserProfile.map(elemToButton)}</div>
+            return <div className='profileContentSections'>{anyUserProfile.map(elemToButton, "anyUserProfile")}</div>
         }
     }
 
@@ -82,7 +117,23 @@ const User = () => {
                     <div className='profileInfoDetails'>
                         <p>{userData.short_description}</p>
                         {showSocialMediaLink("linkedIn", userData)}
-                        {showSocialMediaLink("github", userData) }
+                        {showSocialMediaLink("github", userData)}
+                    </div>
+                    <div className='cont-botones-acciones-user'>
+                        <button className='boton-accion-detalleProject'> <MdGroupAdd /></button>
+                        <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
+                        {
+                            !!modalP && modalP.userID !== 0 ?
+                                <ModalUserReport
+                                    key={modalP.userID}
+                                    estado={enviarReporte}
+                                    userID={modalP.userID}
+                                    reporterID={modalP.reporterID}
+                                    nombre={userData.name}
+                                    reset={resetEstadoModal}
+                                />
+                                : null
+                        }
                     </div>
                 </div>
                 <div className='profileContents'>
@@ -127,8 +178,8 @@ const User = () => {
             getUserById(paramsId)(dispatcher)
             return showLoadingInfo()
         }
-    } 
-    
+    }
+
     // si no tengo datos, pido datos
     // y anotar que ya los pedi
     if (!askedForData) {
@@ -136,6 +187,8 @@ const User = () => {
         setAskedForData(true)
         return showLoadingInfo()
     }
+
+
 }
 
 
