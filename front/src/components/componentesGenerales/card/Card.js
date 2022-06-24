@@ -14,9 +14,12 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
 
 
     return (
-        <div key={id} >
-            <div className="card-home">
+        <div key={id} className="card-home" >
 
+            <div className='card-div-user'>
+                <Link to={"/user/" + userId} className="username-card">
+                    <div className="card-user">{user && user.toUpperCase()}</div>
+                </Link>
                 <div className="card-img">
                     {imagen.length > 0 ?
                         <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
@@ -25,28 +28,18 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
 
                     }
                 </div>
-
-                <div className="card-info-home">
-                    <Link to={"/user/" + userId} className="username-card">
-                        <div className="card-user">{user && user.toUpperCase()}</div>
-                    </Link>
-                    <Link to={"/project/" + id} className="title-card">
-                        <p className="text-title-card">{name}</p>
-                    </Link>
-                    <p className="text-body-card">{description}</p>
-                    <div className='cont-scores'>
-                        <div>
-
-                            <p className='text-score-card'>Puntaje diseño: {scoreStyle && (scoreStyle.reduce((e, a) => Number(e) + Number(a)) / scoreStyle.length).toFixed(2)}</p>
-                            <p className='text-score-card'>Puntaje funcional: {scoreFunctionality && (scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / scoreFunctionality.length).toFixed(2)}</p>
-                            <p className='text-score-card'>Puntaje originalidad: {scoreOriginality && (scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / scoreOriginality.length).toFixed(2)}</p>
-                        </div>
-                    </div>
-
-                    <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
-                </div>
-
             </div>
+            <div className='card-div-info'>
+
+
+                <Link to={"/project/" + id} className="title-card">
+                    <p className="text-title-card">{name}</p> <b> {"<3"}</b>
+                </Link>
+                <p className="text-body-card">{description}</p>
+                <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
+                <button className='card-button-home'>Ver mas</button>
+            </div>
+
         </div>
     )
 }
