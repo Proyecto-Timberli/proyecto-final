@@ -42,7 +42,7 @@ const Community = () => {
         <Fragment>
             <div className='cont-filtro-community'>
                 Busca Por Nombre
-                <input type="search" placeholder="Buscar un usuario..." name="search" onChange={(e) => filtroBusqueda(e)} value={filterBySearch} />
+                <input className='input-community' type="search" placeholder="Buscar un usuario..." name="search" onChange={(e) => filtroBusqueda(e)} value={filterBySearch} />
 
                 Ordenar por:
                 <select className='select-community' onChange={e => handleChange(e)}>

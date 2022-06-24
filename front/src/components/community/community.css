@@ -28,6 +28,22 @@
     top: 28%;
 }
 
+.input-community {
+    outline: 0;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    transition: .5s;
+
+}
+
+.input-community::placeholder {
+    text-align: center;
+}
+
+.input-community:hover {
+    background-color: blanchedalmond;
+}
+
 .select-community {
     max-height: 10vh;
     max-width: 30vh;
@@ -40,7 +56,7 @@
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     position: relative;
-    transition: all 0.25s ease;
+    transition: all 0.5s ease;
 }
 
 .select-community:hover {
