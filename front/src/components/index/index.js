@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react';
 import LandingPage from './landingPage/LandingPage';
 import Inicio from './inicio/inicio.js';
+import { useSelector } from 'react-redux';
 
 
 
 const Index = () => {
-    const logged = false
+    const userId = useSelector(state => state.loggedUserId)
+
     return (
         <Fragment>
-            {logged ? <Inicio /> : <LandingPage />}
+            {userId ? <Inicio /> : <LandingPage />}
         </Fragment>
     );
 }

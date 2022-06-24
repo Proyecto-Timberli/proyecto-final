@@ -32,6 +32,11 @@
 
 }
 
+.rcard-infoUser img {
+    max-height: 4rem;
+    border-radius: 50px;
+}
+
 .rcard-infoUser-name {
     display: flex;
     flex-direction: row;

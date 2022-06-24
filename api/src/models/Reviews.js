@@ -14,15 +14,15 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         scoreStyle: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
         scoreFunctionality: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
         scoreOriginality: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
     });

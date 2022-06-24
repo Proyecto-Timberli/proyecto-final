@@ -188,14 +188,15 @@ export function listPayments(contribution, user) {
 }
 
 
-export function postReview(input, userid, projectid) {
-
+export function postReview(input, userId, projectid) {
+    console.log(input);
     return function () {
 
-        axios.post(REACT_APP_API + '/api/review', { input, userid, projectid })
+        axios.post(REACT_APP_API + '/api/review', { input, userId, projectid })
             .then(response => response.data)
             .catch(error => console.error(error))
-    }}
+    }
+}
 
 
 
@@ -208,7 +209,8 @@ export function getReviews() {
                     payload: response.data
                 })
             }
-            )}
+            )
+    }
 }
 
 /////////////////////REPORT/////////////////////////////
@@ -222,7 +224,7 @@ export function postReportUser(userId,reportedBy,reportComment) {
                     payload: res.data
                 })
             }
-        )
+            )
 
     }
 }
@@ -237,7 +239,7 @@ export function postReportProject(projectId,reportedBy,reportComment) {
                     payload: res.data
                 })
             }
-        )
+            )
 
     }
 }
