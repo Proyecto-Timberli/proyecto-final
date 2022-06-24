@@ -113,8 +113,6 @@ passport.use(new GitHubStrategy({
         name = profile.username
     }
 
-    console.log(profile)
-
     const [user, created] = await User.findOrCreate({ 
         where: {
             githubId: profile.id 
