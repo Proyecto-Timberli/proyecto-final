@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './modalReporte.css'
 
-const ModalReport = ({ estado, idA, userID, projectID, nombre }) => {
+const ModalReport = ({ estado, idA, userID, projectID, nombre,reset }) => {
 
     const[error, setError] = useState(0)
 
@@ -39,7 +39,7 @@ const ModalReport = ({ estado, idA, userID, projectID, nombre }) => {
                     </form>
                 </div>
                 <div className='project-content-buttons'>
-                    <button className='boton-cerrar' onClick={(e) => estado()}>Cancelar</button>
+                    <button className='boton-cerrar' onClick={(e) => reset()}>Cancelar</button>
                     {
                         comentario.length === 0 ?
                         <button className='boton-cerrar-des' disabled={true} onClick={(e) =>{validar()} }>Reportar</button>
