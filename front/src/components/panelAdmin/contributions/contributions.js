@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { getContributions } from '../../../redux/actions/actionCreators'
+import { MdPaid} from "react-icons/md";
 import "./contribution.css"
 
 const Contributions = () => {
@@ -14,9 +15,12 @@ const Contributions = () => {
 
     return (
         <div className='cont-cont-general'>
-            <h1>
-                CONTRIBUCIONES
-            </h1>
+            <div className='arriba-contenedor-suspendidos'>
+                <MdPaid className='icono-title-suspendidos'/>
+                <h1>
+                    Contribuciones
+                </h1>
+            </div>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
             
             <div className='contribuciones-container'>

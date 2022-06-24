@@ -74,7 +74,7 @@ function ListadoS() {
         <div>
             <div className='arriba-contenedor-suspendidos'>
                 <MdPersonOff className='icono-title-suspendidos' />
-                <h1>USUARIOS SUSPENDIDOS</h1>
+                <h1>Usuarios Suspendidos</h1>
             </div>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
