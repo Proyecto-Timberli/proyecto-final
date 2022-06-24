@@ -3,7 +3,7 @@ import './register.css'
 import imgSignUp from './signup-image.png'
 import validateForm from './validation.js'
 
-import { useState } from 'react';
+import { useState} from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
 //import { scroll } from "../../functions";
@@ -61,7 +61,6 @@ function Register() {
             setFormErrors(errors)
         }
     }
-
     //scroll()
     return (
         <div>
