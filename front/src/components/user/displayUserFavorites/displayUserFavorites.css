@@ -1,0 +1,13 @@
+.userFavoritesContainer {
+    width: calc(100% - 2em);
+    margin-top: 1em;
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+}

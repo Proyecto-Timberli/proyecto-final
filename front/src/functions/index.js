@@ -31,9 +31,15 @@ const dateOptions = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    hour: "numeric",
+    minute: "numeric"
 };
 export const formatDate = date => {
     const newDate = new Date(date);
     return newDate.toLocaleDateString('es-ES', dateOptions);
 };
+export const getDateTime = date => {
+    const newDate = new Date(date);
+    return newDate.getTime()
+}

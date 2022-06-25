@@ -1,21 +1,37 @@
 import { useEffect, useState } from 'react';
 import Card from "../componentesGenerales/card/Card.js"
 import "../home/home.css"
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
 import { technologies } from './technologies.js'
 import { scroll } from "../../functions";
-
+import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    let token = searchParams.get("token")
+
+    if (token) {
+        localStorage.setItem("usertoken", token)
+        localStorage.setItem("userid", searchParams.get("id"))
+        setSearchParams({})
+        console.log("got Here")
+    }
+
     scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
+    console.log(allProjects);
     useEffect(() => {
         dispatch(getAllProjects());
+        if (window.localStorage.getItem("usertoken")) {
+            dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //////////////////////////////////////////////////////////////////////////////
@@ -63,6 +79,7 @@ const Home = () => {
     let logger = useSelector((state) => state.loggedUserId)
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
             <div>
@@ -96,13 +113,15 @@ const Home = () => {
                             scoreFunctionality={e.scoreFunctionality}
                             scoreOriginality={e.scoreOriginality}
                             scoreStyle={e.scoreStyle}
-
+                            fecha={e.createdAt}
+                            update={e.updatedAt}
                             score={e.scoreAverage}
                         />)}
                     </div>
                 }
                 {/* Espacio */}
                 <br></br>
+
                 <div className="container-paginado">
                     {paginado.buttons().map(button =>
                         <div key={button}>

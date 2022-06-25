@@ -52,20 +52,27 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Project, User, Review, Contributions, Report } = sequelize.models;
+const { Project, User, Review, Contributions, Report,Favorites } = sequelize.models;
 
 
-const common = (options) =>({
+const common = (options) => ({
   ...options,
-  onDelete:'CASCADE',
-  onUpdate:'CASCADE',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
 })
+///////////////////////////////
+Favorites.belongsTo(User)
+User.hasMany(Favorites)
+Project.belongsTo(Favorites)
+Favorites.hasMany(Project)
 ////////////////////////////////////
 User.hasMany(Contributions)
 Contributions.belongsTo(User)
 ////////////////////////////////////
+// Project.belongsToMany(User, { through: "Favorites", foreignKey: "project_id", otherKey: "user_id", });
+// User.belongsToMany(Project, { through: "Favorites", foreignKey: "user_id", otherKey: "project_id", });
 User.hasMany(Project)
-Project.belongsTo(User)
+Project.belongsTo(User) 
 
 ////////////////////////////////////
 User.hasMany(Review)

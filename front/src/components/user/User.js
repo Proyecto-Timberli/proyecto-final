@@ -33,9 +33,9 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
-
+    console.log(userData);
     const [modalP, setmodalP] = useState({ userID: 0, })
-
+    const [msgReport, setMsgReport] = useState("");
     function elemToButton(elem, key) {
         return <button key={key} onClick={(e) => {
             e.preventDefault()
@@ -55,18 +55,22 @@ const User = () => {
             id: 0,
             userID: 0,
             reporterID: 0
-
         })
+        setMsgReport("")
     }
 
     function enviarReporte(userId, userReporter, comentario) {
-        console.log(userId)
-        console.log(userReporter)
-        console.log(comentario)
         dispatcher(postReportUser(userId, userReporter, comentario))
-        resetEstadoModal()
+        mensajeReport()
     }
-
+    
+    const mensajeReport=()=>{
+        if (!reportBy){
+          setMsgReport("Debe estar registrado y logeado para reportar")
+        }else {
+          setMsgReport("Reporte exitoso")
+        }
+      }
 
     function showProfileSectionLinks() {
         let anyUserProfile = [
@@ -92,6 +96,10 @@ const User = () => {
             {
                 title: "Configuración",
                 state: "settings"
+            }
+            , {
+                title: "Favoritos",
+                state: "favorites"
             }
         ]
 
@@ -127,6 +135,7 @@ const User = () => {
                                     reporterID={modalP.reporterID}
                                     nombre={userData.name}
                                     reset={resetEstadoModal}
+                                    msgReport={msgReport}
                                 />
                                 : null
                         }

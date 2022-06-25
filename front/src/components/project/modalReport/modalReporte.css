@@ -18,7 +18,6 @@
 
 .boton-cerrar-des{
     background: #555d63;
-    
     -webkit-border-radius: 13;
     -moz-border-radius: 13;
     border-radius: 13px;
@@ -30,4 +29,8 @@
     font-size: 15px;
     padding: 5px 10px 5px 10px;
     text-decoration: none;
+}
+
+.boton-cerrar-des:hover{
+    cursor:not-allowed;
 }
