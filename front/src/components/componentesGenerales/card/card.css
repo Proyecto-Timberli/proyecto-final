@@ -45,8 +45,8 @@
 .corazon-card {
     position: relative;
     top: auto;
-    bottom: 9rem;
-    right: 1.5rem;
+    bottom: 9.4rem;
+    right: 2rem;
     transition: all .5s;
 }
 
@@ -160,6 +160,7 @@
     flex-direction: row;
     max-width: 100%;
     max-height: 80%;
+    flex-direction: column;
 }
 
 .img-project-card {
@@ -203,4 +204,29 @@
     padding-bottom: 0;
 
     margin: 0%;
+}
+
+.fecha-card {
+    /* position: absolute;
+    transform: translateX(45vw) translateY(26vh); */
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: 400;
+}
+
+.fecha-card p {
+
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 575.98px)and (orientation:portrait) {
+    body {
+        background: green;
+    }
+
+    .card-home {
+        width: 100vw;
+    }
 }

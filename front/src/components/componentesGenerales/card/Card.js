@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { MdFavorite, MdError } from "react-icons/md";
 import { addFavorites, deleteFavorite } from '../../../redux/actions/actionCreators';
+import { formatDate } from '../../../functions';
 
-function Card({ id, name, description, imagen, userId, score, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
+function Card({ id, name, description, fecha, imagen, userId, score, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
     // const promedio = 1
     // if (score.length){
     // const arrNumber = score.map((n) => Number(n))
@@ -29,13 +30,20 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
                     <div className="card-user">{user && user.toUpperCase()}</div>
                 </Link>
                 <div className="card-img">
+
                     {imagen.length > 0 ?
                         <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
                         :
                         <img src={defaultImg[0]} alt='imagen proyecto'></img>
 
                     }
+                    <div className='fecha-card'>
+                        <p>Creado el: {formatDate(fecha)}</p>
+                    </div>
                 </div>
+
+
+
             </div>
             <div className='card-div-info'>
 
@@ -46,6 +54,7 @@ function Card({ id, name, description, imagen, userId, score, user, scoreStyle, 
                 <p className="text-body-card">{description}</p>
                 <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
                 <button className='card-button-home'>Ver mas</button>
+
             </div>
             <div className='corazon-card'>
 

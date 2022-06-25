@@ -12,7 +12,7 @@ import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
-    
+
     let token = searchParams.get("token")
 
     if (token) {
@@ -26,6 +26,7 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
+    console.log(allProjects);
     useEffect(() => {
         dispatch(getAllProjects());
         if (window.localStorage.getItem("usertoken")) {
@@ -112,7 +113,7 @@ const Home = () => {
                             scoreFunctionality={e.scoreFunctionality}
                             scoreOriginality={e.scoreOriginality}
                             scoreStyle={e.scoreStyle}
-
+                            fecha={e.createdAt}
                             score={e.scoreAverage}
                         />)}
                     </div>
