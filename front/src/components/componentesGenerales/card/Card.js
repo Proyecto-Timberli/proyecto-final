@@ -3,7 +3,7 @@ import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { MdFavorite, MdError } from "react-icons/md";
+import { MdFavorite } from "react-icons/md";
 import { addFavorites, deleteFavorite } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
