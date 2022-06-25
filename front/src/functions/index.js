@@ -18,6 +18,10 @@ export function ordenamiento(array, atribute, orden) {
             d = Number(a[atribute].length)
             c = Number(b[atribute].length)
         }
+        else if (atribute === "scoreAverage") {
+            d = Number(a[atribute])
+            c = Number(b[atribute])
+        }
         else {
             c = Number(a[atribute])
             d = Number(b[atribute])
