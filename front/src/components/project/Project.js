@@ -60,7 +60,7 @@ function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     const [loading, setLoading] = useState(true);
-
+    const [msgReport, setMsgReport] = useState("");
     const [modalP, setmodalP] = useState({
         userID: 0,
         projectID: 0,
@@ -79,12 +79,13 @@ function Project() {
             userID: 0,
             projectID: 0,
         })
+        setMsgReport("")
     }
-
-    function enviarReporte(proyectId, userId, comentario) {
-
+    
+    async function enviarReporte(proyectId, userId, comentario) {
         dispatch(postReportProject(proyectId, userId, comentario))
-        resetEstadoModal()
+        //  resetEstadoModal()
+        mensajeReport()
     }
 
     if (!Object.keys(project).length) {
@@ -95,7 +96,14 @@ function Project() {
         return <Page404 />
 
     }
-
+    
+    const mensajeReport=()=>{
+      if (!reportBy){
+        setMsgReport("Debe estar registrado y logeado para reportar")
+      }else {
+        setMsgReport("Reporte exitoso")
+      }
+    }
     return (
 
         <React.Fragment>
@@ -149,7 +157,7 @@ function Project() {
                             </ul>
 
 
-                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(project.userId, project.id)} /></button>
+                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
 
                         </div>
                         <div >
@@ -192,6 +200,7 @@ function Project() {
                             projectID={modalP.projectID}
                             nombre={project.name}
                             reset={resetEstadoModal}
+                            msgReport={msgReport}                           
                         />
                         : null
                 }

@@ -8,7 +8,7 @@ const { verifyToken } = require('../middlewares/authjwt')
 // PROYECTOS //
 router.post("/project", async (req, res, next) => {
     const {projectId,reportedBy,reportComment} = req.body;
-
+    
     try {
         if(!reportedBy){
             throw new Error('Error, debe estar logeado para reportar')
@@ -16,7 +16,7 @@ router.post("/project", async (req, res, next) => {
         const reportExist= await Report.findOne({where: {projectId:projectId,reportedBy:reportedBy}})
         const projectToReport= await Project.findByPk(projectId)
         if(reportComment.length===0){
-            throw new Error('Error, el comentario es obligatorio')
+            return res.send('Error, el comentario es obligatorio')
         }
         if (!reportExist){
             const newReport= await Report.create({comment:reportComment,reportedBy:reportedBy})
@@ -52,7 +52,7 @@ router.post("/user", async (req, res, next) => {
     const {userId,reportedBy,reportComment} = req.body;
     try {
         if(!reportedBy){
-            throw new Error('Error, debe estar logeado para reportar')
+            return res.send('Error, debe estar logeado para reportar')
         }
         const reportExist= await Report.findOne({where: {userId:userId,reportedBy:reportedBy}})
         if (!reportExist){

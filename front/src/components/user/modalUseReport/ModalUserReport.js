@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const ModalUserReport = ({ estado, idA, userID ,reporterID,  nombre, reset}) => {
+const ModalUserReport = ({ estado, idA, userID ,reporterID,  nombre, reset,msgReport}) => {
 
     const[error, setError] = useState(0)
 
@@ -20,6 +20,20 @@ const ModalUserReport = ({ estado, idA, userID ,reporterID,  nombre, reset}) => 
         
     }
    }
+   if(msgReport.length){
+    return (
+        <div key={idA} className='modal'>
+
+            <div className='modal-contenido'>
+                <h1>{msgReport}</h1>
+                
+                <div className='project-content-buttons'>
+                    <button className='boton-cerrar' onClick={(e) => reset()}>Cerrar</button>
+                </div>
+            </div>
+        </div>
+    );
+}
     return (
         <div key={idA} className='modal'>
 
