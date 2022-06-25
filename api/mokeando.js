@@ -1,3 +1,4 @@
+const { default: axios } = require('axios');
 const { User, Project, Contributions } = require('./src/db.js');
 const mokeando = async () => {
 
@@ -254,7 +255,7 @@ const mokeando = async () => {
       shortDescription: "Proyecto Henry Foods para mostrar como ejemplo en clases",
       description: "SPA que consume datos de una API y renderiza recetas con algunos datos en el home. Permite buscar recetas, ordenarlas alfabeticamente y por healthscore y filtrar por tipo de dieta. Se puede ingresar al detalle de cada receta donde se muestra mas información. El usuario puede crear su propia receta. ",
       repository: "https://github.com/LucianoMocchegiani/PI_Food",
-      score: [5, 3, 3],
+      // score: [5, 3, 3],
       deploying: "https://client-food-project.herokuapp.com/",
       projectType: "Catálogo",
       imagen: ["https://i.postimg.cc/rpLvYMnK/Captura-de-pantalla-de-2022-06-11-19-45-04.png",
@@ -272,7 +273,7 @@ const mokeando = async () => {
       shortDescription: "Clon de mercado libre :)",
       description: "Se intento copiar lo mas parecido posible la pagina web de ML, imitando el diseño y las funcionalidades. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
-      score: [4, 1, 2],
+      // score: [4, 1, 2],
       deploying: "https://mercadolibre.com/",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/qv4kzPyV/Captura-de-pantalla-de-2022-06-11-20-10-50.png",
@@ -290,7 +291,7 @@ const mokeando = async () => {
       shortDescription: "Clon de Amazon",
       description: "Se intento copiar lo mas parecido posible la pagina web de amazon, imitando el diseño y las funcionalidades. Muy desafiante ya que se usaron tecnologias distintas a las que usamos regularmente. Trabajo realizado en equipo, como parte del proyecto final de un BOOTCAMP de IT.",
       repository: "none",
-      score: [4, 4, 5],
+      // score: [4, 4, 5],
       deploying: "https://www.amazon.com/",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/J49rMy4n/Captura-de-pantalla-de-2022-06-11-20-12-58.png",
@@ -306,7 +307,7 @@ const mokeando = async () => {
       shortDescription: "Clon de Facebook/Linked-in",
       description: "En este proyecto se intento clonar Facebook y LinkedIn trantando de respetar las funcionalidades y el diseño. El proyecto se realizo en conjunto con otros desarrolladores web y diseñadores ux/ui",
       repository: "none",
-      score: [5, 5, 3],
+      // score: [5, 5, 3],
       deploying: "https://www.facebook.com/",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/6517R56J/Captura-de-pantalla-de-2022-06-11-20-10-08.png",
@@ -322,7 +323,7 @@ const mokeando = async () => {
       shortDescription: "Proyecto creado con create-react-app",
       description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando ReactJS. Se trata de un ejercicio realizado para el bootcamp de SoyHenry",
       repository: "none",
-      score: [4, 3, 3],
+      // score: [4, 3, 3],
       deploying: "https://es.reactjs.org/",
       projectType: "Practica",
       imagen: ["https://i.postimg.cc/sgQMJd1B/Captura-de-pantalla-de-2022-06-11-20-15-37.png",
@@ -338,7 +339,7 @@ const mokeando = async () => {
       shortDescription: "Proyecto para aprender a programar con Javascript",
       description: "Este proyecto fue uno de los primeros desarrollos que realice utilizando JavaScript, forma parte de un challenge de la página FreeCodeCamp.",
       repository: "none",
-      score: [1, 2, 3],
+      // score: [1, 2, 3],
       deploying: "https://www.soyhenry.com/",
       projectType: "Practica",
       imagen: ["https://i.postimg.cc/VkWkgfmk/Captura-de-pantalla-de-2022-06-11-20-14-20.png",
@@ -356,7 +357,7 @@ const mokeando = async () => {
       shortDescription: "Clon de twitter pero mejor (?)",
       description: "En este proyecto se imitó el diseño y la funcionalidad de Twitter utilizando otras tecnologias.",
       repository: "none",
-      score: [3, 3, 3],
+      // score: [3, 3, 3],
       deploying: "https://twitter.com/",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/HkPtV25H/Captura-de-pantalla-de-2022-06-11-19-55-33.png",
@@ -372,7 +373,7 @@ const mokeando = async () => {
       description: "SPA  ue consume datos de una API y renderiza los juegos con algunos datos en el home. Permite buscar videojuegos, ordenarlos alfabeticamente y por rating y filtrar por género. Se puede ingresar al detalle de cada videojuego e incluye un link que te redirecciona a la página oficial del mismo. El usuario puede crear su propio videojuego. ",
       repository: "https://github.com/mschaberger/the-videogame-app",
       deploying: "",
-      score: [3, 4, 2],
+      // score: [3, 4, 2],
       projectType: "Catálogo",
       imagen: ["https://i.postimg.cc/NjPVmYg8/landing-Page.png",
         "https://i.postimg.cc/rp3BXT3y/loader.png",
@@ -388,7 +389,7 @@ const mokeando = async () => {
       description: "Se trata de una SPA que consume datos de una API y renderiza el estado del tiempo de distintas ciudades. Se puede ingresar al detalle de cada ciudad en donde se muestra mayor información.",
       repository: "https://github.com/mschaberger/Weather-APP",
       deploying: "",
-      score: [2, 1, 1],
+      // score: [2, 1, 1],
       projectType: "Practica",
       imagen: ["https://i.postimg.cc/MpvdBpWW/home-Welcome.png",
         "https://i.postimg.cc/4N8Wn9RL/home-Cards.png",
@@ -402,7 +403,7 @@ const mokeando = async () => {
       description: "Se trata de una aplicación muy sencilla, que se realizó a modo de practica para aprender a manejar react hooks.",
       repository: "https://github.com/mschaberger/Counter",
       deploying: "",
-      score: [2, 4, 1],
+      // score: [2, 4, 1],
       projectType: "Practica",
       imagen: ["https://i.postimg.cc/7hKNRf3Q/countdown.png",
         "https://i.postimg.cc/BZpNbwrc/counter.png",
@@ -414,7 +415,7 @@ const mokeando = async () => {
       description: "Primer maquetado de HTML y CSS realizado a modo de prueba, no tiene funcionalidades.",
       repository: "https://github.com/mschaberger/pvmates",
       deploying: "",
-      score: [1, 4, 3],
+      // score: [1, 4, 3],
       projectType: "Diseño",
       imagen: ["https://i.postimg.cc/qvy1JM4g/maquetado-PV.png"]
     },
@@ -424,7 +425,7 @@ const mokeando = async () => {
       description: "SPA  que consume datos de una API y renderiza las distintas razas de perros con algunos datos en la página principal. Permite buscar razas, ordenarlas alfabéticamente y por peso y filtrar por temperamento. Se puede ingresar al detalle de cada raza y el usuario puede crear su propia raza. ",
       repository: "https://github.com/mschmidt17/DOGS",
       deploying: "",
-      score: [4, 4, 4],
+      // score: [4, 4, 4],
       projectType: "Catálogo",
       imagen: ["https://raw.githubusercontent.com/mschmidt17/DOGS/main/PI.1.png",
         "https://raw.githubusercontent.com/mschmidt17/DOGS/main/PI.2.png",
@@ -437,7 +438,7 @@ const mokeando = async () => {
       description: "Se trata de una SPA que consume datos de una API y renderiza el estado del tiempo de distintas ciudades. Se puede ingresar al detalle de cada ciudad en donde se muestra mayor información.",
       repository: "https://github.com/mschmidt17/APP-CLIMA",
       deploying: "",
-      score: [4, 3, 2],
+      // score: [4, 3, 2],
       projectType: "Practica",
       imagen: ["https://raw.githubusercontent.com/mschmidt17/APP-CLIMA/main/src/img/1.png",
         "https://raw.githubusercontent.com/mschmidt17/APP-CLIMA/main/src/img/2.png",
@@ -450,7 +451,7 @@ const mokeando = async () => {
       shortDescription: "La forma fácil y segura de enviar y recibir pagos en línea",
       description: "Nuestra plataforma de pagos en línea ofrece a nuestros usuarios la total confianza para realizar transacciones de una forma innovadora y eficaz, ya sea desde casa, desde el celular o a través de una app.",
       repository: "none",
-      score: [4, 2, 4],
+      // score: [4, 2, 4],
       deploying: "https://www.paypal.com/co/webapps/mpp/home?kid=p67128741798&gclid=Cj0KCQjw2MWVBhCQARIsAIjbwoMR3vo2ld3s_ma5IXz1EISWQ0tDu4FKfBLV46EBM2vtyec07ZcpVZMaAkAlEALw_wcB&gclsrc=aw.ds",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/zBYFP2k5/image.png", "https://i.postimg.cc/4NjP93hm/image.png", "https://i.postimg.cc/SR28SW-dV/image.png"]
@@ -462,7 +463,7 @@ const mokeando = async () => {
       shortDescription: "La plataforma de streaming de videojuegos",
       description: "Twitch es una plataforma de streaming de videojuegos que ofrece a los usuarios una experiencia de streaming de videojuegos increíble, con una gran variedad de canales y una gran variedad de juegos.",
       repository: "none",
-      score: [1, 3, 4],
+      // score: [1, 3, 4],
       deploying: "https://www.twitch.tv",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/g0p0S17G/image.png", "https://i.postimg.cc/nhgWnJxt/image.png"]
@@ -473,7 +474,7 @@ const mokeando = async () => {
       shortDescription: "Universo de elementos de interfaz de usuario paraayudarte a sobresalirDe código abierto y de uso gratuito,solo copia y pega!",
       description: "uiverse.io es una plataforma de desarrollo de aplicaciones web y de interfaces de usuario que permite a los desarrolladores crear aplicaciones web y interfaces de usuario de código abierto y de uso gratuito.",
       repository: "none",
-      score: [1, 2, 3],
+      // score: [1, 2, 3],
       deploying: "https://uiverse.io",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/66DFvPp0/image.png", "https://i.postimg.cc/Hkj516bq/image.png", "https://i.postimg.cc/LXWwvCBm/image.png"]
@@ -484,7 +485,7 @@ const mokeando = async () => {
       shortDescription: "Huemint es una aplicación que te ayuda a encontrar la mejor paleta de colores para tu sitio web.",
       description: "Huemint utiliza el aprendizaje automático para generar colores para el diseño gráfico. En lugar de generar una paleta plana y dejar que descubras cómo aplicarla, puede generar colores en función de cómo se usará cada color en el diseño final.",
       repository: "none",
-      score: [4, 4, 3],
+      // score: [4, 4, 3],
       deploying: "https://huemint.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/QC4PRmTd/image.png", "https://i.postimg.cc/mgMXwB8D/image.png", "https://i.postimg.cc/W1M8ZS1q/image.png"]
@@ -495,7 +496,7 @@ const mokeando = async () => {
       shortDescription: "Pixabay es una plataforma de busqueda de imágenes gratuita",
       description: "Pixabay es una plataforma de busqueda de imágenes gratuita que te permite buscar imágenes de cualquier tipo y tamaño, y obtenerlas en formato de archivo de imagen, gráfico o vectorial.",
       repository: "none",
-      score: [3, 3, 3],
+      // score: [3, 3, 3],
       deploying: "https://pixabay.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/8kwWv9G6/image.png", "https://i.postimg.cc/RhTjC9JG/image.png", "https://i.postimg.cc/sf9XGhpH/image.png"]
@@ -506,7 +507,7 @@ const mokeando = async () => {
       shortDescription: "Nature es una revista de articulos de ciencia y tecnología",
       description: "Nature  es una revista internacional semanal que publica las mejores investigaciones revisadas por pares en todos los campos de la ciencia y la tecnología.",
       repository: "none",
-      score: [3, 4, 2],
+      // score: [3, 4, 2],
       deploying: "https://www.nature.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/QtNNrXtN/image.png", "https://i.postimg.cc/PrDj9L4z/image.png", "https://i.postimg.cc/DfJdXsnT/image.png"]
@@ -518,7 +519,7 @@ const mokeando = async () => {
       shortDescription: "ArtStation es una plataforma de creación de diseño gráfico",
       description: "ArtStation es una plataforma de creación de diseño gráfico que permite a los usuarios crear y compartir diseños gráficos y animados.",
       repository: "none",
-      score: [2, 3, 5],
+      // score: [2, 3, 5],
       deploying: "https://www.artstation.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/qvDnZMGr/image.png", "https://i.postimg.cc/CKd2W5Ts/image.png", "https://i.postimg.cc/1znQDJtS/image.png"]
@@ -529,7 +530,7 @@ const mokeando = async () => {
       shortDescription: "web para ver peliculas y series",
       description: "es una web donde te creas una cuenta pagas la mensualidad y tienes acceso a muchas series y peliculas. ",
       repository: "https://github.com/",
-      score: [5, 3, 3],
+      // score: [5, 3, 3],
       deploying: "https://www.netflix.com/",
       projectType: "Entretenimiento",
       imagen: ["https://i.postimg.cc/T2nXhNmB/Captura_de_pantalla_de_2022-06-22_09-53-33.png",
@@ -543,7 +544,7 @@ const mokeando = async () => {
       shortDescription: "web para hablar y socializar",
       description: "esta web esta proyectada para uso social se pueden hacer llamadas crear canales para hablar y chatear . ",
       repository: "https://github.com/",
-      score: [5, 4, 3],
+      // score: [5, 4, 3],
       deploying: "https://discord.com/",
       projectType: "Social",
       imagen: ["https://i.postimg.cc/wBXCf7VF/Captura_de_pantalla_de_2022-06-22_09-59-23.png",
@@ -557,7 +558,7 @@ const mokeando = async () => {
       shortDescription: "web para hablar y socializar",
       description: "esta web esta proyectada para uso social se pueden hacer llamadas crear canales para hablar y chatear . ",
       repository: "https://github.com/",
-      score: [5, 4, 3],
+      // score: [5, 4, 3],
       deploying: "https://es.tradingview.com/",
       projectType: "Social",
       imagen: ["https://i.postimg.cc/0jy1JP7n/Captura_de_pantalla_de_2022-06-22_10-01-53.png",
@@ -571,7 +572,7 @@ const mokeando = async () => {
       shortDescription: "visualiza tu anime favorito",
       description: "esta web fue diseñada para elegir y ver animes , guardar animes favoritos y comentar cada video. ",
       repository: "https://github.com/",
-      score: [5, 4, 5],
+      // score: [5, 4, 5],
       deploying: "https://www3.animeflv.net/",
       projectType: "Entreteniumiento",
       imagen: ["https://i.postimg.cc/fyYZNBjn/Captura_de_pantalla_de_2022-06-22_10-08-33.png",
@@ -585,7 +586,7 @@ const mokeando = async () => {
       shortDescription: "mantenete informado sobre el mundo financiero",
       description: "web estilo diario informativo sobre cryptomonedas y el mundo financiero en general. ",
       repository: "https://github.com/",
-      score: [4, 4, 4],
+      // score: [4, 4, 4],
       deploying: "https://es.cointelegraph.com/",
       projectType: "Informativo",
       imagen: ["https://i.postimg.cc/sD3471Qs/Captura_de_pantalla_de_2022-06-22_10-09-58.png",
@@ -600,7 +601,7 @@ const mokeando = async () => {
       shortDescription: "web para ver y subir videos",
       description: "Proyectada para que el usuario entree cree su cuenta suba y vea videos a su gusto. ",
       repository: "https://github.com/",
-      score: [4, 3, 3],
+      // score: [4, 3, 3],
       deploying: "https://www.youtube.com/",
       projectType: "Entretenimiento",
       imagen: ["https://i.postimg.cc/tCzDMFQs/Captura_de_pantalla_de_2022-06-22_10-05-00.png",
@@ -614,7 +615,7 @@ const mokeando = async () => {
       shortDescription: "web para visualizar mangas",
       description: "Proyectada para buscar y ver el manga que elijas. ",
       repository: "https://github.com/",
-      score: [4, 2, 3],
+      // score: [4, 2, 3],
       deploying: "https://www.mangatigre.net/",
       projectType: "Entretenimiento",
       imagen: ["https://i.postimg.cc/CKCKGMfp/Captura_de_pantalla_de_2022-06-22_10-11-00.png",
@@ -631,23 +632,23 @@ const mokeando = async () => {
       description: "",
       repository: "",
       deploying: "",
-      scoreStyle: [
-        1,
-        1
-      ],
-      scoreFunctionality: [
-        2,
-        3
-      ],
-      scoreOriginality: [
-        1,
-        2
-      ],
-      projectType: "Foro",
-      imagen: [
-        "https://i.pinimg.com/736x/f7/99/da/f799daf6e032206c41d1374b7c692290.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/0/01/Chromium_on_Ubuntu.png"
-      ]
+      // scoreStyle: [
+      //   1,
+      //   1
+      // ],
+      // scoreFunctionality: [
+      //   2,
+      //   3
+      // ],
+      // scoreOriginality: [
+      //   1,
+      //   2
+      // ],
+      // projectType: "Foro",
+      // imagen: [
+      //   "https://i.pinimg.com/736x/f7/99/da/f799daf6e032206c41d1374b7c692290.jpg",
+      //   "https://upload.wikimedia.org/wikipedia/commons/0/01/Chromium_on_Ubuntu.png"
+      // ]
     },
     {
       name: "Direct-Chat",
@@ -655,26 +656,26 @@ const mokeando = async () => {
       description: "Con la visionaria idea que tome del 2004, decidí crear un chat para chetear en tiempo real. Tambien podes tirar zumbidos :0",
       repository: "www.chat.com",
       deploying: "",
-      scoreStyle: [
-        3,
-        5,
-        1
-      ],
-      scoreFunctionality: [
-        1,
-        2,
-        2
-      ],
-      scoreOriginality: [
-        1,
-        5,
-        3
-      ],
-      projectType: "APP",
-      imagen: [
-        "https://wwwhatsnew.com/wp-content/uploads/2022/03/crear-chat.jpg",
-        "https://helpdesk.bitrix24.es/upload/medialibrary/cf7/zshk2y4qr2x1yci6449hstp6fwztypqk/1.jpg"
-      ]
+      // scoreStyle: [
+      //   3,
+      //   5,
+      //   1
+      // ],
+      // scoreFunctionality: [
+      //   1,
+      //   2,
+      //   2
+      // ],
+      // scoreOriginality: [
+      //   1,
+      //   5,
+      //   3
+      // ],
+      // projectType: "APP",
+      // imagen: [
+      //   "https://wwwhatsnew.com/wp-content/uploads/2022/03/crear-chat.jpg",
+      //   "https://helpdesk.bitrix24.es/upload/medialibrary/cf7/zshk2y4qr2x1yci6449hstp6fwztypqk/1.jpg"
+      // ]
     },
     {
       name: "Fotorum",
@@ -682,18 +683,18 @@ const mokeando = async () => {
       description: "Una enorme galeria con todas las fotos, podes descargarlas o postear nuevas",
       repository: "",
       deploying: "",
-      scoreStyle: [
-        4,
-        2
-      ],
-      scoreFunctionality: [
-        1,
-        4
-      ],
-      scoreOriginality: [
-        1.5,
-        2
-      ],
+      // scoreStyle: [
+      //   4,
+      //   2
+      // ],
+      // scoreFunctionality: [
+      //   1,
+      //   4
+      // ],
+      // scoreOriginality: [
+      //   1.5,
+      //   2
+      // ],
       projectType: "Entretenimiento",
     },
     {
@@ -702,21 +703,21 @@ const mokeando = async () => {
       description: "Anota wifis libres para ganar dinero extra por cada usuario que lo use, o simplemente busca wifis anotados por otros usuario",
       repository: "www.wifi.com",
       deploying: "",
-      scoreStyle: [
-        3,
-        2,
-        1
-      ],
-      scoreFunctionality: [
-        1,
-        2,
-        1
-      ],
-      scoreOriginality: [
-        1,
-        5,
-        1
-      ],
+      // scoreStyle: [
+      //   3,
+      //   2,
+      //   1
+      // ],
+      // scoreFunctionality: [
+      //   1,
+      //   2,
+      //   1
+      // ],
+      // scoreOriginality: [
+      //   1,
+      //   5,
+      //   1
+      // ],
       projectType: "APP",
     },
     {
@@ -725,21 +726,21 @@ const mokeando = async () => {
       description: "Alguna vez quisiste publicar algo, pero que se vea recien dentro de 3~5 años? Esta es tu pagina. Totalmente util",
       repository: "",
       deploying: "www.Instagram.com",
-      scoreStyle: [
-        4,
-        2,
-        4
-      ],
-      scoreFunctionality: [
-        3,
-        2,
-        3
-      ],
-      scoreOriginality: [
-        3,
-        5,
-        2
-      ],
+      // scoreStyle: [
+      //   4,
+      //   2,
+      //   4
+      // ],
+      // scoreFunctionality: [
+      //   3,
+      //   2,
+      //   3
+      // ],
+      // scoreOriginality: [
+      //   3,
+      //   5,
+      //   2
+      // ],
       projectType: "Red Social",
     },
     {
@@ -748,21 +749,21 @@ const mokeando = async () => {
       description: "Queres aprender todo sobre componentes y circuitos electricos? Con Ruben castillo podes completamente en este hermoso podcast con pagina propia!",
       repository: "www.linkfalso123.com",
       deploying: "www.podcast.com",
-      scoreStyle: [
-        5,
-        5,
-        4
-      ],
-      scoreFunctionality: [
-        4,
-        2,
-        4
-      ],
-      scoreOriginality: [
-        3,
-        3,
-        4
-      ],
+      // scoreStyle: [
+      //   5,
+      //   5,
+      //   4
+      // ],
+      // scoreFunctionality: [
+      //   4,
+      //   2,
+      //   4
+      // ],
+      // scoreOriginality: [
+      //   3,
+      //   3,
+      //   4
+      // ],
       projectType: "APP",
     },
     {
@@ -771,9 +772,9 @@ const mokeando = async () => {
       description: "Es un proyecto que tiene como objetivo la descarga de videos/clips de twitch y otras plataformas de videos",
       repository: "",
       deploying: "https://clipr.xyz/",
-      scoreStyle: [1, 1],
-      scoreFunctionality: [3, 3],
-      scoreOriginality: [3, 3],
+      // scoreStyle: [1, 1],
+      // scoreFunctionality: [3, 3],
+      // scoreOriginality: [3, 3],
       projectType: "Descarga de videos",
       imagen: ['https://i.postimg.cc/3rb4dKfj/image.png']
     },
@@ -785,9 +786,9 @@ const mokeando = async () => {
       description: "Es una plataforma para poder hacer emisiones en vivo de distintas categorias: Juegos, charlas, apuestas. etc",
       repository: "",
       deploying: "https://www.twitch.tv/",
-      scoreStyle: [3, 3],
-      scoreFunctionality: [3, 3],
-      scoreOriginality: [3, 3],
+      // scoreStyle: [3, 3],
+      // scoreFunctionality: [3, 3],
+      // scoreOriginality: [3, 3],
       projectType: "Plataforma de Stream",
       imagen: ['https://i.postimg.cc/SR7zX8ng/image.png']
     },
@@ -799,9 +800,9 @@ const mokeando = async () => {
       description: "Es un foro para poder opinar de temas serios, graciosos, entre otros y además para compartir cosas",
       repository: "",
       deploying: "https://www.reddit.com/",
-      scoreStyle: [1, 2],
-      scoreFunctionality: [1, 3],
-      scoreOriginality: [3, 3],
+      // scoreStyle: [1, 2],
+      // scoreFunctionality: [1, 3],
+      // scoreOriginality: [3, 3],
       projectType: "Foro",
       imagen: ['https://i.postimg.cc/FKCt4nGZ/image.png']
     },
@@ -812,9 +813,9 @@ const mokeando = async () => {
       description: "Es una plataforma para manejar tu plata, transferir, comprar, pagar",
       repository: "",
       deploying: "https://www.mercadopago.com.ar/",
-      scoreStyle: [3, 3],
-      scoreFunctionality: [3, 3],
-      scoreOriginality: [3, 3],
+      // scoreStyle: [3, 3],
+      // scoreFunctionality: [3, 3],
+      // scoreOriginality: [3, 3],
       projectType: "Finanzas",
       imagen: ['https://i.postimg.cc/wMfRczkN/image.png']
     },
@@ -824,41 +825,41 @@ const mokeando = async () => {
       description: "Es una plataforma para realizar stream, orientada a los videojuegos",
       repository: "",
       deploying: "https://booyah.live/",
-      scoreStyle: [1, 2],
-      scoreFunctionality: [3, 3],
-      scoreOriginality: [2, 3],
+      // scoreStyle: [1, 2],
+      // scoreFunctionality: [3, 3],
+      // scoreOriginality: [2, 3],
       projectType: "Plataforma de Stream",
       imagen: ['https://i.postimg.cc/qvLq84Mv/image.png']
     }
   ]
 
   const comments = [
-    { text: "Excelente trabajo! Muy original" },
-    { text: "Qué buen proyecto, me gustó mucho la idea." },
-    { text: "Fantástico trabajo, impresionado de lo que lograron." },
-    { text: "Felicitaciones, has  creado un producto de valor, funcional y creativo" },
-    { text: "Muy bueno, muy original , felicidades!" },
-    { text: "Me encantó el diseño, como feedback haría el botón de crear más grande para que se visibilice mejor." },
-    { text: "Muy bueno todas las tecnologías que se utilizaron, excelente el resultado." },
-    { text: "Muy bueno el trabajo, buenisima la implementación pago a través de criptos" },
-    { text: "Tremendo proyecto! les quedó genial! felicitaciones!!" },
-    { text: "Me gusta el layout, muy sencillo e intuitivo" },
-    { text: "Me encantó la paleta de colores!! Pondría más grande el título para que llame la atención del usuario" },
-    { text: "Proyecto sencillo pero funcional y responsivo, felicitaciones por lo que lograste!" },
-    { text: "¡Felicitaciones! Gran trabajo" },
-    { text: "Me gustaría ver como queda con otra paleta de colores, pero me encantó la idea del proyecto!" },
-    { text: "Se me hace difícil encontrar los botones para pasar a la siguiente página, modificaría el estilo del paginador. Más allá de eso, me encantó el proyecto! " },
-    { text: "Muy buen proyecto, ordenado, intuitivo. Le agregaría el link de la página oficial del videojuego en la página del detalle." },
-    { text: "Muy buena LandingPage, sencilla de comprender." },
-    { text: "Me gustó mucho la idea del proyecto, le agregaría una NavBar para encontrar más fácil las distintas secciones." },
-    { text: "Genial! Muy original! Solo agregaría un ordenador de los más a los menos populares." },
-    { text: "Me pareció un proyecto muy prolijo, fácil de usar." },
-    { text: "Me gustó mucho este proyecto!!!! Solo lo haría responsivo. " },
-    { text: "Qué buen trabajo! Me gustaron mucho las imágenes utilizadas y los colores. El carrusel de la página de inicio quedó increíble." },
-    { text: "Excelente!! Lograste una imitación muy buena de la página real." },
-    { text: "Muy interesante lo que se logró y las tecnologías utilizadas." },
-    { text: "Me encantó el hover de las cards!!! Muy buen proyecto." },
-    { text: "Increible este trabajo! De mis favoritos hasta ahora." }
+    "Excelente trabajo! Muy original",
+    "Qué buen proyecto, me gustó mucho la idea.",
+    "Fantástico trabajo, impresionado de lo que lograron.",
+    "Felicitaciones, has  creado un producto de valor, funcional y creativo",
+    "Muy bueno, muy original , felicidades!",
+    "Me encantó el diseño, como feedback haría el botón de crear más grande para que se visibilice mejor.",
+    "Muy bueno todas las tecnologías que se utilizaron, excelente el resultado.",
+    "Muy bueno el trabajo, buenisima la implementación pago a través de criptos",
+    "Tremendo proyecto! les quedó genial! felicitaciones!!",
+    "Me gusta el layout, muy sencillo e intuitivo",
+    "Me encantó la paleta de colores!! Pondría más grande el título para que llame la atención del usuario",
+    "Proyecto sencillo pero funcional y responsivo, felicitaciones por lo que lograste!",
+    "¡Felicitaciones! Gran trabajo",
+    "Me gustaría ver como queda con otra paleta de colores, pero me encantó la idea del proyecto!",
+    "Se me hace difícil encontrar los botones para pasar a la siguiente página, modificaría el estilo del paginador. Más allá de eso, me encantó el proyecto! ",
+    "Muy buen proyecto, ordenado, intuitivo. Le agregaría el link de la página oficial del videojuego en la página del detalle.",
+    "Muy buena LandingPage, sencilla de comprender.",
+    "Me gustó mucho la idea del proyecto, le agregaría una NavBar para encontrar más fácil las distintas secciones.",
+    "Genial! Muy original! Solo agregaría un ordenador de los más a los menos populares.",
+    "Me pareció un proyecto muy prolijo, fácil de usar.",
+    "Me gustó mucho este proyecto!!!! Solo lo haría responsivo. ",
+    "Qué buen trabajo! Me gustaron mucho las imágenes utilizadas y los colores. El carrusel de la página de inicio quedó increíble.",
+    "Excelente!! Lograste una imitación muy buena de la página real.",
+    "Muy interesante lo que se logró y las tecnologías utilizadas.",
+    "Me encantó el hover de las cards!!! Muy buen proyecto.",
+    "Increible este trabajo! De mis favoritos hasta ahora."
   ];
   const tecnologias = [
     { name: "Java" },
@@ -919,17 +920,17 @@ const mokeando = async () => {
   }
 
 
-  projects.map((e) => {
-    if (!!e.score) {
-      e.scoreStyle = []
-      e.scoreFunctionality = []
-      e.scoreOriginality = []
-      e.scoreStyle.push(Number(e.score[0]));
-      e.scoreFunctionality.push(Number(e.score[1]))
-      e.scoreOriginality.push(Number(e.score[2]))
-    }
-    else { null }
-  })
+  // projects.map((e) => {
+  //   if (!!e.score) {
+  //     e.scoreStyle = []
+  //     e.scoreFunctionality = []
+  //     e.scoreOriginality = []
+  //     e.scoreStyle.push(Number(e.score[0]));
+  //     e.scoreFunctionality.push(Number(e.score[1]))
+  //     e.scoreOriginality.push(Number(e.score[2]))
+  //   }
+  //   else { null }
+  // })
   users.map(e => {
     e.stack = []
     for (let i = 0; i < 10; i++) {
@@ -942,29 +943,67 @@ const mokeando = async () => {
     }
   })
 
+  async function crearUser(formData) {
+    await axios.post(process.env.BACKEND_BASE_URL + "/api/auth/register", formData)
+
+  }
+
+  async function editarUser(userId, userEdit) {
+    await axios.put(process.env.BACKEND_BASE_URL + "/api/user/mockeo/editar", { userId, userEdit })
+
+  }
+
+  async function agregarReview(projectid, input, userId) {
+    await axios.post(process.env.BACKEND_BASE_URL + "/api/review", { projectid, input, userId })
+  }
+
+
   for (let i = 0; i < users.length; i++) {
-    await User.create(users[i])
+
+    let formData = {
+      name: users[i].name,
+      email: users[i].mail,
+      password: users[i].password,
+      repeat_password: users[i].password,
+      tos: true
+    }
+    let userEdit = {
+      name: users[i].name,
+      stack: users[i].stack,
+      linkedin: users[i].linkedin,
+      github: users[i].github,
+      image: users[i].image,
+      short_description: users[i].short_description,
+      description: users[i].description
+    }
+    await crearUser(formData)
+    await editarUser(i + 1, userEdit)
+
   }
 
   for (let j = 0; j < projects.length; j++) {
 
     let project = await Project.create(projects[j])
 
-    await project.set({
-      scoreFunctionality: [...project.scoreFunctionality].concat((numeroRandom(1, 5))),
-      scoreStyle: [...project.scoreStyle].concat((numeroRandom(1, 5))),
-      scoreOriginality: [...project.scoreOriginality].concat((numeroRandom(1, 5))),
-    })
-    await project.set({
-      scoreAverage: ((project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length) +
-        (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length) +
-        (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)) / 3
-    })
-
     await project.save()
+
+
+
 
     const user = await User.findByPk((numeroRandom(1, (users.length))).toString())
     await user.addProjects(project)
+
+    for (let h = 0; h < 10; h++) {
+      if (numeroRandom(1, 4) == 1) {
+        let input = {
+          scoreStyle: numeroRandom(1, 5),
+          scoreFunctionality: numeroRandom(1, 5),
+          scoreOriginality: numeroRandom(1, 5),
+          text: comments[Number(numeroRandom(0, comments.length - 1))]
+        }
+        await agregarReview(j + 1, input, numeroRandom(1, users.length - 1))
+      }
+    }
   }
 
   // let user = await User.create(users[i])
