@@ -82,11 +82,10 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
+            <div className='home-publica-si-logged'>
+                {logger ? <Link to="/newProject" className='home-publicar-link'> Publica tu proyecto!</Link> : <Link to="/register" className='home-publicar-link'> Para publicar, logueate!</Link>}
+            </div>
             <div>
-                <hr></hr>
-                <div className='home-publica-si-logged'>
-                    {logger ? <Link to="/newProject" className='home-publicar-link'> Publica tu proyecto!</Link> : <p className='home-publicar'> Para publicar, logueate</p>}
-                </div>
                 <div className='cont-filtros'>
                     <div>
                         <input className='home-search' type="search" placeholder="Buscar proyecto..." name="search" onChange={(e) => searchFilterChange(e)} value={filterBySearch} />
