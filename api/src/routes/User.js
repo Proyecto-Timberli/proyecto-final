@@ -38,7 +38,7 @@ router.get("/id/:idUser", async (req, res, next) => {
 
     try {
         const user = await User.findByPk(idUser, {
-            include: [{ model: Project }, { model: Favorites, include: [{ model: Project }] }]
+            include: [{ model: Project }, { model: Favorites, include: [{ model: Project, include: User }] }]
         })
 
         if (!user) {

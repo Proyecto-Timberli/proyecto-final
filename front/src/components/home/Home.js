@@ -114,6 +114,7 @@ const Home = () => {
                             scoreOriginality={e.scoreOriginality}
                             scoreStyle={e.scoreStyle}
                             fecha={e.createdAt}
+                            update={e.updatedAt}
                             score={e.scoreAverage}
                         />)}
                     </div>

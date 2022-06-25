@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { MdFavorite, MdError } from "react-icons/md";
 import { addFavorites, deleteFavorite } from '../../../redux/actions/actionCreators';
-import { formatDate } from '../../../functions';
+import { formatDate, getDateTime } from '../../../functions';
 
-function Card({ id, name, description, fecha, imagen, userId, score, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
+function Card({ id, name, description, fecha, imagen, userId, score, update, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
     // const promedio = 1
     // if (score.length){
     // const arrNumber = score.map((n) => Number(n))
@@ -37,8 +37,10 @@ function Card({ id, name, description, fecha, imagen, userId, score, user, score
                         <img src={defaultImg[0]} alt='imagen proyecto'></img>
 
                     }
-                    <div className='fecha-card'>
-                        <p>Creado el: {formatDate(fecha)}</p>
+                    <div className='fecha-card'>{
+
+                    }
+                        {getDateTime(update) - getDateTime(fecha) < 100 ? <p>Creado el: {formatDate(fecha)}</p> : <p>Editado el: {formatDate(update)}</p>}
                     </div>
                 </div>
 
