@@ -16,8 +16,6 @@ import {
     GET_REVIEWS,
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
-    GET_REPORTS_USERS,
-    GET_REPORTS_PROJECTS,
     GET_LIST_FAVORITES
 
 } from "./actions.js"
@@ -217,32 +215,8 @@ export function getReviews() {
 }
 
 /////////////////////REPORT/////////////////////////////
-export function getReportsProjects(projectId) {
-    return function (dispatch) {
-        axios.get(REACT_APP_API + `/api/report/project`, { projectId: projectId })
-            .then(res => {
-                dispatch({
-                    type: GET_REPORTS_PROJECTS,
-                    payload: res.data
-                })
-            }
-            )
-    }
-}
-export function getReportsUsers(userId) {
-    return function (dispatch) {
-        axios.get(REACT_APP_API + `/api/report/user`, { userId: userId })
-            .then(res => {
-                dispatch({
-                    type: GET_REPORTS_USERS,
-                    payload: res.data
-                })
-            }
-            )
 
-    }
-}
-export function postReportUser({ userId, reportedBy, reportComment }) {
+export function postReportUser( userId, reportedBy, reportComment ) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/user`, { userId: userId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -255,9 +229,9 @@ export function postReportUser({ userId, reportedBy, reportComment }) {
 
     }
 }
-export function postReportProject({ projectId, reportedBy, reportComment }) {
+export function postReportProject( projectId, reportedBy, reportComment ) {
     return function (dispatch) {
-        axios.post(REACT_APP_API + `/api/report/user`, { projectId: projectId, reportedBy: reportedBy, reportComment: reportComment })
+        axios.post(REACT_APP_API + `/api/report/project`, { projectId: projectId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
                 dispatch({
                     type: POST_REPORT_PROJECT,

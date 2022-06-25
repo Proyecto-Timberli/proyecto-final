@@ -17,7 +17,9 @@ import {
     LIST_PAYMENTS,
     GET_REVIEWS,
     GET_LIST_FAVORITES,
-    GET_REPORTS_PROJECTS
+    POST_REPORT_USER,
+    POST_REPORT_PROJECT,
+
 } from "./actions/actions.js";
 
 const initialState = {
@@ -30,9 +32,7 @@ const initialState = {
     contributions: [],
     reviews: [],
     listFavorites: [],
-    reportsProjects: [],
-    reportsUsers: [],
-
+    errors: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -101,13 +101,7 @@ export default function reducer(state = initialState, action) {
                 contributions: action.payload
             }
         }
-        case GET_REPORTS_PROJECTS: {
-            return {
-                ...state,
-                reportsProjects: action.payload
-            }
-        }
-
+    
         case LIST_PAYMENTS: {
             return {
                 ...state,
@@ -126,7 +120,7 @@ export default function reducer(state = initialState, action) {
                 listFavorites: action.payload
             }
         }
-
+        
         default:
             return state
     }
