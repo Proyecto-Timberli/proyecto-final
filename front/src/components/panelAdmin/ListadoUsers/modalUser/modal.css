@@ -15,12 +15,43 @@
 }
 
 .modal {
-    background-color: rgba(143, 136, 136, 0);
+    background-color: rgba(255, 255, 255, 0.399);
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 300;
+    z-index: 1000;
+}
 
+.titulo-modal-admin{
+    color: #023e6bfc;
+    margin-bottom: 0;
+}
+
+.select-modal-admin{
+    padding: 2%;
+    border-color: #023e6bfc;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-modal-admin{
+    padding: 10px;
+    background: #215b82;
+    background-image: -webkit-linear-gradient(top, #215b82, #18557a);
+    background-image: -moz-linear-gradient(top, #215b82, #18557a);
+    background-image: -ms-linear-gradient(top, #215b82, #18557a);
+    background-image: -o-linear-gradient(top, #215b82, #18557a);
+    background-image: linear-gradient(to bottom, #215b82, #18557a);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 6rem;
+}
+
+.btn-modal-admin:hover {
+    letter-spacing: 1px;
+    background: #2375ac;
 }

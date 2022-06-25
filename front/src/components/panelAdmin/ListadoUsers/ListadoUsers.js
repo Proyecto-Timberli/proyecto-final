@@ -100,9 +100,9 @@ function ListadoUsers() {
                             <div key={u.id}>
                                 <div className='user-card-admin' key={u.id}>
                                     <li key={u.id}> <Link to={"/user/" + u.id}>{u.name.toUpperCase()}</Link> </li>
-                                    <div className='content-project-state'>
+                                    <div className='content-project-state' onClick={(e) => cambiarEstado(u.id)}>
                                         {u.userType.toUpperCase()}
-                                        <MdKeyboardArrowDown onClick={(e) => cambiarEstado(u.id)} />
+                                        <MdKeyboardArrowDown />
                                     </div>
 
                                 </div>

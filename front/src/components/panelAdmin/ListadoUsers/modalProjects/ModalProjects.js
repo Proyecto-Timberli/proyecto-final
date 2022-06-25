@@ -27,7 +27,7 @@ const ModalProjects = ({ estado, id, nombre, projects }) => {
                 </div>
                 <div className='project-content-buttons'>
 
-                    <button className='boton-cerrar' onClick={(e) => estado()}>Cerrar</button>
+                    <button className='boton-cerrar' onClick={(e) => estado()}>CERRAR</button>
                 </div>
             </div>
         </div>
