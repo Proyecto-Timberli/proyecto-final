@@ -3,8 +3,17 @@ const { Router } = require('express');
 const { User } = require('../db.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const passport = require('passport')
+const GitHubStrategy = require('passport-github2')
 const router = Router();
+
+passport.serializeUser(function (user, done) {
+    done(null, user)
+})
+
+passport.deserializeUser(function (user, done) {
+    done(null, user)
+})
 
 router.post("/register", (req, res, next) => {
     const userData = {
@@ -54,14 +63,14 @@ router.post("/login", (req, res, next) => {
     }).then(user => {
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
+                
                 let token = jwt.sign({ 
                     user_id: user.dataValues.id, 
                     email: user.dataValues.mail,
                     user_type: user.dataValues.userType
                 }, process.env.JWT_SECRET_KEY, {
                     expiresIn: 1440
-                })
-               
+                })      
                 
                 res.send({
                     status: "success",
@@ -86,5 +95,61 @@ router.post("/login", (req, res, next) => {
         console.log(err)
     })
 })
+
+/**
+ * Github Oauth
+ */
+
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.BACKEND_BASE_URL + "/api/auth/github/callback"
+  },
+  async function(accessToken, refreshToken, profile, done) {
+
+    let name = profile.displayName;
+
+    if (!profile.displayName) {
+        name = profile.username
+    }
+
+    const [user, created] = await User.findOrCreate({ 
+        where: {
+            githubId: profile.id 
+        },
+        defaults: {
+            githubId: profile.id,
+            name: name,
+            github: profile.profileUrl,
+            image: profile._json.avatar_url,
+            mail: "oauth",
+            password: "oauth"
+        }
+    });
+
+    done(null, user)
+  }
+));
+
+router.get('/github',
+  passport.authenticate('github', { session: 'false', scope: [ 'user:email' ] }));
+
+router.get('/github/callback', 
+  passport.authenticate('github', { session: 'false', failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+
+
+    let token = jwt.sign({ 
+        user_id: res.req.user.dataValues.id, 
+        email: res.req.user.dataValues.mail,
+        user_type: res.req.user.dataValues.userType
+    }, process.env.JWT_SECRET_KEY, {
+        expiresIn: 1440
+    })
+
+    res.redirect( process.env.FRONTEND_BASE_URL + '/home?token=' + token + '&id=' + res.req.user.dataValues.id);
+  });
+
 
 module.exports = router;
