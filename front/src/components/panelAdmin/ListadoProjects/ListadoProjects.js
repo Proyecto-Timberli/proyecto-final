@@ -42,6 +42,7 @@ function ListadoProjects() {
         } else if (state === 'Pendiente') {
             dispatch(adminSupendProject(id, 'Aceptado'))
         }
+        alert(`Se ha modificado el estado del proyecto`)
         window.location.reload();
     }
 
