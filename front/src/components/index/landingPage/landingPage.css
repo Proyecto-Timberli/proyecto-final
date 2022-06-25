@@ -145,8 +145,8 @@
 
 .chatbot-landing {
     position: fixed;
-    width: 350px; 
-    bottom: 40px;
+    width: 310px; 
+    bottom: 10px;
     right: 0;
     z-index: 50;
 }
