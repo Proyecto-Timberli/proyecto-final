@@ -129,6 +129,7 @@
 .imageBox3 {
     border-radius: 10px;
     box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
+    max-width: 50%;
 }
 
 .imageBox3,
