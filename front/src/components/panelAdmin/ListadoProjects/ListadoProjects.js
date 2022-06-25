@@ -50,7 +50,7 @@ function ListadoProjects() {
         <div>
             <div className='arriba-contenedor-project'>
                 <MdWork className='icono-title-project'/>
-                <h1>PROYECTOS</h1>
+                <h1>Listado de Proyectos</h1>
             </div>
             <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
 
