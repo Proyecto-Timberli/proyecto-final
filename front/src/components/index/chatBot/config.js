@@ -1,6 +1,7 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
 import LinkList from './LinkList';
 import ResponseOptions from './ResponseOptions';
+const { REACT_APP_BOT } = process.env
 
 const botName = 'Timberli';
 
@@ -30,7 +31,7 @@ const config = {
                 options: [
                     {
                         text: "Registrate",
-                        url: `http://localhost:3000/register`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/register`, //hay que acomodar para el deploy, solo estoy probando
                         id: 1,
                     },
                 ],
@@ -43,7 +44,7 @@ const config = {
                 options: [
                     {
                     text: "Contribuir",
-                    url: `http://localhost:3000/payment`, //hay que acomodar para el deploy, solo estoy probando
+                    url: `${REACT_APP_BOT}/payment`, //hay que acomodar para el deploy, solo estoy probando
                     id: 1,
                     },
                 ],
@@ -56,17 +57,17 @@ const config = {
                 options: [
                     {
                         text: "Login",
-                        url: `http://localhost:3000/login`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/login`, //hay que acomodar para el deploy, solo estoy probando
                         id: 1,
                     },
                     {
                         text: "Compartir mi proyecto",
-                        url: `http://localhost:3000/newProject`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/newProject`, //hay que acomodar para el deploy, solo estoy probando
                         id: 1,
                     },
                     {
                         text: "Votar y/o favear",
-                        url: `http://localhost:3000/home`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/home`, //hay que acomodar para el deploy, solo estoy probando
                         id: 2,
                     },
                 ],
@@ -79,17 +80,17 @@ const config = {
                 options: [
                     {
                         text: "Ver proyectos",
-                        url: `http://localhost:3000/home`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/home`, //hay que acomodar para el deploy, solo estoy probando
                         id: 1,
                     },
                     {
                         text: "Ver comunidad",
-                        url: `http://localhost:3000/community`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/community`, //hay que acomodar para el deploy, solo estoy probando
                         id: 2,
                     },
                     {
                         text: "Registrate",
-                        url: `http://localhost:3000/register`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/register`, //hay que acomodar para el deploy, solo estoy probando
                         id: 1,
                     },
                 ],
@@ -102,7 +103,7 @@ const config = {
                 options: [
                     {
                         text: "Conocenos",
-                        url: `http://localhost:3000/about`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/about`, //hay que acomodar para el deploy, solo estoy probando
                         id: 1,
                     },
                 ],

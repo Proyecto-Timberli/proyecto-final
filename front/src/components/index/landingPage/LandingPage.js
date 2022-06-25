@@ -44,7 +44,7 @@ export default function LandingPage() {
                 </div>
             </div>
             <div className="chatbot-landing">
-                <Chatbot/>
+                <Chatbot className='chatbot-style'/>
             </div>
 
             <div className="landingBody">
