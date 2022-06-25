@@ -38,9 +38,20 @@
 
 .btn-modal-admin{
     padding: 10px;
-    background-color: #0460a5;
+    background: #215b82;
+    background-image: -webkit-linear-gradient(top, #215b82, #18557a);
+    background-image: -moz-linear-gradient(top, #215b82, #18557a);
+    background-image: -ms-linear-gradient(top, #215b82, #18557a);
+    background-image: -o-linear-gradient(top, #215b82, #18557a);
+    background-image: linear-gradient(to bottom, #215b82, #18557a);
     color: white;
-    border-radius: 6px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
+    width: 6rem;
+}
+
+.btn-modal-admin:hover {
+    letter-spacing: 1px;
+    background: #2375ac;
 }

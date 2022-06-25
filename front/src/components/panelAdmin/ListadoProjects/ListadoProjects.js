@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './listado.css'
-import { MdWork, MdDoneOutline, MdClear } from "react-icons/md";
+import { MdWork, MdDoneOutline, MdClear, MdLaptopWindows } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProjects, adminSupendProject } from '../../../redux/actions/actionCreators'
 import Paginado from '../../home/Paginado.js'
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 function ListadoProjects() {
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
+
 
     useEffect(() => {
         dispatch(getAllProjects());
@@ -36,15 +37,12 @@ function ListadoProjects() {
     }, [allProjects])
 
     function cambiarEstado(id, state) {
-
         if (state === 'Aceptado') {
-
             dispatch(adminSupendProject(id, 'Pendiente'))
-
         } else if (state === 'Pendiente') {
             dispatch(adminSupendProject(id, 'Aceptado'))
         }
-
+        window.location.reload();
     }
 
 
@@ -63,12 +61,12 @@ function ListadoProjects() {
                             <div className='project-card-admin' key={p.id}>
 
                                 <li key={p.id}><b>{p.id}   </b>   <Link to={"/project/" + p.id}>{p.name}</Link> </li>
-                                <div className='content-project-state'>
-                                    <p className='state-project'>{p.state}</p>
+                                <div className='content-project-state' onClick={(e) => cambiarEstado(p.id, p.state)} >
+                                    <p className='state-project'>{p.state} </p>
                                     {
                                         p.state === 'Aceptado' ?
-                                            <MdClear className='decline-project' onClick={(e) => cambiarEstado(p.id, p.state)} /> :
-                                            <MdDoneOutline className='accept-project' onClick={(e) => cambiarEstado(p.id, p.state)} />
+                                            <MdClear className='decline-project' /> :
+                                            <MdDoneOutline className='accept-project' />
                                     }
                                 </div>
 
