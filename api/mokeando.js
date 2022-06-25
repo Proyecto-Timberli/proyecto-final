@@ -24,7 +24,7 @@ const mokeando = async () => {
       name: "Ada shelby",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
+      image: "https://www.looper.com/img/gallery/why-ada-shelby-from-peaky-blinders-looks-so-familiar/l-intro-1615148175.jpg",
       description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
