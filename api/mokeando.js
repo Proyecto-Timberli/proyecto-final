@@ -24,7 +24,7 @@ const mokeando = async () => {
       name: "Ada shelby",
       mail: "adashelby24@mail.com",
       password: "password",
-      image: "https://cdn.images.express.co.uk/img/dynamic/20/590x/peaky-blinders-sophie-rundle-ada-shelby-1417008.webp?r=1617132387671",
+      image: "https://www.looper.com/img/gallery/why-ada-shelby-from-peaky-blinders-looks-so-familiar/l-intro-1615148175.jpg",
       description: "Mi nombre es Ada y soy desarrolladora web. Tengo 5 años de experiencia utilizando las siguientes tecnologías: REACT.JS y REACT NATIVE, Redux, MongoDB, MySQL",
       linkedin: "https://www.linkedin.com",
       github: "https://github.com/",
@@ -450,7 +450,7 @@ const mokeando = async () => {
       shortDescription: "La forma fácil y segura de enviar y recibir pagos en línea",
       description: "Nuestra plataforma de pagos en línea ofrece a nuestros usuarios la total confianza para realizar transacciones de una forma innovadora y eficaz, ya sea desde casa, desde el celular o a través de una app.",
       repository: "none",
-      score: [10, 10, 10],
+      score: [4, 2, 4],
       deploying: "https://www.paypal.com/co/webapps/mpp/home?kid=p67128741798&gclid=Cj0KCQjw2MWVBhCQARIsAIjbwoMR3vo2ld3s_ma5IXz1EISWQ0tDu4FKfBLV46EBM2vtyec07ZcpVZMaAkAlEALw_wcB&gclsrc=aw.ds",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/zBYFP2k5/image.png", "https://i.postimg.cc/4NjP93hm/image.png", "https://i.postimg.cc/SR28SW-dV/image.png"]
@@ -462,7 +462,7 @@ const mokeando = async () => {
       shortDescription: "La plataforma de streaming de videojuegos",
       description: "Twitch es una plataforma de streaming de videojuegos que ofrece a los usuarios una experiencia de streaming de videojuegos increíble, con una gran variedad de canales y una gran variedad de juegos.",
       repository: "none",
-      score: [6, 7, 5],
+      score: [1, 3, 4],
       deploying: "https://www.twitch.tv",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/g0p0S17G/image.png", "https://i.postimg.cc/nhgWnJxt/image.png"]
@@ -473,7 +473,7 @@ const mokeando = async () => {
       shortDescription: "Universo de elementos de interfaz de usuario paraayudarte a sobresalirDe código abierto y de uso gratuito,solo copia y pega!",
       description: "uiverse.io es una plataforma de desarrollo de aplicaciones web y de interfaces de usuario que permite a los desarrolladores crear aplicaciones web y interfaces de usuario de código abierto y de uso gratuito.",
       repository: "none",
-      score: [8, 7, 8],
+      score: [1, 2, 3],
       deploying: "https://uiverse.io",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/66DFvPp0/image.png", "https://i.postimg.cc/Hkj516bq/image.png", "https://i.postimg.cc/LXWwvCBm/image.png"]
@@ -484,7 +484,7 @@ const mokeando = async () => {
       shortDescription: "Huemint es una aplicación que te ayuda a encontrar la mejor paleta de colores para tu sitio web.",
       description: "Huemint utiliza el aprendizaje automático para generar colores para el diseño gráfico. En lugar de generar una paleta plana y dejar que descubras cómo aplicarla, puede generar colores en función de cómo se usará cada color en el diseño final.",
       repository: "none",
-      score: [8, 7, 6],
+      score: [4, 4, 3],
       deploying: "https://huemint.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/QC4PRmTd/image.png", "https://i.postimg.cc/mgMXwB8D/image.png", "https://i.postimg.cc/W1M8ZS1q/image.png"]
@@ -495,7 +495,7 @@ const mokeando = async () => {
       shortDescription: "Pixabay es una plataforma de busqueda de imágenes gratuita",
       description: "Pixabay es una plataforma de busqueda de imágenes gratuita que te permite buscar imágenes de cualquier tipo y tamaño, y obtenerlas en formato de archivo de imagen, gráfico o vectorial.",
       repository: "none",
-      score: [6, 6, 6],
+      score: [3, 3, 3],
       deploying: "https://pixabay.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/8kwWv9G6/image.png", "https://i.postimg.cc/RhTjC9JG/image.png", "https://i.postimg.cc/sf9XGhpH/image.png"]
@@ -506,7 +506,7 @@ const mokeando = async () => {
       shortDescription: "Nature es una revista de articulos de ciencia y tecnología",
       description: "Nature  es una revista internacional semanal que publica las mejores investigaciones revisadas por pares en todos los campos de la ciencia y la tecnología.",
       repository: "none",
-      score: [7, 8, 9],
+      score: [3, 4, 2],
       deploying: "https://www.nature.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/QtNNrXtN/image.png", "https://i.postimg.cc/PrDj9L4z/image.png", "https://i.postimg.cc/DfJdXsnT/image.png"]
@@ -518,7 +518,7 @@ const mokeando = async () => {
       shortDescription: "ArtStation es una plataforma de creación de diseño gráfico",
       description: "ArtStation es una plataforma de creación de diseño gráfico que permite a los usuarios crear y compartir diseños gráficos y animados.",
       repository: "none",
-      score: [8, 7, 6],
+      score: [2, 3, 5],
       deploying: "https://www.artstation.com",
       projectType: "Imitacion",
       imagen: ["https://i.postimg.cc/qvDnZMGr/image.png", "https://i.postimg.cc/CKd2W5Ts/image.png", "https://i.postimg.cc/1znQDJtS/image.png"]

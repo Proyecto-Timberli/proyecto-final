@@ -20,6 +20,7 @@
     flex-wrap: nowrap;
     font-size: large;
     background-color: #012A4A;
+    background: linear-gradient(0deg, #012a4a 0%, #034679 60%);
     width: 38vh;
     height: 16vh;
     border-radius: 20px;

@@ -10,7 +10,7 @@ const Index = () => {
 
     return (
         <Fragment>
-            {userId ? <Inicio /> : <LandingPage />}
+            {false ? <Inicio /> : <LandingPage />}
         </Fragment>
     );
 }

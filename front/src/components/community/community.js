@@ -2,19 +2,20 @@ import React, { Fragment, useEffect, useState } from 'react';
 import "./community.css"
 import { getAllUsers } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from "react-redux";
-import { ordenar } from '../../functions';
+import { filtroName, ordenamiento } from '../../functions';
 import CardCommunity from './cardCommunity/cardCommunity';
 
 const Community = () => {
     let dispatch = useDispatch()
     let allUsers = useSelector((state) => state.allUsers)
     let arrayAmostrar = [...allUsers]
-    const [orden, setOrden] = useState("fecha")
+    const [orden, setOrden] = useState("id")
 
 
     const [filterBySearch, setFilterBySearch] = useState("")
 
-    let filtro = allUsers.filter(user => user.name && user.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+
+    let filtro = filtroName(allUsers, filterBySearch, "name")
     const filtroBusqueda = function (e) {
         setFilterBySearch(e.target.value);
     }
@@ -22,21 +23,17 @@ const Community = () => {
     if (filterBySearch !== "") {
         arrayAmostrar = filtro
     }
-    ///
-
 
     function handleChange(e) {
         e.preventDefault()
         setOrden(e.target.value)
-        ordenar(arrayAmostrar, orden)
-
+        arrayAmostrar = ordenamiento(arrayAmostrar, orden)
     }
-
     useEffect(() => {
         dispatch(getAllUsers())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    ordenar(arrayAmostrar, orden)
+    arrayAmostrar = ordenamiento(arrayAmostrar, orden)
 
     return (
         <Fragment>
@@ -46,9 +43,9 @@ const Community = () => {
 
                 Ordenar por:
                 <select className='select-community' onChange={e => handleChange(e)}>
-                    <option value="fecha">Nro.Registro</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="proyectos">Cant.Proyectos</option>
+                    <option value="id">Nro.Registro</option>
+                    <option value="name">Nombre</option>
+                    <option value="projects">Cant.Proyectos</option>
 
                 </select>
             </div>

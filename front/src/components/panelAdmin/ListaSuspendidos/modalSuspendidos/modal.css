@@ -15,12 +15,32 @@
 }
 
 .modal {
-    background-color: rgba(143, 136, 136, 0);
+    background-color: rgba(255, 255, 255, 0.399);
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 300;
+    z-index: 1000;
+}
 
+.titulo-modal-admin{
+    color: #023e6bfc;
+    margin-bottom: 0;
+}
+
+.select-modal-admin{
+    padding: 2%;
+    border-color: #023e6bfc;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-modal-admin{
+    padding: 10px;
+    background-color: #0460a5;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
 }

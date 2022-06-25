@@ -60,18 +60,18 @@ function Reportes() {
   }, [allUsers])
 
   return (
-    <div>
+    <div className='contenedor-total-reportes'>
       <div className='arriba-contenedor-users'>
         <MdError className='icono-title-users' />
-        <h1>Listado de Reportes</h1>
+        <h1>Proyectos y Usuarios Reportados</h1>
       </div>
       <Link className='volver-admin' to='/admin'> Volver al Panel</Link>
       <div className='contenedor-reportes'>
         <div className='contenedor-reportes-proyectos'>
-          <h3>Proyectos </h3>
+          <h3>PROYECTOS </h3>
           {(Object.keys(projectsFilter).length === 0)
 
-            ? <div> NO HAY REPORTES</div>
+            ? <div> No hay proyectos reportados</div>
             : <div className='contenedor-listado-project'>
               {
                 cardsInPag.renderCards.map(p => ((!!p) &&
@@ -85,21 +85,21 @@ function Reportes() {
               }
             </div>
           }
-           <div>
+           <div className="container-paginado">
         {paginado.buttons().map(button =>
-          <div className="container-paginado" key={button}>
+          <div key={button}>
             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
             {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
           </div>
         )}
       </div>
         </div>
-        <div className='contenedor-reportes-users'>
-          <h3>Usuarios </h3>
+        <div className='contenedor-reportes-proyectos'>
+          <h3>USUARIOS </h3>
 
           {(Object.keys(usersFilter).length === 0)
 
-            ? <div> NO HAY REPORTES</div>
+            ? <div> No hay usuarios reportados</div>
             : <div className='contenedor-listado-project'>
               {
                 cardsInPagUsers.renderCards.map(p => ((!!p) &&
@@ -113,9 +113,9 @@ function Reportes() {
               }
             </div>
           }
-           <div>
+           <div className="container-paginado">
         {paginado.buttons().map(button =>
-          <div className="container-paginado" key={button}>
+          <div key={button}>
             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
             {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
           </div>

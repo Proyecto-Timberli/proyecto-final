@@ -7,12 +7,12 @@ import { getAllProjects } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
 import { technologies } from './technologies.js'
-import { scroll } from "../../functions";
+import { filtroName, scroll } from "../../functions";
 import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
-    
+
     let token = searchParams.get("token")
 
     if (token) {
@@ -26,6 +26,7 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
+
     useEffect(() => {
         dispatch(getAllProjects());
         if (window.localStorage.getItem("usertoken")) {
@@ -36,7 +37,7 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////filter by search////////////////////////////
     const [filterBySearch, setFilterBySearch] = useState("")
-    let arrayFilterBySearch = allProjects.filter(project => project.name && project.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+    let arrayFilterBySearch = filtroName(allProjects, filterBySearch, "name")
     const searchFilterChange = function (e) {
         setFilterBySearch(e.target.value);
     }
@@ -112,14 +113,16 @@ const Home = () => {
                             scoreFunctionality={e.scoreFunctionality}
                             scoreOriginality={e.scoreOriginality}
                             scoreStyle={e.scoreStyle}
-
+                            fecha={e.createdAt}
+                            update={e.updatedAt}
                             score={e.scoreAverage}
                         />)}
                     </div>
                 }
                 {/* Espacio */}
                 <br></br>
-                <div className="container-paginado" >
+
+                <div className="container-paginado">
                     {paginado.buttons().map(button =>
                         <div key={button}>
                             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
