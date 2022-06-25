@@ -182,10 +182,11 @@ export function getContributions() {
 }
 
 
-export function listPayments(contribution, user) {
+export function listPayments(contribution, user,paymentMethod) {
+    console.log(user)
     return function () {
-        axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user })
-            .then(response => response.data)
+        return axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user,paymentMethod })
+            .then(response => {console.log(response.data);return response.data})
             .catch(error => console.error(error))
     }
 }
