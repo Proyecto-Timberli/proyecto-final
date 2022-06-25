@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './landingPage.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
@@ -12,8 +12,21 @@ import Chatbot from "../chatBot/ChatBot";
 
 export default function LandingPage() {
 
-    scroll()
+    useEffect(() => {
+        scroll()
+
+    }, [])
+
     const logged = useSelector((state) => state.loggedUserId);
+
+    const [botState, setBotState] = useState(false)
+
+    const cambiarState = () => {
+        if (botState === true) {
+            setBotState(false)
+        }
+        else { setBotState(true) }
+    }
 
     return (
         <div className="landingWrapper">
@@ -43,9 +56,11 @@ export default function LandingPage() {
                     <img src={imageLanding} className='imageL' alt='aca va la imagen' />
                 </div>
             </div>
-            <div className="chatbot-landing">
-                <Chatbot className='chatbot-style'/>
-            </div>
+            <div className={botState ? "caja-activada" : "caja-boton"} onClick={e => cambiarState()} >Necesitas ayuda?</div>
+            {botState ?
+                <div className="chatbot-landing" >
+                    <Chatbot className='chatbot-style' />
+                </div> : null}
 
             <div className="landingBody">
                 <div className='intro'>
