@@ -25,8 +25,8 @@ export default class Paginado {
       totalPagesArray.push(i)
     }
     if (totalPagesArray.length > 1) {
-      totalPagesArray.unshift("Previous")
-      totalPagesArray.push("Next")
+      totalPagesArray.unshift("<")
+      totalPagesArray.push(">")
     }
     return totalPagesArray
   }
@@ -49,7 +49,7 @@ export default class Paginado {
     }
   }
   conditionByChange = () => {
-    if (this.pagSelect === "Previous") {
+    if (this.pagSelect === "<") {
       if (this.page < 2) {
         this.pagSelect = 1
         this.changePages()
@@ -58,7 +58,7 @@ export default class Paginado {
         this.pagSelect = this.page - 1
         this.changePages()
       }
-    } else if (this.pagSelect === "Next") {
+    } else if (this.pagSelect === ">") {
       if (this.page > this.buttons().length - 3) {
         this.pagSelect = this.buttons().length - 2
         this.changePages()
