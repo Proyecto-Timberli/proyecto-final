@@ -1,3 +1,13 @@
+.contenedor-total-reportes{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arriba-contenedor-users{
+    width: 100%;
+}
 .contenedor-reportes{
     display: flex;
     flex-direction: row;
@@ -6,10 +16,5 @@
 }
 
 .contenedor-reportes-proyectos{
-    width: 50%;
-    
-}
-
-.contenedor-reportes-users{
     width: 50%;
 }

@@ -10,7 +10,7 @@ function Home() {
         <div className='admin-container'>
             <div className='arriba-cont'>
                 <RiAdminFill className='icono-admin' />
-                <h2>Admin</h2>
+                <h2 className='title-admin-home'>ADMIN</h2>
             </div>
 
 

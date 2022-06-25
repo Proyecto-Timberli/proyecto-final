@@ -121,7 +121,8 @@ const Home = () => {
                 }
                 {/* Espacio */}
                 <br></br>
-                <div className="container-paginado" >
+
+                <div className="container-paginado">
                     {paginado.buttons().map(button =>
                         <div key={button}>
                             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
