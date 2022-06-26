@@ -3,8 +3,6 @@ import './login.css';
 import imgLogin from './images/clipLogin.gif';
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { MdInsertEmoticon } from "react-icons/md";
-import linkedin from '../../../images/linkedin.png';
 import github from '../../../images/github.png';
 import google from '../../../images/google.png'
 import { scroll } from "../../../functions";
@@ -20,7 +18,6 @@ export default function Login() {
     })
 
     const dispatch = useDispatch()
-
 
     const [formErrors, setFormErrors] = useState({ error: "" })
 
@@ -126,9 +123,6 @@ export default function Login() {
                 <div className='login-section'>
                     <h4> Or sign in with</h4>
                     <div className="login-buttons">
-                        <a href={process.env.REACT_APP_API + '/api/auth/google'}>
-                            <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
-                        </a>
                         <a href={process.env.REACT_APP_API + '/api/auth/github'}>
                             <img src={github} width="60" alt="github" className='linkGithub' />
                         </a>
