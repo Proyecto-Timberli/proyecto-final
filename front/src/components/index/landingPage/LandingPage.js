@@ -56,11 +56,15 @@ export default function LandingPage() {
                     <img src={imageLanding} className='imageL' alt='aca va la imagen' />
                 </div>
             </div>
-            <div className={botState ? "caja-activada" : "caja-boton"} onClick={e => cambiarState()} >Necesitas ayuda?</div>
+
             {botState ?
-                <div className="chatbot-landing" >
-                    <Chatbot className='chatbot-style' />
-                </div> : null}
+                <div>
+                    <div className="caja-activada" onClick={e => cambiarState()}> CERRAR </div>
+                    <div className="chatbot-landing" >
+                        <Chatbot className='chatbot-style' />
+                    </div> 
+                </div>
+                : <div className="caja-boton" onClick={e => cambiarState()}> Necesitas ayuda? </div> }
 
             <div className="landingBody">
                 <div className='intro'>

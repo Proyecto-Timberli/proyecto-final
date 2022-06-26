@@ -147,22 +147,25 @@
 .chatbot-landing {
     position: fixed;
     width: 275px;
-    border: solid black 1px;
-
-    bottom: 10px;
-    right: 5px;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.426);
+    bottom: 20px;
+    right: 20px;
     z-index: 50;
 }
 
 .caja-boton {
     background-color: aliceblue;
     position: fixed;
-    width: 275px;
-    bottom: 0px;
-    right: 5px;
+    width: 100px;
+    bottom: 20px;
+    right: 20px;
     z-index: 51;
-    border: solid black 1px;
+    border: solid rgba(0, 0, 0, 0.505) 3px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.426);
+    border-radius: 18px;
+    padding: 0.5%;
     cursor: pointer;
+    font-weight: bolder;
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -179,20 +182,23 @@
 }
 
 .caja-boton:hover {
-    background-color: rgb(115, 183, 243);
+    background-color: rgba(0, 0, 0, 0.883);
+    color: white;
 
 }
 
 .caja-activada {
-    transition: .2s;
-
-    background-color: rgb(72, 75, 78);
+    transition: .4s;
+    background-color: aliceblue;
+    padding: 0.1%;
+    color: #012A4A;
     position: fixed;
     width: 275px;
-    bottom: 0px;
-    right: 5px;
+    bottom: 12px;
+    border-radius: 5px;
+    right: 18px;
     z-index: 51;
-    border: solid black 1px;
+    border: none;
     cursor: pointer;
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -209,6 +215,6 @@
 }
 
 .caja-activada:hover {
-    background-color: rgb(115, 134, 243);
-
+    background-color: rgba(0, 0, 0, 0.883);
+    color: white;
 }
