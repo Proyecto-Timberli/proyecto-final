@@ -78,3 +78,16 @@
     color: white;
     box-shadow: 0 0 5px 3px rgb(235, 230, 230);
 }
+
+@media (max-width: 575.98px)and (orientation:portrait) {
+    body {
+        background: green;
+    }
+
+    #Navbar {
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}

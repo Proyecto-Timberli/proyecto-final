@@ -1,8 +1,17 @@
+.admin-container{
+    margin: 2% 1.5% 6% 1.5%;
+}
+
 .arriba-cont {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 15px;
+    justify-content: center;
+    margin: 2% 0 1% 1%
+}
+
+.title-admin-home{
+    margin: 0;
 }
 
 .icono-admin {
@@ -16,22 +25,23 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    margin-bottom: 5px;
-    padding: 15px;
+    margin-bottom: 3%;
+    padding: 2%;
 }
 
 .feature-box {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5%;
     background-color: #012A4A;
     border: 2px solid white;
-    border-radius: 11px;
+    border-radius: 15px;
     width: 32%;
-    height: 150px;
+    height: 10rem;
     transition: .6s;
     z-index: 3;
 }
@@ -52,8 +62,7 @@
 
 .title-feature-admin {
     color: white;
-    font-weight: bolder;
     font-size: 1.3rem;
     text-shadow: 1px 2px 3px rgb(0, 0, 0);
-    margin: 25px;
+    margin: 18px;
 }

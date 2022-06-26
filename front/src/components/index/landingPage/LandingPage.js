@@ -11,6 +11,7 @@ import Chatbot from "../chatBot/ChatBot";
 
 
 export default function LandingPage() {
+
     scroll()
     const logged = useSelector((state) => state.loggedUserId);
 
@@ -43,7 +44,7 @@ export default function LandingPage() {
                 </div>
             </div>
             <div className="chatbot-landing">
-                <Chatbot/>
+                <Chatbot className='chatbot-style'/>
             </div>
 
             <div className="landingBody">

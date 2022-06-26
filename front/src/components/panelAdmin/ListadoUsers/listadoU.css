@@ -3,37 +3,37 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 2% 0 1% 0;
 }
 .icono-title-users{
     font-size: 3rem;
-
+    padding-right: 0.5%;
 }
 
 .contenedor-listado-user{
     width: 75%;
     margin: 0 auto;
-    padding: 15px;
-
+    padding: 2%;
 }
 
 .user-card-admin{
     list-style: none;
     width: 100%;
-    background-color: #012A4A;
-    padding: 15px;
+    background-color: #1765a0cd;
+    padding: 18px;
     color: white;
     font-weight: bold;
     text-align: left;
-    margin: 0px;
+    margin: 3px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border: 1px solid white;
+    border-radius: 8px;
 }
 .user-card-admin:hover{
-    background-color: #073356;
-
+    background-color: #023e6bfc;
 }
 .user-card-admin a {
     text-decoration: none;
@@ -46,9 +46,22 @@
     justify-content: center;
     margin: 0 auto;
     padding: 0;
-    background-color: #012A4A;
+    background-color: #023e6bfc;
     margin-bottom: 15px;
+    border-radius: 5px;
 }
+
 .button-desplegable{
     margin: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    background-color: rgb(220, 233, 243);
+
+}
+
+.button-desplegable:hover{
+    box-shadow: 0 0 5px 3px rgba(235, 230, 230, 0.614);
 }

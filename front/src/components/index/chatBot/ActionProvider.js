@@ -68,6 +68,12 @@ class ActionProvider {
 
     }
 
+    handleDefault = () => {
+      const message = this.createChatBotMessage("Lo lamento, no entiendo el mensaje, intentemos de nuevo.")
+      this.updateChatbotState(message);
+      this.handleHello()
+    }
+
 
     updateChatbotState(message) {
         this.setState((prev) => ({

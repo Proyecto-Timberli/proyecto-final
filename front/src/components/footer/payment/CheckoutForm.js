@@ -1,8 +1,10 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { sendCheckoutForm } from "../../../functions";
 import { useDispatch } from "react-redux";
 import { listPayments } from "../../../redux/actions/actionCreators.js"
 import ModalPayment from "./modalPayment/ModalPayment.js";
+
 
 export default function CheckoutForm() {
     const stripe = useStripe();

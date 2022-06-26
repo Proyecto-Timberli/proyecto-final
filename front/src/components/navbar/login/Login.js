@@ -4,9 +4,8 @@ import imgLogin from './images/clipLogin.gif';
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdInsertEmoticon } from "react-icons/md";
-/* import google from '../../images/google.png';
-import linkedin from '../../images/linkedin.png';
-import github from '../../images/github.png'; */
+import linkedin from '../../../images/linkedin.png';
+import github from '../../../images/github.png';
 import { scroll } from "../../../functions";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
@@ -131,18 +130,15 @@ export default function Login() {
                 </form>
 
                 <div className='login-section'>
-                    {/* <h4> Or sign in with</h4>
+                    <h4> Or sign in with</h4>
                     <div className="login-buttons">
-                        <a href='https://www.google.com/'>
-                            <img src={google} width="60" alt="google" className='linkGoogle' />
-                        </a>
                         <a href='https://www.linkedin.com/'>
                             <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
                         </a>
-                        <a href='https://github.com/'>
+                        <a href={process.env.REACT_APP_API + '/api/auth/github'}>
                             <img src={github} width="60" alt="github" className='linkGithub' />
                         </a>
-                    </div> */}
+                    </div>
                     <div className='login-register'>
                         <p className="login-text">No sos miembro? </p>
                         <Link className="login-link" to='/register'>
