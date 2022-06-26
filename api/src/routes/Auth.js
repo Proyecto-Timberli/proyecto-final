@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passport = require('passport')
 const GitHubStrategy = require('passport-github2')
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const router = Router();
 
 passport.serializeUser(function (user, done) {
@@ -55,7 +56,7 @@ router.post("/register", (req, res, next) => {
         })
 })
 
-router.post("/login", (req, res, next) => { 
+router.post("/login", (req, res, next) => {
     User.findOne({
         where: {
             mail: req.body.email
@@ -63,15 +64,15 @@ router.post("/login", (req, res, next) => {
     }).then(user => {
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
-                
-                let token = jwt.sign({ 
-                    user_id: user.dataValues.id, 
+
+                let token = jwt.sign({
+                    user_id: user.dataValues.id,
                     email: user.dataValues.mail,
                     user_type: user.dataValues.userType
                 }, process.env.JWT_SECRET_KEY, {
                     expiresIn: 1440
-                })      
-                
+                })
+
                 res.send({
                     status: "success",
                     token: token,
@@ -104,52 +105,98 @@ passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.BACKEND_BASE_URL + "/api/auth/github/callback"
-  },
-  async function(accessToken, refreshToken, profile, done) {
+},
+    async function (accessToken, refreshToken, profile, done) {
 
-    let name = profile.displayName;
+        let name = profile.displayName;
 
-    if (!profile.displayName) {
-        name = profile.username
-    }
-
-    const [user, created] = await User.findOrCreate({ 
-        where: {
-            githubId: profile.id 
-        },
-        defaults: {
-            githubId: profile.id,
-            name: name,
-            github: profile.profileUrl,
-            image: profile._json.avatar_url,
-            mail: "oauth",
-            password: "oauth"
+        if (!profile.displayName) {
+            name = profile.username
         }
-    });
 
-    done(null, user)
-  }
+        const [user, created] = await User.findOrCreate({
+            where: {
+                githubId: profile.id
+            },
+            defaults: {
+                githubId: profile.id,
+                name: name,
+                github: profile.profileUrl,
+                image: profile._json.avatar_url,
+                mail: "oauth",
+                password: "oauth"
+            }
+        });
+
+        done(null, user)
+    }
 ));
 
 router.get('/github',
-  passport.authenticate('github', { session: 'false', scope: [ 'user:email' ] }));
+    passport.authenticate('github', { session: 'false', scope: ['user:email'] }));
 
-router.get('/github/callback', 
-  passport.authenticate('github', { session: 'false', failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
+router.get('/github/callback',
+    passport.authenticate('github', { session: 'false', failureRedirect: '/login' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
 
 
-    let token = jwt.sign({ 
-        user_id: res.req.user.dataValues.id, 
-        email: res.req.user.dataValues.mail,
-        user_type: res.req.user.dataValues.userType
-    }, process.env.JWT_SECRET_KEY, {
-        expiresIn: 1440
-    })
+        let token = jwt.sign({
+            user_id: res.req.user.dataValues.id,
+            email: res.req.user.dataValues.mail,
+            user_type: res.req.user.dataValues.userType
+        }, process.env.JWT_SECRET_KEY, {
+            expiresIn: 1440
+        })
 
-    res.redirect( process.env.FRONTEND_BASE_URL + '/home?token=' + token + '&id=' + res.req.user.dataValues.id);
-  });
+        res.redirect(process.env.FRONTEND_BASE_URL + '/home?token=' + token + '&id=' + res.req.user.dataValues.id);
+    });
+
+//Google
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.BACKEND_BASE_URL + "/api/auth/google/callback",
+    passReqToCallback: true
+},
+    async function (request, accessToken, refreshToken, profile, done) {
+
+        const [user, created] = await User.findOrCreate({
+            where: {
+                mail: profile.email
+            },
+            defaults: {
+                name: profile.displayName,
+                image: profile.picture,
+                mail: profile.email,
+                password: "oauth"
+            }
+        });
+        done(null, user)
+    }
+));
+
+router.get('/google',
+    passport.authenticate('google', { session: 'false', scope: ['email', 'profile'] }));
+
+router.get('/google/callback',
+    passport.authenticate('google', { session: 'false', failureRedirect: '/login' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+
+
+        let token = jwt.sign({
+            user_id: res.req.user.dataValues.id,
+            email: res.req.user.dataValues.mail,
+            user_type: res.req.user.dataValues.userType
+        }, process.env.JWT_SECRET_KEY, {
+            expiresIn: 1440
+        })
+
+        res.redirect(process.env.FRONTEND_BASE_URL + '/home?token=' + token + '&id=' + res.req.user.dataValues.id);
+    });
+
 
 
 module.exports = router;
