@@ -104,8 +104,17 @@
     color: red
 }
 
+
+.registro-exitoso-box{
+    z-index: 30;
+    position: absolute;
+    margin: 3% 32% 20% 38%;
+}
+
 .msj-exitoso-login {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #013A63;
+    font-size: larger;
 }

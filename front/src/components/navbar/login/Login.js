@@ -35,8 +35,8 @@ export default function Login() {
 
     function showFromRegisterMessage() {
         if (comingFromRegister) {
-            return <div>
-                <h2 className="msj-exitoso-login"><MdInsertEmoticon /> Registro exitoso, ahora puedes iniciar sesión <MdInsertEmoticon /></h2>
+            return <div className="registro-exitoso-box">
+                <p className="msj-exitoso-login"> Registro exitoso, ahora puedes iniciar sesión!</p>
             </div>
         }
     }
