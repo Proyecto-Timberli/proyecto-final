@@ -6,7 +6,7 @@ const Stripe = require("stripe")
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const stripe = new Stripe(STRIPE_SECRET_KEY)
 const router = Router();
-
+const { transporter } = require("./Mailer")
 
 
 router.put("/user", async (req, res, next) => {
@@ -36,12 +36,52 @@ router.get("/donation", async (req, res, next) => {
         next(err)
     }
 })
+router.post("/email", async (req, res, next) => {
+    const { email, userId,payment } = req.body;
+    try {
+      
+        if (!email) {
+            const user = await User.findByPk(userId);
+            await transporter.sendMail({
+                from: `"Gracias por tu donacion" <deathtrokers@gmail.com>`,
+                to: user.mail,
+                subject: "Gracias por tu donacion",
+                html: `<h1>Gracias por tu donacion ${user.name}</h1>
+                <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
+            
+            
+                <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
 
+            })
+
+            return res.send("correo enviado con exito")
+        }
+        else {
+            await transporter.sendMail({
+                from: `"Gracias por tu donacion" <deathtrokers@gmail.com>`,
+                to: email,
+                subject: "Gracias!!",
+                html: `<h1>Gracias por tu donacion</h1>
+                <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
+                
+                
+                <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
+
+            })
+
+            return res.send("correo enviado con exito")
+        }
+
+    } catch (err) {
+        next(err)
+    }
+
+
+})
 router.post("/donation", async (req, res, next) => {
     const { contribution, user, paymentMethod } = req.body
 
     try {
-        console.log(contribution)
         if (user !== "Anonimo") {
             const contribuidor = await User.findByPk(user)
             const payment = await stripe.paymentIntents.create({
@@ -51,9 +91,7 @@ router.post("/donation", async (req, res, next) => {
                 amount: contribution,
                 confirm: true,
             })
-
             if (payment.status === "succeeded") {
-
                 var newContribution = await Contributions.create({
                     amount: contribution / 100,
                     name: contribuidor.name,
@@ -61,7 +99,7 @@ router.post("/donation", async (req, res, next) => {
                 return res.send({ newContribution, payment });
             }
 
-            
+
         }
         else {
             const payment = await stripe.paymentIntents.create({
@@ -78,13 +116,14 @@ router.post("/donation", async (req, res, next) => {
                 })
                 return res.send({ newContribution, payment });
             }
-            
+
         }
 
 
     }
     catch (err) {
-        return res.status(202).send({ error: err})
+        
+        return res.status(404).send({ error: err })
     }
 });
 

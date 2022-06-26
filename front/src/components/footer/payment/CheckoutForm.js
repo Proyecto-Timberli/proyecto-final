@@ -50,7 +50,7 @@ export default function CheckoutForm() {
         //ACA LIMPIAMOS EL INPUT DE LA TARJETA
         setCargando(false)
         if (data.payment && data.payment.status === "succeeded") {
-            setCompraConcretada("Donacion Concretada")
+            setCompraConcretada(data.payment)
             elements.getElement(CardElement).clear()
         } else {
 
@@ -96,7 +96,7 @@ export default function CheckoutForm() {
                 <CardElement className="card-element-payment" />
                 {error && <div >{error}</div>}
                 <button className="btn-payment" type="submit" disabled={cargando}> CONTRIBUIR </button>
-                {compraConcretada && <div type="modal" >{<ModalPayment />}</div>}
+                {compraConcretada && <div type="modal" >{<ModalPayment payment={compraConcretada} setearStado={setCompraConcretada} />}</div>}
                 {cargando && <div >Cargando...</div>}
             </form>
         </div>
