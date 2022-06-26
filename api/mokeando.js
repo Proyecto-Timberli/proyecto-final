@@ -11,6 +11,18 @@ const mokeando = async () => {
 
   const users = [
     {
+      name: "Andres",
+      userType: "Admin",
+      mail: "andres@admin.com",
+      password: "Andres.1",
+      image: "https://raymanpc.com/wiki/images/1/15/Admin.png",
+      description: "Thomas Michael Shelby, OBE, DCM, MM, MP. Manejo distintas tecnologias como: Vue, Angular, Wordpress",
+      linkedin: "~",
+      github: "https://github.com/",
+      short_description: "Frontend Developer"
+
+    },
+    {
       name: "Tommy Shelby",
       userType: "suspended",
       mail: "Tshelby@mail.com",
@@ -986,10 +998,6 @@ const mokeando = async () => {
     let project = await Project.create(projects[j])
 
     await project.save()
-
-
-
-
     const user = await User.findByPk((numeroRandom(1, (users.length))).toString())
     await user.addProjects(project)
 

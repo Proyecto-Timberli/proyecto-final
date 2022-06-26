@@ -81,7 +81,7 @@ function Project() {
         })
         setMsgReport("")
     }
-    
+
     async function enviarReporte(proyectId, userId, comentario) {
         dispatch(postReportProject(proyectId, userId, comentario))
         //  resetEstadoModal()
@@ -96,13 +96,13 @@ function Project() {
         return <Page404 />
 
     }
-    
-    const mensajeReport=()=>{
-      if (!reportBy){
-        setMsgReport("Debe estar registrado y logeado para reportar")
-      }else {
-        setMsgReport("Reporte exitoso")
-      }
+
+    const mensajeReport = () => {
+        if (!reportBy) {
+            setMsgReport("Debe estar registrado y logeado para reportar")
+        } else {
+            setMsgReport("Reporte exitoso")
+        }
     }
     return (
 
@@ -116,7 +116,7 @@ function Project() {
                             <h3>Puntuacion:</h3>
 
 
-                            <div className='info-detalle' >{project.scoreStyle.length > 0 && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
+                            <div className='info-detalle' >{project.scoreStyle.length > 0 && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} |  {project.scoreFunctionality.length > 0 && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} | {project.scoreOriginality.length > 0 && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</div>
                         </div >
                         <div >
                             <h3>Usuario:</h3>
@@ -200,7 +200,7 @@ function Project() {
                             projectID={modalP.projectID}
                             nombre={project.name}
                             reset={resetEstadoModal}
-                            msgReport={msgReport}                           
+                            msgReport={msgReport}
                         />
                         : null
                 }
