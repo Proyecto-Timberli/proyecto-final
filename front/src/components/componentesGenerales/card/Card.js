@@ -3,11 +3,11 @@ import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { MdFavorite } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { addFavorites, deleteFavorite } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
-function Card({ id, name, description, fecha, imagen, userId, score, update, user }) {
+function Card({ id, name, description, fecha, imagen, userId, score, update, user, technology }) {
 
     let listUserFavorites = useSelector((state) => state.listFavorites)
 
@@ -44,12 +44,12 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                 <div className='corazon-card'>
                     {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
                         <>
-                            <span className='tooltipCard'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
-                            <button className='corazon-inactive' onClick={addFavorites(userId, project.id)}> <MdFavorite /></button>
+                            <span className='tooltipCard'> {token ? "Agregar a Favoritos" : "Inicia sesion para agregar a favoritos"} </span>
+                            <button className='corazon' onClick={addFavorites(userId, project.id)}> <MdFavoriteBorder /></button>
                         </> :
                         <>
                             <span className='tooltipCard'>Borrar de Favoritos</span>
-                            <button className='corazon-active' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
+                            <button className='corazon' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
                         </>
                     }
                 </div>
@@ -58,6 +58,10 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                         <p className="text-title-card">{name}</p>
                     </Link>
                     <p className="text-body-card">{description}</p>
+                    {technology
+                    ? <p className='text-technologies-card'>| {technology.map((t) => t + ' | ')}</p>
+                    : null 
+                    };
                     <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
                     <Link to={"/project/" + id}>
                         <button className='card-button-home'>Ver mas</button>

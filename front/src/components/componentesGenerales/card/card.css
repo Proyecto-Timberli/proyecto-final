@@ -50,6 +50,7 @@
     padding-bottom: 10%;
 }
 
+/*Corazon favorito*/
 .corazon-card {
     display: flex;
     justify-content: flex-end;
@@ -59,22 +60,34 @@
     transition: all .5s;
 }
 
-.corazon-inactive, .corazon-active {
+.corazon {
     background-color: transparent;
     padding: 5% 5% 0 0;
     border: 0;
     font-size: 2rem;
-    color: white;
+    color: rgb(219, 26, 26);
     transition: all .5s;
     cursor: pointer;
 }
 
-.corazon-inactive:hover {
+.corazon:hover {
     font-size: 2.2rem;
 }
 
-.corazon-active {
-    color: red;
+.corazon-card svg {
+    transition: all .2s;
+
+    position: relative;
+    box-sizing: border-box;
+}
+
+.corazon-card:hover svg {
+    position: relative;
+    border-radius: 100px;
+}
+
+.corazon-card:active svg {
+    color: rgb(114, 0, 0);
 }
 
 .tooltipCard {
@@ -84,9 +97,9 @@
     background-color: rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 0);
     text-align: center;
-    padding: 0px 0;
+    padding: 0.2rem;
     border-radius: 6px;
-    position: absolute;
+    font-size: smaller;
     z-index: 1;
     width: 120px;
     bottom: 100%;
@@ -95,7 +108,7 @@
 }
 
 .corazon-card:hover .tooltipCard {
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.731);
     color: #fff;
     visibility: visible;
 }
@@ -123,7 +136,6 @@
     display: flex;
 }
 
-
 .text-body-card {
     font-size: 1rem;
     width: 70%;
@@ -132,6 +144,14 @@
     font-weight: bolder;
     padding: 4%;
 }
+
+.text-technologies-card{
+    color: rgba(255, 255, 255, 0.856);
+    margin: 0;
+    font-weight: bolder;
+    width: 82%;
+}
+
 
 /*Button*/
 .card-button-home {
@@ -171,8 +191,8 @@
 }
 
 .img-project-card {
-    height: 16rem;
-    width: 28rem;
+    height: 18rem;
+    width: 30rem;
     border-radius: 20px;
     max-height: 95%;
     max-width: 95%;
@@ -209,6 +229,7 @@
 .text-score-card {
     padding-bottom: 0;
     margin: 0%;
+    color: white;
 }
 
 .fecha-card {

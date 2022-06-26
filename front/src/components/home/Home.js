@@ -115,6 +115,7 @@ const Home = () => {
                             fecha={e.createdAt}
                             update={e.updatedAt}
                             score={e.scoreAverage}
+                            technology={e.tecnology}
                         />)}
                     </div>
                 }
