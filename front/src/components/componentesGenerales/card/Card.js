@@ -13,18 +13,18 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
     let listUserFavorites = useSelector((state) => state.listFavorites)
     let dispatch = useDispatch()
     let token = window.localStorage.getItem('usertoken')
-    let userId = window.localStorage.getItem('userid')
-    let project = useSelector((state) => state.projectById)
+    let idUser = window.localStorage.getItem('userid')
+    //let project = useSelector((state) => state.projectById)
 
 
     async function AñadirFavorite() {
-        await addFavorites(userId, id)
-       dispatch(getFavorites({ userId }))
+        await addFavorites(idUser, id)
+       dispatch(getFavorites({ idUser }))
     
     }
     async function EliminarFavorite() {
-        await deleteFavorite(userId, id)
-        dispatch(getFavorites({ userId }))
+        await deleteFavorite(idUser, id)
+        dispatch(getFavorites({ idUser }))
     }
 
     return (
