@@ -21,12 +21,10 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-
-
-
 router.post("/", async (req, res, next) => {
     const { projectid, input, userId } = req.body
     const { scoreStyle, scoreFunctionality, scoreOriginality, text } = input
+
     try {
 
         let validacion = await Review.findOne({
@@ -35,7 +33,6 @@ router.post("/", async (req, res, next) => {
                 projectId: projectid
             }
         })
-        console.log(validacion);
         if (validacion !== null) {
             return res.send("Ya puntuaste este Project")
         }

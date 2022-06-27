@@ -129,6 +129,7 @@
 .imageBox3 {
     border-radius: 10px;
     box-shadow: 0 0 5px 3px rgba(5, 4, 4, 0.379);
+    max-width: 50%;
 }
 
 .imageBox3,
@@ -145,8 +146,75 @@
 
 .chatbot-landing {
     position: fixed;
-    width: 310px; 
-    bottom: 10px;
-    right: 0;
+    width: 275px;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.426);
+    bottom: 20px;
+    right: 20px;
     z-index: 50;
+}
+
+.caja-boton {
+    background-color: aliceblue;
+    position: fixed;
+    width: 100px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 51;
+    border: solid rgba(0, 0, 0, 0.505) 3px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.426);
+    border-radius: 18px;
+    padding: 0.5%;
+    cursor: pointer;
+    font-weight: bolder;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* /* Non-prefixed version, currently */
+    transition: .4s;
+}
+
+.caja-boton:hover {
+    background-color: rgba(0, 0, 0, 0.883);
+    color: white;
+
+}
+
+.caja-activada {
+    transition: .4s;
+    background-color: aliceblue;
+    padding: 0.1%;
+    color: #012A4A;
+    position: fixed;
+    width: 275px;
+    bottom: 12px;
+    border-radius: 5px;
+    right: 18px;
+    z-index: 51;
+    border: none;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* /* Non-prefixed version, currently */
+}
+
+.caja-activada:hover {
+    background-color: rgba(0, 0, 0, 0.883);
+    color: white;
 }

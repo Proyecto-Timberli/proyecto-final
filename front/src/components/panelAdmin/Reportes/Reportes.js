@@ -85,9 +85,9 @@ function Reportes() {
               }
             </div>
           }
-           <div>
+           <div className="container-paginado">
         {paginado.buttons().map(button =>
-          <div className="container-paginado" key={button}>
+          <div key={button}>
             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
             {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
           </div>
@@ -113,9 +113,9 @@ function Reportes() {
               }
             </div>
           }
-           <div>
+           <div className="container-paginado">
         {paginado.buttons().map(button =>
-          <div className="container-paginado" key={button}>
+          <div key={button}>
             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
             {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
           </div>

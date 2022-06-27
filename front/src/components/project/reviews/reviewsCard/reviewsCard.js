@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
 import "./reviewsCard.css";
 import { ImStarEmpty, ImStarHalf, ImStarFull } from "react-icons/im";
+import { formatDate } from '../../../../functions';
 
 
-const ReviewsCard = ({ text, scoreStyle, scoreFunctionality, scoreOriginality, user }) => {
+const ReviewsCard = ({ text, scoreStyle, scoreFunctionality, scoreOriginality, user, fecha }) => {
+
 
     function estrellas(cantidad) {
 
@@ -32,6 +34,7 @@ const ReviewsCard = ({ text, scoreStyle, scoreFunctionality, scoreOriginality, u
                 <div className='rcard-text'>
                     <p> {text}</p>
                 </div>
+                <div>{formatDate(fecha)}</div>
             </div>
         </div>
     );
