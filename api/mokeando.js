@@ -12,7 +12,7 @@ const mokeando = async () => {
   const users = [
     {
       name: "Andres",
-      userType: "Admin",
+      userType: "admin",
       mail: "andres@admin.com",
       password: "Andres.1",
       image: "https://raymanpc.com/wiki/images/1/15/Admin.png",
@@ -986,7 +986,8 @@ const mokeando = async () => {
       github: users[i].github,
       image: users[i].image,
       short_description: users[i].short_description,
-      description: users[i].description
+      description: users[i].description,
+      userType: (users[i].userType ? users[i].userType : "user")
     }
     await crearUser(formData)
     await editarUser(i + 1, userEdit)
