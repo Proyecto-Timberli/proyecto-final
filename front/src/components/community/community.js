@@ -38,14 +38,13 @@ const Community = () => {
     return (
         <Fragment>
             <div className='cont-filtro-community'>
-                Busca Por Nombre
                 <input className='input-community' type="search" placeholder="Buscar un usuario..." name="search" onChange={(e) => filtroBusqueda(e)} value={filterBySearch} />
 
                 Ordenar por:
                 <select className='select-community' onChange={e => handleChange(e)}>
-                    <option value="id">Nro.Registro</option>
+                    <option value="id">Numero de registro</option>
                     <option value="name">Nombre</option>
-                    <option value="projects">Cant.Proyectos</option>
+                    <option value="projects">Cantidad de proyectos</option>
 
                 </select>
             </div>
@@ -66,7 +65,7 @@ const Community = () => {
                                 image={e.image}
                                 short_description={e.short_description}
                             />
-                            <hr></hr>
+                            <hr className='community-card-line'></hr>
                         </div>
                     )}
                 </div>
