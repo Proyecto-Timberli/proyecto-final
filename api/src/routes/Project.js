@@ -49,7 +49,7 @@ router.post("/", async (req, res, next) => {
 })
 
 
-router.put("/",[verifyToken], async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   const { projectId, projectEdit } = req.body;
   try {
     if (projectId && projectEdit) {
