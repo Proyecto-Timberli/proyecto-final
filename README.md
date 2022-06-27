@@ -25,9 +25,10 @@ SIENTANSE LIBRE DE CONTRIBUIR CON APORTES.
 # TEGNOLOGIAS.
 1.BD----> `POSTGRESQL`
 2.BACK END----> `NODE.JS(EXPRESS)`
-3.FRONT END-----> `REACT-REDUX`
+3.FRONT END-----> `REACT-REDUX, CSS`
 
 
-# ENLACE DEL RPOYECTO.
+
+# ENLACE DEL PROYECTO.
 [Create React App](https://github.com/Proyecto-Timberli/proyecto-final)
 
