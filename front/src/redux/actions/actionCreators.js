@@ -272,7 +272,6 @@ export function addFavorites(userId, projectId) {
 
 
 }
-<<<<<<< HEAD
 export function putProjectById(projectId,newValue) {
     return axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
         .then(response => response.data)
@@ -288,14 +287,3 @@ export function deleteFavorite(userId, projectId) {
 
 
 }
-=======
-
-export function deleteFavorite(userId, projectId) {
-
-    return axios.put(REACT_APP_API + "/api/user/favorites", { userId: userId, projectId: projectId })
-        .then(response => response.data)
-        .catch(error => console.error(error))
-
-
-}
->>>>>>> c6068e81d12628818f117485cb1ea4c53cea9fde
