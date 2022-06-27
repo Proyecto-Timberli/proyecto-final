@@ -26,14 +26,16 @@ function EditProject({id,defaultValue,desplegarEditar}) {
     // useEffect(() => {   
 
     // }, [editValue])         
-    const saveEdit =()=>{
+    const saveEdit = async()=>{
         if (!Object.keys(validate(editValue)).length){
-            dispatch(putProjectById(id,editValue))
+            await putProjectById(id,editValue)
+            dispatch(getProjectById(id))
             desplegarEditar(false)
         }else{
             setNoSave(true)
         }
     }
+
     const addTechs=(tech)=>{
         let existeTech = editValue.tecnology.some(t => t === tech)
         if(!existeTech){

@@ -276,8 +276,8 @@ export function deleteFavorite({ userId, projectId }) {
 
 }
 export function putProjectById(projectId,newValue) {
-    return function (dispatch) {
-        axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
+    return axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
         .then(response => response.data)
-    }
+        .catch(error => console.error(error))
 }
+
