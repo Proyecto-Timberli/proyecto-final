@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { sendCheckoutForm } from "../../../functions";
 import { useDispatch } from "react-redux";
 import { listPayments } from "../../../redux/actions/actionCreators.js"
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import ModalPayment from "./modalPayment/ModalPayment.js";
 
 
 export default function CheckoutForm() {
@@ -26,7 +26,7 @@ export default function CheckoutForm() {
         setCompraConcretada("")
         setCargando(true)
 
-        const { error } = await stripe.createPaymentMethod({
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
         })
@@ -38,20 +38,27 @@ export default function CheckoutForm() {
         }
 
         setError("")
-        //Para controlar las contribuciones recibidas:
+        console.log(paymentMethod)
         let userId = window.localStorage.getItem('userid')
-        console.log(userId)
+        let token = window.localStorage.getItem('usertoken')
+        let data
         //si esta logueado existe el ID, si no envia contribucion anonima:
-        if (userId) {
-            dispatch(listPayments(amount, userId))
+        if (userId && token) {
+            data = await dispatch(listPayments(amount, userId, paymentMethod))
         } else {
-            dispatch(listPayments(amount, 'Anonimo'))
+            data = await dispatch(listPayments(amount, 'Anonimo', paymentMethod))
         }
-
+        console.log(data)
         //ACA LIMPIAMOS EL INPUT DE LA TARJETA
         setCargando(false)
-        setCompraConcretada("Donacion Concretada")
-        elements.getElement(CardElement).clear()
+        if (data.payment && data.payment.status === "succeeded") {
+            setCompraConcretada(data.payment)
+            elements.getElement(CardElement).clear()
+        } else {
+
+            setError("lo sentimos algo salio mal ")
+        }
+
     }
 
 
@@ -91,7 +98,7 @@ export default function CheckoutForm() {
                 <CardElement className="card-element-payment" />
                 {error && <div >{error}</div>}
                 <button className="btn-payment" type="submit" disabled={cargando}> CONTRIBUIR </button>
-                {compraConcretada && <div >{compraConcretada}</div>}
+                {compraConcretada && <div type="modal" >{<ModalPayment payment={compraConcretada} setearStado={setCompraConcretada} />}</div>}
                 {cargando && <div >Cargando...</div>}
             </form>
         </div>
