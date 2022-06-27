@@ -3,7 +3,7 @@ import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdFavorite, MdError,MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite, MdError, MdFavoriteBorder } from "react-icons/md";
 import { addFavorites, deleteFavorite, getFavorites } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
@@ -19,8 +19,8 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
     async function AñadirFavorite() {
         await addFavorites(idUser, id)
-       dispatch(getFavorites({ idUser }))
-    
+        dispatch(getFavorites({ idUser }))
+
     }
     async function EliminarFavorite() {
         await deleteFavorite(idUser, id)
@@ -84,7 +84,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
                 {/* </div> */}
             </div>
-            <div className='corazon-card'>
+            {/* <div className='corazon-card'>
                 {
                     !listUserFavorites.projects?.find(p => p.id === id) ?
                         !listUserFavorites.favorites?.find(favorito => favorito.projects[0]?.id === id) ?
@@ -101,7 +101,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                                 </>
                             </> : null
                 }
-            </div>
+            </div> */}
 
 
         </div>
