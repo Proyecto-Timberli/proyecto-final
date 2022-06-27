@@ -26,9 +26,10 @@ function EditProject({id,defaultValue,desplegarEditar}) {
     // useEffect(() => {   
 
     // }, [editValue])         
-    const saveEdit =()=>{
+    const saveEdit = async ()=>{
         if (!Object.keys(validate(editValue)).length){
-            dispatch(putProjectById(id,editValue))
+            await putProjectById(id,editValue)
+            dispatch(getProjectById(id))
             desplegarEditar(false)
         }else{
             setNoSave(true)
