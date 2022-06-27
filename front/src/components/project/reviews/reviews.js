@@ -92,7 +92,6 @@ const Reviews = ({ projectid, reviews }) => {
         })
         return valor
     }
-    console.log(pregunta());
     return (
         (userId ? <div className='reviews-general'>
             <hr></hr>
