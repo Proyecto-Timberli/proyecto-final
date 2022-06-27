@@ -11,7 +11,8 @@ import Reviews from './reviews/reviews';
 import ModalReport from './modalReport/ModalReport.js'
 import { MdFavorite, MdError } from "react-icons/md";
 import { addFavorites } from '../../redux/actions/actionCreators';
-
+import EditProject from './EditProject.js'
+import { FcDataConfiguration } from "react-icons/fc";
 
 function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -23,19 +24,18 @@ function Project() {
     let token = window.localStorage.getItem('usertoken')
     let project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
-
+    const [desplegarEditar, setDesplegarEditar] = useState(false);
     useEffect(() => {
         dispatch(getProjectById(id))
         scroll()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        console.log(project)
+    }, [desplegarEditar])
     ////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////paginado imagenes/////////////////////////////////////
     const [cardsInPag, setCardsInPag] = useState({
         renderCards: [],
         pag: 1,
     });
-
 
     const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
     const accionarPaginado = (selectPag, selectFilter) => {
@@ -48,17 +48,9 @@ function Project() {
         if (Object.keys(project).length && project.imagen.length) {
             accionarPaginado(1)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////Report///////////////////////////////////////////////////////////////////
-    // postReportProject(jectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
-    // postReportUser({userId:2,reportedBy:1,reportComment:"realizo comentario racistas"})
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////
-
+    /////////////////////Report//////////////////////////////////////////////////////////////////
     const [loading, setLoading] = useState(true);
     const [msgReport, setMsgReport] = useState("");
     const [modalP, setmodalP] = useState({
@@ -82,9 +74,8 @@ function Project() {
         setMsgReport("")
     }
 
-    async function enviarReporte(proyectId, userId, comentario) {
+    function enviarReporte(proyectId, userId, comentario) {
         dispatch(postReportProject(proyectId, userId, comentario))
-        //  resetEstadoModal()
         mensajeReport()
     }
 
@@ -94,7 +85,6 @@ function Project() {
             return <Cargando />
         }
         return <Page404 />
-
     }
 
     const mensajeReport = () => {
@@ -104,10 +94,25 @@ function Project() {
             setMsgReport("Reporte exitoso")
         }
     }
-    return (
 
+    if (desplegarEditar){
+        return (
+            <React.Fragment>             
+                <EditProject
+                    id={id}
+                    defaultValue={project}
+                    desplegarEditar={setDesplegarEditar}
+                /> 
+            </React.Fragment>   
+        )
+    }
+    return (
         <React.Fragment>
             <div className='detail-container'>
+                <div className="project-bar-container">
+                    <div className ="project-bar" onClick={()=>{desplegarEditar(false)}}>Proyecto</div>
+                    <div className ="project-bar"onClick={()=>{setDesplegarEditar(true)}}><FcDataConfiguration/>Configuracion</div>
+                </div>
                 <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
                     <div className='cont-info'>
