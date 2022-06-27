@@ -272,6 +272,12 @@ export function addFavorites(userId, projectId) {
 
 
 }
+export function putProjectById(projectId,newValue) {
+    return axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
+        .then(response => response.data)
+        .catch(error => console.error(error))
+}
+
 
 export function deleteFavorite(userId, projectId) {
 
