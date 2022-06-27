@@ -105,6 +105,20 @@ router.put("/", [verifyToken], async (req, res, next) => {
     }
 })
 
+router.put("/mockeo/editar", async (req, res, next) => {
+    const { userId, userEdit } = req.body;
+
+    try {
+
+        const userUpdate = await User.findByPk(userId);
+        await userUpdate.update(userEdit);
+        await userUpdate.save();
+        res.send("Bien")
+        next()
+    } catch (error) {
+        next(error)
+    }
+})
 
 router.delete("/", async (req, res, next) => {
     const { userId } = req.body;

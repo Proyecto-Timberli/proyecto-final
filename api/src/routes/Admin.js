@@ -1,14 +1,15 @@
 const axios = require('axios');
 const { Router } = require('express');
-const { Project, User,Contributions } = require('../db.js');
+const { Project, User, Contributions } = require('../db.js');
 const { verifyToken } = require('../middlewares/authadjwt')
-
-
+const Stripe = require("stripe")
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
+const stripe = new Stripe(STRIPE_SECRET_KEY)
 const router = Router();
+const { transporter } = require("./Mailer")
 
 
-
-router.put("/user",  async (req, res, next) => {
+router.put("/user", async (req, res, next) => {
     const { userId, userType } = req.body;
 
     try {
@@ -31,39 +32,104 @@ router.get("/donation", async (req, res, next) => {
             include: User
         })
         return res.send(allCotributions)
-    }        catch(err){
+    } catch (err) {
         next(err)
     }
 })
-
-router.post("/donation", async (req, res, next) => {
-    const { contribution, user } = req.body
+router.post("/email", async (req, res, next) => {
+    const { email, userId,payment } = req.body;
     try {
-        console.log(contribution)
-        const contribuidor = await User.findByPk(user)
-        if (contribuidor) {
-            var newContribution = await Contributions.create ({
-                amount: contribution/100, 
-                name: contribuidor.name,
+      
+        if (!email) {
+            const user = await User.findByPk(userId);
+            await transporter.sendMail({
+                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
+                to: user.mail,
+                subject: "Gracias por tu donacion!",
+                html: `<h1>Muchas gracias por colaborar ${user.name}!</h1>
+                <p>Te hacemos llegar el comprobante de pago, desde el equipo de timberli te damos las gracias!!</p>
+            
+            
+                <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
+
             })
+
+            return res.send("correo enviado con exito")
         }
         else {
-            var newContribution = await Contributions.create ({
-                amount: contribution/100, 
-                name: 'Anonimo',
+            await transporter.sendMail({
+                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
+                to: email,
+                subject: "Gracias por tu donacion!",
+                html: `<h1>Muchas gracias por colaborar!</h1>
+                <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
+                
+                
+                <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
+
             })
+
+            return res.send("correo enviado con exito")
         }
 
-        return res.send(newContribution);
-    } 
-    catch(err){
+    } catch (err) {
         next(err)
+    }
+
+
+})
+router.post("/donation", async (req, res, next) => {
+    const { contribution, user, paymentMethod } = req.body
+
+    try {
+        if (user !== "Anonimo") {
+            const contribuidor = await User.findByPk(user)
+            const payment = await stripe.paymentIntents.create({
+                payment_method: paymentMethod.id,
+                currency: "USD",
+                description: " realizada por " + contribuidor.name,
+                amount: contribution,
+                confirm: true,
+            })
+            if (payment.status === "succeeded") {
+                var newContribution = await Contributions.create({
+                    amount: contribution / 100,
+                    name: contribuidor.name,
+                })
+                return res.send({ newContribution, payment });
+            }
+
+
+        }
+        else {
+            const payment = await stripe.paymentIntents.create({
+                payment_method: paymentMethod.id,
+                currency: "USD",
+                description: " realizada por usuario anonimo",
+                amount: contribution,
+                confirm: true,
+            })
+            if (payment.status === "succeeded") {
+                var newContribution = await Contributions.create({
+                    amount: contribution / 100,
+                    name: 'Anonimo',
+                })
+                return res.send({ newContribution, payment });
+            }
+
+        }
+
+
+    }
+    catch (err) {
+        
+        return res.status(404).send({ error: err })
     }
 });
 
 
 
-router.put("/project",  async (req, res, next) => {
+router.put("/project", async (req, res, next) => {
     const { projectId, state } = req.body;
     try {
         if (projectId && state) {

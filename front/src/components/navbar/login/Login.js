@@ -3,9 +3,8 @@ import './login.css';
 import imgLogin from './images/clipLogin.gif';
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { MdInsertEmoticon } from "react-icons/md";
-import linkedin from '../../../images/linkedin.png';
 import github from '../../../images/github.png';
+import google from '../../../images/google.png'
 import { scroll } from "../../../functions";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
@@ -20,7 +19,6 @@ export default function Login() {
 
     const dispatch = useDispatch()
 
-
     const [formErrors, setFormErrors] = useState({ error: "" })
 
     const [comingFromRegister, setComingFromRegister] = useState(false)
@@ -34,8 +32,8 @@ export default function Login() {
 
     function showFromRegisterMessage() {
         if (comingFromRegister) {
-            return <div>
-                <h2 className="msj-exitoso-login"><MdInsertEmoticon /> Registro exitoso, ahora puedes iniciar sesión <MdInsertEmoticon /></h2>
+            return <div className="registro-exitoso-box">
+                <p className="msj-exitoso-login"> Registro exitoso, ahora puedes iniciar sesión!</p>
             </div>
         }
     }
@@ -109,13 +107,6 @@ export default function Login() {
                                 })
                             }} />
                     </div>
-                    <div className="login-item">
-                        <label className="login-checkbox">
-                            {/* <input type="checkbox" name="rememberMe" style={{ display: 'unset' }} className="rememberMe" />
-                            <span className="login-checkmark"></span>
-                            Remember me */}
-                        </label>
-                    </div>
                     <div className='login-item'>
                         <label className="login-formError">{formErrors.error}</label>
                     </div>
@@ -132,11 +123,11 @@ export default function Login() {
                 <div className='login-section'>
                     <h4> Or sign in with</h4>
                     <div className="login-buttons">
-                        <a href='https://www.linkedin.com/'>
-                            <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
-                        </a>
                         <a href={process.env.REACT_APP_API + '/api/auth/github'}>
                             <img src={github} width="60" alt="github" className='linkGithub' />
+                        </a>
+                        <a href={process.env.REACT_APP_API + '/api/auth/google'}>
+                            <img src={google} width="60" alt="github" className='linkGithub' />
                         </a>
                     </div>
                     <div className='login-register'>

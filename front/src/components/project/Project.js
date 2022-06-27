@@ -108,6 +108,7 @@ function Project() {
         } else {
             setMsgReport("Reporte exitoso")
         }
+
     }
     async function AñadirFavorite() {
         await addFavorites(userId, id)
@@ -128,8 +129,6 @@ function Project() {
 
                         <div>
                             <h3>Puntuacion:</h3>
-
-
                             <div className='info-detalle' >{project.scoreStyle[0] && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality[0] && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality[0] && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div >
                         <div >

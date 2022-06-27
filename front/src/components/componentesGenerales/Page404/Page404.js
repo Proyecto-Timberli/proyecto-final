@@ -4,10 +4,12 @@ import './page404.css';
 
 const Page404 = () => {
     return (
-        <div>
+        <div className='container-error404'>
             <h1 className="P404-numero"> 404</h1>
             <h2 className="P404-texto">Pagina No Encontrada!</h2>
-            <h3><Link className='P404-link' to="/">Volver al Inicio</Link></h3>
+            <Link className='P404-link' to="/home">
+                <p className='p404-button'>Volver al Inicio</p>
+            </Link>
         </div>
     );
 }

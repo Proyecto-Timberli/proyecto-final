@@ -143,9 +143,10 @@ const Reviews = ({ projectid, reviews }) => {
 
                     <button>Enviar</button>
                 </form>}
-            {reviews.length > 0 ? reviews.map(e => <ReviewsCard key={e.id}
+            {reviews.length > 0 ? reviews.reverse().map(e => <ReviewsCard key={e.id}
                 user={e.user}
                 text={e.text}
+                fecha={e.createdAt}
                 scoreFunctionality={e.scoreFunctionality}
                 scoreOriginality={e.scoreOriginality}
                 scoreStyle={e.scoreStyle} />)

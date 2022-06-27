@@ -180,14 +180,19 @@ export function getContributions() {
 }
 
 
-export function listPayments(contribution, user) {
+export function listPayments(contribution, user,paymentMethod,email) {
+    console.log(user)
     return function () {
-        axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user })
-            .then(response => response.data)
-            .catch(error => console.error(error))
+        return axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user,paymentMethod,email })
+            .then(response => {console.log(response.data);return response.data})
+            .catch(error => {console.error(error);return error})
     }
 }
-
+export function sendEmail({userId,email,payment}){
+    return axios.post(REACT_APP_API + '/api/admin/email', { userId,email,payment })
+        .then(response => {console.log(response.data);return response.data})
+        .catch(error => console.error(error))
+}
 
 export function postReview(input, userId, projectid) {
     console.log(input);

@@ -7,7 +7,6 @@
     justify-content: center;
     align-items: center;
     font-weight: 200;
-
 }
 
 .card-home {
@@ -36,28 +35,43 @@
 .card-div-info {
     display: flex;
     height: 100%;
-    width: 40%;
+    width: 45%;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
+.card-info-texto {
+    display: flex;
+    flex-direction: column;
+    height: 87%;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 10%;
+}
+
+/*Corazon favorito*/
 .corazon-card {
-    position: relative;
-    top: auto;
-    bottom: 9.4rem;
-    right: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 13%;
     transition: all .5s;
 }
 
 .corazon {
     background-color: transparent;
-    padding: 0;
+    padding: 5% 5% 0 0;
     border: 0;
     font-size: 2rem;
-    color: red;
+    color: rgb(219, 26, 26);
     transition: all .5s;
+    cursor: pointer;
+}
 
+.corazon:hover {
+    font-size: 2.2rem;
 }
 .corazonD {
     background-color: transparent;
@@ -78,7 +92,6 @@
 
 .corazon-card:hover svg {
     position: relative;
-    background-color: wheat;
     border-radius: 100px;
 }
 
@@ -93,10 +106,9 @@
     background-color: rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 0);
     text-align: center;
-    padding: 0px 0;
+    padding: 0.2rem;
     border-radius: 6px;
-
-    position: absolute;
+    font-size: smaller;
     z-index: 1;
     width: 120px;
     bottom: 100%;
@@ -105,18 +117,15 @@
 }
 
 .corazon-card:hover .tooltipCard {
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.731);
     color: #fff;
-
     visibility: visible;
-
 }
 
 /*Text*/
 .text-title-card {
     font-size: 1.5rem;
     color: white;
-    letter-spacing: .1em;
     text-shadow: 5px 5px 5px black;
     font-weight: 500;
     text-decoration: none;
@@ -126,10 +135,9 @@
 }
 
 .text-title-card:hover {
-    letter-spacing: 6px;
+    letter-spacing: 0.1rem;
     transform: scale(1.2);
     text-shadow: 7px 5px 5px black;
-
 }
 
 .title-card {
@@ -137,27 +145,60 @@
     display: flex;
 }
 
-
 .text-body-card {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    width: 70%;
     margin: 5px 0 15px 0;
     color: white;
     font-weight: bolder;
     padding: 4%;
 }
 
+.text-technologies-card {
+    color: rgba(255, 255, 255, 0.856);
+    margin: 0;
+    font-weight: bolder;
+    width: 82%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.technologie-card {
+    background-color: #01497C;
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 1px;
+    margin: 2px;
+}
+
+
 /*Button*/
 .card-button-home {
     padding: 0.6rem;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    background: white;
-    color: black;
-    font-weight: bold;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    color: white;
+    font-size: larger;
     transition: 0.4s ease;
     text-decoration: none;
+    cursor: pointer;
+    width: 8rem;
 }
+
+.card-button-home:hover {
+    padding: 0.6rem;
+    background: #01497C;
+    color: white;
+    border-radius: 6px;
+}
+
 
 /*Image*/
 .card-img {
@@ -173,17 +214,17 @@
 }
 
 .img-project-card {
-    height: 16rem;
-    width: 28rem;
+    height: 18rem;
+    width: 30rem;
     border-radius: 20px;
     max-height: 95%;
     max-width: 95%;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.356);
 }
 
 
 .username-card {
     display: flex;
-
     margin-left: 20px;
     text-decoration: none;
     align-items: flex-start;
@@ -211,8 +252,8 @@
 
 .text-score-card {
     padding-bottom: 0;
-
     margin: 0%;
+    color: white;
 }
 
 .fecha-card {
@@ -220,12 +261,11 @@
     transform: translateX(45vw) translateY(26vh); */
     margin: 0;
     padding: 0;
-    color: white;
+    color: rgba(255, 255, 255, 0.782);
     font-weight: 400;
 }
 
 .fecha-card p {
-
     margin: 0;
     padding: 0;
 }
@@ -239,3 +279,21 @@
         width: 100vw;
     }
 }
+
+/*@media all and (max-width: 850px) {
+    .cards-cont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 200;
+    }
+
+    .card-home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 40rem;
+        height: 50rem;
+    }
+}*/

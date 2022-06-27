@@ -1,0 +1,10 @@
+.cargando-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 64vh;
+}
+
+.cargando{
+    width: 3rem;
+}

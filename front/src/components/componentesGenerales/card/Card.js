@@ -7,15 +7,8 @@ import { MdFavorite, MdError,MdFavoriteBorder } from "react-icons/md";
 import { addFavorites, deleteFavorite, getFavorites } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
-function Card({ id, name, description, fecha, imagen, score, update, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
-    // const promedio = 1
-    // if (score.length){
-    // const arrNumber = score.map((n) => Number(n))
-    // const sum = arrNumber.reduce((primerScore, siguienteScore) => primerScore + siguienteScore, 0);
-    // const promedio = (sum/score.length).toFixed(2);
 
-    // }
-
+function Card({ id, name, description, fecha, imagen, userId, score, update, user, technology }) {
 
     let listUserFavorites = useSelector((state) => state.listFavorites)
     let dispatch = useDispatch()
@@ -52,26 +45,44 @@ function Card({ id, name, description, fecha, imagen, score, update, user, score
                         <img src={defaultImg[0]} alt='imagen proyecto'></img>
 
                     }
+
                     <div className='fecha-card'>{
 
                     }
                         {getDateTime(update) - getDateTime(fecha) < 100 ? <p>Creado el: {formatDate(fecha)}</p> : <p>Editado el: {formatDate(update)}</p>}
                     </div>
                 </div>
-
-
-
             </div>
+
+
             <div className='card-div-info'>
-
-
+                {/* <div className='corazon-card'>
+                    {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
+                        <>
+                            <span className='tooltipCard'> {token ? "Agregar a Favoritos" : "Inicia sesion para agregar a favoritos"} </span>
+                            <button className='corazon' onClick={addFavorites(userId, project.id)}> <MdFavoriteBorder /></button>
+                        </> :
+                        <>
+                            <span className='tooltipCard'>Borrar de Favoritos</span>
+                            <button className='corazon' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
+                        </>
+                    }
+                </div> */}
+                {/* <div className='card-info-texto'> */}
                 <Link to={"/project/" + id} className="title-card">
                     <p className="text-title-card">{name}</p>
                 </Link>
                 <p className="text-body-card">{description}</p>
+                {technology
+                    ? <p className='text-technologies-card'>{technology.map((t) => <span className='technologie-card'>{t}</span>)}</p>
+                    : null
+                };
                 <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
-                <button className='card-button-home'>Ver mas</button>
+                <Link to={"/project/" + id}>
+                    <button className='card-button-home'>Ver mas</button>
+                </Link>
 
+                {/* </div> */}
             </div>
             <div className='corazon-card'>
                 {
@@ -91,6 +102,7 @@ function Card({ id, name, description, fecha, imagen, score, update, user, score
                             </> : null
                 }
             </div>
+
 
         </div>
     )
