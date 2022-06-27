@@ -29,23 +29,24 @@ export default function ModalPayment({ payment, setearStado }) {
     return (
         <div className='modalP'>
             <div className='modal-contenidoP'>
-                <h1>Gracias por tu colaboracion a Timberli </h1>
-                <p>Por gente como tu Timberli sigue expendiendose y llegando a mas rincones de latinoamerica
-                    gracias a tu granito de arena podremos lograr que el mundo sea un lugar mejor, mas feliz y mas equitativo
+                <h1 className='modadl-payment-titulo'>Gracias por tu colaboracion a Timberli! </h1>
+                <p className='texto-modal-payment'> Por gente como tu, Timberli sigue expendiendose y llegando a mas rincones de latinoamerica.
+                    Gracias a tu granito de arena podremos lograr que el mundo sea un lugar mejor, mas feliz y mas equitativo.
                 </p>
                 {token ?
-                    <div>
-                        <p>No te preocupes por tus datos bancarios quedan totalmente resguardados, si deseas recibir el comprobante a tu correo da click en "Si" y si no da click en "No"</p>
+                    <div className='container-modal-payment'>
+                        <p className='texto-modal-payment'>No te preocupes por tus datos bancarios, quedan totalmente resguardados. Si deseas recibir el comprobante a tu correo da click en "Si" y si no da click en "No".</p>
                         <div className='project-content-buttons'>
                             <button className='boton-cerrar' onClick={e => onSubmitMail(e, "s")}>Si</button>
                             <button className='boton-cerrar' onClick={e => onSubmitMail(e, "n")}>No</button>
                         </div>
                     </div>
                     :
-                    <div>
-                        <p>No te preocupes por tus datos bancarios quedan totalmente resguardados y tu donacion quedara como anonima, si deseas recibir el comprobante a tu correo, ingresa en la seccion de abajo el mismo y da click en "Si" y si no da click en "No"</p>
+                    <div className='container-modal-payment'>
+                        <p className='texto-modal-payment'>No te preocupes por tus datos bancarios, quedan totalmente resguardados y tu donacion quedara como anonima. Si deseas recibir el comprobante, por favor ingresa tu correo y da click en "Si", si no da click en "No".</p>
                         <input
                             placeholder='timberli@gmail.com'
+                            className='input-modal-payment'
                             onChange={e => onChangeMail(e)}></input>
                         <div className='project-content-buttons'>
                             <button className='buttons' onClick={e => onSubmitMail(e, "s")}>Si</button>

@@ -43,11 +43,11 @@ router.post("/email", async (req, res, next) => {
         if (!email) {
             const user = await User.findByPk(userId);
             await transporter.sendMail({
-                from: `"Gracias por tu donacion" <deathtrokers@gmail.com>`,
+                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
                 to: user.mail,
-                subject: "Gracias por tu donacion",
-                html: `<h1>Gracias por tu donacion ${user.name}</h1>
-                <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
+                subject: "Gracias por tu donacion!",
+                html: `<h1>Muchas gracias por colaborar ${user.name}!</h1>
+                <p>Te hacemos llegar el comprobante de pago, desde el equipo de timberli te damos las gracias!!</p>
             
             
                 <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
@@ -58,10 +58,10 @@ router.post("/email", async (req, res, next) => {
         }
         else {
             await transporter.sendMail({
-                from: `"Gracias por tu donacion" <deathtrokers@gmail.com>`,
+                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
                 to: email,
-                subject: "Gracias!!",
-                html: `<h1>Gracias por tu donacion</h1>
+                subject: "Gracias por tu donacion!",
+                html: `<h1>Muchas gracias por colaborar!</h1>
                 <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
                 
                 

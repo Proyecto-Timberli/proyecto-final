@@ -1,6 +1,5 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { sendCheckoutForm } from "../../../functions";
 import { useDispatch } from "react-redux";
 import { listPayments } from "../../../redux/actions/actionCreators.js"
 import ModalPayment from "./modalPayment/ModalPayment.js";
@@ -55,8 +54,7 @@ export default function CheckoutForm() {
             setCompraConcretada(data.payment)
             elements.getElement(CardElement).clear()
         } else {
-
-            setError("lo sentimos algo salio mal ")
+            setError("Lo sentimos, algo salio mal ")
         }
 
     }
@@ -96,7 +94,7 @@ export default function CheckoutForm() {
                     </div>
                 </div>
                 <CardElement className="card-element-payment" />
-                {error && <div >{error}</div>}
+                {error && <div className="payment-error">{error}</div>}
                 <button className="btn-payment" type="submit" disabled={cargando}> CONTRIBUIR </button>
                 {compraConcretada && <div type="modal" >{<ModalPayment payment={compraConcretada} setearStado={setCompraConcretada} />}</div>}
                 {cargando && <div >Cargando...</div>}

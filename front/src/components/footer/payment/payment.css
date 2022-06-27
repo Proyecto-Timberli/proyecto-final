@@ -16,11 +16,10 @@
 .form-payment-subtitle {
     color: gray;
     margin: 0 0 4% 0;
-    ;
 }
 
 .form-payment {
-    height: 79vh;
+    height: 73vh;
     width: 40vw;
     box-shadow: 5px 5px 20px 10px rgb(213 213 213);
     border-radius: 20px;
@@ -58,7 +57,7 @@
 }
 
 .card-element-payment {
-    margin: 4% 25% 4% 25%;
+    margin: 4% 25% 1% 25%;
 }
 
 .btn-payment {
@@ -72,6 +71,7 @@
     transition: 0.4s;
     font-family: inherit;
     letter-spacing: 0.5px;
+    margin-top: 7%;
 }
 
 .btn-payment:hover {
@@ -81,4 +81,9 @@
     color: white;
     cursor: pointer;
     letter-spacing: 1px;
+}
+
+.payment-error{
+    font: smaller;
+    color: rgba(255, 0, 0, 0.8);
 }
