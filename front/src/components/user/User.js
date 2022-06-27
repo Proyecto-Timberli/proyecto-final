@@ -110,6 +110,8 @@ const User = () => {
         }
     }
 
+    let token = window.localStorage.getItem('usertoken');
+
     function showLoadedProfile() {
         return (
             <div className='profileContainer'>
@@ -123,8 +125,8 @@ const User = () => {
                         {showSocialMediaLink("linkedIn", userData)}
                         {showSocialMediaLink("github", userData)}
                     </div>
-                    <div className='cont-botones-acciones-user'>
-                        <button className='boton-accion-detalleProject'> <MdGroupAdd /></button>
+                    {token
+                    ? <div className='cont-botones-acciones-user'>
                         <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
                         {
                             !!modalP && modalP.userID !== 0 ?
@@ -140,6 +142,8 @@ const User = () => {
                                 : null
                         }
                     </div>
+                    : null 
+                    }
                 </div>
                 <div className='profileContents'>
                     {showProfileSectionLinks()}
