@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
-import { MdGroupAdd, MdError } from "react-icons/md";
+import { MdError } from "react-icons/md";
 
 
 import {
@@ -15,7 +15,7 @@ import { getUserById } from '../../redux/actions/actionCreators'
 import { scroll } from "../../functions";
 import './User.css'
 import ModalUserReport from './modalUseReport/ModalUserReport.js'
-import { getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
+import { postReportUser } from '../../redux/actions/actionCreators'
 
 const User = () => {
     scroll()
@@ -110,6 +110,8 @@ const User = () => {
         }
     }
 
+    let token = window.localStorage.getItem('usertoken');
+
     function showLoadedProfile() {
         return (
             <div className='profileContainer'>
@@ -123,8 +125,8 @@ const User = () => {
                         {showSocialMediaLink("linkedIn", userData)}
                         {showSocialMediaLink("github", userData)}
                     </div>
-                    <div className='cont-botones-acciones-user'>
-                        <button className='boton-accion-detalleProject'> <MdGroupAdd /></button>
+                    {token
+                    ? <div className='cont-botones-acciones-user'>
                         <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
                         {
                             !!modalP && modalP.userID !== 0 ?
@@ -140,6 +142,8 @@ const User = () => {
                                 : null
                         }
                     </div>
+                    : null 
+                    }
                 </div>
                 <div className='profileContents'>
                     {showProfileSectionLinks()}

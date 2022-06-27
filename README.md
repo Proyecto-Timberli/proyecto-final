@@ -19,15 +19,15 @@ Sube tus proyectos, y conoce esta gran comunidad.
 3.INSTALA LAS DEPENDENCIA `npm install`.
 4.CORRE EL AMBIENTE LOCAL `npm start`.
 
-# CONTRIBUSIONES
+# CONTRIBUCIONES
 SIENTANSE LIBRE DE CONTRIBUIR CON APORTES.
 
-# TEGNOLOGIAS.
+# TECNOLOGIAS
 1.BD----> `POSTGRESQL`
 2.BACK END----> `NODE.JS(EXPRESS)`
 3.FRONT END-----> `REACT-REDUX`
 
 
-# ENLACE DEL RPOYECTO.
+# ENLACE DEL PROYECTO.
 [Create React App](https://github.com/Proyecto-Timberli/proyecto-final)
 
