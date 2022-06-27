@@ -20,16 +20,17 @@
     width: 100%;
 }
 
-.text-card-community{
+.text-card-community {
     display: flex;
+    width: 100%;
     flex-direction: row;
     padding-left: 3%;
     text-align: left;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.item-text-card{
-    width: 18rem;
-}
+
 
 .community-card:hover {
     z-index: 99;

@@ -52,7 +52,6 @@ const Navbar = () => {
             <div>
                 <Link to="/" className='logo-navBar'>T.</Link>
             </div>
-            {userId ? <Link to="/" className='verTodo-navBar'>INICIO</Link> : null}
 
             <Link to="/home" className='verTodo-navBar'>
                 PROYECTOS

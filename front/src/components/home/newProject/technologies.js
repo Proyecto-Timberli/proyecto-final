@@ -49,6 +49,5 @@ export const technologies = [
     { name: "GraphQL" },
     { name: "Jest" },
     { name: "Heroku" },
-    { name: "Amazon Web Services" },
-    { name: "Tailwind "}
+    { name: "Amazon Web Services" }
 ];

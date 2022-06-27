@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFavorite, getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
+import { deleteFavorite, getFavorites, getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
 import { scroll } from "../../functions";
 import Reviews from './reviews/reviews';
 import ModalReport from './modalReport/ModalReport.js'
-import { MdFavorite, MdError } from "react-icons/md";
+import { MdFavorite, MdError,MdFavoriteBorder } from "react-icons/md";
 import { addFavorites } from '../../redux/actions/actionCreators';
-import EditProject from './EditProject.js'
-import { FcDataConfiguration } from "react-icons/fc";
+
 
 function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -24,17 +23,27 @@ function Project() {
     let token = window.localStorage.getItem('usertoken')
     let project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
-    const [desplegarEditar, setDesplegarEditar] = useState(false);
+
     useEffect(() => {
         dispatch(getProjectById(id))
+        if (token) {
+            dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
+        }
         scroll()
+<<<<<<< HEAD
     }, [desplegarEditar])
+=======
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+>>>>>>> dev-general
     ////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////paginado imagenes/////////////////////////////////////
     const [cardsInPag, setCardsInPag] = useState({
         renderCards: [],
         pag: 1,
     });
+
 
     const paginado = new Paginado(1, project.imagen, cardsInPag.pag, null, "Any", 1)
     const accionarPaginado = (selectPag, selectFilter) => {
@@ -47,16 +56,25 @@ function Project() {
         if (Object.keys(project).length && project.imagen.length) {
             accionarPaginado(1)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////Report//////////////////////////////////////////////////////////////////
+    /////////////////////Report///////////////////////////////////////////////////////////////////
+    // postReportProject(jectId:1,reportedBy:1,reportComment:"posteo un proyecto con insultos"})
+    // postReportUser({userId:2,reportedBy:1,reportComment:"realizo comentario racistas"})
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
+
     const [loading, setLoading] = useState(true);
     const [msgReport, setMsgReport] = useState("");
     const [modalP, setmodalP] = useState({
         userID: 0,
         projectID: 0,
     })
-
+    console.log(project)
+    console.log(listUserFavorites)
     function cambiarEstadoModalReport(userID, projectID) {
         setmodalP({
             userID: userID,
@@ -73,8 +91,9 @@ function Project() {
         setMsgReport("")
     }
 
-    function enviarReporte(proyectId, userId, comentario) {
+    async function enviarReporte(proyectId, userId, comentario) {
         dispatch(postReportProject(proyectId, userId, comentario))
+        //  resetEstadoModal()
         mensajeReport()
     }
 
@@ -84,6 +103,7 @@ function Project() {
             return <Cargando />
         }
         return <Page404 />
+
     }
 
     const mensajeReport = () => {
@@ -92,35 +112,28 @@ function Project() {
         } else {
             setMsgReport("Reporte exitoso")
         }
-    }
 
-    if (desplegarEditar){
-        return (
-            <React.Fragment>             
-                <EditProject
-                    id={id}
-                    defaultValue={project}
-                    desplegarEditar={setDesplegarEditar}
-                /> 
-            </React.Fragment>   
-        )
+    }
+    async function AñadirFavorite() {
+        await addFavorites(userId, id)
+        dispatch(getFavorites({ userId }))
+
+    }
+    async function EliminarFavorite() {
+        await deleteFavorite(userId, id)
+        dispatch(getFavorites({ userId }))
     }
     return (
+
         <React.Fragment>
             <div className='detail-container'>
-                <div className="project-bar-container">
-                    <div className ="project-bar" onClick={()=>{desplegarEditar(false)}}>Proyecto</div>
-                    <div className ="project-bar"onClick={()=>{setDesplegarEditar(true)}}><FcDataConfiguration/>Configuracion</div>
-                </div>
                 <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
                     <div className='cont-info'>
 
                         <div>
                             <h3>Puntuacion:</h3>
-
-
-                            <div className='info-detalle' >{project.scoreStyle.length > 0 && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} |  {project.scoreFunctionality.length > 0 && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} | {project.scoreOriginality.length > 0 && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</div>
+                            <div className='info-detalle' >{project.scoreStyle[0] && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality[0] && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality[0] && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
                         </div >
                         <div >
                             <h3>Usuario:</h3>
@@ -132,7 +145,20 @@ function Project() {
 
                     <div className='cont-img-detalle'>
                         {cardsInPag.renderCards.map(image => (!!image) &&
-                            <img alt='Foto' key={image} className='card-img-detalle' src={image}></img>)}
+                            image.includes(".mp4") ?
+
+                            <video
+                                className='card-video-detalle'
+                                src={image}
+                                autoPlay={true}
+                                loop={true}
+                                controls={true}
+                                key={image}
+                            ></video>
+                            :
+
+                            <img alt='Foto' key={image} className='card-img-detalle' src={image}></img>
+                        )}
                         <div className="project-paginado-button-container">
                             {paginado.buttons().map(button =>
                                 <div key={button}>
@@ -144,21 +170,33 @@ function Project() {
                     </div>
                     <div className='cont-info'>
                         <div className='cont-botones-acciones'>
-                            <ul className='wrapper'>
-                                <li className='icon facebook'>
 
-                                    {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
+                            {
+                                !listUserFavorites.projects?.find(p => p.id === project?.id) ?
+                                    !listUserFavorites.favorites?.find(favorito => favorito.projects[0]?.id === project?.id) ?
+
                                         <>
-                                            <span className='tooltip'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
-                                            <button className='boton-accion-detalleProject' onClick={addFavorites(userId, project.id)}> <MdFavorite /></button>
-                                        </> :
-                                        <>
-                                            <span className='tooltip'>Borrar de Favoritos</span>
-                                            <button className='boton-accion-detalleProject' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
+                                            <ul className='wrapper'>
+                                                <li className='icon facebook'>
+                                                    <span className='tooltip'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
+                                                    <button className='boton-accion-detalleProject' disabled={!token} onClick={() => AñadirFavorite()}> <MdFavoriteBorder /></button>
+                                                </li>
+                                            </ul>
                                         </>
-                                    }
-                                </li>
-                            </ul>
+                                        :
+                                        <>
+                                            <ul className='wrapper'>
+                                                <li className='icon facebook'>
+
+                                                    <span className='tooltip'>Borrar de Favoritos</span>
+                                                    <button className='boton-accion-detalleProject' onClick={() => EliminarFavorite()}> <MdFavorite /></button>
+                                                </li>
+                                            </ul>
+                                        </>
+                                    : null
+
+                            }
+
 
 
                             <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>

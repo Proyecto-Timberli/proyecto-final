@@ -180,14 +180,19 @@ export function getContributions() {
 }
 
 
-export function listPayments(contribution, user) {
+export function listPayments(contribution, user,paymentMethod,email) {
+    console.log(user)
     return function () {
-        axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user })
-            .then(response => response.data)
-            .catch(error => console.error(error))
+        return axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user,paymentMethod,email })
+            .then(response => {console.log(response.data);return response.data})
+            .catch(error => {console.error(error);return error})
     }
 }
-
+export function sendEmail({userId,email,payment}){
+    return axios.post(REACT_APP_API + '/api/admin/email', { userId,email,payment })
+        .then(response => {console.log(response.data);return response.data})
+        .catch(error => console.error(error))
+}
 
 export function postReview(input, userId, projectid) {
     console.log(input);
@@ -216,7 +221,7 @@ export function getReviews() {
 
 /////////////////////REPORT/////////////////////////////
 
-export function postReportUser( userId, reportedBy, reportComment ) {
+export function postReportUser(userId, reportedBy, reportComment) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/user`, { userId: userId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -229,7 +234,7 @@ export function postReportUser( userId, reportedBy, reportComment ) {
 
     }
 }
-export function postReportProject( projectId, reportedBy, reportComment ) {
+export function postReportProject(projectId, reportedBy, reportComment) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/project`, { projectId: projectId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -245,14 +250,6 @@ export function postReportProject( projectId, reportedBy, reportComment ) {
 
 
 
-export function addFavorites(userId, projectId) {
-    return function () {
-        axios.post(REACT_APP_API + `/api/user/favorites`, { userId: userId, projectId: projectId })
-            .then(response => response.data)
-            .catch(error => console.error(error))
-
-    }
-}
 export function getFavorites({ userId }) {
 
     return function (dispatch) {
@@ -266,18 +263,30 @@ export function getFavorites({ userId }) {
             )
     }
 }
+export function addFavorites(userId, projectId) {
 
-export function deleteFavorite({ userId, projectId }) {
-    
-    return axios.put(REACT_APP_API + "/api/user/favorites", { userId: userId, projectId: projectId })
+    return axios.post(REACT_APP_API + `/api/user/favorites`, { userId: userId, projectId: projectId })
         .then(response => response.data)
         .catch(error => console.error(error))
 
 
+
 }
+<<<<<<< HEAD
 export function putProjectById(projectId,newValue) {
     return axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
         .then(response => response.data)
         .catch(error => console.error(error))
 }
 
+=======
+
+export function deleteFavorite(userId, projectId) {
+
+    return axios.put(REACT_APP_API + "/api/user/favorites", { userId: userId, projectId: projectId })
+        .then(response => response.data)
+        .catch(error => console.error(error))
+
+
+}
+>>>>>>> dev-general

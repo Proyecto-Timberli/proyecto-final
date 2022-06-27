@@ -996,6 +996,17 @@ const mokeando = async () => {
 
   for (let j = 0; j < projects.length; j++) {
 
+
+    projects[j].tecnology = [tecnologias[numeroRandom(0, (tecnologias.length - 1))].name]
+    for (let i = 0; i < 10; i++) {
+      if (numeroRandom(1, 3) == 1) {
+        let tecnologia = tecnologias[numeroRandom(0, (tecnologias.length - 1))]
+        if (!projects[j].tecnology.includes(tecnologia)) {
+          projects[j].tecnology.push(tecnologia.name)
+        }
+      }
+    }
+
     let project = await Project.create(projects[j])
 
     await project.save()
