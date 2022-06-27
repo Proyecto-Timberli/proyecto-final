@@ -56,18 +56,22 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
 
             <div className='card-div-info'>
-                {/* <div className='corazon-card'>
-                    {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
-                        <>
-                            <span className='tooltipCard'> {token ? "Agregar a Favoritos" : "Inicia sesion para agregar a favoritos"} </span>
-                            <button className='corazon' onClick={addFavorites(userId, project.id)}> <MdFavoriteBorder /></button>
-                        </> :
-                        <>
-                            <span className='tooltipCard'>Borrar de Favoritos</span>
-                            <button className='corazon' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
-                        </>
+                <div className='corazon-card'>
+                    {
+                        !listUserFavorites.projects?.find(p => p.id === id) ?
+                            !listUserFavorites.favorites?.find(favorito => favorito.projects[0]?.id === id) ?
+                                <>
+                                    <span className='tooltipCard'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
+                                    <button className='corazon' onClick={() => { return token ? AñadirFavorite() : null }}> <MdFavoriteBorder /></button>
+                                </> :
+                                <>
+                                    <>
+                                        <span className='tooltipCard'>Borrar de Favoritos</span>
+                                        <button className='corazon' onClick={() => EliminarFavorite()}> <MdFavorite /></button>
+                                    </>
+                                </> : null
                     }
-                </div> */}
+                </div>
                 {/* <div className='card-info-texto'> */}
                 <Link to={"/project/" + id} className="title-card">
                     <p className="text-title-card">{name}</p>
@@ -84,25 +88,6 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
                 {/* </div> */}
             </div>
-            {/* <div className='corazon-card'>
-                {
-                    !listUserFavorites.projects?.find(p => p.id === id) ?
-                        !listUserFavorites.favorites?.find(favorito => favorito.projects[0]?.id === id) ?
-
-
-                            <>
-                                <span className='tooltipCard'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
-                                <button className='corazon' onClick={() => { return token ? AñadirFavorite() : null }}> <MdFavoriteBorder /></button>
-                            </> :
-                            <>
-                                <>
-                                    <span className='tooltipCard'>Borrar de Favoritos</span>
-                                    <button className='corazon' onClick={() => EliminarFavorite()}> <MdFavorite /></button>
-                                </>
-                            </> : null
-                }
-            </div> */}
-
 
         </div>
     )
