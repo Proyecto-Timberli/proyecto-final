@@ -126,13 +126,14 @@ router.delete("/", async (req, res, next) => {
 router.get("/favorites/:userId", async (req, res, next) => {
     try {
         const { userId } = req.params;
-
+        
         if (userId) {
-            const userFavorites = await User.findByPk(userId, { include: [{ model: Favorites, include: [{ model: Project }] }] })
+            const userFavorites = await User.findByPk(userId, { include: [{ model: Project }, { model: Favorites, include: [{ model: Project }] }] })
             if (!userFavorites) {
                 res.sendStatus(404)
             }
-            res.send(userFavorites.favorites)
+
+            res.send({ favorites: userFavorites.favorites, projects: userFavorites.projects })
         }
 
 
@@ -166,11 +167,20 @@ router.post("/favorites", async (req, res, next) => {
     try {
         const { userId, projectId } = req.body;
         if (userId && projectId) {
-            const user = await User.findByPk(userId)
+            const user = await User.findByPk(userId, { include: [{ model: Favorites, include: [{ model: Project }] }] })
             const project = await Project.findByPk(projectId, {
                 include: [{ model: User }]
             })
             if (user && project) {
+                let validacion = await Favorites.findOne({
+                    where: {
+                        userId: userId,
+                        project_id: projectId
+                    }
+                })
+                if(validacion !== null){
+                    return res.status(401).send("El proyecto ya esta en favoritos")
+                }
                 const newFavorite = await Favorites.create({ project, project_id: project.id })
                 await newFavorite.addProjects(project)
                 await user.addFavorites(newFavorite)

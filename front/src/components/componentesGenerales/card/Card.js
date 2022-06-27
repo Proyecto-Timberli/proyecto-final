@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { MdFavorite, MdError } from "react-icons/md";
-import { addFavorites, deleteFavorite } from '../../../redux/actions/actionCreators';
+import { useDispatch, useSelector } from 'react-redux';
+import { MdFavorite, MdError,MdFavoriteBorder } from "react-icons/md";
+import { addFavorites, deleteFavorite, getFavorites } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
-function Card({ id, name, description, fecha, imagen, userId, score, update, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
+function Card({ id, name, description, fecha, imagen, score, update, user, scoreStyle, scoreFunctionality, scoreOriginality }) {
     // const promedio = 1
     // if (score.length){
     // const arrNumber = score.map((n) => Number(n))
@@ -15,12 +15,24 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
     // const promedio = (sum/score.length).toFixed(2);
 
     // }
-    let listUserFavorites = useSelector((state) => state.listFavorites)
 
+
+    let listUserFavorites = useSelector((state) => state.listFavorites)
+    let dispatch = useDispatch()
     let token = window.localStorage.getItem('usertoken')
+    let userId = window.localStorage.getItem('userid')
     let project = useSelector((state) => state.projectById)
 
 
+    async function AñadirFavorite() {
+        await addFavorites(userId, id)
+       dispatch(getFavorites({ userId }))
+    
+    }
+    async function EliminarFavorite() {
+        await deleteFavorite(userId, id)
+        dispatch(getFavorites({ userId }))
+    }
 
     return (
         <div key={id} className="card-home" >
@@ -32,7 +44,10 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                 <div className="card-img">
 
                     {imagen.length > 0 ?
-                        <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
+                        imagen[0].includes(".mp4") ?
+                            <video className='img-project-card' autoPlay={true} src={imagen[0]} />
+                            :
+                            <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
                         :
                         <img src={defaultImg[0]} alt='imagen proyecto'></img>
 
@@ -59,17 +74,21 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
             </div>
             <div className='corazon-card'>
+                {
+                    !listUserFavorites.projects?.find(p => p.id === id) ?
+                        !listUserFavorites.favorites?.find(favorito => favorito.projects[0]?.id === id) ?
 
 
-                {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
-                    <>
-                        <span className='tooltipCard'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
-                        <button className='corazon' onClick={addFavorites(userId, project.id)}> <MdFavorite /></button>
-                    </> :
-                    <>
-                        <span className='tooltipCard'>Borrar de Favoritos</span>
-                        <button className='corazon' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
-                    </>
+                            <>
+                                <span className='tooltipCard'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
+                                <button className='corazon' onClick={() => { return token ? AñadirFavorite() : null }}> <MdFavoriteBorder /></button>
+                            </> :
+                            <>
+                                <>
+                                    <span className='tooltipCard'>Borrar de Favoritos</span>
+                                    <button className='corazon' onClick={() => EliminarFavorite()}> <MdFavorite /></button>
+                                </>
+                            </> : null
                 }
             </div>
 
