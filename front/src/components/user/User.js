@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
-import { MdGroupAdd, MdError } from "react-icons/md";
+import { MdError } from "react-icons/md";
 
 
 import {
@@ -15,7 +15,7 @@ import { getUserById } from '../../redux/actions/actionCreators'
 import { scroll } from "../../functions";
 import './User.css'
 import ModalUserReport from './modalUseReport/ModalUserReport.js'
-import { getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
+import { postReportUser } from '../../redux/actions/actionCreators'
 
 const User = () => {
     scroll()
