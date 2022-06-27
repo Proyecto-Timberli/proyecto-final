@@ -9,73 +9,63 @@
 
 .container-register{
     display: flex;
-    margin: 6% 0% 6% 0%;
+    margin: 2% 0% 2% 0%;
     box-shadow: 5px 5px 20px 10px rgb(213, 213, 213);
     border-radius: 15px;
-    padding: 6% 8% 6% 8%;
+    padding: 4% 8% 4% 8%;
 }
 
 .signup-content{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items:center;
+    justify-content: space-around;
 }
 
 .signup-form{
     display: flex;
     flex-direction: column;
-    margin-right: 3%;
+    width: 50%;
+    margin-right: 10%;
 }
 
 .form-title{
-    color: #0b85b9;
+    color: #013A63;
+    font-family: inherit;
 }
 
-.form-group{
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 3% 0% 5% 0%;
 }
 
+
 .register-input{
-    --border-height: 2px;
-    --border-before-color: #2C7DA0;
-    --border-after-color: #5891ff;
-    --input-hovered-color: #4985e01f;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-bottom-width: 2px;
     border-bottom-color: #2C7DA0;
     width: 250px;
     padding: 5px;
     cursor: pointer;
-    color: rgb(0, 0, 0);
-    font-size: 0.9rem;
-    background-color: transparent;
-    width: 100%;
-    min-width: 80px;
-    min-height: 40px;
-    max-width: 200px;
-    max-height: 200px;
-    box-sizing: border-box;
-    padding-inline: 0.5em;
-    padding-block: 0.7em;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    border-bottom: var(--border-height) solid var(--border-before-color);
-  }
+    font-size: 1rem;
+}
     
 
-.register-input:hover {
-    background: var(--input-hovered-color);
-}
 .register-input:focus {
     outline: none; 
 }
 .label-agree-term, .agree-term{
-    font-size: smaller;
+    font-size: 0.7rem;
     cursor: pointer;
 }
 
 .form-submit{
-    width: 250px;
+    width: 260px;
     padding: 10px;
     border: none;
     background-color: #61A5C2;
@@ -95,7 +85,11 @@
 }
 
 .signup-image{
-    padding-left: 8%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .signup-image-link{
@@ -119,4 +113,7 @@
     font-size: 13px;
 }
 
+.linkgoogle{
+    padding-right: 3rem;
+}
 
