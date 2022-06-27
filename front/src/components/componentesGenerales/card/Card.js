@@ -3,8 +3,8 @@ import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
-import { addFavorites, deleteFavorite } from '../../../redux/actions/actionCreators';
+
+
 import { formatDate, getDateTime } from '../../../functions';
 
 function Card({ id, name, description, fecha, imagen, userId, score, update, user, technology }) {
@@ -41,7 +41,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
 
             <div className='card-div-info'>
-                <div className='corazon-card'>
+                {/* <div className='corazon-card'>
                     {!listUserFavorites.find(favorito => favorito.projects[0].id === project.id) ?
                         <>
                             <span className='tooltipCard'> {token ? "Agregar a Favoritos" : "Inicia sesion para agregar a favoritos"} </span>
@@ -52,22 +52,22 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                             <button className='corazon' onClick={() => deleteFavorite({ userId, projectId: project.id })}> <MdFavorite /></button>
                         </>
                     }
-                </div>
-                <div className='card-info-texto'>
-                    <Link to={"/project/" + id} className="title-card">
-                        <p className="text-title-card">{name}</p>
-                    </Link>
-                    <p className="text-body-card">{description}</p>
-                    {technology
-                    ? <p className='text-technologies-card'>| {technology.map((t) => t + ' | ')}</p>
-                    : null 
-                    };
-                    <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
-                    <Link to={"/project/" + id}>
-                        <button className='card-button-home'>Ver mas</button>
-                    </Link>
+                </div> */}
+                {/* <div className='card-info-texto'> */}
+                <Link to={"/project/" + id} className="title-card">
+                    <p className="text-title-card">{name}</p>
+                </Link>
+                <p className="text-body-card">{description}</p>
+                {technology
+                    ? <p className='text-technologies-card'>{technology.map((t) => <span className='technologie-card'>{t}</span>)}</p>
+                    : null
+                };
+                <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
+                <Link to={"/project/" + id}>
+                    <button className='card-button-home'>Ver mas</button>
+                </Link>
 
-                </div>
+                {/* </div> */}
             </div>
 
 
