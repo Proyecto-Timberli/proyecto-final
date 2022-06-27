@@ -14,7 +14,7 @@ const Home = () => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     let token = searchParams.get("token")
-
+    let listUserFavorites = useSelector((state) => state.listFavorites)
     if (token) {
         localStorage.setItem("usertoken", token)
         localStorage.setItem("userid", searchParams.get("id"))
@@ -22,7 +22,7 @@ const Home = () => {
         console.log("got Here")
     }
 
-    scroll()
+    // scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
@@ -31,9 +31,12 @@ const Home = () => {
         dispatch(getAllProjects());
         if (window.localStorage.getItem("usertoken")) {
             dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
+            // accionarPaginado(1)
         }
+        scroll()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////filter by search////////////////////////////
     const [filterBySearch, setFilterBySearch] = useState("")
@@ -73,7 +76,7 @@ const Home = () => {
             accionarPaginado(1)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [allProjects, filterTechs, filterBySearch])
+    }, [allProjects, filterTechs, filterBySearch,listUserFavorites])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.loggedUserId)
