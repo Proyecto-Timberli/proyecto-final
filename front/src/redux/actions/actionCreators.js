@@ -221,7 +221,7 @@ export function getReviews() {
 
 /////////////////////REPORT/////////////////////////////
 
-export function postReportUser( userId, reportedBy, reportComment ) {
+export function postReportUser(userId, reportedBy, reportComment) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/user`, { userId: userId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -234,7 +234,7 @@ export function postReportUser( userId, reportedBy, reportComment ) {
 
     }
 }
-export function postReportProject( projectId, reportedBy, reportComment ) {
+export function postReportProject(projectId, reportedBy, reportComment) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/project`, { projectId: projectId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -250,14 +250,6 @@ export function postReportProject( projectId, reportedBy, reportComment ) {
 
 
 
-export function addFavorites(userId, projectId) {
-    return function () {
-        axios.post(REACT_APP_API + `/api/user/favorites`, { userId: userId, projectId: projectId })
-            .then(response => response.data)
-            .catch(error => console.error(error))
-
-    }
-}
 export function getFavorites({ userId }) {
 
     return function (dispatch) {
@@ -271,9 +263,17 @@ export function getFavorites({ userId }) {
             )
     }
 }
+export function addFavorites(userId, projectId) {
 
-export function deleteFavorite({ userId, projectId }) {
-    console.log(userId, projectId)
+    return axios.post(REACT_APP_API + `/api/user/favorites`, { userId: userId, projectId: projectId })
+        .then(response => response.data)
+        .catch(error => console.error(error))
+
+
+
+}
+
+export function deleteFavorite(userId, projectId) {
 
     return axios.put(REACT_APP_API + "/api/user/favorites", { userId: userId, projectId: projectId })
         .then(response => response.data)

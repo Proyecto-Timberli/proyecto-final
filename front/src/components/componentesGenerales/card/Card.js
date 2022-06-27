@@ -1,20 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { MdFavorite, MdError,MdFavoriteBorder } from "react-icons/md";
+import { addFavorites, deleteFavorite, getFavorites } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
+
 
 function Card({ id, name, description, fecha, imagen, userId, score, update, user, technology }) {
 
     let listUserFavorites = useSelector((state) => state.listFavorites)
-
+    let dispatch = useDispatch()
     let token = window.localStorage.getItem('usertoken')
-    let project = useSelector((state) => state.projectById)
+    let idUser = window.localStorage.getItem('userid')
+    //let project = useSelector((state) => state.projectById)
 
 
+    async function AñadirFavorite() {
+        await addFavorites(idUser, id)
+       dispatch(getFavorites({ idUser }))
+    
+    }
+    async function EliminarFavorite() {
+        await deleteFavorite(idUser, id)
+        dispatch(getFavorites({ idUser }))
+    }
 
     return (
         <div key={id} className="card-home" >
@@ -24,13 +35,17 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                     <div className="card-user">{user && user.toUpperCase()}</div>
                 </Link>
                 <div className="card-img">
-                    <Link to={"/project/" + id}>
-                        {imagen.length > 0 ?
-                            <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
+
+                    {imagen.length > 0 ?
+                        imagen[0].includes(".mp4") ?
+                            <video className='img-project-card' autoPlay={true} src={imagen[0]} />
                             :
-                            <img src={defaultImg[0]} alt='imagen proyecto'></img>
-                        }
-                    </Link>
+                            <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
+                        :
+                        <img src={defaultImg[0]} alt='imagen proyecto'></img>
+
+                    }
+
                     <div className='fecha-card'>{
 
                     }
@@ -69,7 +84,24 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
                 {/* </div> */}
             </div>
+            <div className='corazon-card'>
+                {
+                    !listUserFavorites.projects?.find(p => p.id === id) ?
+                        !listUserFavorites.favorites?.find(favorito => favorito.projects[0]?.id === id) ?
 
+
+                            <>
+                                <span className='tooltipCard'>{token ? "Agregar a Favoritos" : "logeate para agregar a favoritos"}</span>
+                                <button className='corazon' onClick={() => { return token ? AñadirFavorite() : null }}> <MdFavoriteBorder /></button>
+                            </> :
+                            <>
+                                <>
+                                    <span className='tooltipCard'>Borrar de Favoritos</span>
+                                    <button className='corazon' onClick={() => EliminarFavorite()}> <MdFavorite /></button>
+                                </>
+                            </> : null
+                }
+            </div>
 
 
         </div>

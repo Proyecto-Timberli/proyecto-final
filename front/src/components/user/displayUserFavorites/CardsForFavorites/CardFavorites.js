@@ -10,18 +10,21 @@ export default function CardFavorites({ id, name, description, imagen }) {
     let dispatch= useDispatch()
     
     async function deleteFavoriteProject() {
-        await deleteFavorite({userId,projectId:id})
+        await deleteFavorite(userId,id)
         dispatch(getUserById(userId))
     }
-
+            
 
     return (
         <div className="miniCard" >
             <button className='button' onClick={e=>deleteFavoriteProject()}>
                 <MdDelete className='button-delete'></MdDelete>
             </button>
-
+            {imagen.includes(".mp4") ?
+            <video className="MiniCard-img" src={imagen}/>
+            :
             <img className="MiniCard-img" src={imagen || "https://img.freepik.com/vector-gratis/ilustracion-icono-carpeta-datos_53876-6329.jpg?w=360"} alt="project-img"></img>
+        }
 
             <div className="MiniCard-info">
                 <p className="MiniCard-title">{name}</p>

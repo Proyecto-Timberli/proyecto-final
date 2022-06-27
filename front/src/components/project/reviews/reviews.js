@@ -9,7 +9,7 @@ import ReviewsCard from "./reviewsCard/reviewsCard"
 const Reviews = ({ projectid, reviews }) => {
     const userId = useSelector(store => store.loggedUserId)
     let dispatch = useDispatch()
-    console.log(reviews);
+    
 
     const [input, setInput] = useState({
         text: "",
@@ -92,6 +92,7 @@ const Reviews = ({ projectid, reviews }) => {
         })
         return valor
     }
+    
     return (
         (userId ? <div className='reviews-general'>
             <hr></hr>
