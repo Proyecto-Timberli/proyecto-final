@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import "../navbar/navbar.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoggedUserId } from '../../redux/actions/actionCreators'
+import { getUserById, setLoggedUserId } from '../../redux/actions/actionCreators'
+
 
 const Navbar = () => {
     let dispatch = useDispatch()
@@ -33,6 +34,8 @@ const Navbar = () => {
                 // si HAY userid, logearse en toda la app
             } else {
                 dispatch(setLoggedUserId(userid))
+                dispatch(getUserById(userid))
+
             }
         }
     }
@@ -44,6 +47,7 @@ const Navbar = () => {
 
     }, [])
 
+    const userData = useSelector((state) => state.userById)
 
 
     return (
@@ -52,7 +56,6 @@ const Navbar = () => {
             <div>
                 <Link to="/" className='logo-navBar'>T.</Link>
             </div>
-            {userId ? <Link to="/" className='verTodo-navBar'>INICIO</Link> : null}
 
             <Link to="/home" className='verTodo-navBar'>
                 PROYECTOS
@@ -60,11 +63,16 @@ const Navbar = () => {
             <Link to="/community" className='verTodo-navBar'>
                 COMUNIDAD
             </Link>
+            {userData.userType = "admin" ? <Link to={"/admin/"}>
+                <button className='btn-perfil-navBar'> Admin </button>
+            </Link> : null}
             {
                 // si está logeado
                 userId ?
                     (
+
                         <div className='botones-nav'>
+
                             <Link to={"/user/" + userId}>
                                 <button className='btn-perfil-navBar'> Perfil </button>
                             </Link>
