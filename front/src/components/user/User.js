@@ -112,7 +112,6 @@ const User = () => {
         }
     }
 
-    let token = window.localStorage.getItem('usertoken');
     let user = window.localStorage.getItem('userid')
     console.log(user)
 
