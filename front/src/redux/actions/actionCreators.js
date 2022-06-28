@@ -12,11 +12,11 @@ import {
     ADMIN_SUSPEND_PROJECT,
     LOGGED_USER_ID,
     GET_CONTRUBUTION,
-    LIST_PAYMENTS,
     GET_REVIEWS,
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
-    GET_LIST_FAVORITES
+    GET_LIST_FAVORITES, 
+    IS_ADMIN
 
 } from "./actions.js"
 
@@ -286,4 +286,18 @@ export function deleteFavorite(userId, projectId) {
         .catch(error => console.error(error))
 
 
+}
+
+export async function isAdmin() {
+    const json = await axios.get(REACT_APP_API + "/admin/validate", {           //ver como llaman la ruta del back
+        Authorization: {
+            token: window.localStorage.getItem('usertoken'),
+        }
+    }) 
+    return function(dispatch){
+        dispatch({
+            type: IS_ADMIN,
+            payload: json.data,
+        })
+    } 
 }

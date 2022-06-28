@@ -4,7 +4,8 @@
     border-radius: 100px 20px 20px 10px;
     overflow: hidden;
     margin: 5px 0 5px 0;
-    width: 70vw;
+    width: 65vw;
+    height: 7rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,13 +25,16 @@
     display: flex;
     width: 100%;
     flex-direction: row;
-    padding-left: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
     text-align: left;
     align-items: center;
     justify-content: space-between;
 }
 
-
+.item-text-card{
+    width: 9.5rem;
+}
 
 .community-card:hover {
     z-index: 99;
@@ -45,10 +49,8 @@
     transition: .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 100px 10px;
     overflow: hidden;
-    min-width: 14vw;
-    min-height: 20vh;
-    max-width: 14vw;
-    max-height: 20vh;
+    height: 7rem;
+    width: 13rem;
 }
 
 .community-card:hover img {
