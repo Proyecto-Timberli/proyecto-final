@@ -13,7 +13,6 @@ function Home() {
 
     const dispatch = useDispatch()
     const admin = useSelector(state => state.isAdmin)
-
     useEffect(() => {
         dispatch(isAdmin())
     }, [dispatch])

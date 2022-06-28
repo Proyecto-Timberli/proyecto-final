@@ -20,9 +20,7 @@ const postProject = async ({ deploying, imagen, name, tecnology, description, re
         }else{
             try {
                 const res = await axios.post(`https://api.cloudinary.com/v1_1/${REACT_APP_CLOUD_NAME}/upload`, formData)
-                console.log("------------------------------------------------------")
-                console.log(res)
-                console.log("------------------------------------------------------")
+             
                 return res.data.url
             } catch (err) {
                 console.error(err)
@@ -36,7 +34,7 @@ const postProject = async ({ deploying, imagen, name, tecnology, description, re
         .then(res => {
 
             const project = { deploying, imagen: res, name, tecnology:tecnology.filter(e=>typeof e !== "object"), description, repository, score, userid }
-            console.log(tecnology)
+            
             axios.post(REACT_APP_API + "/api/project", project)
                 .then(response => response.data)
                 .catch(error => console.error(error))

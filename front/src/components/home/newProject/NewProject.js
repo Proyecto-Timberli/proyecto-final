@@ -53,7 +53,6 @@ export default function NewProject() {
         }
         setErrorSubmit(false)
         setCreacion(true);
-        
         const NewProject = {
             name: values.name,
             imagen: Imagen,
