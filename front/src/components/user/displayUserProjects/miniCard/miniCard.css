@@ -2,25 +2,21 @@
 .miniCard {
     margin: 0.5em;
     width: 15em;
-    height: 18em;
+    height: 20em;
     border-radius: 1em;
-    padding: 1em;
-    background: #d5d5d5;
-
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    background-color: rgba(255, 255, 255, 0.865);
     transition: 0.4s ease-out;
-    box-shadow: 0px 7px 20px rgba(43, 8, 37, 0.2);
-
-    
+    box-shadow: 0px 7px 20px rgba(43, 8, 37, 0.2);    
 }
 
-.MiniCard-img {
-    max-width: 50%;
-    max-height: 50%;
+.img-project-card-mini{
+    max-width: 90%;
+    max-height: 90%;
     padding: 0.5em;
     border-radius: 1em;
 }
@@ -38,4 +34,17 @@
 
 .MiniCard-body {
     text-align: center;
+}
+
+.MiniCard-button{
+    text-decoration: none;
+    color:rgb(7, 37, 70);
+    font-weight: bolder;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.MiniCard-button:hover{
+    letter-spacing: 2px;
+    color: rgb(36, 88, 144);;
 }

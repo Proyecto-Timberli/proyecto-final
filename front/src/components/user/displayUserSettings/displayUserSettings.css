@@ -1,13 +1,11 @@
 .userSettingsContainer {
     width: calc(100% - 2em);
     margin-top: 1em;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.865);
     border-radius: 1em;
     padding: 1em;
-
     display: flex;
     flex-direction: column;
-
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
@@ -25,7 +23,7 @@
     align-content: flex-start;
     flex-wrap: wrap;
 
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #012a4aa9;
     padding-bottom: 1.5em;
 }
 
@@ -40,7 +38,7 @@
     align-items: flex-start;
     align-content: flex-start;
 
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #012a4aa9;
 
     padding-bottom: 1.5em;
 
