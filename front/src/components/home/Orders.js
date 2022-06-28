@@ -31,6 +31,7 @@ export default function Orders() {
   ////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <React.Fragment>
+      Ordenar por:
       <div>
         <select name={"atribute"} className="home-select" onChange={(e) => changeOrder(e)}>
           <option name={"atribute"} value={"id"} >Fecha</option>
@@ -38,6 +39,7 @@ export default function Orders() {
           <option name={"atribute"} value={"scoreAverage"} >Puntaje</option>
         </select>
       </div>
+      Orientacion
       <div>
         <select name="direccion" className="home-select" onChange={(e) => changeOrder(e)}>
           <option name="direccion" value={"asc"} >Asc</option>

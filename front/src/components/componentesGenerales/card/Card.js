@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdFavorite, MdError, MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { addFavorites, deleteFavorite, getFavorites } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
@@ -19,7 +19,9 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
     async function AñadirFavorite() {
         await addFavorites(idUser, id)
+
         dispatch(getFavorites({ userId:idUser }))
+
 
     }
     async function EliminarFavorite() {
@@ -37,7 +39,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                 <div className="card-img">
 
                     {imagen.length > 0 ?
-                        imagen[0].includes(".mp4") ?
+                        imagen[0]?.includes(".mp4") ?
                             <video className='img-project-card' autoPlay={true} src={imagen[0]} />
                             :
                             <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
@@ -78,7 +80,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                 </Link>
                 <p className="text-body-card">{description}</p>
                 {technology
-                    ? <p className='text-technologies-card'>{technology.map((t) => <span className='technologie-card'>{t}</span>)}</p>
+                    ? <p className='text-technologies-card'>{technology?.map((t, index) => <span key={index} className='technologie-card'>{t}</span>)}</p>
                     : null
                 };
                 <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>

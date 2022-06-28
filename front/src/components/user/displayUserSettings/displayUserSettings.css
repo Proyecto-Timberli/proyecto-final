@@ -1,13 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .userSettingsContainer {
     width: calc(100% - 2em);
     margin-top: 1em;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.865);
     border-radius: 1em;
     padding: 1em;
-
     display: flex;
     flex-direction: column;
-
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
@@ -25,7 +25,7 @@
     align-content: flex-start;
     flex-wrap: wrap;
 
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #012a4aa9;
     padding-bottom: 1.5em;
 }
 
@@ -40,7 +40,7 @@
     align-items: flex-start;
     align-content: flex-start;
 
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #012a4aa9;
 
     padding-bottom: 1.5em;
 
@@ -67,8 +67,17 @@
     justify-content: center;
 }
 
+.titulo-userSettings{
+    margin-bottom: 0;
+    margin-left: 9px;
+}
+
 .userSettings-textInput {
     width: calc(100% - 3em);
+    border-radius: 5px;
+    border: none;
+    padding: 6px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .userSettings-textArea {
@@ -76,11 +85,12 @@
     min-width: calc(100% - 3em);
     max-width: calc(100% - 3em);
     min-height: 5em;
+    border-radius: 5px;
+    border: none;
+    padding: 6px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.userSettings-saveButton {
-    margin: 0.5em;
-}
 
 .save-message-ok {
     color: green;
@@ -88,4 +98,27 @@
 
 .save-message-err {
     color: red
+}
+
+.userSettings-saveButton{
+    width: 99%;
+    padding: 10px;
+    border: none;
+    background-color: #427fcb;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    margin-top: 1.5rem;
+}
+
+.userSettings-saveButton:hover {
+    border: none;
+    background-color: #224a7b;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
 }
