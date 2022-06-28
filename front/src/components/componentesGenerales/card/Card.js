@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './card.css'
 import defaultImg from './signup-image.png'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdFavorite, MdError, MdFavoriteBorder } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { addFavorites, deleteFavorite, getFavorites } from '../../../redux/actions/actionCreators';
 import { formatDate, getDateTime } from '../../../functions';
 
@@ -20,7 +20,6 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
     async function AñadirFavorite() {
         await addFavorites(idUser, id)
         dispatch(getFavorites({ idUser }))
-
     }
     async function EliminarFavorite() {
         await deleteFavorite(idUser, id)
@@ -78,7 +77,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                 </Link>
                 <p className="text-body-card">{description}</p>
                 {technology
-                    ? <p className='text-technologies-card'>{technology.map((t) => <span className='technologie-card'>{t}</span>)}</p>
+                    ? <p className='text-technologies-card'>{technology?.map((t, index) => <span key={index} className='technologie-card'>{t}</span>)}</p>
                     : null
                 };
                 <p className='text-score-card'>Puntaje total: {score && Number(score).toFixed(2)}</p>
