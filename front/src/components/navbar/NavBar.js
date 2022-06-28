@@ -59,6 +59,9 @@ const Navbar = () => {
             <Link to="/community" className='verTodo-navBar'>
                 COMUNIDAD
             </Link>
+            <Link to="/payment" className='verTodo-navBar'>
+                CONTRIBUIR
+            </Link>
             {
                 // si está logeado
                 userId ?
