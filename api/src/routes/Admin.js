@@ -7,7 +7,7 @@ const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const stripe = new Stripe(STRIPE_SECRET_KEY)
 const router = Router();
 const { transporter } = require("./Mailer")
-
+const jwt = require("jsonwebtoken");
 
 router.put("/user", async (req, res, next) => {
     const { userId, userType } = req.body;
@@ -25,6 +25,33 @@ router.put("/user", async (req, res, next) => {
         next(err);
     }
 })
+router.get("/validate", async (req, res, next) => {
+    try {
+        const headerToken = req.get("Authorization");
+        if (!headerToken) {
+            return res.status(401).json({ error: "ALGO mas" });
+          }
+    const token = headerToken.replace("Bearer ", "");
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const user = await User.findByPk(decoded.user_id);
+        if (user.userType === "admin") {
+            console.log("Es admin")
+            return res.send(true);
+        } else {
+            console.log("No es admin")
+           return res.send(false);
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(401).send(error);
+    }
+    } catch (err) { 
+        console.log(err)
+        next(err) }
+})
+
+
 
 router.get("/donation", async (req, res, next) => {
     try {
@@ -37,9 +64,9 @@ router.get("/donation", async (req, res, next) => {
     }
 })
 router.post("/email", async (req, res, next) => {
-    const { email, userId,payment } = req.body;
+    const { email, userId, payment } = req.body;
     try {
-      
+
         if (!email) {
             const user = await User.findByPk(userId);
             await transporter.sendMail({
@@ -122,7 +149,7 @@ router.post("/donation", async (req, res, next) => {
 
     }
     catch (err) {
-        
+
         return res.status(404).send({ error: err })
     }
 });

@@ -12,11 +12,11 @@ import {
     ADMIN_SUSPEND_PROJECT,
     LOGGED_USER_ID,
     GET_CONTRUBUTION,
-    LIST_PAYMENTS,
     GET_REVIEWS,
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
-    GET_LIST_FAVORITES
+    GET_LIST_FAVORITES,
+    IS_ADMIN
 
 } from "./actions.js"
 
@@ -180,22 +180,22 @@ export function getContributions() {
 }
 
 
-export function listPayments(contribution, user,paymentMethod,email) {
-    console.log(user)
+export function listPayments(contribution, user, paymentMethod, email) {
+    
     return function () {
-        return axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user,paymentMethod,email })
-            .then(response => {console.log(response.data);return response.data})
-            .catch(error => {console.error(error);return error})
+        return axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user, paymentMethod, email })
+            .then(response => { console.log(response.data); return response.data })
+            .catch(error => { console.error(error); return error })
     }
 }
-export function sendEmail({userId,email,payment}){
-    return axios.post(REACT_APP_API + '/api/admin/email', { userId,email,payment })
-        .then(response => {console.log(response.data);return response.data})
+export function sendEmail({ userId, email, payment }) {
+    return axios.post(REACT_APP_API + '/api/admin/email', { userId, email, payment })
+        .then(response => { console.log(response.data); return response.data })
         .catch(error => console.error(error))
 }
 
 export function postReview(input, userId, projectid) {
-    console.log(input);
+   
     return function () {
 
         axios.post(REACT_APP_API + '/api/review', { input, userId, projectid })
@@ -272,6 +272,12 @@ export function addFavorites(userId, projectId) {
 
 
 }
+export function putProjectById(projectId, newValue) {
+    return axios.put(REACT_APP_API + "/api/project", { projectId: projectId, projectEdit: newValue })
+        .then(response => response.data)
+        .catch(error => console.error(error))
+}
+
 
 export function deleteFavorite(userId, projectId) {
 
@@ -281,3 +287,20 @@ export function deleteFavorite(userId, projectId) {
 
 
 }
+//ver como llaman la ruta del back
+export function isAdmin() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + "/api/admin/validate", {
+            headers: { Authorization: "Bearer " + window.localStorage.getItem('usertoken') }
+        })
+            .then(res => {
+                console.log(res.data);
+                return dispatch({
+                    type: IS_ADMIN,
+                    payload: res.data,
+                })
+            })
+            .catch(err => console.log(err));
+    }
+}
+

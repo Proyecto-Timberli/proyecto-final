@@ -63,42 +63,50 @@ export default function CheckoutForm() {
 
     return (
         <div className="card-payment">
-            <form className="form-payment" onSubmit={handleSubmit}>
-                <img
-                    src="https://thancguide.org/wp-content/uploads/2021/04/help-others-Artboard-10@3x.png"
-                    alt="donation"
-                    className="donation-image"
-                />
-                <h5 className="form-payment-title">Selecciona el monto a donar en dolares:</h5>
-                <p className="form-payment-subtitle">(Tu tarjeta lo convierte a tu moneda local)</p>
-                <div className='opciones-payment'>
-                    <div className="form-check-payment">
-                        <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
-                        <label className="form-label-payment">
-                            $1
-                        </label>
-                    </div>
-
-                    <div className="form-check-payment">
-                        <input className="form-check-input" type="radio" value='500' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
-                        <label className="form-label-payment" >
-                            $5
-                        </label>
-                    </div>
-
-                    <div className="form-check-payment">
-                        <input className="form-check-input" type="radio" value='1000' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
-                        <label className="form-label-payment" >
-                            $10
-                        </label>
-                    </div>
+            <div className="form-payment">
+                <div className="text-payment-container">
+                    <h1>¿Por qué colaborar?</h1>
+                    <p>Timberli es una plataforma totalmente gratuita. Nuestro sueño es que desarrolladores de todo el mundo puedan dar mayor visibilidad a sus trabajos, inspirarse y conectar con colegas y reclutadores.</p>
+                    <p>Si la plataforma te parece útil, considera hacer una donación! Gracias a la participación de gente como tú, Timberli crece cada día y permanece sin publicidad y accesible para todos.</p>
+                    <h3>¡Gracias por tu ayuda!</h3>
                 </div>
-                <CardElement className="card-element-payment" />
-                {error && <div className="payment-error">{error}</div>}
-                <button className="btn-payment" type="submit" disabled={cargando}> CONTRIBUIR </button>
-                {compraConcretada && <div type="modal" >{<ModalPayment payment={compraConcretada} setearStado={setCompraConcretada} />}</div>}
-                {cargando && <div >Cargando...</div>}
-            </form>
+                <form className="form-payment-container" onSubmit={handleSubmit}>
+                    <img
+                        src="https://thancguide.org/wp-content/uploads/2021/04/help-others-Artboard-10@3x.png"
+                        alt="donation"
+                        className="donation-image"
+                    />
+                    <h5 className="form-payment-title">Selecciona el monto a donar en dolares:</h5>
+                    <p className="form-payment-subtitle">(Tu tarjeta lo convierte a tu moneda local)</p>
+                    <div className='opciones-payment'>
+                        <div className="form-check-payment">
+                            <input className="form-check-input" type="radio" value='100' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                            <label className="form-label-payment">
+                                $1
+                            </label>
+                        </div>
+
+                        <div className="form-check-payment">
+                            <input className="form-check-input" type="radio" value='500' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                            <label className="form-label-payment" >
+                                $5
+                            </label>
+                        </div>
+
+                        <div className="form-check-payment">
+                            <input className="form-check-input" type="radio" value='1000' name="flexRadioDefault" id="flexRadioDefault1" onChange={(e) => handleChange(e)} />
+                            <label className="form-label-payment" >
+                                $10
+                            </label>
+                        </div>
+                    </div>
+                    <CardElement className="card-element-payment" />
+                    {error && <div className="payment-error">{error}</div>}
+                    <button className="btn-payment" type="submit" disabled={cargando}> CONTRIBUIR </button>
+                    {compraConcretada && <div type="modal" >{<ModalPayment payment={compraConcretada} setearStado={setCompraConcretada} />}</div>}
+                    {cargando && <div >Cargando...</div>}
+                </form>
+            </div>
         </div>
     )
 }
