@@ -7,7 +7,7 @@ import CardCommunity from './cardCommunity/cardCommunity';
 
 const Community = () => {
     let dispatch = useDispatch()
-    let allUsers = useSelector((state) => state.allUsers)
+    let allUsers = useSelector((state) => state.allUsers.filter(u => u.userType !== 'suspended' || u.userType === 'Suspended'))
     let arrayAmostrar = [...allUsers]
     const [orden, setOrden] = useState("id")
 

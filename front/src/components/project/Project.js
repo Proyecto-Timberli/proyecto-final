@@ -226,6 +226,7 @@ function Project() {
                         </div>
                         <h3>Tecnologias:</h3>
                         <div>
+
                             <p className="text2">| {project.tecnology?.map((t) => t + ' | ')}</p>
                         </div>
                     </div>

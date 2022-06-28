@@ -26,6 +26,9 @@ const User = () => {
 
 
     let reportBy = useSelector((state) => state.loggedUserId)
+    let token = window.localStorage.getItem('usertoken')
+    let userId = window.localStorage.getItem('userid')
+
 
     const dispatcher = useDispatch()
 
@@ -33,7 +36,6 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
-    console.log(userData.id);
     const [modalP, setmodalP] = useState({ userID: 0, })
     const [msgReport, setMsgReport] = useState("");
     function elemToButton(elem, key) {
@@ -63,14 +65,14 @@ const User = () => {
         dispatcher(postReportUser(userId, userReporter, comentario))
         mensajeReport()
     }
-    
-    const mensajeReport=()=>{
-        if (!reportBy){
-          setMsgReport("Debe estar registrado y logeado para reportar")
-        }else {
-          setMsgReport("Reporte exitoso")
+
+    const mensajeReport = () => {
+        if (!reportBy) {
+            setMsgReport("Debe estar registrado y logeado para reportar")
+        } else {
+            setMsgReport("Reporte exitoso")
         }
-      }
+    }
 
     function showProfileSectionLinks() {
         let anyUserProfile = [
@@ -127,6 +129,10 @@ const User = () => {
                         {showSocialMediaLink("linkedIn", userData)}
                         {showSocialMediaLink("github", userData)}
                     </div>
+
+                   
+
+
                     {token ? 
                         userData.id != user?
                             <div className='cont-botones-acciones-user'>
@@ -149,6 +155,7 @@ const User = () => {
                         
                     : null 
                     }
+
                 </div>
                 <div className='profileContents'>
                     {showProfileSectionLinks()}
@@ -171,8 +178,14 @@ const User = () => {
     // si ya pedi datos
     if (askedForData) {
         // Si hubo 404
+        console.log(userData)
         if (userData.err === "not found") {
             return showUserNotFound()
+            
+        }
+        if ( userData.userType == 'suspended' || userData.userType == 'Suspended'){
+            
+            return  showUserNotFound()
         }
 
         // si no hay user, esta cargando aun
