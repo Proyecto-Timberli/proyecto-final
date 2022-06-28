@@ -33,7 +33,7 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
-    console.log(userData);
+    console.log(userData.id);
     const [modalP, setmodalP] = useState({ userID: 0, })
     const [msgReport, setMsgReport] = useState("");
     function elemToButton(elem, key) {
@@ -111,6 +111,8 @@ const User = () => {
     }
 
     let token = window.localStorage.getItem('usertoken');
+    let user = window.localStorage.getItem('userid')
+    console.log(user)
 
     function showLoadedProfile() {
         return (
@@ -125,23 +127,26 @@ const User = () => {
                         {showSocialMediaLink("linkedIn", userData)}
                         {showSocialMediaLink("github", userData)}
                     </div>
-                    {token
-                    ? <div className='cont-botones-acciones-user'>
-                        <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
-                        {
-                            !!modalP && modalP.userID !== 0 ?
-                                <ModalUserReport
-                                    key={modalP.userID}
-                                    estado={enviarReporte}
-                                    userID={modalP.userID}
-                                    reporterID={modalP.reporterID}
-                                    nombre={userData.name}
-                                    reset={resetEstadoModal}
-                                    msgReport={msgReport}
-                                />
-                                : null
-                        }
-                    </div>
+                    {token ? 
+                        userData.id != user?
+                            <div className='cont-botones-acciones-user'>
+                                <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
+                                {
+                                    !!modalP && modalP.userID !== 0 ?
+                                        <ModalUserReport
+                                            key={modalP.userID}
+                                            estado={enviarReporte}
+                                            userID={modalP.userID}
+                                            reporterID={modalP.reporterID}
+                                            nombre={userData.name}
+                                            reset={resetEstadoModal}
+                                            msgReport={msgReport}
+                                        />
+                                        : null
+                                }
+                            </div>
+                        : null
+                        
                     : null 
                     }
                 </div>
