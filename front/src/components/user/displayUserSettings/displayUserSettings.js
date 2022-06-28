@@ -24,7 +24,7 @@ const DisplayUserSettings = ({ userData }) => {
 
   return (
     <div className='userSettingsContainer'>
-      <h3>Edita tu información aquí:</h3>
+      <h3 className='titulo-userSettings'>Edita tu información:</h3>
 
       <div className='userSettings-firstGroup'>
 
