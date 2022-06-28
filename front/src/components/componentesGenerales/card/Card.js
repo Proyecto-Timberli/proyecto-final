@@ -37,7 +37,7 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
                 <div className="card-img">
 
                     {imagen.length > 0 ?
-                        imagen[0].includes(".mp4") ?
+                        imagen[0]?.includes(".mp4") ?
                             <video className='img-project-card' autoPlay={true} src={imagen[0]} />
                             :
                             <img className='img-project-card' src={imagen[0]} alt='imagen proyecto'></img>
