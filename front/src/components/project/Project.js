@@ -20,12 +20,10 @@ function Project() {
     let dispatch = useDispatch()
     let listUserFavorites = useSelector((state) => state.listFavorites)
     let userId = window.localStorage.getItem('userid')
-    console.log(userId)
     let token = window.localStorage.getItem('usertoken')
     const project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
 
-    console.log(project)
     useEffect(() => {
         dispatch(getProjectById(id))
         if (token) {
@@ -120,6 +118,10 @@ function Project() {
         await deleteFavorite(userId, id)
         dispatch(getFavorites({ userId }))
     }
+
+    console.log(project.user.id)
+    console.log(userId)
+
     return (
 
         <React.Fragment>
@@ -199,7 +201,9 @@ function Project() {
 
                             }
                             {token? 
-                                <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
+                                userId != project.user.id ?
+                                    <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
+                                    :null
                                 :null
                             }
                         </div>
