@@ -94,6 +94,7 @@ const Home = () => {
                         <input className='home-search' type="search" placeholder="Buscar proyecto..." name="search" onChange={(e) => searchFilterChange(e)} value={filterBySearch} />
                     </div>
                     <Orders />
+                    Tecnologias:
                     <select className="home-select" name="technologies" id="technologies" onChange={(e) => techFilterChange(e)}>
                         <option key="Any" value={"Any"} >Any</option>
                         {technologies.map((tech, index) =>
