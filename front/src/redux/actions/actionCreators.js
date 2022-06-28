@@ -288,16 +288,19 @@ export function deleteFavorite(userId, projectId) {
 
 }
 
-export async function isAdmin() {
-    const json = await axios.get(REACT_APP_API + "/admin/validate", {           //ver como llaman la ruta del back
-        Authorization: {
-            token: window.localStorage.getItem('usertoken'),
-        }
-    }) 
-    return function(dispatch){
-        dispatch({
-            type: IS_ADMIN,
-            payload: json.data,
-        })
-    } 
+export function isAdmin() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + "/admin/validate", {           //ver como llaman la ruta del back
+            Authorization: {
+                token: window.localStorage.getItem('usertoken'),
+            }
+        }) 
+        .then(res => {
+            return dispatch({
+                type: IS_ADMIN,
+                payload: res.data,
+            })
+        });
+    }
 }
+
