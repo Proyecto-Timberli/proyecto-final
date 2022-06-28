@@ -26,6 +26,9 @@ const User = () => {
 
 
     let reportBy = useSelector((state) => state.loggedUserId)
+    let token = window.localStorage.getItem('usertoken')
+    let userId = window.localStorage.getItem('userid')
+
 
     const dispatcher = useDispatch()
 
@@ -63,14 +66,14 @@ const User = () => {
         dispatcher(postReportUser(userId, userReporter, comentario))
         mensajeReport()
     }
-    
-    const mensajeReport=()=>{
-        if (!reportBy){
-          setMsgReport("Debe estar registrado y logeado para reportar")
-        }else {
-          setMsgReport("Reporte exitoso")
+
+    const mensajeReport = () => {
+        if (!reportBy) {
+            setMsgReport("Debe estar registrado y logeado para reportar")
+        } else {
+            setMsgReport("Reporte exitoso")
         }
-      }
+    }
 
     function showProfileSectionLinks() {
         let anyUserProfile = [
@@ -123,23 +126,37 @@ const User = () => {
                         {showSocialMediaLink("linkedIn", userData)}
                         {showSocialMediaLink("github", userData)}
                     </div>
-                    <div className='cont-botones-acciones-user'>
-                        <button className='boton-accion-detalleProject'> <MdGroupAdd /></button>
-                        <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
-                        {
-                            !!modalP && modalP.userID !== 0 ?
-                                <ModalUserReport
-                                    key={modalP.userID}
-                                    estado={enviarReporte}
-                                    userID={modalP.userID}
-                                    reporterID={modalP.reporterID}
-                                    nombre={userData.name}
-                                    reset={resetEstadoModal}
-                                    msgReport={msgReport}
-                                />
-                                : null
-                        }
-                    </div>
+                    {/*ACA*/}
+                    {!token || userData.id == userId? 
+                    
+                    null
+                    
+                    :
+                        <div className='cont-botones-acciones-user'>
+                            {console.log(token)}
+                            {console.log('IDs '+userId)}
+                            {console.log('ID '+userData.id)}
+
+
+                           
+                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalUserReport(reportBy, userData.id)} /></button>
+                            {
+                                !!modalP && modalP.userID !== 0 ?
+                                    <ModalUserReport
+                                        key={modalP.userID}
+                                        estado={enviarReporte}
+                                        userID={modalP.userID}
+                                        reporterID={modalP.reporterID}
+                                        nombre={userData.name}
+                                        reset={resetEstadoModal}
+                                        msgReport={msgReport}
+                                    />
+                                    : null
+                            }
+                        </div>
+
+                    }
+
                 </div>
                 <div className='profileContents'>
                     {showProfileSectionLinks()}
