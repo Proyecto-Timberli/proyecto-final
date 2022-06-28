@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 .userSettingsContainer {
     width: calc(100% - 2em);
     margin-top: 1em;
@@ -65,8 +67,17 @@
     justify-content: center;
 }
 
+.titulo-userSettings{
+    margin-bottom: 0;
+    margin-left: 9px;
+}
+
 .userSettings-textInput {
     width: calc(100% - 3em);
+    border-radius: 5px;
+    border: none;
+    padding: 6px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .userSettings-textArea {
@@ -74,11 +85,12 @@
     min-width: calc(100% - 3em);
     max-width: calc(100% - 3em);
     min-height: 5em;
+    border-radius: 5px;
+    border: none;
+    padding: 6px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.userSettings-saveButton {
-    margin: 0.5em;
-}
 
 .save-message-ok {
     color: green;
@@ -86,4 +98,27 @@
 
 .save-message-err {
     color: red
+}
+
+.userSettings-saveButton{
+    width: 99%;
+    padding: 10px;
+    border: none;
+    background-color: #427fcb;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    margin-top: 1.5rem;
+}
+
+.userSettings-saveButton:hover {
+    border: none;
+    background-color: #224a7b;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
 }
