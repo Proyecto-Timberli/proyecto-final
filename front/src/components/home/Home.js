@@ -25,7 +25,7 @@ const Home = () => {
     // scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
-    let allProjects = useSelector((state) => state.allProject)
+    let allProjects = useSelector((state) => state.allProject.filter(project => project.state !== 'Pendiente'))
 
     useEffect(() => {
         dispatch(getAllProjects());

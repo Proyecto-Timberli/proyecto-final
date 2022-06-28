@@ -36,7 +36,9 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
-    console.log(userData);
+
+   
+    
     const [modalP, setmodalP] = useState({ userID: 0, })
     const [msgReport, setMsgReport] = useState("");
     function elemToButton(elem, key) {
@@ -179,8 +181,14 @@ const User = () => {
     // si ya pedi datos
     if (askedForData) {
         // Si hubo 404
+        console.log(userData)
         if (userData.err === "not found") {
             return showUserNotFound()
+            
+        }
+        if ( userData.userType == 'suspended' || userData.userType == 'Suspended'){
+            
+            return  showUserNotFound()
         }
 
         // si no hay user, esta cargando aun
