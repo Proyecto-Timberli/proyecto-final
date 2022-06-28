@@ -19,15 +19,36 @@
 }
 
 .form-payment {
-    height: 73vh;
-    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: fit-content;
     box-shadow: 5px 5px 20px 10px rgb(213 213 213);
     border-radius: 20px;
-    margin: 3vh;
-    padding: 4vh;
-    padding-top: 0;
+    margin: 2%;
+    padding: 3%;
     align-items: center;
     justify-content: center;
+}
+
+.text-payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 28rem;
+    min-height: 28rem;
+    text-align: justify;
+    padding: 0 3% 0 3%;
+}
+
+.form-payment-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 30rem;
+    padding: 0 3% 2% 3%;
 }
 
 .opciones-payment {
@@ -35,6 +56,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .form-check-payment {
@@ -53,10 +75,11 @@
 
 
 .donation-image {
-    width: 400px;
+    width: 380px;
 }
 
 .card-element-payment {
+    width: 20rem;
     margin: 4% 25% 1% 25%;
 }
 
@@ -71,7 +94,7 @@
     transition: 0.4s;
     font-family: inherit;
     letter-spacing: 0.5px;
-    margin-top: 7%;
+    margin-top: 1.5rem;
 }
 
 .btn-payment:hover {
