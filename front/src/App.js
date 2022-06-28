@@ -20,8 +20,17 @@ import Community from './components/community/community';
 import Contributions from './components/panelAdmin/contributions/contributions.js'
 import Index from './components/index';
 import Reportes from './components/panelAdmin/Reportes/Reportes.js'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { isAdmin } from './redux/actions/actionCreators';
+
 
 function App() {
+  let dispatch=useDispatch()
+  let admin = useSelector(state => state.isAdmin)
+  useEffect(() => {
+    dispatch(isAdmin())
+  },[dispatch])
   return (
     <div className="App">
       <NavBar />
@@ -36,14 +45,20 @@ function App() {
         <Route exact path="/newProject" element={<NewProject />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/payment" element={<Payment />} />
-        <Route exact path="/admin" element={<PaAdmin />} />
-        <Route exact path="/admin/ListadoSuspendidos" element={<ListadoSuspendidos />} />
-        <Route exact path="/admin/stats" element={<Stats />} />
-        <Route exact path="/admin/listadoProjects" element={<ListadoProjects />} />
-        <Route exact path="/admin/ListadoUsers" element={<ListadoUsers />} />
-        <Route exact path="/admin/contribuciones" element={<Contributions />} />
-        <Route exact path="/admin/reportes" element={<Reportes />} />
+        {admin ?
+          <>
+            <Route exact path="/admin" element={<PaAdmin />} />
+            <Route exact path="/admin/ListadoSuspendidos" element={<ListadoSuspendidos />} />
+            <Route exact path="/admin/stats" element={<Stats />} />
+            <Route exact path="/admin/listadoProjects" element={<ListadoProjects />} />
+            <Route exact path="/admin/ListadoUsers" element={<ListadoUsers />} />
+            <Route exact path="/admin/contribuciones" element={<Contributions />} />
+            <Route exact path="/admin/reportes" element={<Reportes />} />
+          </>
 
+          :
+          <Route path='*' element={<Page404 />} />
+        }
         <Route path='*' element={<Page404 />} />
       </Routes>
       <Footer />

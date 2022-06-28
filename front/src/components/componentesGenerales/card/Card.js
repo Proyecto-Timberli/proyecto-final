@@ -19,11 +19,14 @@ function Card({ id, name, description, fecha, imagen, userId, score, update, use
 
     async function AñadirFavorite() {
         await addFavorites(idUser, id)
-        dispatch(getFavorites({ idUser }))
+
+        dispatch(getFavorites({ userId:idUser }))
+
+
     }
     async function EliminarFavorite() {
         await deleteFavorite(idUser, id)
-        dispatch(getFavorites({ idUser }))
+        dispatch(getFavorites({ userId:idUser }))
     }
 
     return (
