@@ -29,8 +29,8 @@ conn.sync(config).then(() => {
   server.listen(process.env.PORT, () => {
     console.log('%s listening at '+process.env.PORT);
   })
-}).then(()=>{
-    mokeando()
+// }).then(()=>{
+//     mokeando()
 });
 
 
