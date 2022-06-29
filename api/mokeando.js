@@ -163,7 +163,7 @@ const mokeando = async () => {
       image: "https://i0.wp.com/lamiradafotografia.es/wp-content/uploads/2014/07/simpson-rock.jpg"
     },
     {
-      name: "Micaela Schaberger",
+      name: "Micaela",
       userName: "mschaberger",
       mail: "micaela.schaberger@gmail.com",
       password: "password",
