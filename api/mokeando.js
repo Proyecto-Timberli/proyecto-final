@@ -644,23 +644,10 @@ const mokeando = async () => {
       description: "",
       repository: "",
       deploying: "",
-      // scoreStyle: [
-      //   1,
-      //   1
-      // ],
-      // scoreFunctionality: [
-      //   2,
-      //   3
-      // ],
-      // scoreOriginality: [
-      //   1,
-      //   2
-      // ],
-      // projectType: "Foro",
-      // imagen: [
-      //   "https://i.pinimg.com/736x/f7/99/da/f799daf6e032206c41d1374b7c692290.jpg",
-      //   "https://upload.wikimedia.org/wikipedia/commons/0/01/Chromium_on_Ubuntu.png"
-      // ]
+      imagen: [
+         "https://i.pinimg.com/736x/f7/99/da/f799daf6e032206c41d1374b7c692290.jpg",
+         "https://upload.wikimedia.org/wikipedia/commons/0/01/Chromium_on_Ubuntu.png"
+      ]
     },
     {
       name: "Direct-Chat",
@@ -668,26 +655,10 @@ const mokeando = async () => {
       description: "Con la visionaria idea que tome del 2004, decidí crear un chat para chetear en tiempo real. Tambien podes tirar zumbidos :0",
       repository: "www.chat.com",
       deploying: "",
-      // scoreStyle: [
-      //   3,
-      //   5,
-      //   1
-      // ],
-      // scoreFunctionality: [
-      //   1,
-      //   2,
-      //   2
-      // ],
-      // scoreOriginality: [
-      //   1,
-      //   5,
-      //   3
-      // ],
-      // projectType: "APP",
-      // imagen: [
-      //   "https://wwwhatsnew.com/wp-content/uploads/2022/03/crear-chat.jpg",
-      //   "https://helpdesk.bitrix24.es/upload/medialibrary/cf7/zshk2y4qr2x1yci6449hstp6fwztypqk/1.jpg"
-      // ]
+       imagen: [
+         "https://wwwhatsnew.com/wp-content/uploads/2022/03/crear-chat.jpg",
+         "https://helpdesk.bitrix24.es/upload/medialibrary/cf7/zshk2y4qr2x1yci6449hstp6fwztypqk/1.jpg"
+       ]
     },
     {
       name: "Fotorum",
@@ -695,19 +666,8 @@ const mokeando = async () => {
       description: "Una enorme galeria con todas las fotos, podes descargarlas o postear nuevas",
       repository: "",
       deploying: "",
-      // scoreStyle: [
-      //   4,
-      //   2
-      // ],
-      // scoreFunctionality: [
-      //   1,
-      //   4
-      // ],
-      // scoreOriginality: [
-      //   1.5,
-      //   2
-      // ],
       projectType: "Entretenimiento",
+      imagen: ['https://i.postimg.cc/zf23937m/fotos.png']
     },
     {
       name: "WifiWiki",
@@ -715,22 +675,8 @@ const mokeando = async () => {
       description: "Anota wifis libres para ganar dinero extra por cada usuario que lo use, o simplemente busca wifis anotados por otros usuario",
       repository: "www.wifi.com",
       deploying: "",
-      // scoreStyle: [
-      //   3,
-      //   2,
-      //   1
-      // ],
-      // scoreFunctionality: [
-      //   1,
-      //   2,
-      //   1
-      // ],
-      // scoreOriginality: [
-      //   1,
-      //   5,
-      //   1
-      // ],
       projectType: "APP",
+      imagen: ['https://i.postimg.cc/SxDKMjwX/wifi.png']
     },
     {
       name: "InstaLAG",
@@ -738,22 +684,8 @@ const mokeando = async () => {
       description: "Alguna vez quisiste publicar algo, pero que se vea recien dentro de 3~5 años? Esta es tu pagina. Totalmente util",
       repository: "",
       deploying: "www.Instagram.com",
-      // scoreStyle: [
-      //   4,
-      //   2,
-      //   4
-      // ],
-      // scoreFunctionality: [
-      //   3,
-      //   2,
-      //   3
-      // ],
-      // scoreOriginality: [
-      //   3,
-      //   5,
-      //   2
-      // ],
       projectType: "Red Social",
+      imagen: ['https://i.postimg.cc/1z5FNkXH/instagramst.png']
     },
     {
       name: "Electro-Music",
@@ -761,22 +693,8 @@ const mokeando = async () => {
       description: "Queres aprender todo sobre componentes y circuitos electricos? Con Ruben castillo podes completamente en este hermoso podcast con pagina propia!",
       repository: "www.linkfalso123.com",
       deploying: "www.podcast.com",
-      // scoreStyle: [
-      //   5,
-      //   5,
-      //   4
-      // ],
-      // scoreFunctionality: [
-      //   4,
-      //   2,
-      //   4
-      // ],
-      // scoreOriginality: [
-      //   3,
-      //   3,
-      //   4
-      // ],
       projectType: "APP",
+      imagen: ['https://i.postimg.cc/d0WR0ssv/spotifist.png']
     },
     {
       name: "ClipR",
