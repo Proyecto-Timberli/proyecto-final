@@ -101,8 +101,10 @@
     color: white;
     word-break: break-all;
     margin-bottom: 5%;
-    font-weight: bolder;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
+
 .cont-botones-acciones-user{
     display: flex;
     flex-direction: row;
