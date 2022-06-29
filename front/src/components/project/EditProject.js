@@ -1,13 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
-import { FcDataConfiguration } from "react-icons/fc";
 import { AiOutlineSave } from "react-icons/ai";
 import { useDispatch} from "react-redux";
 import { putProjectById,getProjectById} from '../../redux/actions/actionCreators'
 import './EditProject.css'
 import { technologies } from '../home/newProject/technologies.js';
 import validate from './validacion'
-
+import { FcDataConfiguration } from "react-icons/fc";
 
 function EditProject({id,defaultValue,desplegarEditar}) {
     ////////////////////////////////////////////////////////////////////////////////////////

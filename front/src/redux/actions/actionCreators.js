@@ -250,7 +250,7 @@ export function postReportProject(projectId, reportedBy, reportComment) {
 
 
 
-export function getFavorites({ userId }) {
+export function getFavorites( {userId }) {
 
     return function (dispatch) {
         axios.get(REACT_APP_API + `/api/user/favorites/${userId}`)
@@ -272,6 +272,7 @@ export function addFavorites(userId, projectId) {
 
 
 }
+
 export function putProjectById(projectId,newValue) {
     return axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
         .then(response => response.data)
@@ -287,3 +288,7 @@ export function deleteFavorite(userId, projectId) {
 
 
 }
+
+
+
+
