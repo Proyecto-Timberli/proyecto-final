@@ -25,8 +25,12 @@ const Home = () => {
     // scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
-    let allProjects = useSelector((state) => state.allProject)
+
+    
     let Usertoken=window.localStorage.getItem("usertoken")
+
+    let allProjects = useSelector((state) => state.allProject.filter(project => project.state !== 'Pendiente'))
+
     useEffect(() => {
         dispatch(getAllProjects());
         dispatch(isAdmin())

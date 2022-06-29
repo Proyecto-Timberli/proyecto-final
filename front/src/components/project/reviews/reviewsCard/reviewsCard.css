@@ -3,14 +3,26 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    background-color: #3273f5fb;
+    background: #4081ba;
     width: 70%;
-    border: solid rgb(0, 40, 78) 2px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.121);
     border-radius: 30px;
+    margin: 1%;
+    padding: 1% 0 1% 0;
+}
+
+.rcard-stars p{
+    margin: 0;
+}
+
+.estrella-color{
+    color: rgb(255, 215, 0);
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 
 .rcard-stars {
-    background-color: #1f517d71;
+    background-color: #b1c8dc77;
     height: 13rem;
     width: 10rem;
     display: flex;
@@ -40,7 +52,7 @@
     min-width: 3rem;
     border-radius: 50px;
     margin: 2px 15px 1px 2px;
-    outline: 2px rgb(0, 40, 78) solid;
+    outline: 1px rgb(0, 40, 78) solid;
 }
 
 .rcard-infoUser-name {
@@ -50,12 +62,16 @@
 }
 
 .rcard-text {
-    height: 10rem;
+    height: 8rem;
     width: 40rem;
     resize: none;
-    border-radius: 30px;
-    padding: 1%;
-    background-color: #1f517d71;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 2%;
+    background-color: #b1c8dc77;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* border-top: 10px groove #006eff;
     border-right: 10px groove #006eff;
     border-bottom: 10px groove #006eff;

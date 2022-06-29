@@ -59,7 +59,7 @@ function ListadoS() {
         dispatch(adminSupendUser(userId, userType))
         setModal(0)
         dispatch(getAllUsers());
-
+        alert(`Se ha modificado el estado del usuario`)
     }
 
     function resetEstadoRol() {

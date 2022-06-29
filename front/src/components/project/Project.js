@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFavorite, getFavorites, getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
+import { deleteFavorite, getFavorites, getProjectById, postReportProject } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
@@ -20,12 +20,10 @@ function Project() {
     let dispatch = useDispatch()
     let listUserFavorites = useSelector((state) => state.listFavorites)
     let userId = window.localStorage.getItem('userid')
-    console.log(userId)
     let token = window.localStorage.getItem('usertoken')
     const project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
 
-    console.log(project)
     useEffect(() => {
         dispatch(getProjectById(id))
         if (token) {
@@ -120,6 +118,10 @@ function Project() {
         await deleteFavorite(userId, id)
         dispatch(getFavorites({ userId }))
     }
+
+    console.log(project.user.id)
+    console.log(userId)
+
     return (
 
         <React.Fragment>
@@ -199,17 +201,25 @@ function Project() {
 
                             }
                             {token? 
-                                <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
+                                userId != project.user.id ?
+                                    <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
+                                    :null
                                 :null
                             }
                         </div>
                         <div>
                             <h3>Puntuacion:</h3>
-                            <div className='info-detalle-user'>
-                                <p>Diseño: {project.scoreStyle[0] && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} </p> 
-                                <p>Funcionalidad: {project.scoreFunctionality[0] && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} </p> 
-                                <p>Originalidad: {project.scoreOriginality[0] && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</p>
-                            </div>
+                            {!project.scoreStyle[0] && !project.scoreFunctionality[0] && !project.scoreOriginality[0] ?
+                                <div className='info-detalle-user'>
+                                    <p>Este proyecto todavia no tiene puntuación</p>
+                                </div>
+                            :
+                                <div className='info-detalle-user'>
+                                    <p>Diseño: {project.scoreStyle[0] && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} </p> 
+                                    <p>Funcionalidad: {project.scoreFunctionality[0] && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} </p> 
+                                    <p>Originalidad: {project.scoreOriginality[0] && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</p>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div >
@@ -222,6 +232,7 @@ function Project() {
                         </div>
                         <h3>Tecnologias:</h3>
                         <div>
+
                             <p className="text2">| {project.tecnology?.map((t) => t + ' | ')}</p>
                         </div>
                     </div>
@@ -229,7 +240,8 @@ function Project() {
                 <div>
                     <Reviews
                         reviews={project.reviews}
-                        projectid={project.id} />
+                        projectid={project.id}
+                        idUser={project.user.id} />
                 </div>
                 {
                     !!modalP && modalP.projectID !== 0 ?
