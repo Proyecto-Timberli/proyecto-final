@@ -16,8 +16,8 @@ import {
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
     GET_LIST_FAVORITES,
-    IS_ADMIN
-
+    IS_ADMIN,
+    RESET_FAVORITES
 } from "./actions.js"
 
 import axios from 'axios'
@@ -304,3 +304,9 @@ export function isAdmin() {
     }
 }
 
+export function resetFavorites(){
+    return {
+        type: RESET_FAVORITES,
+        payload: []
+    }
+}

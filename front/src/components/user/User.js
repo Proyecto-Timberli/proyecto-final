@@ -33,7 +33,7 @@ const User = () => {
     const [askedForData, setAskedForData] = useState(false)
 
     const userData = useSelector((state) => state.userById)
-    console.log(userData);
+
     const [modalP, setmodalP] = useState({ userID: 0, })
     const [msgReport, setMsgReport] = useState("");
     function elemToButton(elem, key) {

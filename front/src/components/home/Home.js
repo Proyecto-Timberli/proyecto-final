@@ -26,11 +26,11 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
     let allProjects = useSelector((state) => state.allProject)
-
+    let Usertoken=window.localStorage.getItem("usertoken")
     useEffect(() => {
         dispatch(getAllProjects());
         dispatch(isAdmin())
-        if (window.localStorage.getItem("usertoken")) {
+        if (Usertoken) {
             dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
             // accionarPaginado(1)
         }
