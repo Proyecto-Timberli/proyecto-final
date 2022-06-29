@@ -77,5 +77,6 @@
 }
 
 .btn-send-reviews:active {
-    background: #001268;
+    background: #006eff;
+    color: black;
 }
