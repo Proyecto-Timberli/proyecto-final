@@ -1,70 +1,29 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState, } from "react"
-import { orderProjectsBy } from '../../redux/actions/actionCreators'
 import React from 'react';
 import "../home/home.css"
+import { ordenamiento } from "../../functions";
+import { orderProjectsBy } from "../../redux/actions/actionCreators";
 
 
 export default function Orders() {
-  const dispatch = useDispatch()
   let allProjects = useSelector((state) => state.allProject)
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////Orders Functions///////////////////////////////////////////////////////
-  const Desc = (array, atribute) => {
-    let arrayDeObj = [...array]
-    let arrayObj = arrayDeObj.sort(function (a, b) {
-      if (a[atribute].toUpperCase() < b[atribute].toUpperCase()) {
-        return 1;
-      }
-      if (a[atribute].toUpperCase() > b[atribute].toUpperCase()) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-    let newArrayObj = [...arrayObj]
-    return newArrayObj
-  }
-  const Asc = (array, atribute) => {
-    let arrayDeObj = [...array]
-    let arrayObj = arrayDeObj.sort(function (a, b) {
-      if (a[atribute].toLowerCase() > b[atribute].toLowerCase()) {
-        return 1;
-      }
-      if (a[atribute].toLowerCase() < b[atribute].toLowerCase()) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-    let newArrayObj = [...arrayObj]
-    return newArrayObj
-  }
+  let arrayAmostrar = [...allProjects]
 
+  let dispatch = useDispatch()
   ////////////////////////////////////////////////////////////////////////////////////
-  const [orderPress, setOrderPress] = useState({ score: "", name: "" });
-  const changeOrder = (e, atribute) => {
+  const [orderPress, setOrderPress] = useState({ atribute: "id", direccion: "asc" });
+  const changeOrder = (e) => {
+
     setOrderPress({
       ...orderPress,
-      score: "", name: "",
-      [atribute]: e.target.value
+      [e.target.name]: e.target.value
     })
   }
   useEffect(() => {
-    if (allProjects.length) {
-      if (orderPress.name === "asc") {
-        dispatch(orderProjectsBy(Asc(allProjects, "name")))
-      }
-      else if (orderPress.name === "desc") {
-        dispatch(orderProjectsBy(Desc(allProjects, "name")))
-      }
-      if (orderPress.score === "asc") {
-        dispatch(orderProjectsBy(Asc(allProjects, "scoreAverage")))
-      }
-      else if (orderPress.score === "desc") {
-        dispatch(orderProjectsBy(Desc(allProjects, "scoreAverage")))
-      }
-    }
+
+    arrayAmostrar = ordenamiento(allProjects, orderPress.atribute, orderPress.direccion)
+    dispatch(orderProjectsBy(arrayAmostrar))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderPress])
 
@@ -72,18 +31,19 @@ export default function Orders() {
   ////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <React.Fragment>
+      Ordenar por:
       <div>
-        <select className="home-select" onChange={(e) => changeOrder(e, "name")}>
-          <option key="any" value={"any"} >Alfabeto</option>
-          <option key="A-Z" value={"asc"} >A-Z</option>
-          <option key="Z-A" value={"desc"} >Z-A</option>
+        <select name={"atribute"} className="home-select" onChange={(e) => changeOrder(e)}>
+          <option name={"atribute"} value={"id"} >Fecha</option>
+          <option name={"atribute"} value={"name"} >Alfabeto</option>
+          <option name={"atribute"} value={"scoreAverage"} >Puntaje</option>
         </select>
       </div>
+      Orientacion
       <div>
-        <select className="home-select" onChange={(e) => changeOrder(e, "score")}>
-          <option key="any" value={"any"} >Score</option>
-          <option key="mayor" value={"desc"} >Mayor Puntaje</option>
-          <option key="menor" value={"asc"} >Menor Puntaje</option>
+        <select name="direccion" className="home-select" onChange={(e) => changeOrder(e)}>
+          <option name="direccion" value={"asc"} >Asc</option>
+          <option name="direccion" value={"desc"} >Desc</option>
         </select>
       </div>
     </React.Fragment>

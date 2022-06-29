@@ -19,6 +19,7 @@ import {
     GET_LIST_FAVORITES,
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
+    IS_ADMIN,
 
 } from "./actions/actions.js";
 
@@ -33,6 +34,7 @@ const initialState = {
     reviews: [],
     listFavorites: [],
     errors: [],
+    isAdmin: false,
 }
 
 export default function reducer(state = initialState, action) {
@@ -118,6 +120,13 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 listFavorites: action.payload
+            }
+        }
+
+        case IS_ADMIN: {
+            return {
+                ...state,
+                isAdmin: action.payload,
             }
         }
         

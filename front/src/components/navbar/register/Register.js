@@ -2,12 +2,10 @@ import React from 'react'
 import './register.css'
 import imgSignUp from './signup-image.png'
 import validateForm from './validation.js'
-import linkedin from '../../../images/linkedin.png';
 import github from '../../../images/github.png';
+import google from '../../../images/google.png'
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-
-//import { scroll } from "../../functions";
 import axios from 'axios'
 
 function Register() {
@@ -45,7 +43,6 @@ function Register() {
 
     async function registerUser() {
         let errors = validateForm(formData)
-
         if (Object.keys(errors).length === 0) {
             let { data } = await axios.post(process.env.REACT_APP_API + "/api/auth/register", formData)
             if (data.status === "success") {
@@ -56,13 +53,11 @@ function Register() {
                     email: data.error,
                 })
             }
-
-
         } else {
             setFormErrors(errors)
         }
     }
-    //scroll()
+
     return (
         <div>
             <section className="signup">
@@ -119,7 +114,7 @@ function Register() {
                                         {formErrors.repeat_password && <p className="register-formErrors-p">{formErrors.repeat_password}</p>}
                                     </div>
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group-checkbox">
                                     <input type="checkbox"
                                         name="agree-term"
                                         id="agree-term"
@@ -146,16 +141,17 @@ function Register() {
                         </div>
                         <div className="signup-image">
                             <figure><img src={imgSignUp} alt="sing up" /></figure>
-                                <Link to="/login" className="signup-image-link">Ya soy miembro, quiero logearme</Link>
+
                                 <h4> Or sign in with</h4>
                             <div className="login-buttons">
-                                <a href='https://www.linkedin.com/'>
-                                    <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
-                                </a>
                                 <a href={process.env.REACT_APP_API + '/api/auth/github'}>
-                                    <img src={github} width="60" alt="github" className='linkGithub' />
+                                    <img src={github} width="60" alt="github" className='linkgoogle' />
                                 </a>
-                        </div>
+                                <a href={process.env.REACT_APP_API + '/api/auth/google'}>
+                                    <img src={google} width="60" alt="github"  />
+                                </a>
+                            </div>
+                            <Link to="/login" className="signup-image-link">Ya soy miembro, quiero iniciar sesion.</Link>
                         </div>
                     </div>
                 </div>

@@ -12,11 +12,11 @@ import {
     ADMIN_SUSPEND_PROJECT,
     LOGGED_USER_ID,
     GET_CONTRUBUTION,
-    LIST_PAYMENTS,
     GET_REVIEWS,
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
-    GET_LIST_FAVORITES
+    GET_LIST_FAVORITES,
+    IS_ADMIN
 
 } from "./actions.js"
 
@@ -180,17 +180,22 @@ export function getContributions() {
 }
 
 
-export function listPayments(contribution, user) {
+export function listPayments(contribution, user, paymentMethod, email) {
+    
     return function () {
-        axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user })
-            .then(response => response.data)
-            .catch(error => console.error(error))
+        return axios.post(REACT_APP_API + '/api/admin/donation', { contribution, user, paymentMethod, email })
+            .then(response => { console.log(response.data); return response.data })
+            .catch(error => { console.error(error); return error })
     }
 }
-
+export function sendEmail({ userId, email, payment }) {
+    return axios.post(REACT_APP_API + '/api/admin/email', { userId, email, payment })
+        .then(response => { console.log(response.data); return response.data })
+        .catch(error => console.error(error))
+}
 
 export function postReview(input, userId, projectid) {
-    console.log(input);
+   
     return function () {
 
         axios.post(REACT_APP_API + '/api/review', { input, userId, projectid })
@@ -216,7 +221,7 @@ export function getReviews() {
 
 /////////////////////REPORT/////////////////////////////
 
-export function postReportUser( userId, reportedBy, reportComment ) {
+export function postReportUser(userId, reportedBy, reportComment) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/user`, { userId: userId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -229,7 +234,7 @@ export function postReportUser( userId, reportedBy, reportComment ) {
 
     }
 }
-export function postReportProject( projectId, reportedBy, reportComment ) {
+export function postReportProject(projectId, reportedBy, reportComment) {
     return function (dispatch) {
         axios.post(REACT_APP_API + `/api/report/project`, { projectId: projectId, reportedBy: reportedBy, reportComment: reportComment })
             .then(res => {
@@ -245,14 +250,6 @@ export function postReportProject( projectId, reportedBy, reportComment ) {
 
 
 
-export function addFavorites(userId, projectId) {
-    return function () {
-        axios.post(REACT_APP_API + `/api/user/favorites`, { userId: userId, projectId: projectId })
-            .then(response => response.data)
-            .catch(error => console.error(error))
-
-    }
-}
 export function getFavorites({ userId }) {
 
     return function (dispatch) {
@@ -266,9 +263,23 @@ export function getFavorites({ userId }) {
             )
     }
 }
+export function addFavorites(userId, projectId) {
 
-export function deleteFavorite({ userId, projectId }) {
-    console.log(userId, projectId)
+    return axios.post(REACT_APP_API + `/api/user/favorites`, { userId: userId, projectId: projectId })
+        .then(response => response.data)
+        .catch(error => console.error(error))
+
+
+
+}
+export function putProjectById(projectId, newValue) {
+    return axios.put(REACT_APP_API + "/api/project", { projectId: projectId, projectEdit: newValue })
+        .then(response => response.data)
+        .catch(error => console.error(error))
+}
+
+
+export function deleteFavorite(userId, projectId) {
 
     return axios.put(REACT_APP_API + "/api/user/favorites", { userId: userId, projectId: projectId })
         .then(response => response.data)
@@ -276,3 +287,20 @@ export function deleteFavorite({ userId, projectId }) {
 
 
 }
+//ver como llaman la ruta del back
+export function isAdmin() {
+    return function (dispatch) {
+        axios.get(REACT_APP_API + "/api/admin/validate", {
+            headers: { Authorization: "Bearer " + window.localStorage.getItem('usertoken') }
+        })
+            .then(res => {
+                console.log(res.data);
+                return dispatch({
+                    type: IS_ADMIN,
+                    payload: res.data,
+                })
+            })
+            .catch(err => console.log(err));
+    }
+}
+

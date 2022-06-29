@@ -4,6 +4,7 @@
     align-content: space-around;
     align-items: center;
     justify-content: space-around;
+    margin: 2%;
     min-width: 70vw;
     min-height: 55vh;
 }
@@ -15,56 +16,66 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-    justify-content: center;
+    justify-content:space-evenly;
+    margin: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     color: white;
     flex-wrap: nowrap;
     font-size: large;
     background-color: #012A4A;
-    width: 38vh;
-    height: 16vh;
-    border-radius: 20px;
+    background: linear-gradient(0deg, #012a4a 0%, #034679 60%);
+    width: 35vh;
+    height: 20vh;
+    border-radius: 15px;
     position: fixed;
     right: 0;
     top: 28%;
 }
 
 .input-community {
+    background-color: rgba(199, 209, 222, 0.925);
     outline: 0;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
     transition: .5s;
-
+    width: 80%;
+    font-size: 1rem;
+    margin-bottom: 5%;
 }
 
 .input-community::placeholder {
     text-align: center;
+    color:#012A4A;
 }
 
 .input-community:hover {
-    background-color: blanchedalmond;
+    background-color: white;
 }
 
 .select-community {
     max-height: 10vh;
-    max-width: 30vh;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     text-align: center;
-    width: 10vw;
+    width: 80%;
     outline: 0;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
     position: relative;
     transition: all 0.5s ease;
+    background-color: rgba(199, 209, 222, 0.925);
 }
 
 .select-community:hover {
-    background: #b5b1e8;
+    background-color: white;
 }
 
 .select-community:focus {
-    background: #b5b1e8;
+    background-color: white;
 }
 
 .select-community::-ms-expand {
@@ -79,5 +90,16 @@
     align-content: center;
     align-items: center;
     margin-right: 38vh;
-    ;
+}
+
+.community-card-line{
+    color:#034679;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    margin: 1% 0 1% 0;
 }

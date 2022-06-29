@@ -4,12 +4,14 @@ import "./reviews.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById, postReview } from '../../../redux/actions/actionCreators';
 import ReviewsCard from "./reviewsCard/reviewsCard"
+import { BiSend } from "react-icons/bi";
 
 
-const Reviews = ({ projectid, reviews }) => {
+
+const Reviews = ({ projectid, reviews, idUser }) => {
     const userId = useSelector(store => store.loggedUserId)
     let dispatch = useDispatch()
-    console.log(reviews);
+    console.log(projectid)
 
     const [input, setInput] = useState({
         text: "",
@@ -92,66 +94,74 @@ const Reviews = ({ projectid, reviews }) => {
         })
         return valor
     }
-    console.log(pregunta());
+    
     return (
         (userId ? <div className='reviews-general'>
             <hr></hr>
 
+            {userId != idUser ?
+            <div>
+            
+                {pregunta() ? <div>Ya le diste una Review a este proyecto. Muchas gracias! </div> :
+                    <form className='form-review' onSubmit={e => onSubmit(e)}>
+                        <div className='cont-estrellas'>
+                            <div>Diseño:<ReactStars
+                                count={5}
+                                value={input.scoreStyle}
+                                name={"scoreStyle"}
+                                isHalf={true}
+                                onChange={e => ratingChanged(e, "scoreStyle")}
+                                size={28}
+                                activeColor="#ffd700" />
+                                {error.scoreStyle && error.scoreStyle.length !== 0 ? <div>{error.scoreStyle}</div> : null}
 
-            {pregunta() ? <div>Ya le diste una Review a este proyecto. Muchas gracias! </div> :
-                <form className='form-review' onSubmit={e => onSubmit(e)}>
-                    <div className='cont-estrellas'>
-                        <div>Diseño:<ReactStars
-                            count={5}
-                            value={input.scoreStyle}
-                            name={"scoreStyle"}
-                            isHalf={true}
-                            onChange={e => ratingChanged(e, "scoreStyle")}
-                            size={28}
-                            activeColor="#ffd700" />
-                            {error.scoreStyle && error.scoreStyle.length !== 0 ? <div>{error.scoreStyle}</div> : null}
+                            </div>
+                            <div>Funcionalidad:<ReactStars
+                                count={5}
+                                value={input.scoreFunctionality}
+                                name={"scoreFunctionality"}
 
+                                isHalf={true}
+                                onChange={e => ratingChanged(e, "scoreFunctionality")}
+
+                                size={28}
+                                activeColor="#ffd700" />
+                                {error.scoreFunctionality && error.scoreFunctionality.length !== 0 ? <div>{error.scoreFunctionality}</div> : null}
+
+                            </div>
+                            <div>Originalidad: <ReactStars
+                                count={5}
+                                value={input.scoreOriginality}
+                                name={"scoreOriginality"}
+                                isHalf={true}
+                                onChange={e => ratingChanged(e, "scoreOriginality")}
+
+                                size={28}
+                                activeColor="#ffd700" />
+                                {error.scoreOriginality && error.scoreOriginality.length !== 0 ? <div>{error.scoreOriginality}</div> : null}
+
+                            </div>
                         </div>
-                        <div>Funcionalidad:<ReactStars
-                            count={5}
-                            value={input.scoreFunctionality}
-                            name={"scoreFunctionality"}
+                            <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area'></textarea>
+                            <button className='btn-send-reviews'> <BiSend/> </button>
+                            {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
 
-                            isHalf={true}
-                            onChange={e => ratingChanged(e, "scoreFunctionality")}
+                    </form>}
 
-                            size={28}
-                            activeColor="#ffd700" />
-                            {error.scoreFunctionality && error.scoreFunctionality.length !== 0 ? <div>{error.scoreFunctionality}</div> : null}
-
-                        </div>
-                        <div>Originalidad: <ReactStars
-                            count={5}
-                            value={input.scoreOriginality}
-                            name={"scoreOriginality"}
-                            isHalf={true}
-                            onChange={e => ratingChanged(e, "scoreOriginality")}
-
-                            size={28}
-                            activeColor="#ffd700" />
-                            {error.scoreOriginality && error.scoreOriginality.length !== 0 ? <div>{error.scoreOriginality}</div> : null}
-
-                        </div>
                     </div>
-                    <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area' />
-                    {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
+            : null }  
 
-                    <button>Enviar</button>
-                </form>}
-            {reviews.length > 0 ? reviews.map(e => <ReviewsCard key={e.id}
-                user={e.user}
-                text={e.text}
-                scoreFunctionality={e.scoreFunctionality}
-                scoreOriginality={e.scoreOriginality}
-                scoreStyle={e.scoreStyle} />)
-                : <div>No hay Reviews, se la primera!</div>}
+                {reviews.length > 0 ? reviews.reverse().map(e => 
+                <ReviewsCard key={e.id}
+                    user={e.user}
+                    text={e.text}
+                    fecha={e.createdAt}
+                    scoreFunctionality={e.scoreFunctionality}
+                    scoreOriginality={e.scoreOriginality}
+                    scoreStyle={e.scoreStyle} />)
+                : <h4 className='no-reviews'>Este proyecto aun no tiene Reviews</h4>}
 
-        </div> : <h4>Logueate para comentar</h4>)
+        </div> : <h4 className='no-reviews'>Para dejar tu review, inicia sesion!</h4>)
     );
 }
 

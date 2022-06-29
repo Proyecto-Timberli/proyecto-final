@@ -6,7 +6,7 @@ import postProject from './functionForPost/PostProject'
 import imagen from "./images/plataforma.png"
 import { scroll } from "../../../functions";
 import ModalTechnologies from "./modalTechnologies.js"
-import { BiUpload  } from "react-icons/bi";
+import { BiUpload } from "react-icons/bi";
 import { AiOutlineSelect } from "react-icons/ai";
 
 export default function NewProject() {
@@ -53,7 +53,6 @@ export default function NewProject() {
         }
         setErrorSubmit(false)
         setCreacion(true);
-
         const NewProject = {
             name: values.name,
             imagen: Imagen,
@@ -71,8 +70,8 @@ export default function NewProject() {
         resetForm()
         setImagen([]);
     }
-    const [techs,setTechs]=useState([])
-    const [desplegarTechs,setDesplegarTechs] = useState(false)
+    const [techs, setTechs] = useState([])
+    const [desplegarTechs, setDesplegarTechs] = useState(false)
     return (<>
         {!token ? <div className={styles.containerAllDiv}>
             <h1 className={styles.container}>Tiene que iniciar sesion para poder crear un proyecto</h1>
@@ -132,14 +131,14 @@ export default function NewProject() {
                                     <div className={styles.form}>
                                         <div
                                             className={styles.files}
-                                            onClick={()=>setDesplegarTechs(true)}><AiOutlineSelect/>Tecnologias utilizadas
+                                            onClick={() => setDesplegarTechs(true)}><AiOutlineSelect />Tecnologias utilizadas
                                         </div>
                                         <span className={styles.input_border}></span>
                                     </div>
                                     <div className={styles.errorcontainer}>
                                         {touched.tecnologias && errors.tecnologias && <p className={styles.error}>{errors.tecnologias}</p>}
                                     </div>
-                                    {desplegarTechs&&
+                                    {desplegarTechs &&
                                         <div>
                                             <ModalTechnologies
                                                 techs={techs}
@@ -204,8 +203,8 @@ export default function NewProject() {
                                     <aside id="modal" className={styles.files}>
                                         <div className={styles.cargarimagen}>
                                             <label htmlFor="input_images">
-                                            <BiUpload/>  Cargar imagenes
-                                                <input hidden accept='image/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
+                                                <BiUpload />  Cargar imagenes/videos
+                                                <input hidden accept='image/*,video/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
                                             </label>
                                         </div>
                                     </aside>
@@ -244,21 +243,36 @@ export default function NewProject() {
                                     {Imagen[0] ? (
                                         <div className={styles.containerImagesPreview} >
                                             {Imagen.map((e, index) => {
-                                                return (
-                                                    <img
-                                                        className={styles.imagePreview}
-                                                        key={index}
-                                                        src={URL.createObjectURL(e)}
-                                                        id={index}
-                                                        alt=""
-                                                        onClick={e => deletePhoto(e)} />
-                                                )
+                                                console.log(e)
+                                                if (e.type.split('/')[0] === 'image') {
+
+                                                    return (
+                                                        <img
+                                                            className={styles.imagePreview}
+                                                            key={index}
+                                                            src={URL.createObjectURL(e)}
+                                                            id={index}
+                                                            alt=""
+                                                            onClick={e => deletePhoto(e)} />
+                                                    )
+                                                } else {
+                                                    return (
+                                                        <video
+                                                            className={styles.imagePreview}
+                                                            key={index}
+                                                            src={URL.createObjectURL(e)}
+                                                            id={index}
+                                                            alt=""
+                                                            autoPlay={true}
+                                                            onClick={e => deletePhoto(e)} />
+                                                    )
+                                                }
                                             })}
                                         </div>
                                     ) : <div className={styles.divImage}>
                                         You currently have no photos added
                                     </div>}
-                                   
+
 
                                     {/*-----------------------------------------------------DIV ORIGINAL PARA SUBIR LOS ARCHIVOS SIN LINK, NO BORRAR -------------------------------------------*/}
                                     <button

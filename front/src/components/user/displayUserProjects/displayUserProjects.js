@@ -10,7 +10,7 @@ const DisplayUserProjects = ({ projects }) => {
             return <h2>Este usuario no tiene proyectos publicados</h2>
         }
 
-        return projects.map((p) => {
+        return projects.filter(p => p.state !== 'Pendiente').map((p) => {
             return (
                 <MiniCard key={p.id} imagen={p.imagen[0]} id={p.id} name={p.name} description={p.shortDescription} />
             )

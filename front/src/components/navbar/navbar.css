@@ -17,7 +17,7 @@
 }
 
 .logo-navBar {
-    margin-left: 19px;
+    margin-left: 35px;
     font-size: 43px;
     font-weight: bolder;
     border: none;
@@ -46,7 +46,7 @@
 .botones-nav {
     display: flex;
     flex-direction: row;
-    margin-right: 19px;
+    margin-right: 25px;
 
 }
 
@@ -65,6 +65,11 @@
     transition: 0.5s;
 }
 
+.btn-logout-navBar{
+    background-color: rgb(64, 129, 186);
+    color: rgba(255, 255, 255, 0.887);
+}
+
 .btn-logout-navBar,
 .btn-login-navBar {
     margin-left: 15%;
@@ -77,4 +82,17 @@
     background-color: #014F86;
     color: white;
     box-shadow: 0 0 5px 3px rgb(235, 230, 230);
+}
+
+@media (max-width: 575.98px)and (orientation:portrait) {
+    body {
+        background: green;
+    }
+
+    #Navbar {
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 }

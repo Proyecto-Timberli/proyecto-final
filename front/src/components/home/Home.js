@@ -3,18 +3,18 @@ import Card from "../componentesGenerales/card/Card.js"
 import "../home/home.css"
 import { Link, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects } from '../../redux/actions/actionCreators'
+import { getAllProjects, isAdmin } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
 import { technologies } from './technologies.js'
-import { scroll } from "../../functions";
+import { filtroName, scroll } from "../../functions";
 import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
-
-    const [searchParams, setSearchParams] = useSearchParams()
     
-    let token = searchParams.get("token")
+    const [searchParams, setSearchParams] = useSearchParams()
 
+    let token = searchParams.get("token")
+    let listUserFavorites = useSelector((state) => state.listFavorites)
     if (token) {
         localStorage.setItem("usertoken", token)
         localStorage.setItem("userid", searchParams.get("id"))
@@ -22,21 +22,26 @@ const Home = () => {
         console.log("got Here")
     }
 
-    scroll()
+    // scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
-    let allProjects = useSelector((state) => state.allProject)
+    let allProjects = useSelector((state) => state.allProject.filter(project => project.state !== 'Pendiente'))
+
     useEffect(() => {
         dispatch(getAllProjects());
+        dispatch(isAdmin())
         if (window.localStorage.getItem("usertoken")) {
             dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
+            // accionarPaginado(1)
         }
+        scroll()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////filter by search////////////////////////////
     const [filterBySearch, setFilterBySearch] = useState("")
-    let arrayFilterBySearch = allProjects.filter(project => project.name && project.name.toLowerCase().includes(filterBySearch.toLowerCase()))
+    let arrayFilterBySearch = filtroName(allProjects, filterBySearch, "name")
     const searchFilterChange = function (e) {
         setFilterBySearch(e.target.value);
     }
@@ -81,16 +86,16 @@ const Home = () => {
     //////////////////////////////////////////////////////////////////////////////
     return (
         <div className='Contenedor-Principal'>
-            <div>
-                <hr></hr>
-                <div className='home-publica-si-logged'>
-                    {logger ? <Link to="/newProject" className='home-publicar-link'> Publica tu proyecto!</Link> : <p className='home-publicar'> Para publicar, logueate</p>}
-                </div>
+            <div className='home-publica-si-logged'>
+                {logger ? <Link to="/newProject" className='home-publicar-link'> Publica tu proyecto!</Link> : <Link to="/register" className='home-publicar-link'> Para publicar, logueate!</Link>}
+            </div>
+            <div className='contenedor-home-todo'>
                 <div className='cont-filtros'>
                     <div>
                         <input className='home-search' type="search" placeholder="Buscar proyecto..." name="search" onChange={(e) => searchFilterChange(e)} value={filterBySearch} />
                     </div>
                     <Orders />
+                    Tecnologias:
                     <select className="home-select" name="technologies" id="technologies" onChange={(e) => techFilterChange(e)}>
                         <option key="Any" value={"Any"} >Any</option>
                         {technologies.map((tech, index) =>
@@ -112,14 +117,17 @@ const Home = () => {
                             scoreFunctionality={e.scoreFunctionality}
                             scoreOriginality={e.scoreOriginality}
                             scoreStyle={e.scoreStyle}
-
+                            fecha={e.createdAt}
+                            update={e.updatedAt}
                             score={e.scoreAverage}
+                            technology={e.tecnology}
                         />)}
                     </div>
                 }
                 {/* Espacio */}
                 <br></br>
-                <div className="container-paginado" >
+
+                <div className="container-paginado">
                     {paginado.buttons().map(button =>
                         <div key={button}>
                             {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}

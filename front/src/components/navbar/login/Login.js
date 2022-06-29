@@ -3,12 +3,12 @@ import './login.css';
 import imgLogin from './images/clipLogin.gif';
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { MdInsertEmoticon } from "react-icons/md";
-import linkedin from '../../../images/linkedin.png';
 import github from '../../../images/github.png';
+import google from '../../../images/google.png'
 import { scroll } from "../../../functions";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
+import validateForm from '../register/validation.js';
 import { setLoggedUserId } from "../../../redux/actions/actionCreators";
 
 export default function Login() {
@@ -19,12 +19,27 @@ export default function Login() {
     })
 
     const dispatch = useDispatch()
+    const [formErrors, setFormErrors] = useState({ 
+        error: "" ,
+        email: "",
+        password: "",
+    })
 
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    }
 
-    const [formErrors, setFormErrors] = useState({ error: "" })
+    const handleInputOnBlur = (e) => {
+        setFormErrors({
+            ...formErrors,
+            [e.target.name]: validateForm(formData)[e.target.name],
+        });
+    }
 
     const [comingFromRegister, setComingFromRegister] = useState(false)
-
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -34,8 +49,8 @@ export default function Login() {
 
     function showFromRegisterMessage() {
         if (comingFromRegister) {
-            return <div>
-                <h2 className="msj-exitoso-login"><MdInsertEmoticon /> Registro exitoso, ahora puedes iniciar sesión <MdInsertEmoticon /></h2>
+            return <div className="registro-exitoso-box">
+                <p className="msj-exitoso-login"> Registro exitoso, ahora puedes iniciar sesión!</p>
             </div>
         }
     }
@@ -86,38 +101,33 @@ export default function Login() {
                         <input
                             className="login-input"
                             type='text'
+                            name='email'
                             placeholder='Email'
                             value={formData.email}
-                            onChange={(e) => {
-                                setFormData({
-                                    ...formData,
-                                    email: e.target.value
-                                })
-                            }} />
+                            onChange={handleInputChange}
+                            onBlur={handleInputOnBlur}
+                        />
+                        <div className="register-formErrors-p-container">
+                            {formErrors.email && <p className="register-formErrors-p">{formErrors.email}</p>}
+                        </div>
                     </div>
                     <div className="login-item">
                         <label></label>
                         <input
                             className="login-input"
                             type='password'
+                            name='password'
                             placeholder='Contraseña'
                             value={formData.password}
-                            onChange={(e) => {
-                                setFormData({
-                                    ...formData,
-                                    password: e.target.value
-                                })
-                            }} />
-                    </div>
-                    <div className="login-item">
-                        <label className="login-checkbox">
-                            {/* <input type="checkbox" name="rememberMe" style={{ display: 'unset' }} className="rememberMe" />
-                            <span className="login-checkmark"></span>
-                            Remember me */}
-                        </label>
+                            onChange={handleInputChange}
+                            onBlur={handleInputOnBlur}
+                        />
+                        <div className="register-formErrors-p-container">
+                            {formErrors.password && <p className="register-formErrors-p">{formErrors.password}</p>}
+                        </div>
                     </div>
                     <div className='login-item'>
-                        <label className="login-formError">{formErrors.error}</label>
+                        {formErrors.error && <p className="login-formError">{formErrors.error}</p>}
                     </div>
                     <div className='login-item'>
                         <button
@@ -132,11 +142,11 @@ export default function Login() {
                 <div className='login-section'>
                     <h4> Or sign in with</h4>
                     <div className="login-buttons">
-                        <a href='https://www.linkedin.com/'>
-                            <img src={linkedin} width="60" alt="linkedIn" className='linkLinkedin' />
-                        </a>
                         <a href={process.env.REACT_APP_API + '/api/auth/github'}>
                             <img src={github} width="60" alt="github" className='linkGithub' />
+                        </a>
+                        <a href={process.env.REACT_APP_API + '/api/auth/google'}>
+                            <img src={google} width="60" alt="github" className='linkGithub' />
                         </a>
                     </div>
                     <div className='login-register'>

@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getUserById } from '../../../redux/actions/actionCreators'
 import './displayUserSettings.css'
+const { REACT_APP_API } = process.env
+
 
 const DisplayUserSettings = ({ userData }) => {
 
@@ -14,17 +16,25 @@ const DisplayUserSettings = ({ userData }) => {
       stack: userData.stack,
       linkedin: userData.linkedin,
       github: userData.github,
-      // imagen??
+       image: userData.image,
       short_description: userData.short_description,
       description: userData.description
     }
   )
 
+  function onChange(e){
+e.preventDefault()
+setUserSettings({
+  ...userSettings,
+  [e.target.name]: e.target.value
+})
+  } 
+
   const [saveMsg, setSaveMsg] = useState()
 
   return (
     <div className='userSettingsContainer'>
-      <h3>Edita tu información aquí:</h3>
+      <h3 className='titulo-userSettings'>Edita tu información:</h3>
 
       <div className='userSettings-firstGroup'>
 
@@ -33,24 +43,17 @@ const DisplayUserSettings = ({ userData }) => {
           <input type="text"
           className='userSettings-textInput'
           value={userSettings.name}
-          onChange={e => {
-            setUserSettings({
-              ...userSettings,
-              name: e.target.value
-            })
-          }}></input>
+          name="name"
+          onChange={e => {onChange(e)}}></input>
         </div>
 
         <div className='userSettings-fg-inputContainer'>
           <p>Edita tu stack:</p>
           <input type="text" 
           className='userSettings-textInput'
-          value={userSettings.stack} onChange={e => {
-            setUserSettings({
-              ...userSettings,
-              stack: e.target.value
-            })
-          }}></input>
+          value={userSettings.stack} 
+          name="stack"
+          onChange={e => {onChange(e)}}></input>
         </div>
 
         <div className='userSettings-fg-inputContainer'>
@@ -58,12 +61,8 @@ const DisplayUserSettings = ({ userData }) => {
           <input type="text"
           className='userSettings-textInput'
           value={userSettings.linkedin}
-          onChange={e => {
-            setUserSettings({
-              ...userSettings,
-              linkedin: e.target.value
-            })
-          }}></input>
+          name="linkedin"
+          onChange={e => {onChange(e)}}></input>
         </div>
 
         <div className='userSettings-fg-inputContainer'>
@@ -71,12 +70,8 @@ const DisplayUserSettings = ({ userData }) => {
           <input type="text"
           className='userSettings-textInput'
           value={userSettings.github}
-          onChange={e => {
-            setUserSettings({
-              ...userSettings,
-              github: e.target.value
-            })
-          }}></input>
+          name="github"
+          onChange={e => {onChange(e)}}></input>
 
         </div>
       </div>
@@ -85,7 +80,12 @@ const DisplayUserSettings = ({ userData }) => {
 
         <div className='userSettings-sg-inputContainer'>
           <p>Sube una imagen para tu perfil:</p>
-          <input type="text" className='userSettings-textInput' ></input>
+
+      {/*Cargar imagen-Archivo <input accept='image/*' type="file" name="image" onChange={}  /> */}
+
+          <input type="text" value={userSettings.image} className='userSettings-textInput' 
+           name="image"
+           onChange={e => {onChange(e)}}></input>
         </div>
 
       </div>
@@ -97,24 +97,16 @@ const DisplayUserSettings = ({ userData }) => {
           <input type="text"
           className='userSettings-textInput'
           value={userSettings.short_description}
-          onChange={e => {
-            setUserSettings({
-              ...userSettings,
-              short_description: e.target.value
-            })
-          }}></input>
+          name="short_description"
+          onChange={e => {onChange(e)}}></input>
         </div>
 
         <div className='userSettings-sg-inputContainer'>
           <p>Edita tu descripción (Sección "Sobre mi"):</p>
           <textarea className='userSettings-textArea' 
           value={userSettings.description}
-          onChange={e => {
-            setUserSettings({
-              ...userSettings,
-              description: e.target.value
-            })
-          }}></textarea>
+          name="description"
+          onChange={e => {onChange(e)}}></textarea>
 
         </div>
       </div>
@@ -122,7 +114,7 @@ const DisplayUserSettings = ({ userData }) => {
         onClick={e => {
           e.preventDefault()
 
-          const url = 'http://localhost:3001/api/user/'
+          const url = REACT_APP_API + "/api/user/"
 
           const config = {
             headers: { 
