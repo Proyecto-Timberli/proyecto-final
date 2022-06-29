@@ -8,13 +8,13 @@ import boxTwoImage from './images/landingCommunity.png';
 import boxThreeImage from './images/landingAbout.png';
 import { scroll } from "../../../functions";
 import Chatbot from "../chatBot/ChatBot";
+import {  } from "react-icons/bs";
 
 
 export default function LandingPage() {
 
     useEffect(() => {
         scroll()
-
     }, [])
 
     const logged = useSelector((state) => state.loggedUserId);
@@ -33,14 +33,14 @@ export default function LandingPage() {
             <div className="landingTop">
                 {logged ?
                     <div className="landingWelcome">
-                        <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
+                        <h1>Explora miles de <br></br>proyectos y <br></br>comparti los tuyos.</h1>
                         <Link to='/home'>
                             <button className="btn-explore"> VER TODOS </button>
                         </Link>
                     </div>
                     :
                     <div className="landingWelcome">
-                        <h1>Explorá miles de <br></br>proyectos y <br></br>compartí los tuyos.</h1>
+                        <h1>Explora miles de <br></br>proyectos y <br></br>comparti los tuyos.</h1>
                         <Link to='/home'>
                             <button className="btn-explore"> VER TODOS </button>
                         </Link>
