@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Router } = require('express');
 const { Project, User, Contributions } = require('../db.js');
-const { verifyToken } = require('../middlewares/authadjwt')
+const { verifyToken } = require('../middlewares/AuthAdmin')
 const Stripe = require("stripe")
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const stripe = new Stripe(STRIPE_SECRET_KEY)
@@ -37,9 +37,9 @@ router.get("/donation", async (req, res, next) => {
     }
 })
 router.post("/email", async (req, res, next) => {
-    const { email, userId,payment } = req.body;
+    const { email, userId, payment } = req.body;
     try {
-      
+
         if (!email) {
             const user = await User.findByPk(userId);
             await transporter.sendMail({
@@ -122,7 +122,7 @@ router.post("/donation", async (req, res, next) => {
 
     }
     catch (err) {
-        
+
         return res.status(404).send({ error: err })
     }
 });

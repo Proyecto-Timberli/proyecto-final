@@ -3,7 +3,7 @@ const router = Router();
 const axios = require('axios');
 const { Project, User, Report, Review } = require('../db.js');
 const { Op, where } = require('sequelize');
-const { verifyToken } = require('../middlewares/authjwt')
+const { verifyToken } = require('../middlewares/AuthUser')
 
 
 router.get("/", async (req, res, next) => {
@@ -34,7 +34,7 @@ router.get("/id/:idProject", async (req, res, next) => {
 });
 
 
-router.post("/", async (req, res, next) => {
+router.post("/", [verifyToken], async (req, res, next) => {
   const { name, tecnology, shortDescription, imagen, description, repository, userid, deploying } = req.body;
   try {
     const newProject = await Project.create({ name, imagen, shortDescription, tecnology, description, repository, deploying })

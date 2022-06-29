@@ -6,7 +6,7 @@ const { Project, User, Report, Favorites } = require('../db.js');
 const Stripe = require("stripe")
 const router = Router();
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
-const { verifyToken } = require('../middlewares/authjwt');
+
 
 
 
@@ -58,7 +58,7 @@ router.get("/id/:idUser", async (req, res, next) => {
 
 
 
-router.put("/", [verifyToken], async (req, res, next) => {
+router.put("/", async (req, res, next) => {
     const { userId, userEdit } = req.body;
 
     // Verificar que usuario X no pueda modificar datos de usuario Y
@@ -140,7 +140,7 @@ router.delete("/", async (req, res, next) => {
 router.get("/favorites/:userId", async (req, res, next) => {
     try {
         const { userId } = req.params;
-        
+
         if (userId) {
             const userFavorites = await User.findByPk(userId, { include: [{ model: Project }, { model: Favorites, include: [{ model: Project }] }] })
             if (!userFavorites) {
@@ -192,7 +192,7 @@ router.post("/favorites", async (req, res, next) => {
                         project_id: projectId
                     }
                 })
-                if(validacion !== null){
+                if (validacion !== null) {
                     return res.status(401).send("El proyecto ya esta en favoritos")
                 }
                 const newFavorite = await Favorites.create({ project, project_id: project.id })
