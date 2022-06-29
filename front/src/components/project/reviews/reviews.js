@@ -4,6 +4,8 @@ import "./reviews.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById, postReview } from '../../../redux/actions/actionCreators';
 import ReviewsCard from "./reviewsCard/reviewsCard"
+import { BiSend } from "react-icons/bi";
+
 
 
 const Reviews = ({ projectid, reviews, idUser }) => {
@@ -140,11 +142,12 @@ const Reviews = ({ projectid, reviews, idUser }) => {
 
                             </div>
                         </div>
-                        <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area' />
-                        {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
+                            <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area'></textarea>
+                            <button className='btn-send-reviews'> <BiSend/> </button>
+                            {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
 
-                        <button>Enviar</button>
                     </form>}
+
                     </div>
             : null }  
 
