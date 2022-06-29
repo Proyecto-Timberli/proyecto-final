@@ -43,7 +43,6 @@ function Register() {
 
     async function registerUser() {
         let errors = validateForm(formData)
-
         if (Object.keys(errors).length === 0) {
             let { data } = await axios.post(process.env.REACT_APP_API + "/api/auth/register", formData)
             if (data.status === "success") {
@@ -54,8 +53,6 @@ function Register() {
                     email: data.error,
                 })
             }
-
-
         } else {
             setFormErrors(errors)
         }

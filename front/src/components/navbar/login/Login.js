@@ -8,6 +8,7 @@ import google from '../../../images/google.png'
 import { scroll } from "../../../functions";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
+import validateForm from '../register/validation.js';
 import { setLoggedUserId } from "../../../redux/actions/actionCreators";
 
 export default function Login() {
@@ -18,11 +19,27 @@ export default function Login() {
     })
 
     const dispatch = useDispatch()
+    const [formErrors, setFormErrors] = useState({ 
+        error: "" ,
+        email: "",
+        password: "",
+    })
 
-    const [formErrors, setFormErrors] = useState({ error: "" })
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    }
+
+    const handleInputOnBlur = (e) => {
+        setFormErrors({
+            ...formErrors,
+            [e.target.name]: validateForm(formData)[e.target.name],
+        });
+    }
 
     const [comingFromRegister, setComingFromRegister] = useState(false)
-
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -84,31 +101,33 @@ export default function Login() {
                         <input
                             className="login-input"
                             type='text'
+                            name='email'
                             placeholder='Email'
                             value={formData.email}
-                            onChange={(e) => {
-                                setFormData({
-                                    ...formData,
-                                    email: e.target.value
-                                })
-                            }} />
+                            onChange={handleInputChange}
+                            onBlur={handleInputOnBlur}
+                        />
+                        <div className="register-formErrors-p-container">
+                            {formErrors.email && <p className="register-formErrors-p">{formErrors.email}</p>}
+                        </div>
                     </div>
                     <div className="login-item">
                         <label></label>
                         <input
                             className="login-input"
                             type='password'
+                            name='password'
                             placeholder='Contraseña'
                             value={formData.password}
-                            onChange={(e) => {
-                                setFormData({
-                                    ...formData,
-                                    password: e.target.value
-                                })
-                            }} />
+                            onChange={handleInputChange}
+                            onBlur={handleInputOnBlur}
+                        />
+                        <div className="register-formErrors-p-container">
+                            {formErrors.password && <p className="register-formErrors-p">{formErrors.password}</p>}
+                        </div>
                     </div>
                     <div className='login-item'>
-                        <label className="login-formError">{formErrors.error}</label>
+                        {formErrors.error && <p className="login-formError">{formErrors.error}</p>}
                     </div>
                     <div className='login-item'>
                         <button
