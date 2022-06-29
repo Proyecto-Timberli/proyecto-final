@@ -7,8 +7,11 @@ import CardFavorites from './CardsForFavorites/CardFavorites'
 export default function DisplayUserFavorites({ favorites }) {
     console.log(favorites)
     if (favorites.length === 0) {
-        return <h2>No tienes proyectos favoritos agregados actualmente</h2>
-    }
+        return (
+            <div className='userFavoritesContainer'>
+                <h2>No tienes proyectos favoritos agregados actualmente</h2>
+            </div>
+    )}
 
     return (
         <div className='userFavoritesContainer'>
