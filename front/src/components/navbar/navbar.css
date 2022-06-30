@@ -17,7 +17,7 @@
 }
 
 .logo-navBar {
-    margin-left: 19px;
+    margin-left: 35px;
     font-size: 43px;
     font-weight: bolder;
     border: none;
@@ -46,7 +46,7 @@
 .botones-nav {
     display: flex;
     flex-direction: row;
-    margin-right: 19px;
+    margin-right: 25px;
 
 }
 
@@ -63,6 +63,11 @@
     font-weight: bolder;
     letter-spacing: 0.7px;
     transition: 0.5s;
+}
+
+.btn-logout-navBar{
+    background-color: rgb(64, 129, 186);
+    color: rgba(255, 255, 255, 0.887);
 }
 
 .btn-logout-navBar,

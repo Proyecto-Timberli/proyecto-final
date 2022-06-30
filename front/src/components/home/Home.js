@@ -3,14 +3,14 @@ import Card from "../componentesGenerales/card/Card.js"
 import "../home/home.css"
 import { Link, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProjects } from '../../redux/actions/actionCreators'
+import { getAllProjects, isAdmin } from '../../redux/actions/actionCreators'
 import Paginado from './Paginado'
 import Orders from './Orders.js';
 import { technologies } from './technologies.js'
 import { filtroName, scroll } from "../../functions";
 import { getFavorites } from '../../redux/actions/actionCreators';
 const Home = () => {
-
+    
     const [searchParams, setSearchParams] = useSearchParams()
 
     let token = searchParams.get("token")
@@ -25,11 +25,16 @@ const Home = () => {
     // scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
-    let allProjects = useSelector((state) => state.allProject)
+
+    
+    let Usertoken=window.localStorage.getItem("usertoken")
+
+    let allProjects = useSelector((state) => state.allProject.filter(project => project.state !== 'Pendiente'))
 
     useEffect(() => {
         dispatch(getAllProjects());
-        if (window.localStorage.getItem("usertoken")) {
+        dispatch(isAdmin())
+        if (Usertoken) {
             dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
             // accionarPaginado(1)
         }
@@ -76,7 +81,7 @@ const Home = () => {
             accionarPaginado(1)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [allProjects, filterTechs, filterBySearch,listUserFavorites])
+    }, [allProjects, filterTechs, filterBySearch])
     //////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////
     let logger = useSelector((state) => state.loggedUserId)
@@ -94,6 +99,7 @@ const Home = () => {
                         <input className='home-search' type="search" placeholder="Buscar proyecto..." name="search" onChange={(e) => searchFilterChange(e)} value={filterBySearch} />
                     </div>
                     <Orders />
+                    Tecnologias:
                     <select className="home-select" name="technologies" id="technologies" onChange={(e) => techFilterChange(e)}>
                         <option key="Any" value={"Any"} >Any</option>
                         {technologies.map((tech, index) =>

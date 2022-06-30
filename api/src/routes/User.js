@@ -60,7 +60,7 @@ router.get("/id/:idUser", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
     const { userId, userEdit } = req.body;
-
+    console.log("entro")
     // Verificar que usuario X no pueda modificar datos de usuario Y
     // ...a menos que sea admin
     if (userId && userId !== req.user_id) {
@@ -74,7 +74,7 @@ router.put("/", async (req, res, next) => {
             msg: "No tienes autorización para realizar esta acción"
         })
     }
-
+    console.log(userEdit)
     // validación del back
     if (userEdit) {
         if (!userEdit.name) {
@@ -98,6 +98,7 @@ router.put("/", async (req, res, next) => {
         }
     }
     catch (err) {
+        console.log(err)
         res.status(400).send({
             status: "error",
             msg: err

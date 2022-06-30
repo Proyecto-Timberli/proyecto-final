@@ -27,7 +27,9 @@ router.post("/project", async (req, res, next) => {
                     include: Report
                 })
 
-            if (countReport.dataValues.reports.length === 1) {
+         
+            if(countReport.dataValues.reports.length ===3 ){
+
                 projectToReport.update({
                     state: 'Pendiente'
                 })

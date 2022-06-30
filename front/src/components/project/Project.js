@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './project.css'
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFavorite, getFavorites, getProjectById, postReportProject, postReportUser } from '../../redux/actions/actionCreators'
+import { deleteFavorite, getFavorites, getProjectById, postReportProject } from '../../redux/actions/actionCreators'
 import Paginado from './paginado-imagenes.js'
 import Cargando from '../componentesGenerales/cargando/cargando';
 import Page404 from '../componentesGenerales/Page404/Page404';
@@ -21,7 +21,7 @@ function Project() {
     let listUserFavorites = useSelector((state) => state.listFavorites)
     let userId = window.localStorage.getItem('userid')
     let token = window.localStorage.getItem('usertoken')
-    let project = useSelector((state) => state.projectById)
+    const project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
 
     useEffect(() => {
@@ -69,8 +69,7 @@ function Project() {
         userID: 0,
         projectID: 0,
     })
-    console.log(project)
-    console.log(listUserFavorites)
+   
     function cambiarEstadoModalReport(userID, projectID) {
         setmodalP({
             userID: userID,
@@ -119,6 +118,10 @@ function Project() {
         await deleteFavorite(userId, id)
         dispatch(getFavorites({ userId }))
     }
+
+    console.log(project.user.id)
+    console.log(userId)
+
     return (
 
         <React.Fragment>
@@ -126,16 +129,21 @@ function Project() {
                 <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
                     <div className='cont-info'>
-
-                        <div>
-                            <h3>Puntuacion:</h3>
-                            <div className='info-detalle' >{project.scoreStyle[0] && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length)} |  {project.scoreFunctionality[0] && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length)} | {project.scoreOriginality[0] && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length)}</div>
-                        </div >
                         <div >
                             <h3>Usuario:</h3>
-                            <Link to={"/user/" + project.userId} >
+                            <Link to={"/user/" + project.userId} style={{'text-decoration':'none'}}>
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
+                        </div>
+                        <div >
+                            <h3>Deploy:</h3>
+                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-null'>Sin Deploy</div> : <div className='info-detalle-link' ><a target="_blank" href={project.deploying} rel="noopener noreferrer"> Link Deploy</a></div>}
+
+                        </div>
+                        {/* GitHub */}
+                        <div>
+                            <h3>GitHub:</h3>
+                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-null'>Sin GitHub</div> : <div className='info-detalle-link' ><a target="_blank" href={project.repository} rel="noopener noreferrer"> Link GitHub</a></div>}
                         </div>
                     </div >
 
@@ -192,23 +200,27 @@ function Project() {
                                     : null
 
                             }
-
-
-
-                            <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
-
+                            {token? 
+                                userId != project.user.id ?
+                                    <button className='boton-accion-detalleProject' ><MdError onClick={(e) => cambiarEstadoModalReport(reportBy, project.id)} /></button>
+                                    :null
+                                :null
+                            }
                         </div>
-                        <div >
-                            <h3>Deploy:</h3>
-                            {project.deploying === "none" || project.deploying === "" ? <div className='info-detalle-link'>Sin Deploy</div> : <div className='info-detalle-link' ><a target="_blank" href={project.deploying} rel="noopener noreferrer"> Link Deploy</a></div>}
-
-                        </div>
-                        {/* GitHub */}
                         <div>
-                            <h3>GitHub:</h3>
-                            {project.repository === "none" || project.repository === "" ? <div className='info-detalle-link'>Sin GitHub</div> : <div className='info-detalle-link' ><a target="_blank" href={project.repository} rel="noopener noreferrer"> Link GitHub</a></div>}
+                            <h3>Puntuacion:</h3>
+                            {!project.scoreStyle[0] && !project.scoreFunctionality[0] && !project.scoreOriginality[0] ?
+                                <div className='info-detalle-user'>
+                                    <p>Este proyecto todavia no tiene puntuación</p>
+                                </div>
+                            :
+                                <div className='info-detalle-user'>
+                                    <p>Diseño: {project.scoreStyle[0] && (project.scoreStyle.reduce((e, a) => Number(e) + Number(a)) / project.scoreStyle.length).toFixed(2)} </p> 
+                                    <p>Funcionalidad: {project.scoreFunctionality[0] && (project.scoreFunctionality.reduce((e, a) => Number(e) + Number(a)) / project.scoreFunctionality.length).toFixed(2)} </p> 
+                                    <p>Originalidad: {project.scoreOriginality[0] && (project.scoreOriginality.reduce((e, a) => Number(e) + Number(a)) / project.scoreOriginality.length).toFixed(2)}</p>
+                                </div>
+                            }
                         </div>
-
                     </div>
                 </div >
                 {/*DESCRIPTION */}
@@ -220,14 +232,16 @@ function Project() {
                         </div>
                         <h3>Tecnologias:</h3>
                         <div>
-                            <p className="text2">{project.tecnology}</p>
+
+                            <p className="text2">| {project.tecnology?.map((t) => t + ' | ')}</p>
                         </div>
                     </div>
                 </div >
                 <div>
                     <Reviews
                         reviews={project.reviews}
-                        projectid={project.id} />
+                        projectid={project.id}
+                        idUser={project.user.id} />
                 </div>
                 {
                     !!modalP && modalP.projectID !== 0 ?
