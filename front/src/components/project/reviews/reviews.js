@@ -4,8 +4,6 @@ import "./reviews.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectById, postReview } from '../../../redux/actions/actionCreators';
 import ReviewsCard from "./reviewsCard/reviewsCard"
-import { BiSend } from "react-icons/bi";
-
 
 
 const Reviews = ({ projectid, reviews, idUser }) => {
@@ -95,6 +93,8 @@ const Reviews = ({ projectid, reviews, idUser }) => {
         return valor
     }
     
+let arrayAMostrar = reviews.reverse()
+
     return (
         (userId ? <div className='reviews-general'>
             <hr></hr>
@@ -109,6 +109,7 @@ const Reviews = ({ projectid, reviews, idUser }) => {
                                 count={5}
                                 value={input.scoreStyle}
                                 name={"scoreStyle"}
+                                colorz
                                 isHalf={true}
                                 onChange={e => ratingChanged(e, "scoreStyle")}
                                 size={28}
@@ -142,16 +143,15 @@ const Reviews = ({ projectid, reviews, idUser }) => {
 
                             </div>
                         </div>
-                            <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area'></textarea>
-                            <button className='btn-send-reviews'> <BiSend/> </button>
-                            {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
+                        <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area' />
+                        {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
 
+                        <button>Enviar</button>
                     </form>}
-
                     </div>
             : null }  
 
-                {reviews.length > 0 ? reviews.reverse().map(e => 
+                {reviews.length > 0 ? arrayAMostrar.map(e => 
                 <ReviewsCard key={e.id}
                     user={e.user}
                     text={e.text}
