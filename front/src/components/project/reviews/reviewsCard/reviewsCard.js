@@ -21,7 +21,7 @@ const ReviewsCard = ({ text, scoreStyle, scoreFunctionality, scoreOriginality, u
         return estrellas
     }
 
-    console.log(user)
+    
     return (
         <div className='rcard-cont'>
             <div className='rcard-stars'>
