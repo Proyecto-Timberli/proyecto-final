@@ -78,7 +78,7 @@ const Home = () => {
     }
     useEffect(() => {
         if (allProjects.length) {
-            accionarPaginado(1)
+            accionarPaginado(cardsInPag.pag)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allProjects, filterTechs, filterBySearch])
