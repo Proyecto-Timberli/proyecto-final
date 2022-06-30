@@ -3,17 +3,21 @@ import "../navbar/navbar.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetFavorites, setLoggedUserId } from '../../redux/actions/actionCreators'
+import { isAdmin } from '../../../src/redux/actions/actionCreators.js'
 
 const Navbar = () => {
     let dispatch = useDispatch()
     const userId = useSelector(state => state.loggedUserId)
+    const admin = useSelector(state => state.isAdmin)
 
     function logOut() {
         window.localStorage.removeItem('usertoken')
         dispatch(setLoggedUserId(null))
         dispatch(resetFavorites())
     }
-
+    useEffect(() => {
+        dispatch(isAdmin())
+    }, [dispatch])
 
     function checkIfLoggedIn() {
         // revisamos si hay token
@@ -68,6 +72,13 @@ const Navbar = () => {
                 userId ?
                     (
                         <div className='botones-nav'>
+                            {
+                                admin ? 
+                                <Link to={"/admin"}>
+                                <button className='btn-perfil-navBar'> Panel </button>
+                                </Link>
+                                : null
+                            }
                             <Link to={"/user/" + userId}>
                                 <button className='btn-perfil-navBar'> Perfil </button>
                             </Link>
