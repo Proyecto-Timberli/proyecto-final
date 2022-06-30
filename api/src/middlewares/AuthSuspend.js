@@ -22,18 +22,16 @@ const verifyToken = async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
+      console.log(decoded);
+      if (decoded.user_type === "suspended") {
 
-      if (decoded.user_type === "admin") {
         req.user_id = decoded.user_id;
 
+        return res.status(401).json({ error: "No tienes autorización, estas suspendido" });
 
+      } else {
         return next();
       }
-      return res.status(401).json({ error: "No tienes autorización" });
-      // sale del middleware, ahora la request tiene el id del usuario
-
-      // de querer añadir más atributos a la request, recordar añadirlos en
-      // la ruta de login, token actual solo envia user_id y email encriptados
 
     } catch (error) {
       console.log(error);

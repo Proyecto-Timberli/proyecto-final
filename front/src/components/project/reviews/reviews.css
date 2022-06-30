@@ -1,23 +1,26 @@
 .reviews-general {
     display: flex;
+    background: linear-gradient(180deg, #013a63, #ffffff);
     flex-direction: column;
     align-items: center;
 }
 
 .form-review {
+    border-radius: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* margin: 5px; */
+    background: #4081ba;
     justify-content: center;
-    margin-left: 1rem;
+    padding: 0 4% 0 4%;
+    margin-bottom: 5%;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.121);
 }
 
 .cont-estrellas {
-
-    background: #7a93cb40;
-    height: 13rem;
-    width: 10rem;
+    background-color: #b1c8dca9;
+    height: 14rem;
+    width: 12rem;
     display: flex;
     /* width: 31rem; */
     margin: 25px;
@@ -25,18 +28,55 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-
-
 }
 
 .review-text-area {
     height: 10rem;
     width: 40rem;
     resize: none;
-    border-radius: 30px;
+    background-color: #ffffff;
+    border-radius: 30px 0px 0px 30px;
     padding: 1%;
-    border-top: 10px groove #006eff;
-    border-right: 10px groove #006eff;
-    border-bottom: 10px groove #006eff;
-    border-left: 10px groove #006eff;
+    border-top: 3px groove #03487a;
+    border-right: none;
+    border-bottom: 3px groove #03487a;
+    border-left: 3px groove #03487a;
+}
+
+.no-reviews{
+    font-size: larger;
+    color: rgba(240, 248, 255, 0.777);
+    letter-spacing: 1px;
+}
+
+.btn-send-reviews{
+    transition: .5s;
+    height: 11.3rem;
+    width: 2.5rem;
+    border-radius: 0px 28px 28px 0px;
+    background-color:#013a63;
+    color: white;
+    border-left: none;
+    border-top: 3px groove #03487a;
+    border-right: 3px groove #03487a;
+    border-bottom: 3px groove #03487a;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%) inset; 
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%) inset;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75) inset;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.btn-send-reviews:hover {
+    background-color: #006eff;
+    /* width: 2.1rem; */
+    box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.75) inset;
+    -webkit-box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.75) inset;
+    -moz-box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.75) inset;
+    color: black;
+}
+
+.btn-send-reviews:active {
+    background: #006eff;
+    color: black;
 }

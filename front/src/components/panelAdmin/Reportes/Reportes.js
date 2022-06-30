@@ -80,19 +80,23 @@ function Reportes() {
                     <div>
                       <p>{p.reports.length}</p>
                     </div>
+                    <div className='motivos-reports'>
+                          <p>Motivos</p>
+                          {p.reports.map(a => (a.comment))}
+                      </div>
                   </div>
                 ))
               }
             </div>
           }
-           <div className="container-paginado">
-        {paginado.buttons().map(button =>
-          <div key={button}>
-            {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
-            {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
+          <div className="container-paginado">
+            {paginado.buttons().map(button =>
+              <div key={button}>
+                {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginado(button)}>{button}</button>}
+                {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginado(button)}>{button}</button>}
+              </div>
+            )}
           </div>
-        )}
-      </div>
         </div>
         <div className='contenedor-reportes-proyectos'>
           <h3>USUARIOS </h3>
@@ -104,23 +108,27 @@ function Reportes() {
               {
                 cardsInPagUsers.renderCards.map(p => ((!!p) &&
                   <div className='project-card-admin' key={p.id}>
-                    <li key={p.id}><b>{p.id}</b> -   <Link to={"/project/" + p.id}>{p.name}</Link> </li>
+                    <li key={p.id}><b>{p.id}</b> -   <Link to={"/user/" + p.id}>{p.name}</Link> </li>
                     <div>
                       <p>{p.reports.length}</p>
                     </div>
+                    <div className='motivos-reports'>
+                          <p>Motivos</p>
+                          {p.reports.map(a => (a.comment))}
+                      </div>
                   </div>
                 ))
               }
             </div>
           }
-           <div className="container-paginado">
-        {paginado.buttons().map(button =>
-          <div key={button}>
-            {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
-            {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
+          <div className="container-paginado">
+            {paginado.buttons().map(button =>
+              <div key={button}>
+                {cardsInPag.pag !== button && <button className="home-paginado-button" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
+                {cardsInPag.pag === button && <button className="home-paginado-button-select" onClick={() => accionarPaginadoUsers(button)}>{button}</button>}
+              </div>
+            )}
           </div>
-        )}
-      </div>
         </div>
       </div>
 

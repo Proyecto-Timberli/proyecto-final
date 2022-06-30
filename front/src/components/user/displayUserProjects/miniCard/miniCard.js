@@ -15,10 +15,10 @@ function MiniCard({ id, name, description, imagen }) {
                     <Link to={"/project/" + id} className="MiniCard-button">Ver Proyecto</Link>
                 </div>
             </div> */}
-            {imagen.includes(".mp4") ?
-                <video className='img-project-card'  src={imagen} />
+            {imagen?.includes(".mp4") ?
+                <video className='img-project-card-mini'  src={imagen} />
                 :
-                <img className='img-project-card' src={imagen || "https://img.freepik.com/vector-gratis/ilustracion-icono-carpeta-datos_53876-6329.jpg?w=360"} alt="project-img"></img>
+                <img className='img-project-card-mini' src={imagen || "https://img.freepik.com/vector-gratis/ilustracion-icono-carpeta-datos_53876-6329.jpg?w=360"} alt="project-img"></img>
             }
 
             <div className="MiniCard-info">

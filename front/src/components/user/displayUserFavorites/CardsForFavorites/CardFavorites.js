@@ -21,9 +21,9 @@ export default function CardFavorites({ id, name, description, imagen }) {
                 <MdDelete className='button-delete'></MdDelete>
             </button>
             {imagen.includes(".mp4") ?
-            <video className="MiniCard-img" src={imagen}/>
+            <video className="img-project-card-mini" src={imagen}/>
             :
-            <img className="MiniCard-img" src={imagen || "https://img.freepik.com/vector-gratis/ilustracion-icono-carpeta-datos_53876-6329.jpg?w=360"} alt="project-img"></img>
+            <img className="img-project-card-mini" src={imagen || "https://img.freepik.com/vector-gratis/ilustracion-icono-carpeta-datos_53876-6329.jpg?w=360"} alt="project-img"></img>
         }
 
             <div className="MiniCard-info">

@@ -31,7 +31,7 @@ const config = {
                 options: [
                     {
                         text: "Registrate",
-                        url: `${REACT_APP_BOT}/register`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/register`, 
                         id: 1,
                     },
                 ],
@@ -44,7 +44,7 @@ const config = {
                 options: [
                     {
                     text: "Contribuir",
-                    url: `${REACT_APP_BOT}/payment`, //hay que acomodar para el deploy, solo estoy probando
+                    url: `${REACT_APP_BOT}/payment`, 
                     id: 1,
                     },
                 ],
@@ -57,17 +57,17 @@ const config = {
                 options: [
                     {
                         text: "Login",
-                        url: `${REACT_APP_BOT}/login`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/login`, 
                         id: 1,
                     },
                     {
                         text: "Compartir mi proyecto",
-                        url: `${REACT_APP_BOT}/newProject`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/newProject`, 
                         id: 1,
                     },
                     {
                         text: "Votar y/o favear",
-                        url: `${REACT_APP_BOT}/home`, //hay que acomodar para el deploy, solo estoy probando
+                        url: `${REACT_APP_BOT}/home`, 
                         id: 2,
                     },
                 ],

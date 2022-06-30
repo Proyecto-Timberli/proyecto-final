@@ -32,12 +32,12 @@ export function showUserNotFound() {
 function showUserDescription(userData) {
     if (userData !== {} && userData.description) {
         return (<>
-            <h3>Sobre mi:</h3>
+            <h2>Sobre mi:</h2>
             {userData.description.split("\n\n").map((e) => { return (<p key={e} className='p-profile'>{e}</p>) })}
         </>)
     } else {
         return (<>
-            <h3>Sobre mi:</h3>
+            <h2>Sobre mi:</h2>
             <p className='p-profile'>Este usuario no tiene descripción.</p>
         </>)
     }
@@ -47,7 +47,7 @@ function showUserStack(stack) {
     if (stack !== "none" && stack !== null && stack !== "") {
         return (<>
             <h3>Stack de tecnologías:</h3>
-            <p className="p-stack"> {stack.map(e => <b key={e}> {e} |</b>)}</p>
+            <p className="p-stack">| {stack.map(e => <b key={e}> {e} |</b>)}</p>
         </>)
     } else {
         return (<>

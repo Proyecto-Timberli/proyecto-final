@@ -53,7 +53,6 @@ export default function NewProject() {
         }
         setErrorSubmit(false)
         setCreacion(true);
-        
         const NewProject = {
             name: values.name,
             imagen: Imagen,
@@ -204,7 +203,7 @@ export default function NewProject() {
                                     <aside id="modal" className={styles.files}>
                                         <div className={styles.cargarimagen}>
                                             <label htmlFor="input_images">
-                                                <BiUpload />  Cargar imagenes
+                                                <BiUpload />  Cargar imagenes/videos
                                                 <input hidden accept='image/*,video/*' id="input_images" type="file" name="imagen" onChange={handleInputImage} multiple />
                                             </label>
                                         </div>
