@@ -6,7 +6,7 @@ const Stripe = require("stripe")
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const stripe = new Stripe(STRIPE_SECRET_KEY)
 const router = Router();
-const { transporter } = require("./Mailer")
+//const { transporter } = require("./Mailer")
 const jwt = require("jsonwebtoken");
 
 router.put("/user", async (req, res, next) => {
@@ -63,48 +63,48 @@ router.get("/donation", async (req, res, next) => {
         next(err)
     }
 })
-router.post("/email", async (req, res, next) => {
-    const { email, userId, payment } = req.body;
-    try {
+// router.post("/email", async (req, res, next) => {
+//     const { email, userId, payment } = req.body;
+//     try {
 
-        if (!email) {
-            const user = await User.findByPk(userId);
-            await transporter.sendMail({
-                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
-                to: user.mail,
-                subject: "Gracias por tu donacion!",
-                html: `<h1>Muchas gracias por colaborar ${user.name}!</h1>
-                <p>Te hacemos llegar el comprobante de pago, desde el equipo de timberli te damos las gracias!!</p>
+//         if (!email) {
+//             const user = await User.findByPk(userId);
+//             await transporter.sendMail({
+//                 from: `"TIMBERLI" <deathtrokers@gmail.com>`,
+//                 to: user.mail,
+//                 subject: "Gracias por tu donacion!",
+//                 html: `<h1>Muchas gracias por colaborar ${user.name}!</h1>
+//                 <p>Te hacemos llegar el comprobante de pago, desde el equipo de timberli te damos las gracias!!</p>
             
             
-                <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
+//                 <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
 
-            })
+//             })
 
-            return res.send("correo enviado con exito")
-        }
-        else {
-            await transporter.sendMail({
-                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
-                to: email,
-                subject: "Gracias por tu donacion!",
-                html: `<h1>Muchas gracias por colaborar!</h1>
-                <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
+//             return res.send("correo enviado con exito")
+//         }
+//         else {
+//             await transporter.sendMail({
+//                 from: `"TIMBERLI" <deathtrokers@gmail.com>`,
+//                 to: email,
+//                 subject: "Gracias por tu donacion!",
+//                 html: `<h1>Muchas gracias por colaborar!</h1>
+//                 <p>Te hacemos llegar el comprobando de pago, desde el equipo de timberli te damos las gracias!!</p>
                 
                 
-                <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
+//                 <a href="${payment.charges.data[0].receipt_url}">Link al comprobante</a>`
 
-            })
+//             })
 
-            return res.send("correo enviado con exito")
-        }
+//             return res.send("correo enviado con exito")
+//         }
 
-    } catch (err) {
-        next(err)
-    }
+//     } catch (err) {
+//         next(err)
+//     }
 
 
-})
+// })
 router.post("/donation", async (req, res, next) => {
     const { contribution, user, paymentMethod } = req.body
 

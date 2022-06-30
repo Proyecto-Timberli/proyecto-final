@@ -31,7 +31,7 @@ conn.sync(config).then(() => {
   })
 // }).then(()=>{
 //      mokeando()
-// });
+ });
 
 
 
