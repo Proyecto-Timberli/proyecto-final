@@ -85,7 +85,7 @@ router.post("/email", async (req, res, next) => {
         }
         else {
             await transporter.sendMail({
-                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
+                from: `"TIMBERLI" <project.timberli@hotmail.com>`,
                 to: email,
                 subject: "Gracias por tu donacion!",
                 html: `<h1>Muchas gracias por colaborar!</h1>
