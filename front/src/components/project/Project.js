@@ -58,6 +58,9 @@ function Project() {
         if (Object.keys(project).length && project.imagen.length) {
             accionarPaginado(1)
         }
+        console.log(project)
+        console.log(userId)
+        console.log(project.userId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -143,10 +146,12 @@ function Project() {
 
         <React.Fragment>
             <div className='detail-container'>
+                {(userId==project.userId)&&
                 <div className="project-bar-container">
                     <div className ="project-bar" onClick={()=>{desplegarEditar(false)}}>Proyecto</div>
                     <div className ="project-bar"onClick={()=>{setDesplegarEditar(true)}}><FcDataConfiguration/>Configuracion</div>
-                </div>
+                </div>}
+
                 <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
                     <div className='cont-info'>
