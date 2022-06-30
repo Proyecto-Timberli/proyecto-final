@@ -101,7 +101,7 @@ function EditProject({ id, defaultValue, desplegarEditar }) {
                         <h3 className='techs-title'>Sus Tecnologias</h3>
                         {validate(editValue).tecnology && <p className="project-edit-error-tecnologias">{validate(editValue).tecnology}</p>}
                         <div className="techs-div-button">
-                            {technologies && technologies.map(tech =>
+                            {technologies && technologies?.map(tech =>
                                 <div key={tech.name}>
                                     {editValue.tecnology.includes(tech.name) && <button className="techs-button techs-press-button" onClick={() => addTechs(tech.name)}>{tech.name}</button>}
                                     {!editValue.tecnology.includes(tech.name) && <button className="techs-button" onClick={() => addTechs(tech.name)}>{tech.name}</button>}
@@ -117,7 +117,7 @@ function EditProject({ id, defaultValue, desplegarEditar }) {
                             <h3>Preview</h3>
                             <div className='containerImagesPreview'>
 
-                                {editValue.imagen.map((photo, index) => {
+                                {editValue.imagen?.map((photo, index) => {
                                     if (typeof photo === "string") {
                                         if (photo.split(".").pop() !== "mp4") {
 

@@ -156,7 +156,7 @@ function Project() {
                     <div className='cont-info'>
                         <div >
                             <h3>Usuario:</h3>
-                            <Link to={"/user/" + project.userId} style={{'text-decoration':'none'}}>
+                            <Link to={"/user/" + project.userId} style={{'textDecoration':'none'}}>
                                 <div className='info-detalle' >{project.user.name}</div>
                             </Link>
                         </div>

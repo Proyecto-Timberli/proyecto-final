@@ -11,12 +11,12 @@ const ReviewsCard = ({ text, scoreStyle, scoreFunctionality, scoreOriginality, u
         let estrellas = []
         for (let i = 1; i <= cantidad; i++) {
             
-            estrellas.push(<ImStarFull className='estrella-color'/>) 
+            estrellas.push(<ImStarFull className='estrella-color' key={i}/>) 
         }
-        if (Math.round(cantidad) > cantidad) { estrellas.push(<ImStarHalf className='estrella-color'/>) } //redonde arriba. redondeo abajo
+        if (Math.round(cantidad) > cantidad) { estrellas.push(<ImStarHalf className='estrella-color' />) } //redonde arriba. redondeo abajo
         if (Math.round(cantidad) < 5){
             for (let i = 1; i <= 5-Math.round(cantidad); i++) { 
-            estrellas.push(<ImStarEmpty className='estrella-color'/>)}
+            estrellas.push(<ImStarEmpty className='estrella-color' key={i + 10}/>)}
         }
         return estrellas
     }
@@ -25,9 +25,9 @@ const ReviewsCard = ({ text, scoreStyle, scoreFunctionality, scoreOriginality, u
     return (
         <div className='rcard-cont'>
             <div className='rcard-stars'>
-                <p>Estilo: <p>{estrellasFuncion(Number(scoreStyle)).map(e=>e)}</p></p>
-                <p>Funcionalidad:<p> {estrellasFuncion(Number(scoreFunctionality)).map(e=>e)}</p></p>
-                <p>Originalidad:<p>{estrellasFuncion(Number(scoreOriginality)).map(e=>e)}</p></p>
+                <p>Estilo: <br/> <b>{estrellasFuncion(Number(scoreStyle)).map(e=>e)}</b></p>
+                <p>Funcionalidad: <br/> <b> {estrellasFuncion(Number(scoreFunctionality)).map(e=>e)}</b></p>
+                <p>Originalidad: <br/> <b>{estrellasFuncion(Number(scoreOriginality)).map(e=>e)}</b></p>
             </div>
 
             <div className='rcard-div-separador'>
