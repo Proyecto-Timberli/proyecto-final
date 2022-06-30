@@ -70,7 +70,7 @@ router.post("/email", async (req, res, next) => {
         if (!email) {
             const user = await User.findByPk(userId);
             await transporter.sendMail({
-                from: `"TIMBERLI" <deathtrokers@gmail.com>`,
+                from: `"TIMBERLI" <project.timberli@hotmail.com>`,
                 to: user.mail,
                 subject: "Gracias por tu donacion!",
                 html: `<h1>Muchas gracias por colaborar ${user.name}!</h1>
