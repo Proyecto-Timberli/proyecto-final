@@ -16,8 +16,8 @@ import {
     POST_REPORT_USER,
     POST_REPORT_PROJECT,
     GET_LIST_FAVORITES,
-    IS_ADMIN
-
+    IS_ADMIN,
+    RESET_FAVORITES
 } from "./actions.js"
 
 import axios from 'axios'
@@ -250,7 +250,7 @@ export function postReportProject(projectId, reportedBy, reportComment) {
 
 
 
-export function getFavorites({ userId }) {
+export function getFavorites( {userId }) {
 
     return function (dispatch) {
         axios.get(REACT_APP_API + `/api/user/favorites/${userId}`)
@@ -272,8 +272,10 @@ export function addFavorites(userId, projectId) {
 
 
 }
-export function putProjectById(projectId, newValue) {
-    return axios.put(REACT_APP_API + "/api/project", { projectId: projectId, projectEdit: newValue })
+
+
+export function putProjectById(projectId,newValue) {
+    return axios.put(REACT_APP_API + "/api/project", { projectId: projectId,projectEdit:newValue})
         .then(response => response.data)
         .catch(error => console.error(error))
 }
@@ -287,6 +289,7 @@ export function deleteFavorite(userId, projectId) {
 
 
 }
+
 //ver como llaman la ruta del back
 export function isAdmin() {
     return function (dispatch) {
@@ -301,6 +304,13 @@ export function isAdmin() {
                 })
             })
             .catch(err => console.log(err));
+    }
+}
+
+export function resetFavorites(){
+    return {
+        type: RESET_FAVORITES,
+        payload: []
     }
 }
 

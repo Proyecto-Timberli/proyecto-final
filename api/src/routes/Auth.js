@@ -63,6 +63,9 @@ router.post("/login", (req, res, next) => {
         }
     }).then(user => {
         if (user) {
+            if (user.userType === "suspended") {
+                return res.status(401).json({ error: "Tu cuenta se encuentra suspendida" });
+            }
             if (bcrypt.compareSync(req.body.password, user.password)) {
 
                 let token = jwt.sign({

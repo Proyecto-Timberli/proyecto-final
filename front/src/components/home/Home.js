@@ -25,12 +25,16 @@ const Home = () => {
     // scroll()
     //////////////////////////////////////////////////////////////////////////////
     let dispatch = useDispatch()
+
+    
+    let Usertoken=window.localStorage.getItem("usertoken")
+
     let allProjects = useSelector((state) => state.allProject.filter(project => project.state !== 'Pendiente'))
 
     useEffect(() => {
         dispatch(getAllProjects());
         dispatch(isAdmin())
-        if (window.localStorage.getItem("usertoken")) {
+        if (Usertoken) {
             dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
             // accionarPaginado(1)
         }

@@ -1,13 +1,12 @@
 
 import React, { useEffect, useState } from 'react'
-import { FcDataConfiguration } from "react-icons/fc";
 import { AiOutlineSave } from "react-icons/ai";
 import { useDispatch} from "react-redux";
 import { putProjectById,getProjectById} from '../../redux/actions/actionCreators'
 import './EditProject.css'
 import { technologies } from '../home/newProject/technologies.js';
 import validate from './validacion'
-
+import { FcDataConfiguration } from "react-icons/fc";
 
 function EditProject({id,defaultValue,desplegarEditar}) {
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +54,21 @@ function EditProject({id,defaultValue,desplegarEditar}) {
             [e.target.name]:e.target.value,
         })        
     }   
+    function handleInputImage(e) {
+        e.preventDefault()
+        setEditValue({
+            ...editValue,
+            [e.target.imagen]:[...e.target.imagen,e.target.files]
+        })  
+    }
+
+    // function deletePhoto(e) {
+    //     let indexInput = e.target.id * 1;
+    //     setImagen(Imagen.filter((photo, index) => {
+    //         return index !== indexInput ? photo : false
+    //     }))
+
+    // } 
     return (
         <React.Fragment>
             <div className ="project-edit-container">   
@@ -93,8 +107,7 @@ function EditProject({id,defaultValue,desplegarEditar}) {
                         </div>
                     </div>
                         <div className ="project-edit-div-white">   
-                            <div className ="project-edit-div-multimedia"><h3>Imagenes</h3><input onChange={chageValueProyect} name="imagen"className ="project-edit-input"value={editValue.imagen}/></div>
-                            <div className ="project-edit-div-multimedia"><h3>Video</h3><input onChange={chageValueProyect} name="imagen"className ="project-edit-input"value={editValue.imagen}/></div>  
+                            <div className ="project-edit-div-multimedia"><h3>Imagenes y video</h3><input type="file" onChange={handleInputImage} name="imagen"className ="project-edit-input"/></div>
                         </div>                                                                                                                                  
                 </div>                                           
                     <div className ="project-edit-div-link-1"><h3>Link de Repositorio</h3><input onChange={chageValueProyect} name="repository"className ="project-edit-input"value={editValue.repository}/></div>                       
@@ -106,3 +119,41 @@ function EditProject({id,defaultValue,desplegarEditar}) {
     )
 }
 export default EditProject
+
+
+
+
+
+// <div id="imagen"></div>
+// {Imagen[0] ? (
+//     <div className={styles.containerImagesPreview} >
+//         {Imagen.map((e, index) => {
+//             console.log(e)
+//             if (e.type.split('/')[0] === 'image') {
+
+//                 return (
+//                     <img
+//                         className={styles.imagePreview}
+//                         key={index}
+//                         src={URL.createObjectURL(e)}
+//                         id={index}
+//                         alt=""
+//                         onClick={e => deletePhoto(e)} />
+//                 )
+//             } else {
+//                 return (
+//                     <video
+//                         className={styles.imagePreview}
+//                         key={index}
+//                         src={URL.createObjectURL(e)}
+//                         id={index}
+//                         alt=""
+//                         autoPlay={true}
+//                         onClick={e => deletePhoto(e)} />
+//                 )
+//             }
+//         })}
+//     </div>
+// ) : <div className={styles.divImage}>
+//     You currently have no photos added
+// </div>}

@@ -11,7 +11,8 @@ import Reviews from './reviews/reviews';
 import ModalReport from './modalReport/ModalReport.js'
 import { MdFavorite, MdError,MdFavoriteBorder } from "react-icons/md";
 import { addFavorites } from '../../redux/actions/actionCreators';
-
+import EditProject from './EditProject.js'
+import { FcDataConfiguration } from "react-icons/fc";
 
 function Project() {
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -23,15 +24,20 @@ function Project() {
     let token = window.localStorage.getItem('usertoken')
     const project = useSelector((state) => state.projectById)
     let reportBy = useSelector((state) => state.loggedUserId)
-
+    const [desplegarEditar, setDesplegarEditar] = useState(false);
+    
     useEffect(() => {
         dispatch(getProjectById(id))
         if (token) {
             dispatch(getFavorites({ userId: window.localStorage.getItem("userid") * 1 }))
         }
         scroll()
+        console.log(userId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    // useEffect(() => {
+    //     scroll()
+    // }, [desplegarEditar])
 
     ////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////paginado imagenes/////////////////////////////////////
@@ -52,6 +58,9 @@ function Project() {
         if (Object.keys(project).length && project.imagen.length) {
             accionarPaginado(1)
         }
+        console.log(project)
+        console.log(userId)
+        console.log(project.userId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [project])
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -110,13 +119,27 @@ function Project() {
 
     }
     async function AñadirFavorite() {
+        console.log({userId}," sssssssssssssssssssssssssssssssssss")  
         await addFavorites(userId, id)
-        dispatch(getFavorites({ userId }))
+        dispatch(getFavorites( {userId} ))
 
     }
     async function EliminarFavorite() {
         await deleteFavorite(userId, id)
-        dispatch(getFavorites({ userId }))
+        dispatch(getFavorites( {userId} ))
+    }
+   
+ 
+    if (desplegarEditar){
+        return (
+            <React.Fragment>             
+                <EditProject
+                    id={id}
+                    defaultValue={project}
+                    desplegarEditar={setDesplegarEditar}
+                /> 
+            </React.Fragment>   
+        )
     }
 
     console.log(project.user.id)
@@ -126,6 +149,12 @@ function Project() {
 
         <React.Fragment>
             <div className='detail-container'>
+                {(userId==project.userId)&&
+                <div className="project-bar-container">
+                    <div className ="project-bar" onClick={()=>{desplegarEditar(false)}}>Proyecto</div>
+                    <div className ="project-bar"onClick={()=>{setDesplegarEditar(true)}}><FcDataConfiguration/>Configuracion</div>
+                </div>}
+
                 <div className='project-title-container'><h2 className='project-title'>{project.name}</h2></div>
                 <div className='Contenedor-detalles'>
                     <div className='cont-info'>

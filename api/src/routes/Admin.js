@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Router } = require('express');
 const { Project, User, Contributions } = require('../db.js');
-const { verifyToken } = require('../middlewares/authadjwt')
+const { verifyToken } = require('../middlewares/AuthAdmin')
 const Stripe = require("stripe")
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
 const stripe = new Stripe(STRIPE_SECRET_KEY)
