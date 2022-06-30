@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import "../navbar/navbar.css"
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoggedUserId } from '../../redux/actions/actionCreators'
+import { resetFavorites, setLoggedUserId } from '../../redux/actions/actionCreators'
 
 const Navbar = () => {
     let dispatch = useDispatch()
@@ -11,6 +11,7 @@ const Navbar = () => {
     function logOut() {
         window.localStorage.removeItem('usertoken')
         dispatch(setLoggedUserId(null))
+        dispatch(resetFavorites())
     }
 
 
