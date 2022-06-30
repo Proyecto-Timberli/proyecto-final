@@ -93,7 +93,7 @@ const Reviews = ({ projectid, reviews, idUser }) => {
         return valor
     }
     
-let arrayAMostrar = reviews.reverse()
+let arrayAMostrar = [...reviews].reverse()
 
     return (
         (userId ? <div className='reviews-general'>
