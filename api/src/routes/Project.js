@@ -34,7 +34,7 @@ router.get("/id/:idProject", async (req, res, next) => {
 });
 
 
-router.post("/", [verifyToken], async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const { name, tecnology, shortDescription, imagen, description, repository, userid, deploying } = req.body;
   try {
     const newProject = await Project.create({ name, imagen, shortDescription, tecnology, description, repository, deploying })
@@ -49,7 +49,7 @@ router.post("/", [verifyToken], async (req, res, next) => {
 })
 
 
-router.put("/", [verifyToken], async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   const { projectId, projectEdit } = req.body;
   try {
     if (projectId && projectEdit) {

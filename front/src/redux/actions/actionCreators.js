@@ -297,7 +297,7 @@ export function isAdmin() {
             headers: { Authorization: "Bearer " + window.localStorage.getItem('usertoken') }
         })
             .then(res => {
-                console.log(res.data);
+              
                 return dispatch({
                     type: IS_ADMIN,
                     payload: res.data,

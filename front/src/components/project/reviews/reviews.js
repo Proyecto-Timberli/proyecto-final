@@ -11,7 +11,7 @@ import { BiSend } from "react-icons/bi";
 const Reviews = ({ projectid, reviews, idUser }) => {
     const userId = useSelector(store => store.loggedUserId)
     let dispatch = useDispatch()
-    console.log(projectid)
+ 
 
     const [input, setInput] = useState({
         text: "",
@@ -152,7 +152,9 @@ const Reviews = ({ projectid, reviews, idUser }) => {
             : null }  
 
                 {reviews.length > 0 ? reviews.reverse().map(e => 
-                <ReviewsCard key={e.id}
+                <ReviewsCard 
+                    id={e.id}
+                    key={e.id}
                     user={e.user}
                     text={e.text}
                     fecha={e.createdAt}
