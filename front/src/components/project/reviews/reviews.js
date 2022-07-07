@@ -146,7 +146,7 @@ let arrayAMostrar = [...reviews].reverse()
                         <textarea name='text' value={input.text} onChange={e => onChange(e)} className='review-text-area' />
                         {error.text && error.text.length !== 0 ? <div>{error.text}</div> : null}
 
-                        <button>Enviar</button>
+                        <button className='btn-send-reviews'>Enviar</button>
                     </form>}
                     </div>
             : null }  
